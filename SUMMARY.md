@@ -1,0 +1,15 @@
+# Table of contents
+
+* [PHPWA Bundle](README.md)
+* [What is a PWA](what-is-a-pwa.md)
+* [Installation](installation.md)
+* [Configuration](configuration/README.md)
+  * [Application Information](configuration/application-information.md)
+  * [Icons](configuration/icons.md)
+  * [Screenshots](configuration/screenshots.md)
+  * [Shortcuts](configuration/shortcuts.md)
+  * [Protocol Handlers](configuration/protocol-handlers.md)
+  * [File Handlers](configuration/file-handlers.md)
+  * [Push Notifications](configuration/push-notifications.md)
+  * [Widgets (Win10+)](configuration/widgets-win10+.md)
+* [Deployment](deployment.md)
