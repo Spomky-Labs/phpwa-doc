@@ -2,6 +2,7 @@
 
 * [PHPWA Bundle](README.md)
 * [How To Create A PWA?](how-to-create-a-pwa.md)
+* [How To Install/Remove A PWA?](how-to-install-remove-a-pwa.md)
 * [Installation](installation.md)
 * [Deployment](deployment.md)
 
