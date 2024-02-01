@@ -1,8 +1,8 @@
 # Shortcuts
 
-Progressive Web App shortcuts are a great way for users to have direct access to the main application features.
-
 PWA shortcuts can be added to any web app manifest by including the `shortcuts` property, which is an array of objects each representing a shortcut. This can enhance user engagement and make your app more accessible.
+
+<figure><img src="../.gitbook/assets/Capture d&#x27;écran 2024-02-01 114143.png" alt=""><figcaption></figcaption></figure>
 
 When designing shortcuts for your Progressive Web App, keep the following tips in mind:
 
@@ -87,3 +87,7 @@ The description parameter helps the user understanding the purpose of the shortc
 Adding icons to shortcuts not only makes them visually appealing but also helps users to quickly identify the action they represent. Icons for shortcuts can be defined within the `icons` array and it's important that these are clear and relevant to the function of the shortcut. Icons should be provided in multiple sizes to ensure that they display well on all devices.
 
 See the definition [on the `icon` page](icons.md).
+
+{% hint style="warning" %}
+The presence of a 96x96 icon is highly recommended for shortcuts.
+{% endhint %}
