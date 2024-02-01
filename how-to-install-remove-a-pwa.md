@@ -28,45 +28,42 @@ The installation of a PWA is very similar to Chrome.
 
 ### **Firefox**
 
-1. Visit the website that offers the PWA.
-2. Click on the 'Install' icon in the address bar, which resembles a house with a plus sign.
-3. Confirm the installation in the pop-up window to add the app to your device.
+TO BE WRITTEN
 
 ### **Safari (iOS)**
 
-1. Navigate to the PWA website with Safari.
-2. Tap the 'Share' button at the bottom of the Safari screen.
-3. Scroll down and tap 'Add to Home Screen.'
-4. Edit the name of the PWA if desired, then tap 'Add.'
+TO BE WRITTEN
 
 ## Removing a PWA:
 
 ### **Chrome**
 
-1. Open the PWA you want to remove.
-2. Right-click on its shortcut in the app menu or desktop.
-3. Select "Uninstall."
+From the application, click on the three vertical dots and select "Uninstall AppXxx" and confirm.
+
+<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194648.png" alt=""><figcaption></figcaption></figure>
 
 ### **Microsoft Edge**
 
-1. Open the Start menu or desktop shortcut for the PWA.
-2. Right-click on the app icon.
-3. Choose "Uninstall."
+From the application, click on the three horizontal dots and select "App settings".
+
+<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194733.png" alt=""><figcaption></figcaption></figure>
+
+The application manager window will open. From this panel, you will be able to clear the application data or uninstall it.
+
+<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194755.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194833.png" alt=""><figcaption></figcaption></figure>
 
 ### **Firefox**
 
-1. Open Firefox and type `about:apps` in the address bar, then press Enter.
-2. Find the PWA you wish to remove.
-3. Click on the gear icon associated with the PWA.
-4. Select "Remove" from the drop-down menu.
+TO BE WRITTEN
 
 ### **Safari (iOS)**
 
-1. Locate the PWA icon on your home screen.
-2. Tap and hold the icon until it begins to jiggle.
-3. Tap the 'X' that appears on the corner of the PWA icon.
-4. Confirm the deletion by selecting "Delete."
+TO BE WRITTEN
 
-{% hint style="info" %}
-On iOS 14 and later, you might need to tap on 'Remove App' after step 2 and then tap 'Delete App' to confirm.
-{% endhint %}
+### Windows 10+
+
+A Progresive Web App appears like a normal application in the software manager. Select the three horizontal dots of the application you want uninstall and confirm.
+
+<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194833.png" alt=""><figcaption></figcaption></figure>
