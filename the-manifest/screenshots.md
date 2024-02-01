@@ -16,6 +16,7 @@ In the example below, a selection of screenshots are visible and the user can na
 
 You can add as many screenshots as you need. But keep in mind that the host device or the platform may  show only a selection of them.
 
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
 pwa:
     manifest:
@@ -30,6 +31,7 @@ pwa:
               label: "Feature #3 in action"
               form_factor: "narrow"
 ```
+{% endcode %}
 
 ### `src` Parameter
 

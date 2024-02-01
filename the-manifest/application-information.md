@@ -16,6 +16,7 @@ Here are the key properties of the manifest that are typically considered necess
 
 Minimal example of a manifest:
 
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
 pwa:
     manifest:
@@ -27,3 +28,4 @@ pwa:
         background_color: "#ffffff"
         theme_color: "#4285f4"
 ```
+{% endcode %}

@@ -18,7 +18,8 @@ Remember to periodically review your shortcuts to ensure they remain relevant an
 
 ## Configuration
 
-```json
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
 pwa:
     manifest:
         shortcuts:
@@ -37,6 +38,7 @@ pwa:
                 - src: "icons/feature2-96x96.png"
                   sizes: [96]
 ```
+{% endcode %}
 
 ### `name` and `short_name` Parameters
 
@@ -56,6 +58,7 @@ The `url` parameter specifies the URL to which the user should be navigated when
 
 The URL can be a controller route name, with or without parameters, an absolute or a relative URL.
 
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
 pwa:
     manifest:
@@ -77,6 +80,7 @@ pwa:
               url: "https://foo.com/bar/feature-4" # absolute URL
 
 ```
+{% endcode %}
 
 ### `description` Parameter
 

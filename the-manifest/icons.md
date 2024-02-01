@@ -23,6 +23,7 @@ pwa:
 
 The `src` parameter is the path to the resource file. It can be an [Asset Mapper resource](https://pwa.spomky-labs.com/), a relative path or an absolute path to the resource.
 
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
 pwa:
     manifest:
@@ -34,6 +35,7 @@ pwa:
             - src: "src/resources/data/icon-48x48.png"
               sizes: [48]
 ```
+{% endcode %}
 
 ### `sizes` Parameter
 
@@ -43,6 +45,7 @@ The sizes parameter indicates the suitable sizes for the icon. The expected valu
 
 The recommended sizes for application icons are as 48, 72, 96, 144, 168, 192, 256 and 512 pixels.
 
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
 pwa:
     manifest:
@@ -52,6 +55,7 @@ pwa:
             - src: "icons/icon.svg"
               sizes: 0
 ```
+{% endcode %}
 
 ### `type` Parameter
 
