@@ -9,6 +9,7 @@ pwa:
     manifest:
         icons:
             - src: "icons/icon-48x48.png"
+              type: "image/png"
               sizes: [48]
             - src: "icons/icon-192x192.png"
               sizes: [192]
@@ -19,8 +20,20 @@ pwa:
               sizes: [0] # 0 means any and is suitable only for vector images
 ```
 
+### `src` Parameter
+
+
+
+### `sizes` Parameter
+
+
+
+### `type` Parameter
+
+
+
+### `purpose` Parameter
+
 The purpose `maskable` icons indicates the icon has a security margin and borders can be cropped on certain devices.
 
 <figure><img src="../.gitbook/assets/maskable-icon-safe-area (1).png" alt=""><figcaption><p>Maskable image safe area</p></figcaption></figure>
-
-***
