@@ -14,12 +14,14 @@
 * [Shortcuts](the-manifest/shortcuts.md)
 * [Protocol Handlers](the-manifest/protocol-handlers.md)
 * [File Handlers](the-manifest/file-handlers.md)
+* [Complete Example](the-manifest/complete-example.md)
 
 ## The Service Worker
 
 * [Configuration](the-service-worker/configuration.md)
 * [Workbox](the-service-worker/workbox.md)
 * [Push Notifications](the-service-worker/push-notifications.md)
+* [Complete Example](the-service-worker/complete-example.md)
 
 ## Image Management
 
