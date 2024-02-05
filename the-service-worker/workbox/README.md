@@ -4,6 +4,8 @@ This bundle provides a simple Workbox integration path. Service Workers are not 
 
 Workbox takes the pain out of service worker creation by providing a set of tools and best practices that can be used out of the box. It’s like having an expert by your side, guiding you through the complexities of browser caching and service worker logic.
 
+This bundle builds on top of Workbox and includes several options so you don't need to write a line of Javascript to have a fully functional Service Worker.
+
 ## Key Features
 
 * **Precaching**: Workbox can precache the assets in your web app and keep them up to date.
