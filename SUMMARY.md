@@ -14,7 +14,7 @@
 * [Shortcuts](the-manifest/shortcuts.md)
 * [Protocol Handlers](the-manifest/protocol-handlers.md)
 * [File Handlers](the-manifest/file-handlers.md)
-* [Page](the-manifest/page.md)
+* [Share Target](the-manifest/share-target.md)
 * [Complete Example](the-manifest/complete-example.md)
 
 ## The Service Worker
