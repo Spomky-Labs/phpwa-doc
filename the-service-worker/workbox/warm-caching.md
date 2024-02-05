@@ -17,14 +17,13 @@ pwa:
         enabled: true
         src: "sw.js"
         workbox:
-            enabled: false
-                warm_cache_urls:
-                    - 'app_homepage' # Simple route name
-                    - path: 'app_feature1' # Route name without parameters
-                    - path: 'app_feature2' # Route name with parameters
-                      params:
-                          foo: 'bar'
-                          param1: 'value1'
+            warm_cache_urls:
+                - 'app_homepage' # Simple route name
+                - path: 'app_feature1' # Route name without parameters
+                - path: 'app_feature2' # Route name with parameters
+                  params:
+                      foo: 'bar'
+                      param1: 'value1'
 ```
 {% endcode %}
 

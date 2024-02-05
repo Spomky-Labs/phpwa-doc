@@ -9,7 +9,6 @@ pwa:
         enabled: true
         src: "sw.js"
         workbox:
-            enabled: false
             offline_fallback: 'app_offline_page'
 ```
 {% endcode %}
