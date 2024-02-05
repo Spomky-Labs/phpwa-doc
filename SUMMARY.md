@@ -8,7 +8,14 @@
 
 ## The Manifest
 
-* [Application Information](the-manifest/application-information.md)
+* [Application Information](the-manifest/application-information/README.md)
+  * [Scope](the-manifest/application-information/scope.md)
+  * [ID](the-manifest/application-information/id.md)
+  * [Direction and Language](the-manifest/application-information/direction-and-language.md)
+  * [Orientation](the-manifest/application-information/orientation.md)
+  * [Description](the-manifest/application-information/description.md)
+  * [IARC Rating ID](the-manifest/application-information/iarc-rating-id.md)
+  * [Categories](the-manifest/application-information/categories.md)
 * [Icons](the-manifest/icons.md)
 * [Screenshots](the-manifest/screenshots.md)
 * [Shortcuts](the-manifest/shortcuts.md)
@@ -37,5 +44,10 @@
 
 ## Experimental Features
 
+* [Non-Standard Parameters](experimental-features/non-standard-parameters/README.md)
+  * [Launch Handler](experimental-features/non-standard-parameters/launch-handler.md)
+  * [Display Override](experimental-features/non-standard-parameters/display-override.md)
+  * [Related Applications](experimental-features/non-standard-parameters/related-applications.md)
+  * [EDGE Side Panel](experimental-features/non-standard-parameters/edge-side-panel.md)
 * [Translations](experimental-features/translations.md)
 * [Widgets (Win10+)](experimental-features/widgets-win10+.md)

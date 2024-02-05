@@ -1,6 +1,6 @@
 # How To Install/Remove A PWA?
 
-For a Progressive Web App (PWA) to be installable, the Manifest file must include certain mandatory information that are listed [on this page](the-manifest/application-information.md).
+For a Progressive Web App (PWA) to be installable, the Manifest file must include certain mandatory information that are listed [on this page](the-manifest/application-information/).
 
 {% hint style="info" %}
 The PWA is not really installed. Your system will not download all the pages, assets, source code of your application and will not start a web server. The "installation" can be compared to a fully featured link to a web page, including application detail, icons or any otherinformation defined in the manifest file. The browser will also "plus" application feautres to the host system.
