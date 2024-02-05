@@ -8,9 +8,11 @@ With protocol handlers, your PWA can provide a more integrated user experience, 
 
 ### Configuration
 
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
 pwa:
     manifest:
+        enabled: true
         protocol_handlers:
             - protocol: "mailto"
               url: "/compose?to=%s"
@@ -22,6 +24,7 @@ pwa:
                       foo: "bar"
               title: "Open with Feature #1"
 ```
+{% endcode %}
 
 ### Considerations When Using Protocol Handlers
 

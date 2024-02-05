@@ -8,6 +8,7 @@ The `sizes` attribute indicates the size of the icon to the browser. For PNG or 
 ```yaml
 pwa:
     manifest:
+        enabled: true
         icons:
             - src: "icons/icon-192x192.png"
               sizes: [192]

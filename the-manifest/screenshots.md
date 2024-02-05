@@ -20,6 +20,7 @@ You can add as many screenshots as you need. But keep in mind that the host devi
 ```yaml
 pwa:
     manifest:
+        enabled: true
         screenshots:
             - "images/screenshot-feature1.png"
             - 

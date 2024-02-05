@@ -22,6 +22,7 @@ Remember to periodically review your shortcuts to ensure they remain relevant an
 ```yaml
 pwa:
     manifest:
+        enabled: true
         shortcuts:
             - name: "Start New Conversation"
               short_name: "New Chat"
