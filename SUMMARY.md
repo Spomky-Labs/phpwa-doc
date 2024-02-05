@@ -20,6 +20,7 @@
 ## The Service Worker
 
 * [Configuration](the-service-worker/configuration.md)
+* [Content Security Policy](the-service-worker/content-security-policy.md)
 * [Workbox](the-service-worker/workbox/README.md)
   * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
   * [Precaching](the-service-worker/workbox/precaching.md)
