@@ -36,3 +36,11 @@ The two other options are also available:
 
 * `scope` (default to `/`): a string representing the service worker's registration scope.
 * use\_cache (default to `true`): a boolean that sets how the HTTP cache is used for service worker script resources during updates.
+
+### Service Worker Initialization
+
+The Service Worker initialization script uses Workbox Window. This script is loaded from a distant URL. We recommend to install it using Asset Mapper and avoid distant loading.
+
+```sh
+symfony console importmap:require workbox-window
+```

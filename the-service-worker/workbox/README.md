@@ -12,3 +12,17 @@ Workbox takes the pain out of service worker creation by providing a set of tool
 * **Background Sync**: Integrate background sync to replay failed requests once connectivity is restored.
 * **Offline Fallback**: allow your service worker to serve a web page, image, or font if there's a routing error for any of the three, for instance if a user is offline and there isn't a cache hit.
 
+### Disabling Workbox
+
+Workbox is enabled by default. You can disable it completely if you do not need it.
+
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    serviceworker:
+        enabled: true
+        src: "sw.js"
+        workbox:
+            enabled: false
+```
+{% endcode %}

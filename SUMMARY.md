@@ -22,10 +22,11 @@
 * [Configuration](the-service-worker/configuration.md)
 * [Content Security Policy](the-service-worker/content-security-policy.md)
 * [Workbox](the-service-worker/workbox/README.md)
-  * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
+  * [Service Worker Creation](the-service-worker/workbox/service-worker-creation.md)
   * [Precaching](the-service-worker/workbox/precaching.md)
   * [Warm Caching](the-service-worker/workbox/warm-caching.md)
   * [Offline Fallback](the-service-worker/workbox/offline-fallback.md)
+  * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
 
