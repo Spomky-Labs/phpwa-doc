@@ -1,6 +1,6 @@
 # CDN and Versions
 
-By default, the bundle uses Workbox 7.0.0 which was released en of May 2023. The files are provided by the bundle so that all files are served by your server.
+By default, the bundle uses Workbox `7.0.0` which was released end of May 2023. The files are provided by the bundle so that all files are served by your server.
 
 If needed, you can use a CDN and a different version.
 
