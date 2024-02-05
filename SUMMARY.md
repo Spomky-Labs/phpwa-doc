@@ -20,7 +20,11 @@
 ## The Service Worker
 
 * [Configuration](the-service-worker/configuration.md)
-* [Workbox](the-service-worker/workbox.md)
+* [Workbox](the-service-worker/workbox/README.md)
+  * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
+  * [Precaching](the-service-worker/workbox/precaching.md)
+  * [Warm Caching](the-service-worker/workbox/warm-caching.md)
+  * [Offline Fallback](the-service-worker/workbox/offline-fallback.md)
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
 
