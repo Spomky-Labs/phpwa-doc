@@ -7,5 +7,5 @@ In the `dev` environment, the resources are automactilly handled and returned by
 For the `prod` environment, before deploy, you should run:
 
 ```shell
-php bin/console asset-map:compile
+symfony console asset-map:compile
 ```
