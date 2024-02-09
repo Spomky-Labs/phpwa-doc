@@ -58,9 +58,7 @@ From the application, click on the three horizontal dots and select "App setting
 
 The application manager window will open. From this panel, you will be able to clear the application data or uninstall it.
 
-<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194755.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194833.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-02-09 111318.png" alt=""><figcaption></figcaption></figure>
 
 ### **Firefox**
 
@@ -78,4 +76,4 @@ On an Android device, locate the PWA icon in your app drawer or home screen. Lon
 
 A Progresive Web App appears like a normal application in the software manager. `Windows+X`, "Install Applications" then select the three horizontal dots of the application you want uninstall and confirm.
 
-<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194833.png" alt=""><figcaption></figcaption></figure>
+<figure><picture><source srcset=".gitbook/assets/Capture d&#x27;écran 2024-02-09 111115.png" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194833.png" alt=""></picture><figcaption></figcaption></figure>
