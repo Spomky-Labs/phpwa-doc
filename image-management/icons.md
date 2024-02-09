@@ -1,8 +1,14 @@
 # Icons
 
-Progressive Web Apps may have icons of multiple formats and sizes to be correctly shown on targeted plaforms. This task may become boring as your application evolves.
+Progressive Web Apps may have icons of multiple formats and sizes to be correctly shown on targeted plaforms. This task may become boring as your application evolves. The bundle provides a simple console command to ease the creation of these icons.
 
-The bundle provides a simple console command to ease the creation of these icons. It requires an image processor to work to be declared in the configuration file. Two Image Processors are provided by the bundle.
+{% hint style="warning" %}
+Icons shall be square images
+{% endhint %}
+
+### Image Processor
+
+The icon command requires an image processor to work to be declared in the configuration file. Two Image Processors are provided by the bundle.
 
 * `pwa.image_processor.imagick`: requires the PHP Imagick extension
 * `pwa.image_processor.gd`: requires the PHP GD extension
@@ -16,11 +22,9 @@ pwa:
 ```
 {% endcode %}
 
-Then, from your shell you can use the following command line to convert an image to a preset of sizes and using the same format as the input.
+### Resizing Icons
 
-{% hint style="warning" %}
-Icons shall be square images
-{% endhint %}
+From your shell, you can use the following command line to convert an image to a preset of sizes and using the same format as the input:
 
 ```sh
 symfony console pwa:create:icons /path/to/the/image.png
@@ -43,11 +47,15 @@ pwa:
 This configuration is to be adapt depending on the icon type (application, shortcut, widget...)
 {% endhint %}
 
+### Formats And Sizes
+
 You can change the format and sizes by setting the values you need as options
 
 ```sh
 symfony console pwa:create:icons /path/to/the/image.png --format="jpg" 48 96 256
 ```
+
+### Output Folder
 
 Similarily, if you want to change the output folder, you can set it as an option.
 

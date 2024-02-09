@@ -30,13 +30,17 @@ The installation of a PWA is very similar to Chrome.
 
 <figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 193908.png" alt=""><figcaption><p>GitHub installation from Microsoft Edge</p></figcaption></figure>
 
-### **Firefox**
+### Firefox
 
-TO BE WRITTEN
+{% hint style="info" %}
+To be writtent
+{% endhint %}
 
-### **Safari (iOS)**
+### Safari (iOS)
 
-TO BE WRITTEN
+{% hint style="info" %}
+To be written
+{% endhint %}
 
 ## Removing a PWA:
 
@@ -60,14 +64,18 @@ The application manager window will open. From this panel, you will be able to c
 
 ### **Firefox**
 
-TO BE WRITTEN
+To remove a PWA from Firefox, open the PWA from your desktop or application folder. Within the app, navigate to the Firefox menu in the upper right corner, represented by three horizontal bars. From the dropdown, select 'Remove Site' or 'Delete App', then confirm your choice. This removes the PWA from your device.
 
 ### **Safari (iOS)**
 
-TO BE WRITTEN
+Removing a PWA from an iOS device is straightforward. Locate the PWA icon on your home screen or in your app library. Press and hold the icon until a menu appears, then select 'Remove App'. Confirm the removal when prompted. This deletes the PWA from your iOS device.
+
+### Android
+
+On an Android device, locate the PWA icon in your app drawer or home screen. Long-press the icon, then select the 'Uninstall' option. Confirm your choice if prompted. This will remove the PWA from your Android device.
 
 ### Windows 10+
 
-A Progresive Web App appears like a normal application in the software manager. Select the three horizontal dots of the application you want uninstall and confirm.
+A Progresive Web App appears like a normal application in the software manager. `Windows+X`, "Install Applications" then select the three horizontal dots of the application you want uninstall and confirm.
 
 <figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194833.png" alt=""><figcaption></figcaption></figure>
