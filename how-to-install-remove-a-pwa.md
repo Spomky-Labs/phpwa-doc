@@ -58,7 +58,7 @@ From the application, click on the three horizontal dots and select "App setting
 
 The application manager window will open. From this panel, you will be able to clear the application data or uninstall it.
 
-<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-02-09 111318.png" alt=""><figcaption></figcaption></figure>
+<figure><picture><source srcset=".gitbook/assets/Capture d&#x27;écran 2024-02-09 111232.png" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/Capture d&#x27;écran 2024-02-09 111318.png" alt=""></picture><figcaption></figcaption></figure>
 
 ### **Firefox**
 
