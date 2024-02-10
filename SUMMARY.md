@@ -33,6 +33,7 @@
   * [Warm Caching](the-service-worker/workbox/warm-caching.md)
   * [Offline Fallbacks](the-service-worker/workbox/offline-fallback.md)
   * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
+  * [Cache Names and Purge](the-service-worker/workbox/cache-names-and-purge.md)
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
 
