@@ -24,7 +24,7 @@ pwa:
         name: "My PWA"
         short_name: "PWA"
         start_url: "/index.html"
-        displa": "standalone"
+        display: "standalone"
         background_color: "#ffffff"
         theme_color: "#4285f4"
 ```
