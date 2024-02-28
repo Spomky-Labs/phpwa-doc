@@ -12,7 +12,7 @@ pwa:
 The following example is exactly the same:
 
 {% hint style="info" %}
-`"src.js"` is served by Asset Mapper and refers to the file in the /assets folder of your project. It can be stored elsewhere if needed.
+`"sw.js"` is served by Asset Mapper and refers to the file in the /assets folder of your project. It can be stored elsewhere if needed.
 {% endhint %}
 
 {% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
