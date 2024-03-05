@@ -24,6 +24,10 @@ pwa:
 ```
 {% endcode %}
 
+{% hint style="info" %}
+As it has an impact on the Twig pages, you may need to clear the cache when the service worker is enabled.
+{% endhint %}
+
 By default, the public URL of the service worker will be /sw.js. You can change this URL using the dest configuration option.
 
 {% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
