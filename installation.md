@@ -3,7 +3,7 @@
 To install the bundle, the recommended way is using Composer:
 
 ```sh
-composer require spomky-labs/phpwa
+composer require spomky-labs/pwa-bundle
 ```
 
 No Flex recipe exists for this bundle, but you can create a configuration file that will be modified as you progress in the integration of the features.
