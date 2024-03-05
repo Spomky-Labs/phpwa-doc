@@ -79,9 +79,25 @@ pwa:
             - name: "Feature #4"
               short_name: "feature-4"
               url: "https://foo.com/bar/feature-4" # absolute URL
+            - name: "Feature #5"
+              short_name: "feature-5"
+              url:
+                  path: "app_feature5" # route name
+                  path_type_reference: 3 # Network URL
 
 ```
 {% endcode %}
+
+The path\_type\_reference option expects an integer where:
+
+* `0`: absolute URL (e.g. `https://app.com/foo/bar`)
+* `1`: absolute path (e.g. `/foo/bar`)
+* `2`: relativepath (e.g. `../bar`)
+* `3`: network path (e.g. `//app.com/foo/bar`)
+
+{% hint style="warning" %}
+With absolut URLs, please make sure the Request Context is set. See [the router configuration](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) for more informaiton.
+{% endhint %}
 
 ### `description` Parameter
 
