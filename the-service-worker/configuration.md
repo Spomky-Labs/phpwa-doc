@@ -9,11 +9,13 @@ pwa:
 ```
 {% endcode %}
 
-The following example is exactly the same:
+`"sw.js"` is served by Asset Mapper and refers to the file in `/assets/sw.js` folder of your project. It can be stored elsewhere if needed.
 
 {% hint style="info" %}
-`"sw.js"` is served by Asset Mapper and refers to the file in the /assets folder of your project. It can be stored elsewhere if needed.
+To start, just put an empty file. It will be automatically populated by the bundle and will evolves depending on your application needs.
 {% endhint %}
+
+The following example is exactly the same:
 
 {% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
@@ -24,7 +26,7 @@ pwa:
 ```
 {% endcode %}
 
-{% hint style="info" %}
+{% hint style="warning" %}
 As it has an impact on the Twig pages, you may need to clear the cache when the service worker is enabled.
 {% endhint %}
 
@@ -67,3 +69,16 @@ The `use_cache` parameter is enable by default. It is a boolean that sets how th
 #### Skip Waiting
 
 The `skip_waiting` parameter is disabled by default. It ensures that any new versions of a service worker will take over the page and become activated immediately. It is safe in general, but may create issues when the old service worker is handling events while it is updated.
+
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    serviceworker:
+        enabled: true
+        src: "sw.js"
+        dest: "/foo/service-worker.js"
+        scope: "/"
+        use_cache: true
+        skip_waiting: false
+```
+{% endcode %}

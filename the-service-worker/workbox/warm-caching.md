@@ -30,14 +30,15 @@ pwa:
         enabled: true
         src: "sw.js"
         workbox:
-            network_timeout_seconds: 2 # Wait only 2 seconds
-            warm_cache_urls:
-                - 'app_homepage' # Simple route name
-                - path: 'app_feature1' # Simple route name without parameters
-                - path: 'app_feature2' # Route name with parameters
-                  params:
-                      foo: 'bar'
-                      param1: 'value1'
+            page_cache:
+                network_timeout: 2 # Wait only 2 seconds
+                urls:
+                    - 'app_homepage' # Simple route name
+                    - path: 'app_feature1' # Simple route name without parameters
+                    - path: 'app_feature2' # Route name with parameters
+                      params:
+                          foo: 'bar'
+                          param1: 'value1'
 ```
 {% endcode %}
 
@@ -54,9 +55,10 @@ By default, a maximum of 60 images are cached for 1 year. The supported image ex
 </strong>        enabled: true
         src: "sw.js"
         workbox:
-            max_image_age: 60 * 60 * 24 * 30 # 30 days
-            max_image_cache_entries: 200
-            image_regex: '/\.(png|jpe?g|svg|webp)$/'
+            image_cache:
+                max_age: 2_592_000 # 30 days
+                max_cache_entries: 200
+                regex: '/\.(png|jpe?g|svg|webp)$/'
 </code></pre>
 
 ### Asset caching
@@ -72,7 +74,8 @@ pwa:
         enabled: true
         src: "sw.js"
         workbox:
-            static_regex: '/\.(css|jsx?)$/'
+            asset_cache:
+                regex: '/\.(css|jsx?)$/'
 ```
 {% endcode %}
 
@@ -87,8 +90,9 @@ pwa:
         enabled: true
         src: "sw.js"
         workbox:
-            max_font_cache_entries: 10
-            max_font_age: 60 * 60 * 24 * 30 # 30 days
+            font_cache:
+                max_entries: 10
+                max_age: 2_592_000 # 30 days
 ```
 {% endcode %}
 
@@ -107,6 +111,6 @@ pwa:
                 enabled: true
                 cache_prefix: 'goolge-fonts'
                 max_entries: 20
-                max_age: 60 * 60 * 24 # 1 day
+                max_age: 86_400 # 1 day
 ```
 {% endcode %}
