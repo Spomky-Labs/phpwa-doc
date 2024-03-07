@@ -72,7 +72,7 @@ pwa:
               url:
                   path: "app_feature2" # route name
                   params: # route parameters
-                      - key: "value2"
+                      key: "value2"
             - name: "Feature #3"
               short_name: "feature-3"
               url: "/feature/3" # relative URL
