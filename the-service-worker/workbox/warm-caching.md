@@ -57,7 +57,7 @@ By default, a maximum of 60 images are cached for 1 year. The supported image ex
         workbox:
             image_cache:
                 max_age: 2_592_000 # 30 days
-                max_cache_entries: 200
+                max_entries: 200
                 regex: '/\.(png|jpe?g|svg|webp)$/'
 </code></pre>
 
