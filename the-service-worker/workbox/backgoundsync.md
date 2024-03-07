@@ -14,7 +14,7 @@ pwa:
                   regex: /^\/api\// # All requests starting with /api/
                   method: POST
                   max_retention_time: 7_200 # 5 days in minutes
-                  force_sync_callback: true #Optional
+                  force_sync_fallback: true #Optional
                 - queue_name: 'contact'
                   regex: /^\/contact-form\// # All requests starting with /contact-form/
                   method: POST
