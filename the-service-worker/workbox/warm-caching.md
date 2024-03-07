@@ -31,6 +31,7 @@ pwa:
         src: "sw.js"
         workbox:
             page_cache:
+                enabled: true
                 network_timeout: 2 # Wait only 2 seconds
                 urls:
                     - 'app_homepage' # Simple route name
@@ -56,6 +57,7 @@ By default, a maximum of 60 images are cached for 1 year. The supported image ex
         src: "sw.js"
         workbox:
             image_cache:
+                enabled: true
                 max_age: 2_592_000 # 30 days
                 max_entries: 200
                 regex: '/\.(png|jpe?g|svg|webp)$/'
@@ -75,6 +77,7 @@ pwa:
         src: "sw.js"
         workbox:
             asset_cache:
+                enabled: true
                 regex: '/\.(css|jsx?)$/'
 ```
 {% endcode %}
@@ -91,6 +94,7 @@ pwa:
         src: "sw.js"
         workbox:
             font_cache:
+                enabled: true
                 max_entries: 10
                 max_age: 2_592_000 # 30 days
 ```
