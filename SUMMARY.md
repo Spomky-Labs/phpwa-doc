@@ -29,6 +29,7 @@
 * [Configuration](the-service-worker/configuration.md)
 * [Content Security Policy](the-service-worker/content-security-policy.md)
 * [Workbox](the-service-worker/workbox/README.md)
+  * [Site Manifest Cache](the-service-worker/workbox/site-manifest-cache.md)
   * [Warm Caching](the-service-worker/workbox/warm-caching.md)
   * [Offline Fallbacks](the-service-worker/workbox/offline-fallback.md)
   * [BackgoundSync](the-service-worker/workbox/backgoundsync.md)
@@ -36,6 +37,13 @@
   * [Cache Cleaning](the-service-worker/workbox/cache-names-and-purge.md)
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
+
+## Symfony UX
+
+* [Connection Status](symfony-ux/connection-status.md)
+* [Prefetch on demand](symfony-ux/prefetch-on-demand.md)
+* [Sync Broadcast](symfony-ux/sync-broadcast.md)
+* [BackgroundSync Form](symfony-ux/backgroundsync-form.md)
 
 ## Image Management
 

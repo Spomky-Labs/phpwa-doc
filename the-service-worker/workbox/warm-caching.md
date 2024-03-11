@@ -30,22 +30,68 @@ pwa:
         enabled: true
         src: "sw.js"
         workbox:
-            page_cache:
-                enabled: true
-                network_timeout: 2 # Wait only 2 seconds
-                urls:
-                    - 'app_homepage' # Simple route name
-                    - path: 'app_feature1' # Simple route name without parameters
-                    - path: 'app_feature2' # Route name with parameters
-                      params:
-                          foo: 'bar'
-                          param1: 'value1'
+            page_caches:
+                - regex: '\/pages\/.*$'
+                  cache_name: 'static-pages'
+                  strategy: 'networkFirst'
+                  network_timeout: 2 # Wait only 2 seconds (only when strategy = networkFirst
+                  urls: # List of URLs to precache. The URL shall be comprised within the regex
+                      - 'page_tos'
+                      - 'page_legal'
+                - regex: '\/articles\/.*$'
+                  cache_name: 'articles'
+                  strategy: 'staleWhileRevalidate'
+                  broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
+                  urls: # List of URLs to precache. The URL shall be comprised within the regex
+                      - 'app_articles'
+                      - 'app_top_articles'
+                        params:
+                            display: 5
 ```
 {% endcode %}
 
 {% hint style="info" %}
 Please note that you can refer to any URLs, but only URLs served by your application will be cached.
 {% endhint %}
+
+#### Broadcast Parameter
+
+When accessing a page with the `staleWhileRevalidate` strategy, the Service Worker will verify if a page update exists and will save it in the cache if any.
+
+The broadcast parameter will tell the Service Worker to send a broadcast message in case of an update. This is usefull to warn the user it is reading an outdated version of the page and ask for a page reload.&#x20;
+
+In the example below, the `message` is catched and, if it is of type "`workbox-broadcast-update`" and the URL matches with the current URL, a toast notification is displayed for 5 seconds.
+
+```javascript
+navigator.serviceWorker.addEventListener('message', async event => {
+    if (event.data.meta === 'workbox-broadcast-update') {
+        const {updatedURL} = event.data.payload;
+        if (updatedURL === window.location.href) {
+            const toast = document.getElementById('toast-refresh');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+        }
+    }
+});
+```
+
+#### Broadcast Header
+
+By default, the page header used to check if the page is outdated or not are `Content-Length`, `ETag`, `Last-Modified`. These headers can be changed.
+
+{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    serviceworker:
+        workbox:
+            page_caches:
+                - ...
+                  broadcast_headers:
+                      - 'X-App-Cache'
+```
+{% endcode %}
 
 ### Image Caching
 
