@@ -19,6 +19,10 @@ Hereafter the main benefits of Precache:
 
 ### Page Caching
 
+{% hint style="danger" %}
+Contains a breaking change compared to v1.0.x
+{% endhint %}
+
 Developers can build more resilient and user-friendly web applications that perform reliably under various network conditions. Also, it is possible to warm cache a selection of pages. This is powerfull as it allows applications to partially work offline.
 
 The strategy applied for page is Network First i.e. the page from the web server is fetched first. In case of failure, the cached data is served. By default, the service worker will wait 3 seconds before serving the cached version. This value can be configured using the `network_timeout_seconds` option.
@@ -95,7 +99,13 @@ pwa:
 
 ### Image Caching
 
-By default, a maximum of 60 images are cached for 1 year. The supported image extensions extensions are as follows: `ico`, `png`, `jpeg`/`jpg`, `gif`, `svg`, `webp` and `bmp`. This can be changed using the next configuration options
+By default, a maximum of 60 images are cached for 1 year. The supported image extensions extensions are as follows:&#x20;
+
+```regex
+/\.(ico|png|jpe?g|gif|svg|webp|bmp)$/
+```
+
+This can be changed using the next configuration options
 
 <pre class="language-yaml" data-title="/config/packages/pwa.yaml" data-line-numbers><code class="lang-yaml">pwa:
 <strong>    serviceworker:
@@ -111,7 +121,15 @@ By default, a maximum of 60 images are cached for 1 year. The supported image ex
 
 ### Asset caching
 
-Similary to images, e.g. CSS, JSON, XML or JS files are cached. The supported image extensions extensions are as follows: `css`, `js`, `json`, `xml`, `txt`, `map`, `webmanifest`.
+{% hint style="danger" %}
+Contains a breaking change compared to v1.0.x
+{% endhint %}
+
+Similary to images, e.g. CSS, JSON, XML or JS files are cached. The supported extensions are as follows:&#x20;
+
+```regex
+/\.(css|js|json|xml|txt|map|ico|png|jpe?g|gif|svg|webp|bmp)$/
+```
 
 This can be changed using the next configuration options:
 
@@ -130,7 +148,13 @@ pwa:
 
 ### Font Caching
 
-By default, 30 fonts can be cached for 1 year. This only comprises fonts served directly by your application. This can be changed using the next configuration options:
+By default, 30 fonts can be cached for 1 year. This only comprises fonts served directly by your application. The supported fonts are as follows:
+
+```regex
+/\.(ttf|eot|otf|woff2)$/
+```
+
+This can be changed using the next configuration options:
 
 {% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
