@@ -11,7 +11,7 @@ pwa:
         workbox:
             background_sync:
                 - queue_name: 'api'
-                  regex: /\/api\// # All requests starting with /api/
+                  match_callback: startsWith: /api/ # All requests starting with /api/
                   method: POST
                   max_retention_time: 7_200 # 5 days in minutes
                   force_sync_fallback: true #Optional
@@ -24,7 +24,7 @@ pwa:
 {% endcode %}
 
 * `queue_name`: Unique queue name for each queue to easily identify and manage separate background sync processes. This is essential for categorizing different types of requests such as API calls and form submissions.
-* `regex`: A regular expression pattern to match the request URL. This ensures that only requests matching the pattern are queued for background sync.
+* `match_callback`: see on this page.
 * `method`: Specifies the HTTP method (e.g., POST) for the requests to be queued. This helps in filtering which request methods should be considered for background synchronization.
 * `max_retention_time`: The maximum time (in minutes) that a request will be retried in the background. This is crucial for managing storage and ensuring outdated requests are not unnecessarily retried.
 * `force_sync_fallback`: (Optional) A boolean value that, when set to true, forces the background sync to attempt a sync even under conditions where it might not normally do so. Useful in critical data submission scenarios.
