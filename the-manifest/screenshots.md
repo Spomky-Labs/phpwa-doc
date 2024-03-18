@@ -26,7 +26,7 @@ pwa:
             - 
               src: "images/screenshot-feature2.png"
               platform: "android"
-              type: "inmage/png"
+              type: "image/png"
             -
               src: "images/screenshot-feature3.png"
               label: "Feature #3 in action"
