@@ -21,7 +21,7 @@ The default strategy applied for resources is Network First i.e. the resource fr
                   cache_name: 'articles'
                   strategy: 'StaleWhileRevalidate'
                   broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
-                  urls: # List of URLs to precache. The URL shall be comprised within the regex
+                  preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
                       - 'app_articles'
                       - 'app_top_articles'
                         params:
