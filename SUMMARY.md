@@ -3,7 +3,7 @@
 * [PHPWA Bundle](README.md)
 * [How To Create A PWA?](how-to-create-a-pwa.md)
 * [How To Install/Remove A PWA?](how-to-install-remove-a-pwa.md)
-* [Installation](installation.md)
+* [Bundle Installation](installation.md)
 * [Deployment](deployment.md)
 
 ## The Manifest
@@ -29,13 +29,24 @@
 * [Configuration](the-service-worker/configuration.md)
 * [Content Security Policy](the-service-worker/content-security-policy.md)
 * [Workbox](the-service-worker/workbox/README.md)
-  * [Service Worker Creation](the-service-worker/workbox/service-worker-creation.md)
-  * [Warm Caching](the-service-worker/workbox/warm-caching.md)
+  * [Site Manifest Cache](the-service-worker/workbox/site-manifest-cache.md)
+  * [Asset Caching](<the-service-worker/workbox/warm-caching (1).md>)
+  * [Resource Caching](the-service-worker/workbox/warm-caching.md)
+  * [Image Caching](the-service-worker/workbox/warm-caching-2.md)
+  * [Font Caching](the-service-worker/workbox/warm-caching-3.md)
   * [Offline Fallbacks](the-service-worker/workbox/offline-fallback.md)
+  * [BackgoundSync](the-service-worker/workbox/backgoundsync.md)
   * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
-  * [Cache Names and Purge](the-service-worker/workbox/cache-names-and-purge.md)
+  * [Cache Cleaning](the-service-worker/workbox/cache-names-and-purge.md)
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
+
+## Symfony UX
+
+* [Connection Status](symfony-ux/connection-status.md)
+* [Prefetch on demand](symfony-ux/prefetch-on-demand.md)
+* [Sync Broadcast](symfony-ux/sync-broadcast.md)
+* [BackgroundSync Form](symfony-ux/backgroundsync-form.md)
 
 ## Image Management
 
