@@ -23,7 +23,7 @@ The default strategy applied for resources is Network First i.e. the resource fr
                   broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
                   preload_urls: # List of URLs to precache. The URL shall be comprised within the regex
                       - 'app_articles'
-                      - 'app_top_articles'
+                      - path: 'app_top_articles'
                         params:
                             display: 5
 </code></pre>
@@ -50,8 +50,8 @@ This approach empowers developers to optimize their web application's performanc
 | pathname:    | Matches an exact pathname                                                                                                                                                    | <ul><li>pathname: /foo/bar.docx</li><li>pathname: /report.pdf</li></ul>                    |
 | origin:      | Matches all requests to the origin                                                                                                                                           | <ul><li>origin: example.com</li><li>origin: google.com</li></ul>                           |
 | startsWith   | Matches all pathnames starting with the value                                                                                                                                | <ul><li>startsWith: /dashboard</li><li>startsWith: /admin</li></ul>                        |
-| endsWith     | Matches all pathnames ending with the value                                                                                                                                  | <ul><li>endsWith: .css</li><li>endsWith: -report.pdf</li></ul><p></p>                      |
-| regex        | Matches the regex                                                                                                                                                            | <ul><li>regex: \/image\/.*</li><li>regex: \.foo$</li></ul>                                 |
+| endsWith     | Matches all pathnames ending with the value                                                                                                                                  | <ul><li>endsWith: .css</li><li>endsWith: -report.pdf</li></ul>                             |
+| regex        | Matches the regex                                                                                                                                                            | <ul><li>regex: /image/.*</li><li>regex: .foo$</li></ul>                                    |
 
 #### Custom Match Callback Handler
 
@@ -109,7 +109,7 @@ By setting the `range_requests: true`, this type of requests will be supported.
 
 When accessing a page with the `StaleWhileRevalidate` strategy, the Service Worker will verify if a page update exists and will save it in the cache if any.
 
-The broadcast parameter will tell the Service Worker to send a broadcast message in case of an update. This is usefull to warn the user it is reading an outdated version of the page and ask for a page reload.&#x20;
+The broadcast parameter will tell the Service Worker to send a broadcast message in case of an update. This is usefull to warn the user it is reading an outdated version of the page and ask for a page reload.
 
 In the example below, the `message` is catched and, if it is of type "`workbox-broadcast-update`" and the URL matches with the current URL, a toast notification is displayed for 5 seconds.
 
