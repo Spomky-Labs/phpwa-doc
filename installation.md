@@ -30,6 +30,3 @@ The integration in your application is very simple. You are only required to add
 ```
 {% endcode %}
 
-{% hint style="info" %}
-You may need to clear the cache after the bundle is installed
-{% endhint %}

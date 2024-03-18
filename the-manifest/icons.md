@@ -58,9 +58,9 @@ pwa:
 ```
 {% endcode %}
 
-### `type` Parameter
+### `format` Parameter
 
-The `type` parameter corresponds to the mime type of the icon.
+The `format` parameter corresponds to the mime type of the icon.
 
 If this value is omitted and the component `symfony/mime` is present, the bundle will guess the correct type.
 

@@ -29,7 +29,3 @@ pwa:
         theme_color: "#4285f4"
 ```
 {% endcode %}
-
-{% hint style="info" %}
-As it has an impact on the Twig pages, you may need to clear the cache when the manifest is enabled.
-{% endhint %}

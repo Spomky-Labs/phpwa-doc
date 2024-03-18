@@ -33,7 +33,7 @@ The installation of a PWA is very similar to Chrome.
 ### Firefox
 
 {% hint style="info" %}
-To be written
+To be writtent
 {% endhint %}
 
 ### Safari (iOS)

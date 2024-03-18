@@ -44,7 +44,7 @@ Remember, these screenshots are part of your app's first impression on potential
 
 ### `type` Parameter
 
-See the description [on the `icon` page](icons.md#src-parameter).
+This parameter is similar to [the `format` parameter for the icons](icons.md#type-parameter).
 
 ### `label` Parameter
 

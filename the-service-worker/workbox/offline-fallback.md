@@ -9,10 +9,9 @@ pwa:
         enabled: true
         src: "sw.js"
         workbox:
-            offline_fallback:
-                page: 'app_offline_page'
-                image: 'images/offline.svg'
-                font: 'fonts/normal.ttf'
+            page_fallback: 'app_offline_page'
+            image_fallback: 'images/offline.svg'
+            font_fallback: 'fonts/normal.ttf'
 ```
 {% endcode %}
 
