@@ -2,7 +2,7 @@
 
 To integrate the icon details into the Progressive Web App (PWA) manifest file, ensure that each icon listed is accompanied by its respective size. For example, `icon-256x256.png` is indicated as having a size of 256px by 256px. This is crucial for providing clear visual elements across different devices and resolutions.
 
-The `sizes` attribute indicates the size of the icon to the browser. For PNG or JPEG icons, specify the dimensions (e.g., 48, 96, 256). For vector icons, you can use "any" as they are scalable without losing quality. The `format` attribute is also important as it tells the browser what the file format is, helping it to render the image correctly.
+The `sizes` attribute indicates the size of the icon to the browser. For PNG or JPEG icons, specify the dimensions (e.g., 48, 96, 256). For vector icons, you can use "any" as they are scalable without losing quality. The `format` attribute is also important as it tells the browser what the file format is, helping it to render the image correctly or the browser to select the most suitable format.
 
 {% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
