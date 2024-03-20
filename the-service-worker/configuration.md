@@ -46,7 +46,7 @@ pwa:
 
 The Service Worker initialization script uses either Workbox Window if enabled or a smiliar Vanilla JS script.
 
-When Workbox is enabled, its initialization script typically loads from an external URL. However, for improved performance and security, we advise installing it via Asset Mapper instead of relying on remote loading.
+If Workbox is enabled, the initialization script is loaded from a distant URL. We recommend to install it using Asset Mapper and avoid distant loading.
 
 ```sh
 symfony console importmap:require workbox-window
