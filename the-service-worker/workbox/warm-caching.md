@@ -197,7 +197,7 @@ By default, the page header used to check if the page is outdated or not are `Co
 pwa:
     serviceworker:
         workbox:
-            page_caches:
+            resource_caches:
                 - ...
                   broadcast_headers:
                       - 'X-App-Cache'
