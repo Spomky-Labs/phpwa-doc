@@ -68,7 +68,7 @@ This bundle allows the use of handlers to avoid the use of JS and simplify the w
 
 For instance, using `startsWith: /pages/` as the `match_callback` value means that any request URL that begins with `/pages/` will be considered a match and thus eligible for caching under the defined `cache_name`.
 
-Or `destination: image` is similar to `match_callback: '({request}) => request.destination === "image"'`.
+Or `destination: image` is identical to `match_callback: '({request}) => request.destination === "image"'`.
 
 This approach empowers developers to optimize their web application's performance by strategically caching resources based on URL patterns, ensuring that users enjoy faster load times and a smoother overall experience, even in offline scenarios or under suboptimal network conditions.
 
