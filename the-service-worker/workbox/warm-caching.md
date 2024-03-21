@@ -34,28 +34,80 @@ Please note that you can refer to any URLs, but only URLs served by your applica
 
 ### Match Callback
 
-The `match_callback` option is designed to specify the condition used to determine which requests should be cached based on the request URL. This option can take different types of values, such as `startsWith` for simple prefix matching and `regex` for more sophisticated pattern matching. This flexibility allows you to tailor the Service Worker's caching logic to the specific requirements of your web application.
+The `match_callback` option is designed to specify the condition used to determine which requests should be cached based on the request URL. This option can take different types of values, such as
 
-For instance, using `startsWith: /pages/` as the `match_callback` value means that any request URL that begins with `/pages/` will be considered a match and thus eligible for caching under the defined `cache_name`. Similarly, setting `match_callback` to `regex: \/articles\/.*$` employs a regular expression to match any URL that includes `/articles/`, followed by any characters until the end of the string, allowing for dynamic caching of all article pages.
+* A regular expression
+* A Javasrcipt callback
+* A prefixed statement
+
+#### Regular Expression
+
+You can directly pass a regular expression as a string or using the JS `RegExp` object.
+
+* `match_callback: '/styles/.*\.css'`
+* `match_callback: 'new RegExp("/styles/.*\.css")'`
+
+#### Javascript Callback
+
+Workbox gives you the `url`, the `params`, the `request` and the `event` objects. You can use any of those parameters to match with your cache.
+
+* `match_callback: '({url}) => url.pathname === "/special/url"'`
+* `match_callback: '({request}) => request.destination === "image"'`
+
+#### Prefixed Statements
+
+This bundle allows the use of handlers to avoid the use of JS and simplify the way you declare the callbacks.
+
+For instance, using `startsWith: /pages/` as the `match_callback` value means that any request URL that begins with `/pages/` will be considered a match and thus eligible for caching under the defined `cache_name`.
+
+Or `destination: image` is similar to `match_callback: '({request}) => request.destination === "image"'`.
 
 This approach empowers developers to optimize their web application's performance by strategically caching resources based on URL patterns, ensuring that users enjoy faster load times and a smoother overall experience, even in offline scenarios or under suboptimal network conditions.
 
-#### Provided Match Callback Handlers
+Provided Match Callback Handlers:
 
 | Pattern      | Description                                                                                                                                                                  | Example                                                                                    |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| navigate     | Matches all resources the user navigates to.                                                                                                                                 | No example. THis is an exact match                                                         |
+| navigate     | Matches all resources the user navigates to.                                                                                                                                 | No example. This is an exact match                                                         |
 | destination: | Matches a certain type of resource. Available values are listed on the [Request object documentation](https://developer.mozilla.org/en-US/docs/Web/API/Request/destination). | <ul><li>destination: audio</li><li>destination: style</li><li>destination: video</li></ul> |
 | route:       | Matches the exact Symfony route. Shall not have required parameters                                                                                                          | <ul><li>route: app_homepage</li><li>route: app_princing</li></ul>                          |
 | pathname:    | Matches an exact pathname                                                                                                                                                    | <ul><li>pathname: /foo/bar.docx</li><li>pathname: /report.pdf</li></ul>                    |
 | origin:      | Matches all requests to the origin                                                                                                                                           | <ul><li>origin: example.com</li><li>origin: google.com</li></ul>                           |
 | startsWith:  | Matches all pathnames starting with the value                                                                                                                                | <ul><li>startsWith: /dashboard</li><li>startsWith: /admin</li></ul>                        |
 | endsWith:    | Matches all pathnames ending with the value                                                                                                                                  | <ul><li>endsWith: .css</li><li>endsWith: -report.pdf</li></ul>                             |
-| regex:       | Matches the regex                                                                                                                                                            | <ul><li>regex: /image/.*</li><li>regex: .foo$</li></ul>                                    |
 
 #### Custom Match Callback Handler
 
 If needed, you can create your own Match Callback Handler. It must implement `SpomkyLabs\PwaBundle\MatchCallbackHandler\MatchCallbackHandler` and should return a value compatible with[ the `capture` argument of the Workbox method `registerRoute`](https://developer.chrome.com/docs/workbox/modules/workbox-routing#method-registerRoute).
+
+In the following example, setting `match_callback: my-videos` is a simplified way to match only videos served from a specific origin.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use SpomkyLabs\PwaBundle\MatchCallbackHandler\MatchCallbackHandler;
+
+namespace Acme\MatchCallbackHandler;
+
+final readonly class MyVideosMatchCallbackHandler implements MatchCallbackHandler
+{
+    public function supports(string $matchCallback): bool
+    {
+        return $matchCallback === 'my-videos';
+    }
+
+    public function handle(string $matchCallback): string
+    {
+        return sprintf("({url, request}) => (url.origin === 'videos.s3.storage.com' && request.destination === 'video');
+    }
+}
+```
+
+{% hint style="warning" %}
+The class shall be declared as a service.
+{% endhint %}
 
 ### Cache Name Parameter
 

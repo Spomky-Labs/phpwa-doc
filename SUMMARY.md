@@ -28,6 +28,7 @@
 
 * [Configuration](the-service-worker/configuration.md)
 * [Content Security Policy](the-service-worker/content-security-policy.md)
+* [Custom Service Worker Rule](the-service-worker/custom-service-worker-rule.md)
 * [Workbox](the-service-worker/workbox/README.md)
   * [Site Manifest Cache](the-service-worker/workbox/site-manifest-cache.md)
   * [Asset Caching](<the-service-worker/workbox/warm-caching (1).md>)
@@ -38,6 +39,7 @@
   * [BackgoundSync](the-service-worker/workbox/backgoundsync.md)
   * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
   * [Cache Cleaning](the-service-worker/workbox/cache-names-and-purge.md)
+  * [Custom Cache Strategy](the-service-worker/workbox/custom-cache-strategy.md)
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
 
