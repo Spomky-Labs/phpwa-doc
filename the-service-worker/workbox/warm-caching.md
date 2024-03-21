@@ -44,7 +44,7 @@ The `match_callback` option is designed to specify the condition used to determi
 
 You can directly pass a regular expression as a string or using the JS `RegExp` object.
 
-* `match_callback: '"/styles/.*\.css'`
+* `match_callback: '"/styles/.*\.css"'`
 * `match_callback: 'new RegExp("/styles/.*\.css")'`
 
 {% hint style="danger" %}
