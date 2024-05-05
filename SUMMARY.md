@@ -46,6 +46,10 @@
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
 
+## Favicons
+
+* [Create Favicons](favicons/create-favicons.md)
+
 ## Symfony UX
 
 * [Connection Status](symfony-ux/connection-status.md)
