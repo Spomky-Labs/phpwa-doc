@@ -62,6 +62,25 @@ pwa:
 border\_radius has no effect if no background is set.
 {% endhint %}
 
+## Safari Pinned Tab
+
+By setting a `safari_pinned_tab_color` to a color value, the corresponding HTML tags will be added. The icon will be rendered as it is, even if you specified background color or border radius.
+
+If you prefer a silhouette instead, you can set the option `use_silhouette` to `true`. Note that this option requires [potrace](https://en.wikipedia.org/wiki/Potrace) to be installed.
+
+{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    favicons:
+        enabled: true
+        src: assets/icon.svg
+        safari_pinned_tab_color: "#f5ef06" # Safari only
+        use_silhouette: true
+        potrace: "/path/to/potrace" #Optional.
+        # Only if potrace is installed in a non-conventional folder
+```
+{% endcode %}
+
 ## Windows 8 / 10 Tiles
 
 You can enable Windows 8 / 10 tiles by setting a tile color.
