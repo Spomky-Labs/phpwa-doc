@@ -31,7 +31,7 @@ As mentioned in the [Web App Manifest](https://www.w3.org/TR/appmanifest/#icon-m
 
 You can reduce the size of the image. A transparent background will be added to fulfil with this requirement.
 
-<figure><img src="../.gitbook/assets/safe-zone.svg" alt="" width="113"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/safe-zone.svg" alt=""><figcaption><p>Safe zone</p></figcaption></figure>
 
 {% code title="config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
