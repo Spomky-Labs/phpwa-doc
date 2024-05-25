@@ -26,7 +26,7 @@ pwa:
             - 
               src: "images/screenshot-feature2.png"
               platform: "android"
-              type: "image/png"
+              format: "png"
             -
               src: "images/screenshot-feature3.png"
               label: "Feature #3 in action"
@@ -42,7 +42,7 @@ Ensure that the screenshots you provide are of high quality. Crisp and clear ima
 
 Remember, these screenshots are part of your app's first impression on potential users. Take the time to choose them wisely, ensuring they accurately represent your app and its key features.
 
-### `type` Parameter
+### `format` Parameter
 
 This parameter is similar to [the `format` parameter for the icons](icons.md#type-parameter).
 
