@@ -7,6 +7,7 @@
 * [Development](development.md)
 * [Events](events.md)
 * [Deployment](deployment.md)
+* [Debugging](debugging.md)
 
 ## The Manifest
 
