@@ -48,6 +48,12 @@ The Service Worker initialization script uses either Workbox Window if enabled o
 
 When Workbox is enabled, its initialization script typically loads from an external URL. However, for improved performance and security, we advise installing it via Asset Mapper instead of relying on remote loading.
 
+```sh
+symfony console importmap:require workbox-window
+```
+
+The two other options are also available:
+
 ### Other Options
 
 The Service worker section has other options you may be interested in.

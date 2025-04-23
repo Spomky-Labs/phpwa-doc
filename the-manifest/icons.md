@@ -60,13 +60,11 @@ pwa:
 
 ### `format` Parameter
 
-When the `format` parameter is set, the bundle will try to save the image in the specified format. If the component `symfony/mime` is present, the bundle will guess the correct type.
+The `format` parameter corresponds to the mime type of the icon.
 
-In general, browsers can read `svg`, `png` and `jpg` types. Modern browsers may support `webp`.
+If this value is omitted and the component `symfony/mime` is present, the bundle will guess the correct type.
 
-{% hint style="info" %}
-Conversion to SVG is not possible.
-{% endhint %}
+In general, browsers can read `image/png` and `image/jpg` types. Modern browsers may support `image/webp`.
 
 ### `purpose` Parameter
 

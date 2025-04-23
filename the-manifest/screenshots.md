@@ -14,7 +14,7 @@ In the example below, a selection of screenshots are visible and the user can na
 
 ## Configuration
 
-You can add as many screenshots as you need. But keep in mind that the host device or the platform may show only a selection of them.
+You can add as many screenshots as you need. But keep in mind that the host device or the platform may  show only a selection of them.
 
 {% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
@@ -26,7 +26,7 @@ pwa:
             - 
               src: "images/screenshot-feature2.png"
               platform: "android"
-              format: "png"
+              type: "image/png"
             -
               src: "images/screenshot-feature3.png"
               label: "Feature #3 in action"
@@ -42,7 +42,7 @@ Ensure that the screenshots you provide are of high quality. Crisp and clear ima
 
 Remember, these screenshots are part of your app's first impression on potential users. Take the time to choose them wisely, ensuring they accurately represent your app and its key features.
 
-### `format` Parameter
+### `type` Parameter
 
 This parameter is similar to [the `format` parameter for the icons](icons.md#type-parameter).
 
