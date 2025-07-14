@@ -19,13 +19,11 @@ pwa:
         id: "/"
         start_url: "./"
         icons:
-            - src: "images/favicon.ico"
-              sizes: [48]
-            - src: "images/favicon-512x512.png"
-              sizes: [512]
-            - src: "images/favicon.svg"
+            - src: "images/icon.png"
+              sizes: [48, 512]
+            - src: "images/vicon.svg"
               sizes: [0]
-            - src: "images/favicon.svg"
+            - src: "images/icon.svg"
               purpose: 'maskable'
               sizes: [0]
         screenshots:
@@ -45,7 +43,5 @@ pwa:
               icons:
                   - src: "images/feature1.svg"
                     sizes: [0]
-                  - src: "images/feature1-96x96.png"
-                    sizes: [96]
 
 ```

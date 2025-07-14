@@ -10,9 +10,9 @@ pwa:
     manifest:
         enabled: true
         icons:
-            - src: "icons/icon-192x192.png"
+            - src: "icons/icon.png"
               sizes: [192]
-            - src: "icons/icon-192x192.png"
+            - src: "icons/maskable-icon.png"
               sizes: [192]
               purpose: "maskable"
             - src: "icons/icon.svg"

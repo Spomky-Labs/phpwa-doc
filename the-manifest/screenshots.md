@@ -98,3 +98,7 @@ Example:
 ```yaml
 form_factor: "narrow"
 ```
+
+{% hint style="info" %}
+If not specified, the form factor is automatically determined using the screenshot dimensions.
+{% endhint %}

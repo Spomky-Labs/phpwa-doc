@@ -4,14 +4,14 @@ If your application uses Content Security Policy (CSP) to declare and restrict s
 
 Fortunately, you are able to pass attributes such as a `nonce` to the script directive.
 
-In the example below, the nonce attribute is managed by [nelmio/security-bundle](https://symfony.com/bundles/NelmioSecurityBundle/current/index.html#content-security-policy).
+> **Note:** If using [Nelmio Security Bundle](https://symfony.com/bundles/NelmioSecurityBundle/current/index.html#content-security-policy), no configuration is needed. The nonce is automatically set.
 
 {% code lineNumbers="true" %}
 ```twig
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {{ pwa(swAttributes= {nonce: csp_nonce('script')}) }}
+  {{ pwa(swAttributes= {nonce: "YOUR-NONCE-HERE" }}
 </head>
 <body>
   ...
