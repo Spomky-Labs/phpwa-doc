@@ -18,6 +18,7 @@
   * [Description](the-manifest/application-information/description.md)
   * [IARC Rating ID](the-manifest/application-information/iarc-rating-id.md)
   * [Categories](the-manifest/application-information/categories.md)
+* [Translations](the-manifest/translations.md)
 * [Icons](the-manifest/icons.md)
 * [Screenshots](the-manifest/screenshots.md)
 * [Shortcuts](the-manifest/shortcuts.md)
@@ -43,7 +44,6 @@
   * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
   * [Cache Cleaning](the-service-worker/workbox/cache-names-and-purge.md)
   * [Custom Cache Strategy](the-service-worker/workbox/custom-cache-strategy.md)
-* [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
 
 ## Favicons
@@ -52,19 +52,30 @@
 
 ## Symfony UX
 
-* [BackgroundSync Form](symfony-ux/backgroundsync-form.md)
+* [Background Fetch](symfony-ux/backgroundsync-form.md)
+* [BackgroundSync Form](symfony-ux/backgroundsync-form-1.md)
 * [Badge](symfony-ux/badge.md)
+* [Barcode Detection](symfony-ux/barcode-detection.md)
 * [Battery](symfony-ux/battery.md)
-* [Connection Status](symfony-ux/connection-status.md)
+* [Capture](symfony-ux/connection-status.md)
+* [Connection Status](symfony-ux/connection-status-1.md)
+* [Contact](symfony-ux/connection-status-2.md)
+* [Device Motion](symfony-ux/device-motion.md)
 * [Device Orientation](symfony-ux/device-orientation.md)
+* [File Handling](symfony-ux/file-handling.md)
 * [Fullscreen](symfony-ux/fullscreen.md)
 * [Geolocation](symfony-ux/geolocation.md)
 * [Install](symfony-ux/install.md)
-* [Prefetch on demand](symfony-ux/prefetch-on-demand.md)
+* [Network Information](symfony-ux/prefetch-on-demand.md)
+* [Picture In Picture](symfony-ux/prefetch-on-demand-1.md)
+* [Prefetch on demand](symfony-ux/prefetch-on-demand-2.md)
 * [Presentation and Receiver](symfony-ux/presentation-and-receiver.md)
 * [Share](symfony-ux/share.md)
 * [Sync Broadcast](symfony-ux/sync-broadcast.md)
+* [Touch](symfony-ux/sync-broadcast-1.md)
 * [Vibration](symfony-ux/vibration.md)
+* [Wake Lock](symfony-ux/wake-lock.md)
+* [Web Push Notifications](symfony-ux/push-notifications.md)
 
 ## Image Management
 
@@ -78,5 +89,4 @@
   * [Display Override](experimental-features/non-standard-parameters/display-override.md)
   * [Related Applications](experimental-features/non-standard-parameters/related-applications.md)
   * [EDGE Side Panel](experimental-features/non-standard-parameters/edge-side-panel.md)
-* [Translations](experimental-features/translations.md)
 * [Widgets (Win10+)](experimental-features/widgets-win10+.md)

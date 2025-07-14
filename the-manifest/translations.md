@@ -24,12 +24,6 @@ pwa:
 ```
 {% endcode %}
 
-{% hint style="warning" %}
-This feature is still in development stage and may not work as expected. Use with caution.
-
-BC is not guaranteed.
-{% endhint %}
-
 ## Translatable values
 
 The following values are translation keys. The domain is `pwa`.
