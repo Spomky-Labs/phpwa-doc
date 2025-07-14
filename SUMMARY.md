@@ -8,6 +8,11 @@
 * [Events](events.md)
 * [Deployment](deployment.md)
 
+## Favicons
+
+* [Create Favicons](favicons/create-favicons.md)
+* [Startup Images](favicons/startup-images.md)
+
 ## The Manifest
 
 * [Application Information](the-manifest/application-information/README.md)
@@ -45,10 +50,6 @@
   * [Cache Cleaning](the-service-worker/workbox/cache-names-and-purge.md)
   * [Custom Cache Strategy](the-service-worker/workbox/custom-cache-strategy.md)
 * [Complete Example](the-service-worker/complete-example.md)
-
-## Favicons
-
-* [Create Favicons](favicons/create-favicons.md)
 
 ## Symfony UX
 
