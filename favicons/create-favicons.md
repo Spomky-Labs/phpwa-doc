@@ -62,6 +62,21 @@ pwa:
 border\_radius has no effect if no background is set.
 {% endhint %}
 
+## Dark Icons
+
+Dark themes are increasingly popular. Using matching dark icons enhances both consistency and elegance. With a few configuration options, you can easily implement them all.
+
+{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+favicons:
+        enabled: true
+        src: assets/icon.svg
+        background_color: "#ffffff"
+        src_dark: asset/icon_dark.svg # Dark icon asset
+        background_color_dark: "#000000" # Background for the dark icon
+```
+{% endcode %}
+
 ## Safari Pinned Tab
 
 By setting a `safari_pinned_tab_color` to a color value, the corresponding HTML tags will be added. The icon will be rendered as it is, even if you specified background color or border radius.
