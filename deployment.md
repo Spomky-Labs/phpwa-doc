@@ -6,6 +6,10 @@ In the `dev` environment, the resources are automactilly handled and returned by
 
 For the `prod` environment, before deploy, you should run:
 
-```shell
-symfony console asset-map:compile
-```
+<pre class="language-shell"><code class="lang-shell"><strong>symfony console asset-map:compile
+</strong></code></pre>
+
+If, for any reason, you want to manually trigger the asset compilation, please use the following command:
+
+<pre><code><strong>symfony console pwa:compile
+</strong></code></pre>
