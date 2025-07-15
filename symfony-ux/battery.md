@@ -1,3 +1,0 @@
-# Battery
-
-TO BE WRITTEN

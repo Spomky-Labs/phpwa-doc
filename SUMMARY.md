@@ -57,7 +57,7 @@
 * [BackgroundSync Form](symfony-ux/backgroundsync-form-1.md)
 * [Badge](symfony-ux/badge.md)
 * [Barcode Detection](symfony-ux/barcode-detection.md)
-* [Battery](symfony-ux/battery.md)
+* [Battery Status](symfony-ux/battery-status.md)
 * [Capture](symfony-ux/connection-status.md)
 * [Connection Status](symfony-ux/connection-status-1.md)
 * [Contact](symfony-ux/connection-status-2.md)
