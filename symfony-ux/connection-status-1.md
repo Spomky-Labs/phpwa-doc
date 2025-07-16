@@ -6,6 +6,7 @@ The Connection Status component is designed to monitor and react to changes in t
 
 To use the Connection Status component, include it in your application and initialize it with the necessary options. Below is an example of how to integrate the Connection Status component into your project:
 
+{% code lineNumbers="true" %}
 ```twig
 <div class="mx-auto max-w-screen-xl text-center px-4" {{ stimulus_controller('@pwa/connection-status') }}>
     <div
@@ -24,6 +25,7 @@ To use the Connection Status component, include it in your application and initi
     </div>
 </div>
 ```
+{% endcode %}
 
 ### Parameters
 

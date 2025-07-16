@@ -60,7 +60,7 @@
 * [Battery Status](symfony-ux/battery-status.md)
 * [Capture](symfony-ux/connection-status.md)
 * [Connection Status](symfony-ux/connection-status-1.md)
-* [Contact](symfony-ux/connection-status-2.md)
+* [Contact Picker](symfony-ux/connection-status-2.md)
 * [Device Motion](symfony-ux/device-motion.md)
 * [Device Orientation](symfony-ux/device-orientation.md)
 * [File Handling](symfony-ux/file-handling.md)
