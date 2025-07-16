@@ -6,19 +6,12 @@ Use the Fullscreen component to switch the entire page or a specific element to 
 ```twig
 <section data-controller="pwa--fullscreen">
     <img id="image1" src="https://picsum.photos/400/600" alt="Sample Image" class="h-auto max-w-full">
-    <button
-        {{ stimulus_action('pwa--fullscreen', 'request', 'click') }}
-        class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-    >
+    <button {{ stimulus_action('pwa--fullscreen', 'request', 'click') }}>
         The page
     </button>
-    <button
-        {{ stimulus_action('pwa--fullscreen', 'request', 'click', {target: '#image1'}) }}
-        class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-    >
+    <button {{ stimulus_action('pwa--fullscreen', 'request', 'click', {target: '#image1'}) }}>
         The image
     </button>
-    </div>
 </section>
 ```
 {% endcode %}
