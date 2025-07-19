@@ -71,7 +71,7 @@
 * [Picture In Picture](symfony-ux/prefetch-on-demand-1.md)
 * [Prefetch on demand](symfony-ux/prefetch-on-demand-2.md)
 * [Presentation and Receiver](symfony-ux/presentation-and-receiver.md)
-* [Share](symfony-ux/share.md)
+* [Web Share](symfony-ux/web-share.md)
 * [Sync Broadcast](symfony-ux/sync-broadcast.md)
 * [Touch](symfony-ux/sync-broadcast-1.md)
 * [Vibration](symfony-ux/vibration.md)
