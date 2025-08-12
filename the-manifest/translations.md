@@ -1,4 +1,4 @@
-# Translations
+# Localisation & Translations
 
 The bundle leverages on Symfony Translation component if available. The texts you pass for almost all names, short names, descriptions, labels... are translation keys.
 
@@ -40,7 +40,7 @@ The following values are translation keys. The domain is `pwa`.
 
 This feature relies on the `framework.enabled_locales` to generate static manifest files. Please refer to the [Symfony documentation](https://symfony.com/doc/7.1/reference/configuration/framework.html#reference-translator-enabled-locales) for more information.
 
-To enable it, the manifest public URL shall contain the placeholder `{locale}`.
+To enable it, the manifest public URL shall contain the placeholder `{locale}`. Also, if you defined the [`lang` parameter](application-information/direction-and-language.md#the-lang-parameter), please remove it; it will automatically set by the bundle.
 
 **Example:**
 

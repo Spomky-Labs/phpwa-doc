@@ -8,7 +8,7 @@ Here are the key properties of the manifest that are typically considered necess
 
 1. **`name`:** The name of the application.
 2. **`short_name`:** A short or abbreviated name for the application (used when space is limited, e.g., on a home screen).
-3. **`start_url`:** The relative or absolute URL from which the application should launch when opened.
+3. **`start_url`:** The route name from which the application should launch when opened.
 4. **`display`:** Determines how the application should be displayed. Common values include `fullscreen`, `standalone`,`minimal-ui` and `browser`.
 5. **`background_color`:** The background color of the application.
 6. **`theme_color`:** The color representing the main theme of the application.
@@ -23,7 +23,7 @@ pwa:
         enabled: true
         name: "My PWA"
         short_name: "PWA"
-        start_url: "/index.html"
+        start_url: "homepage"
         display: "standalone"
         background_color: "#ffffff"
         theme_color: "#4285f4"

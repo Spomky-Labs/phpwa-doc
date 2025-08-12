@@ -23,7 +23,7 @@
   * [Description](the-manifest/application-information/description.md)
   * [IARC Rating ID](the-manifest/application-information/iarc-rating-id.md)
   * [Categories](the-manifest/application-information/categories.md)
-* [Translations](the-manifest/translations.md)
+* [Localisation & Translations](the-manifest/translations.md)
 * [Icons](the-manifest/icons.md)
 * [Screenshots](the-manifest/screenshots.md)
 * [Shortcuts](the-manifest/shortcuts.md)
