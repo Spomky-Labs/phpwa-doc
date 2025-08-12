@@ -17,9 +17,6 @@ use Symfony\UX\LiveComponent\Attribute\LiveListener;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\LiveComponent\ComponentToolsTrait;
-use WebPush\Action;
-use WebPush\Message;
-use WebPush\Notification;
 use WebPush\Subscription;
 
 #[AsLiveComponent('WebPush')]
@@ -36,9 +33,6 @@ class WebPush
     #[LiveProp]
     public string $status = 'unknown';
 
-    #[LiveProp]
-    public ?string $subscription = null;
-
     /**
      * @param array{auth: string, p256dh: string} $keys
      * @param string[] $supportedContentEncodings
@@ -50,42 +44,22 @@ class WebPush
         #[LiveArg] array $supportedContentEncodings
     ): void {
         $this->status = 'subscribed';
-        $this->subscription = json_encode([
+        $subscription = json_encode([
             'endpoint' => $endpoint,
             'keys' => $keys,
             'supportedContentEncodings' => $supportedContentEncodings,
         ]);
+        
+        // Store the $subscription (Filesystem, Databse...)
+
+        // If the user is logged in, associate this subscription;
+        // you will be able to send targeted notification to that 
     }
 
     #[LiveListener('unsubscribed')]
     public function onUnsubscription(
     ): void {
         $this->status = 'unsubscribed';
-    }
-
-    #[LiveAction]
-    public function notify(
-    ): void {
-        if ($this->subscription === null) {
-            return;
-        }
-        $subscription = Subscription::createFromString($this->subscription);
-        $message = Message::create('My super Application.', 'Hello World! Clic on the body to go to Facebook')
-            ->vibrate(200, 300, 200, 300)
-            ->withImage('https://picsum.photos/1024/512')
-            ->withIcon('https://picsum.photos/512/512')
-            ->withBadge('https://picsum.photos/256/256')
-            ->withLang('en_US')
-            ->withTimestamp(time()*1000)
-            ->withData('{"action1":"https://example.com/foo/bar", "action2":"https://example.com/baz/qux", "default":"https://example.com"}')
-            ->addAction(Action::create('action1', 'To Foo'))
-            ->addAction(Action::create('action2', 'To Bar'));
-        ;
-        $notification = Notification::create()
-            ->withPayload($message->toString());
-
-        $statusReport = $this->webpushService->send($notification, $subscription);
-        // Check the status of the notification
     }
 }
 
@@ -138,25 +112,45 @@ registerPushTask(structuredPushNotificationSupport);
 ```
 {% endcode %}
 
-In the example above, we declared two actions: `'action1'` and `'action2'` . These actions will appear as buttons on the notification. Also, there is a `''`  (empty string) action that corresponds to the click on the notification.
+Let say we send the following message. This is a structured notification with buttons `'action1'` and `'action2'` .
 
-You can decide what to do when the user clicks on the button or the notification. In the example, we will use the data associated to the notification to decide where to redirect the user for action1 and action2. A click on the notification will redirect the the application page.
+```php
+use WebPush\Action;
+use WebPush\Message;
+
+ $message = Message::create('My super Application.', 'Hello World! Clic on the body to go to Facebook')
+    ->vibrate(200, 300, 200, 300)
+    ->withImage('https://picsum.photos/1024/512')
+    ->withIcon('https://picsum.photos/512/512')
+    ->withBadge('https://picsum.photos/256/256')
+    ->withLang('en_US')
+    ->withTimestamp(time()*1000)
+    ->withData('{"action1Url":"https://example.com/foo/bar", "action2Url":"https://example.com/baz/qux", "defaultUrl":"https://example.com"}')
+    ->addAction(Action::create('action1', 'To Foo'))
+    ->addAction(Action::create('action2', 'To Bar'));
+;
+```
+
+You can decide what to do when the user clicks on the button or the notification. In the example, we will use the data associated to the notification to decide where to redirect the user for `action1` , `action2` or a click on the notification itself.
 
 {% code title="assets/sw.js" lineNumbers="true" %}
 ```javascript
+// Button name "action1" is clicked
 registerNotificationAction('action1', async (event) => {
   const data = JSON.parse(event.notification.data);
-  await clients.openWindow(data.action1);
+  await clients.openWindow(data.action1Url);
 });
 
+// Button name "action2" is clicked
 registerNotificationAction('action2', async (event) => {
   const data = JSON.parse(event.notification.data);
-  await clients.openWindow(data.action2);
+  await clients.openWindow(data.action2Url);
 });
 
+// '' means the notification (popup) is clicked.
 registerNotificationAction('', async (event) => {
   const data = JSON.parse(event.notification.data);
-  await clients.openWindow(data.default);
+  await clients.openWindow(data.defaultUrl);
 });
 
 ```
