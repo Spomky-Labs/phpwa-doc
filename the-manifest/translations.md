@@ -57,14 +57,14 @@ pwa:
 ```
 {% endcode %}
 
-When done, the Twig function should get the locale to serve the translated version of the manifest.
+When done, the Twig function should provide a translated version of the Web Manifest. Since 1.3.0, there is no need to set a parameter to the Twig function.
 
 {% code lineNumbers="true" %}
 ```twig
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app.request.locale }}">
 <head>
-  {{ pwa(locale=app.request.locale) }}
+  {{ pwa() }}
 </head>
 <body>
   ...
