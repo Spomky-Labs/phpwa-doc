@@ -56,6 +56,7 @@
 
 * [Background Fetch](symfony-ux/backgroundsync-form.md)
 * [BackgroundSync Form](symfony-ux/backgroundsync-form-1.md)
+* [BackgroundSync Queue](symfony-ux/backgroundsync-form-2.md)
 * [Badge](symfony-ux/badge.md)
 * [Barcode Detection](symfony-ux/barcode-detection.md)
 * [Battery Status](symfony-ux/battery-status.md)
