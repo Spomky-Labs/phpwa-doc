@@ -22,7 +22,11 @@ pwa:
 
 ### `src` Parameter
 
-The `src` parameter is the path to the resource file. It can be an [Asset Mapper resource](https://pwa.spomky-labs.com/), a relative path or an absolute path to the resource.
+The `src` parameter is the path to the resource file. It can be:
+
+* an [Asset Mapper resource](https://pwa.spomky-labs.com/),
+* an absolute path to the resource,
+* a [Symfony UX Icon](https://ux.symfony.com/icons) if the `symfony/ux-icons` bundle is installed.
 
 {% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
@@ -33,7 +37,7 @@ pwa:
               sizes: [48]
             - src: "/home/project/foo/bar/icon-48x48.png"
               sizes: [48]
-            - src: "src/resources/data/icon-48x48.png"
+            - src: "bx:badge-check"
               sizes: [48]
 ```
 {% endcode %}
@@ -73,3 +77,20 @@ Conversion to SVG is not possible.
 The purpose `maskable` icons indicates the icon has a security margin and borders can be cropped on certain devices.
 
 <figure><img src="../.gitbook/assets/maskable-icon-safe-area (1).png" alt=""><figcaption><p>Maskable image safe area</p></figcaption></figure>
+
+### `svg_color` Parameter
+
+Some SVG icons have a `currentColor` atribute or no `color` attribute and the bundle automatically sets `#000` (black color) as default color.
+
+You can change it using the option `svg_color`:
+
+{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
+```yaml
+pwa:
+    manifest:
+        icons:
+            - src: "icons/icon.svg"
+              sizes: 0
+              svg_color: '#15fe68'
+```
+{% endcode %}

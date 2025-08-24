@@ -21,7 +21,7 @@ pwa:
         icons:
             - src: "images/icon.png"
               sizes: [48, 512]
-            - src: "images/vicon.svg"
+            - src: "images/icon.svg"
               sizes: [0]
             - src: "images/icon.svg"
               purpose: 'maskable'
