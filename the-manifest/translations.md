@@ -36,7 +36,7 @@ The following values are translation keys. The domain is `pwa`.
 | Shortcut     | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                                            |
 | Widget       | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                                            |
 
-{% hint style="info" %}
+{% hint style="warning" %}
 The values `categories` and `start_url` should not be translated. This capability will be removed in 2.0.0.
 {% endhint %}
 
