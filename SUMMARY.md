@@ -49,7 +49,8 @@
   * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
   * [Cache Cleaning](the-service-worker/workbox/cache-names-and-purge.md)
   * [Custom Cache Strategy](the-service-worker/workbox/custom-cache-strategy.md)
-* [Complete Example](the-service-worker/complete-example.md)
+* [Periodic Sync](the-service-worker/complete-example.md)
+* [Complete Example](the-service-worker/complete-example-1.md)
 
 ## Symfony UX
 
