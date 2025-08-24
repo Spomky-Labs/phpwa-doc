@@ -13,7 +13,7 @@ With this bundle, it takes few seconds to get it working. All you need is a squa
 pwa:
     favicons:
         enabled: true
-        src: assets/icon.svg
+        src: icons/favicon.svg
 ```
 {% endcode %}
 
@@ -24,6 +24,30 @@ It is highly recommended to have a transparent background.
 **Done!**
 
 Now that you've configured your YAML file to enable favicons, your website will automatically generate favicons suitable for a wide array of devices and operating systems. This eliminates the need to manually create and link multiple favicon sizes, ensuring your site's icon is always displayed optimally, whether viewed on a desktop browser, a tablet, or a mobile phone.
+
+#### Icon Source
+
+The source of the icon can be of 3 origins:
+
+* An asset: `icons/favicon.svg` refers to an asset managed by Asset Mapper
+* An existing file: `/app/files/favicon.svg` (starts with a `/`)
+* An icon provided by [Symfony UX Icons](https://ux.symfony.com/icons): `bx:cool`
+
+#### SVG Color
+
+Some SVG icons have a `currentColor` atribute or no `color` attribute and the bundle automatically sets `#000` (black color) as default color.
+
+You can change it using the option `svg_color`:
+
+{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
+```yaml
+pwa:
+    favicons:
+        enabled: true
+        src: icons/favicon.svg
+        svg_color: '#15fe68'
+```
+{% endcode %}
 
 ## Icon masks and safe zone
 
