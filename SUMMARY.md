@@ -73,12 +73,13 @@
 * [Picture In Picture](symfony-ux/prefetch-on-demand-1.md)
 * [Prefetch on demand](symfony-ux/prefetch-on-demand-2.md)
 * [Presentation and Receiver](symfony-ux/presentation-and-receiver.md)
-* [Web Share](symfony-ux/web-share.md)
-* [Sync Broadcast](symfony-ux/sync-broadcast.md)
-* [Touch](symfony-ux/sync-broadcast-1.md)
+* [Service Worker](symfony-ux/sync-broadcast.md)
+* [Sync Broadcast](symfony-ux/sync-broadcast-1.md)
+* [Touch](symfony-ux/sync-broadcast-2.md)
 * [Vibration](symfony-ux/vibration.md)
 * [Wake Lock](symfony-ux/wake-lock.md)
 * [Web Push Notifications](symfony-ux/push-notifications.md)
+* [Web Share](symfony-ux/web-share.md)
 
 ## Image Management
 
