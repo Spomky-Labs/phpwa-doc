@@ -28,13 +28,17 @@ pwa:
 
 The following values are translation keys. The domain is `pwa`.
 
-| Component    | Values                                                                                             |
-| ------------ | -------------------------------------------------------------------------------------------------- |
-| Manifest     | <ul><li>name</li><li>short_name</li><li>description</li><li>categories</li><li>start_url</li></ul> |
-| Screenshot   | <ul><li>label</li></ul>                                                                            |
-| Share Target | <ul><li>title</li><li>text</li></ul>                                                               |
-| Shortcut     | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                      |
-| Widget       | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                      |
+| Component    | Values                                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| Manifest     | <ul><li>name</li><li>short_name</li><li>description</li><li><del>categories</del></li><li><del>start_url</del></li></ul> |
+| Screenshot   | <ul><li>label</li></ul>                                                                                                  |
+| Share Target | <ul><li>title</li><li>text</li></ul>                                                                                     |
+| Shortcut     | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                                            |
+| Widget       | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                                            |
+
+{% hint style="info" %}
+The values `categories` and `start_url` should not be translated. This capability will be removed in 2.0.0.
+{% endhint %}
 
 ## How To?
 
