@@ -78,5 +78,5 @@ pwa:
 {% endcode %}
 
 {% hint style="info" %}
-To manually update the service worker, you can use the [dedicated stimulus controller](../symfony-ux/sync-broadcast.md).
+To manually update the service worker, you can use the [dedicated stimulus controller](../symfony-ux/service-worker.md).
 {% endhint %}
