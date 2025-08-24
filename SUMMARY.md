@@ -92,3 +92,7 @@
   * [Related Applications](experimental-features/non-standard-parameters/related-applications.md)
   * [EDGE Side Panel](experimental-features/non-standard-parameters/edge-side-panel.md)
 * [Widgets (Win10+)](experimental-features/widgets-win10+.md)
+
+## Upgrades
+
+* [From 1.2.x to 1.3.0](upgrades/from-1.2.x-to-1.3.0.md)
