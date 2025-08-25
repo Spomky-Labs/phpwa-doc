@@ -28,16 +28,20 @@ pwa:
 
 The following values are translation keys. The domain is `pwa`.
 
-| Component    | Values                                                                                                                   |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| Manifest     | <ul><li>name</li><li>short_name</li><li>description</li><li><del>categories</del></li><li><del>start_url</del></li></ul> |
-| Screenshot   | <ul><li>label</li></ul>                                                                                                  |
-| Share Target | <ul><li>title</li><li>text</li></ul>                                                                                     |
-| Shortcut     | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                                            |
-| Widget       | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                                            |
+| Component    | Values                                                                                                                                                                                                                |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Manifest     | <ul><li>name</li><li>short_name</li><li>description</li><li><del><mark style="background-color:yellow;">categories</mark></del></li><li><del><mark style="background-color:$danger;">start_url</mark></del></li></ul> |
+| Screenshot   | <ul><li>label</li></ul>                                                                                                                                                                                               |
+| Share Target | <ul><li>title</li><li>text</li></ul>                                                                                                                                                                                  |
+| Shortcut     | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                                                                                                                                         |
+| Widget       | <ul><li>name</li><li>short_name</li><li>description</li></ul>                                                                                                                                                         |
 
 {% hint style="warning" %}
-The values `categories` and `start_url` should not be translated. This capability will be removed in 2.0.0.
+The value `categories`  should not be translated. This capability will be removed in 2.0.0.
+{% endhint %}
+
+{% hint style="danger" %}
+The value start\_url cannot be translated since 1.3.0 (BC break). See [the migration path](../upgrades/from-1.2.x-to-1.3.0.md#start-url).
 {% endhint %}
 
 ## How To?
