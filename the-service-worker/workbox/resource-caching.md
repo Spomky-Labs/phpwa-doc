@@ -25,10 +25,6 @@ The default strategy applied for resources is Network First i.e. the resource fr
                   strategy: 'CacheFirst'
 </code></pre>
 
-{% hint style="info" %}
-Please note that you can refer to any URLs, but only URLs served by your application will be cached.
-{% endhint %}
-
 ### Match Callback
 
 The `match_callback` option is designed to specify the condition used to determine which requests should be cached based on the request URL. This option can take different types of values, such as
