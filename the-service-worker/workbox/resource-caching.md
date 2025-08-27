@@ -18,6 +18,11 @@ The default strategy applied for resources is Network First i.e. the resource fr
                   cache_name: 'articles'
                   strategy: 'StaleWhileRevalidate'
                   broadcast: true # Broadcast changes only when strategy = staleWhileRevalidate
+                
+                # Cache resources from another origin.
+                - match_callback: 'origin: https://cdn.jsdelivr.net'
+                  cache_name: 'jsdelivr'
+                  strategy: 'CacheFirst'
 </code></pre>
 
 {% hint style="info" %}
@@ -72,7 +77,7 @@ Provided Match Callback Handlers:
 | `destination:` | Matches a certain type of resource. Available values are listed on the [Request object documentation](https://developer.mozilla.org/en-US/docs/Web/API/Request/destination). | <ul><li>destination: audio</li><li>destination: style</li><li>destination: video</li></ul> |
 | `route:`       | Matches the exact Symfony route. Shall not have required parameters                                                                                                          | <ul><li>route: app_homepage</li><li>route: app_princing</li></ul>                          |
 | `pathname:`    | Matches an exact pathname                                                                                                                                                    | <ul><li>pathname: /foo/bar.docx</li><li>pathname: /report.pdf</li></ul>                    |
-| `origin:`      | Matches all requests to the origin                                                                                                                                           | <ul><li>origin: example.com</li><li>origin: google.com</li></ul>                           |
+| `origin:`      | Matches all requests to the origin. <mark style="color:$info;">Note that the scheme may be required.</mark>                                                                  | <ul><li>origin: https://example.com</li><li>origin: https://google.com</li></ul>           |
 | `startsWith:`  | Matches all pathnames starting with the value                                                                                                                                | <ul><li>startsWith: /dashboard</li><li>startsWith: /admin</li></ul>                        |
 | `endsWith:`    | Matches all pathnames ending with the value                                                                                                                                  | <ul><li>endsWith: .css</li><li>endsWith: -report.pdf</li></ul>                             |
 
