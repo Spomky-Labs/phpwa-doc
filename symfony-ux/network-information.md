@@ -28,7 +28,7 @@ None
 
 ### Actions
 
-`None`
+None
 
 ### Targets
 
