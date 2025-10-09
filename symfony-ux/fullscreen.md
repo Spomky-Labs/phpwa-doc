@@ -2,6 +2,8 @@
 
 Use the Fullscreen component to switch the entire page or a specific element to fullscreen mode. In the example below, the buttons toggle the mode for the page or the image respectively.
 
+#### Usage
+
 {% code lineNumbers="true" %}
 ```twig
 <section data-controller="pwa--fullscreen">
