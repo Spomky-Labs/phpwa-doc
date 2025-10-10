@@ -53,8 +53,8 @@ None
 
 Each contact object may include:
 
-* `name`
-* `email`
-* `tel`
-* `address`
-* `icon` (if supported)
+* `name`  (string\[]|null)
+* `email`  (string\[]|null)
+* `tel`  (string\[]|null)
+* `address`  (string\[]|null)
+* `icon` (a blob if supported)
