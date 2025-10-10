@@ -6,7 +6,6 @@ and emits a normalized updated event containing acceleration, acceleration inclu
 **Usage**
 
 ```twig
-
 <div {{ stimulus_controller('@pwa/device-motion') }}>
   <p id="motion-status">Waiting for motion data…</p>
 </div>
