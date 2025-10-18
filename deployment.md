@@ -9,6 +9,10 @@ For the `prod` environment, before deploy, you should run:
 <pre class="language-shell"><code class="lang-shell"><strong>symfony console asset-map:compile
 </strong></code></pre>
 
+{% hint style="success" %}
+If you do not want to compile PWA assets with asset mapper, set `false` to the configuration option `pwa.asset_compiler.`
+{% endhint %}
+
 If, for any reason, you want to manually trigger the asset compilation, please use the following command:
 
 <pre><code><strong>symfony console pwa:compile
