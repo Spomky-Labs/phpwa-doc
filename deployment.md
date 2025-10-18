@@ -8,8 +8,9 @@ For the `prod` environment all the assets shall be compiled. This means the favi
 
 Before deploy, you should run:
 
-<pre class="language-shell"><code class="lang-shell"><strong>symfony console asset-map:compile
-</strong></code></pre>
+```sh
+symfony console asset-map:compile
+```
 
 ## Without Asset Mapper
 
