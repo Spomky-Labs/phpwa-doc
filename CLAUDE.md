@@ -50,9 +50,11 @@ When editing documentation:
 
 ## Source Code Repository
 
-The source code for the PWA Bundle is available at: https://github.com/Spomky-Labs/pwa-bundle
+The source code for the PWA Bundle is available at:
+- **GitHub**: https://github.com/Spomky-Labs/pwa-bundle
+- **Local path**: /home/florent/Projects/pwa-bundle/
 
-When documenting features or creating examples, you can reference the source code to understand implementation details.
+When documenting features or creating examples, you can reference the source code to understand implementation details. The local repository provides direct access to the bundle's implementation.
 
 ## External Documentation Resources
 
