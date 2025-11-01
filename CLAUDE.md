@@ -48,7 +48,26 @@ When editing documentation:
 - **PWA Components**: Documentation covers both the Web App Manifest and Service Worker aspects of PWAs
 - **Workbox**: The bundle uses Google's Workbox library for service worker functionality
 
+## Source Code Repository
+
+The source code for the PWA Bundle is available at: https://github.com/Spomky-Labs/pwa-bundle
+
+When documenting features or creating examples, you can reference the source code to understand implementation details.
+
+## External Documentation Resources
+
+When writing documentation for this bundle, you have access to specialized resources:
+
+- **Symfony Documentation**: Use the `symfony-docs-expert` subagent via the Task tool to search and retrieve information from the official Symfony documentation at https://symfony.com/doc
+- **Symfony UX**: Symfony UX components documentation is also available through the symfony-docs-expert subagent via Context7
+- **Best practices**: Always reference official Symfony documentation for standard Symfony features (routing, configuration, Twig, etc.) to ensure accuracy and consistency
+
+Example usage: When documenting how the bundle integrates with Symfony's routing system or how to configure services, use the symfony-docs-expert subagent to verify the correct Symfony approach.
+
 ## Branch Information
 
-- The main branch corresponds to the next version to be released (`1.3`, `1.4` or `2.0` depending on the progress of work).
-- Create PRs against the last version when possible.
+- **Documentation branches**: This repository uses version branches without the `.x` suffix (e.g., `1.3`, `1.4`, `2.0`)
+- **Source code branches**: The source code repository uses version branches with the `.x` suffix (e.g., `1.3.x`, `1.4.x`, `2.0.x`)
+- **Branch mapping**: Documentation branch `1.3` corresponds to source code branch `1.3.x`
+- The main branch corresponds to the next version to be released (`1.3`, `1.4` or `2.0` depending on the progress of work)
+- Create PRs against the last version when possible
