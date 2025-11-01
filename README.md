@@ -2,7 +2,7 @@
 description: Turn your Symfony App into a Progressive Web App
 ---
 
-# PHPWA Bundle
+# PWA Bundle
 
 <figure><picture><source srcset=".gitbook/assets/pwalogo-inverse.svg" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/pwalogo.svg" alt="PWA Logo"></picture><figcaption></figcaption></figure>
 

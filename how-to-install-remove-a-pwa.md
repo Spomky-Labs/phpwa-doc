@@ -3,7 +3,7 @@
 For a Progressive Web App (PWA) to be installable, the Manifest file must include certain mandatory information that are listed [on this page](the-manifest/application-information/).
 
 {% hint style="info" %}
-The PWA is not really installed. Your system will not download all the pages, assets, source code of your application and will not start a web server. The "installation" can be compared to a fully featured link to a web page, including application detail, icons or any other information defined in the manifest file. The browser will also "plus" application feautres to the host system.
+The PWA is not really installed. Your system will not download all the pages, assets, source code of your application and will not start a web server. The "installation" can be compared to a fully featured link to a web page, including application detail, icons or any other information defined in the manifest file. The browser will also expose application features to the host system.
 {% endhint %}
 
 To add or remove a Progressive Web App (PWA) from your browser, follow these general steps. Please note that the exact steps may vary slightly depending on the browser and version you are using.
@@ -74,6 +74,6 @@ On an Android device, locate the PWA icon in your app drawer or home screen. Lon
 
 ### Windows 10+
 
-A Progresive Web App appears like a normal application in the software manager. `Windows+X`, "Install Applications" then select the three horizontal dots of the application you want uninstall and confirm.
+A Progressive Web App appears like a normal application in the software manager. `Windows+X`, "Installed Apps" then select the three horizontal dots of the application you want to uninstall and confirm.
 
 <figure><picture><source srcset=".gitbook/assets/Capture d&#x27;écran 2024-02-09 111115.png" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194833.png" alt=""></picture><figcaption></figcaption></figure>

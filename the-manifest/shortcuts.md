@@ -28,7 +28,7 @@ pwa:
               short_name: "New Chat"
               description: "Create a new conversation."
               url: "/start-chat"
-              icons":          
+              icons:
                 - src: "icons/feature1-96x96.png"
                   sizes: [96]
             - name: "View Unread Messages"
@@ -92,16 +92,16 @@ The path\_type\_reference option expects an integer where:
 
 * `0`: absolute URL (e.g. `https://app.com/foo/bar`)
 * `1`: absolute path (e.g. `/foo/bar`)
-* `2`: relativepath (e.g. `../bar`)
+* `2`: relative path (e.g. `../bar`)
 * `3`: network path (e.g. `//app.com/foo/bar`)
 
 {% hint style="warning" %}
-With absolut URLs, please make sure the Request Context is set. See [the router configuration](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) for more informaiton.
+With absolute URLs, please make sure the Request Context is set. See [the router configuration](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) for more information.
 {% endhint %}
 
 ### `description` Parameter
 
-The description parameter helps the user understanding the purpose of the shortcut.
+The description parameter helps the user understand the purpose of the shortcut.
 
 ### `icons` Parameter
 

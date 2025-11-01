@@ -9,10 +9,10 @@ pwa:
 ```
 {% endcode %}
 
-`"sw.js"` is served by Asset Mapper and refers to the file in `/assets/sw.js` folder of your project. It can be stored elsewhere if needed.
+`"sw.js"` is served by Asset Mapper and refers to the file `sw.js` in the `/assets/` folder of your project. It can be stored elsewhere if needed.
 
 {% hint style="info" %}
-To start, just put an empty file. It will be automatically populated by the bundle and will evolves depending on your application needs.
+To start, just put an empty file. It will be automatically populated by the bundle and will evolve depending on your application needs.
 {% endhint %}
 
 The following example is exactly the same:
@@ -44,7 +44,7 @@ pwa:
 
 ### Service Worker Initialization
 
-The Service Worker initialization script uses either Workbox Window if enabled or a smiliar Vanilla JS script.
+The Service Worker initialization script uses either Workbox Window if enabled or a similar Vanilla JS script.
 
 When Workbox is enabled, its initialization script typically loads from an external URL. However, for improved performance and security, we advise installing it via Asset Mapper instead of relying on remote loading.
 
@@ -58,7 +58,7 @@ The `scope` parameter defaults to `/`. It is a string representing the service w
 
 #### Cache
 
-The `use_cache` parameter is enable by default. It is a boolean that sets how the HTTP cache is used for service worker script resources during updates.
+The `use_cache` parameter is enabled by default. It is a boolean that sets how the HTTP cache is used for service worker script resources during updates.
 
 #### Skip Waiting
 

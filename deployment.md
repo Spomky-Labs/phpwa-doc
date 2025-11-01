@@ -2,9 +2,9 @@
 
 ## With Asset Mapper
 
-In the `dev` environment, the resources are automactilly handled and returned by a dedicated request listener.
+In the `dev` environment, the resources are automatically handled and returned by a dedicated request listener.
 
-For the `prod` environment all the assets shall be compiled. This means the favicons, the manifests, the service worker and all dependencoes (IndexDB, Workbox...) will be stored as pure assets.
+For the `prod` environment all the assets shall be compiled. This means the favicons, the manifests, the service worker and all dependencies (IndexDB, Workbox...) will be stored as pure assets.
 
 Before deploy, you should run:
 

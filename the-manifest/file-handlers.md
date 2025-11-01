@@ -21,4 +21,4 @@ By adding a file handler for the above image types, your PWA will announce to th
 
 The `action` property refers to the URL within the PWA context that will handle the file interaction. Ensure that your PWA is properly set up to handle file interactions at the specified URL.
 
-The `action` property can be a relative URL, absolute URL or an route name. It is managed the same way as [the url parameter](shortcuts.md#url-parameter) showed in the shortcuts section.
+The `action` property can be a relative URL, absolute URL or a route name. It is managed the same way as [the url parameter](shortcuts.md#url-parameter) shown in the shortcuts section.

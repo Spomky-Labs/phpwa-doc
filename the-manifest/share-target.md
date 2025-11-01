@@ -9,14 +9,14 @@ In the example below, the PWA indicates it can receive image files. The files ar
 pwa:
     manifest:
         enabled: true
-            share_target:
-              action: "/share-target"
-              method: "POST"
-              enctype: "multipart/form-data"
-              params:
-                  files:
-                      - name: "file",
-                        accept: ["image/*"]
+        share_target:
+            action: "/share-target"
+            method: "POST"
+            enctype: "multipart/form-data"
+            params:
+                files:
+                    - name: "file"
+                      accept: ["image/*"]
 ```
 {% endcode %}
 

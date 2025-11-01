@@ -38,7 +38,7 @@ Below is an example:
 
 This example manifest file includes essential information such as the app's name, a short name, description, start URL, display mode, and icons.
 
-The Manifest file integration is done into your HTML file using appropriate tag:
+The Manifest file is integrated into your HTML file using the appropriate tag:
 
 {% code lineNumbers="true" %}
 ```html
@@ -90,9 +90,9 @@ self.addEventListener('fetch', (event) => {
 
 This example service worker caches important files during the installation phase and then intercepts network requests, providing cached responses when available.
 
-The Service Worker integration is done using appropriate script call:
+The Service Worker is integrated using the appropriate script:
 
-```javascript
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>

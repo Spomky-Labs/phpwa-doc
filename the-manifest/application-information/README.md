@@ -9,7 +9,7 @@ Here are the key properties of the manifest that are typically considered necess
 1. **`name`:** The name of the application.
 2. **`short_name`:** A short or abbreviated name for the application (used when space is limited, e.g., on a home screen).
 3. **`start_url`:** The route name from which the application should launch when opened.
-4. **`display`:** Determines how the application should be displayed. Common values include `fullscreen`, `standalone`,`minimal-ui` and `browser`.
+4. **`display`:** Determines how the application should be displayed. Common values include `fullscreen`, `standalone`, `minimal-ui` and `browser`.
 5. **`background_color`:** The background color of the application.
 6. **`theme_color`:** The color representing the main theme of the application.
 7. **`icons`:** An array of objects describing the application's icons for different sizes and resolutions. ([see after](../icons.md))

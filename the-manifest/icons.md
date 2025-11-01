@@ -44,7 +44,7 @@ pwa:
 
 ### `sizes` Parameter
 
-The sizes parameter indicates the suitable sizes for the icon. The expected value is an positive integer or a list of positive integers.
+The sizes parameter indicates the suitable sizes for the icon. The expected value is a positive integer or a list of positive integers.
 
 `0` means `any` size and is suitable only for vector images.
 
@@ -74,13 +74,13 @@ Conversion to SVG is not possible.
 
 ### `purpose` Parameter
 
-The purpose `maskable` icons indicates the icon has a security margin and borders can be cropped on certain devices.
+The `maskable` purpose indicates the icon has a security margin and borders can be cropped on certain devices.
 
 <figure><img src="../.gitbook/assets/maskable-icon-safe-area (1).png" alt=""><figcaption><p>Maskable image safe area</p></figcaption></figure>
 
 ### `svg_color` Parameter
 
-Some SVG icons have a `currentColor` atribute or no `color` attribute and the bundle automatically sets `#000` (black color) as default color.
+Some SVG icons have a `currentColor` attribute or no `color` attribute and the bundle automatically sets `#000` (black color) as default color.
 
 You can change it using the option `svg_color`:
 

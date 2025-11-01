@@ -1,4 +1,4 @@
-# BackgoundSync
+# BackgroundSync
 
 Background Sync is a feature provided by service workers that enables your Progressive Web App to defer actions until the user has stable connectivity. This is particularly useful for ensuring any requests or data submitted by the user are not lost if their internet connection is unreliable.
 

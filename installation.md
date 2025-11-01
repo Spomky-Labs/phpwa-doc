@@ -14,7 +14,7 @@ pwa: ~
 ```
 {% endcode %}
 
-The integration in your application is very simple. You are only required to add a Twig function inside the end of the `<head>` tag of your HTML pages.
+The integration in your application is very simple. You are only required to add a Twig function at the end of the `<head>` tag of your HTML pages.
 
 {% code lineNumbers="true" %}
 ```twig

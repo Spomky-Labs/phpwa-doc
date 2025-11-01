@@ -1,8 +1,8 @@
 # Prefetch on demand
 
-Modern browsers are able to prefetch pages. Let say an article is displayed to the user. This article has related articles or pages the user may read. These pages can be prefetched so that when the user will click on the related link, the page will be available instantly.
+Modern browsers are able to prefetch pages. Let's say an article is displayed to the user. This article has related articles or pages the user may read. These pages can be prefetched so that when the user clicks on the related link, the page will be available instantly.
 
-To acheive that, you can add the follwing HTML tag:
+To achieve that, you can add the following HTML tag:
 
 ```html
 <link rel="prefetch" href="/article-2">
@@ -10,7 +10,7 @@ To acheive that, you can add the follwing HTML tag:
 <link rel="prefetch" href="/author-18">
 ```
 
-Another approch could be the use of the provided Stimulus Component to prefetch on demand and depending on the user navigation on the page. For example, no link tags are set and mouseover or any other user action will trigger the prefetch of the related pages.
+Another approach could be the use of the provided Stimulus Component to prefetch on demand depending on the user navigation on the page. For example, no link tags are set and mouseover or any other user action will trigger the prefetch of the related pages.
 
 **Usage**
 
@@ -45,4 +45,4 @@ None
 
 ### Events
 
-* `prefetched`: sent when the command was successfully handled by the service worker. This does not means URLs are in the cache, but indicates the command when received and processed.
+* `prefetched`: sent when the command was successfully handled by the service worker. This does not mean URLs are in the cache, but indicates the command was received and processed.

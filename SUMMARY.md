@@ -1,6 +1,6 @@
 # Table of contents
 
-* [PHPWA Bundle](README.md)
+* [PWA Bundle](README.md)
 * [How To Create A PWA?](how-to-create-a-pwa.md)
 * [How To Install/Remove A PWA?](how-to-install-remove-a-pwa.md)
 * [Bundle Installation](installation.md)
@@ -45,7 +45,7 @@
   * [Image Caching](the-service-worker/workbox/image-caching.md)
   * [Font Caching](the-service-worker/workbox/font-caching.md)
   * [Offline Fallbacks](the-service-worker/workbox/offline-fallback.md)
-  * [BackgoundSync](the-service-worker/workbox/backgoundsync.md)
+  * [BackgroundSync](the-service-worker/workbox/backgoundsync.md)
   * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
   * [Cache Cleaning](the-service-worker/workbox/cache-names-and-purge.md)
   * [Custom Cache Strategy](the-service-worker/workbox/custom-cache-strategy.md)

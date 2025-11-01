@@ -11,7 +11,7 @@ Fortunately, you are able to pass attributes such as a `nonce` to the script dir
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {{ pwa(swAttributes= {nonce: "YOUR-NONCE-HERE" }}
+  {{ pwa(swAttributes={nonce: "YOUR-NONCE-HERE"}) }}
 </head>
 <body>
   ...
