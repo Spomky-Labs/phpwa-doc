@@ -1,39 +1,166 @@
 ---
-description: Turn your Symfony App into a Progressive Web App
+description: Transform your Symfony application into a Progressive Web App
 ---
 
 # PWA Bundle
 
 <figure><picture><source srcset=".gitbook/assets/pwalogo-inverse.svg" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/pwalogo.svg" alt="PWA Logo"></picture><figcaption></figcaption></figure>
 
-Hi 👋🏼,
+Welcome! 👋
 
-You're definitely here to learn more about Progressive Web Apps (PWA) and how to integrate them into your Symfony application. If you've landed here thanks to the wheel of fortune, no problem! Let's first explore what a PWA is.
+This bundle enables you to transform your Symfony application into a Progressive Web App (PWA) with minimal configuration. Whether you're new to PWAs or looking to enhance your existing Symfony app, you're in the right place.
 
-### What is a PWA?
+## What is a Progressive Web App?
 
-Progressive Web Apps are modern web applications that provide a user experience similar to native apps, with the added advantage of being accessible directly from a web browser. Before delving into how to incorporate them into your Symfony application, let's take a closer look at what makes PWAs so compelling and powerful.
+A Progressive Web App combines the best of web and mobile applications. It's a web application that behaves like a native mobile app while remaining accessible through a standard web browser.
 
-### PWA benefits
+Think of PWAs as websites that can:
+- Be installed on devices like regular apps
+- Work offline or with poor network conditions
+- Send push notifications to users
+- Access device features (camera, geolocation, etc.)
+- Load instantly, even on slow networks
 
-Cost Efficiency and Development:
+## Why Choose PWAs?
 
-* PWAs are generally cheaper to build compared to native apps, saving on development expenses. No need for supporting several languages or platforms.
+### Development Benefits
 
-PWAs enhance the user experience and accessibility:
+**Single Codebase**
+- Write once, deploy everywhere (iOS, Android, desktop, web)
+- Lower development and maintenance costs compared to native apps
+- No need to learn platform-specific languages (Swift, Kotlin, etc.)
 
-* Apps-Like UI and Feel: PWAs provide an app-like user interface and feel, easily installable on users' devices.
-* Offline Capabilities: PWAs function seamlessly offline, ensuring users can access content even without an internet connection.
-* Push Notifications: PWAs support push notifications, enhancing user engagement by keeping them informed.
-* Better and Faster Performance: PWAs deliver better and faster performance, offering a smooth and responsive user experience.
+**Independent Distribution**
+- Deploy directly to your web server
+- No app store approval process or fees
+- Update your app anytime without waiting for reviews
+- Complete control over your release schedule
 
-PWAs excel in discoverability and maintenance aspects:
+### User Experience Benefits
 
-* SEO Friendly: PWAs are SEO-friendly, making them easily discoverable through search engines.
-* Automatic Updates: PWAs can be set up for automatic updates, ensuring users always have the latest version without manual interventions.
+**App-Like Experience**
+- Install from browser with one click
+- Launch from home screen or app menu
+- Fullscreen mode without browser UI
+- Smooth animations and responsive interactions
 
-PWAs come with technical advantages for developers:
+**Always Available**
+- Function offline or with poor connectivity
+- Fast loading times with intelligent caching
+- Automatic background updates
+- Access to content even without internet
 
-* Bypass the App Stores: PWAs can be distributed independently, bypassing the need for app store approval.
-* Device API Access: PWAs have access to device APIs, providing developers with more control and flexibility.
-* Faster Loading Times: PWAs load quickly, contributing to an efficient and responsive user experience.
+**Rich Engagement**
+- Push notifications keep users informed
+- Home screen icon for easy access
+- Badge notifications for unread content
+- Background synchronization when connectivity returns
+
+### Business Benefits
+
+**Better Discoverability**
+- Fully indexed by search engines (SEO)
+- Shareable via simple URL
+- No installation barrier for first-time visitors
+- Gradual feature adoption based on user engagement
+
+**Performance & Reliability**
+- Faster than traditional websites
+- Resilient to network failures
+- Reduced server load with caching
+- Lower bandwidth consumption for users
+
+## What Does This Bundle Do?
+
+This Symfony bundle handles all the technical complexity of creating a PWA for you:
+
+### Automatic Manifest Generation
+- Creates and serves the Web App Manifest (JSON file)
+- Manages app metadata (name, icons, theme colors, etc.)
+- Handles multi-language support
+- Configures installation behavior
+
+### Service Worker Management
+- Generates and compiles the service worker script
+- Integrates Google Workbox for advanced caching strategies
+- Manages offline fallbacks and resource caching
+- Handles background synchronization
+
+### Asset Optimization
+- Generates favicons and app icons automatically
+- Creates startup images for iOS
+- Optimizes screenshots for app stores
+- Manages cache versioning and updates
+
+### Symfony UX Integration
+- Provides ready-to-use Stimulus controllers for PWA features
+- Easy integration with Symfony Live Components
+- Access to device APIs (geolocation, camera, notifications, etc.)
+- Pre-built components for common PWA patterns
+
+### Developer Tools
+- Debug toolbar integration for manifest inspection
+- Service worker debugging support
+- Event system for customization
+- PSR-3 logging for troubleshooting
+
+## Quick Start
+
+Get your PWA up and running in minutes:
+
+```bash
+# Install the bundle
+composer require spomky-labs/pwa-bundle
+
+# Add one line to your base template
+{{ pwa() }}
+
+# Configure your app
+# Edit config/packages/pwa.yaml
+```
+
+That's it! Your Symfony application is now a Progressive Web App.
+
+## Real-World Use Cases
+
+PWAs built with Symfony are perfect for:
+
+**E-Commerce & Retail**
+- Offline product browsing
+- Shopping cart persistence
+- Order status notifications
+- Quick reordering from home screen
+
+**Content & Media**
+- Offline article reading
+- Background content sync
+- Push notification for new content
+- Media file caching
+
+**Business Applications**
+- CRM and sales tools
+- Field service apps
+- Inventory management
+- Expense reporting
+
+**Social & Community**
+- Social networks
+- Forum and discussion platforms
+- Event management
+- Real-time messaging
+
+**Productivity Tools**
+- Todo lists and task managers
+- Note-taking applications
+- Time tracking
+- Document editors
+
+## Next Steps
+
+Ready to transform your Symfony app into a PWA?
+
+1. [Install the bundle](installation.md) - Get started in minutes
+2. [Learn PWA concepts](how-to-create-a-pwa.md) - Understand the fundamentals
+3. [Configure the manifest](the-manifest/application-information/) - Customize your app
+4. [Set up the service worker](the-service-worker/configuration.md) - Enable offline mode
+5. [Add UX components](symfony-ux/) - Enhance user experience
