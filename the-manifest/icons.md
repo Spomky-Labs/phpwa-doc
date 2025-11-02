@@ -78,11 +78,9 @@ The `maskable` purpose indicates the icon has a security margin and borders can 
 
 <figure><img src="../.gitbook/assets/maskable-icon-safe-area (1).png" alt=""><figcaption><p>Maskable image safe area</p></figcaption></figure>
 
-### `svg_color` Parameter
+### SVG Attributes
 
-Some SVG icons have a `currentColor` attribute or no `color` attribute and the bundle automatically sets `#000` (black color) as default color.
-
-You can change it using the option `svg_color`:
+You can customize any SVG attribute to control how your icon is rendered. The bundle allows you to modify fill colors, stroke properties, and other SVG root attributes:
 
 {% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
 ```yaml
@@ -91,6 +89,33 @@ pwa:
         icons:
             - src: "icons/icon.svg"
               sizes: 0
-              svg_color: '#15fe68'
+              svg_attr:
+                  fill: '#2196f3'
+                  stroke: '#ffffff'
+                  stroke-width: '2'
 ```
 {% endcode %}
+
+**Common attributes:**
+- `fill`: Main fill color
+- `stroke`: Outline color
+- `stroke-width`: Border width
+- `opacity`: Transparency level
+- `color`: Value for `currentColor` references
+
+**Legacy `svg_color` option:**
+
+For backward compatibility, `svg_color` (which sets the `color` attribute) is still supported:
+
+```yaml
+pwa:
+    manifest:
+        icons:
+            - src: "icons/icon.svg"
+              sizes: 0
+              svg_color: '#15fe68'  # Equivalent to svg_attr.color
+```
+
+{% hint style="info" %}
+Use `svg_attr` for full control over SVG rendering. The `svg_color` shorthand is maintained for backward compatibility.
+{% endhint %}

@@ -286,9 +286,11 @@ pwa:
 pwa:
     favicons:
         enabled: true
-        src: assets/logo.svg
-        background_color: '#2196f3'  # Brand blue
-        svg_color: '#ffffff'          # White logo
+        default:
+            src: assets/logo.svg
+            background_color: '#2196f3'  # Brand blue
+            svg_attr:
+                fill: '#ffffff'           # White logo
 ```
 
 ### Disabled (not recommended)

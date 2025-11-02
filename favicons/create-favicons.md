@@ -107,9 +107,9 @@ pwa:
 
 ## Customization Options
 
-### SVG Color
+### SVG Attributes
 
-SVG icons with `currentColor` or no color attribute default to black (`#000`). Customize the color:
+You can customize any SVG attribute directly to control how your icon is rendered. The bundle allows you to modify fill colors, stroke properties, and any other SVG root attributes:
 
 {% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
 ```yaml
@@ -117,14 +117,43 @@ pwa:
     favicons:
         enabled: true
         src: icons/favicon.svg
-        svg_color: '#15fe68'
+        default:
+            src: icons/favicon.svg
+            svg_attr:
+                fill: '#2196f3'      # Set fill color
+                stroke: '#ffffff'    # Set stroke color
+                stroke-width: '2'    # Set stroke width
 ```
 {% endcode %}
 
+**Common SVG attributes you can modify:**
+- `fill`: Main fill color of the icon
+- `stroke`: Outline/border color
+- `stroke-width`: Width of the stroke
+- `opacity`: Overall transparency
+- `color`: Used when SVG uses `currentColor`
+
+**Legacy `svg_color` option:**
+
+For backward compatibility, you can still use `svg_color` (which sets the `color` attribute):
+
+```yaml
+pwa:
+    favicons:
+        enabled: true
+        src: icons/favicon.svg
+        svg_color: '#15fe68'  # Equivalent to svg_attr.color
+```
+
+{% hint style="info" %}
+The `svg_color` option is a shorthand for `svg_attr.color`. Use `svg_attr` directly for more control over SVG rendering.
+{% endhint %}
+
 **Example use cases:**
-- Brand color for monochrome SVG icons
-- Matching dark/light theme colors
-- Ensuring visibility on all backgrounds
+- Set brand colors for monochrome SVG icons
+- Add strokes to improve visibility on backgrounds
+- Control opacity for watermark effects
+- Modify multiple attributes simultaneously
 
 ### Icon Scaling and Safe Zone
 
@@ -337,7 +366,9 @@ Enabling `low_resolution` increases compilation time and generates more files. O
 
 ## Complete Configuration Example
 
-Here's a comprehensive configuration with all options:
+Here's a comprehensive configuration showing both modern and legacy formats:
+
+### Modern Configuration (Recommended)
 
 {% code title="config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
@@ -345,11 +376,51 @@ pwa:
     favicons:
         enabled: true
 
-        # Source
-        src: assets/icon.svg
+        # Light mode theme
+        default:
+            src: assets/icon.svg
+            background_color: '#ffffff'
+            border_radius: 18
+            image_scale: 80
+            svg_attr:
+                fill: '#2196f3'
+                stroke: '#ffffff'
 
-        # Colors
-        svg_color: '#2196f3'
+        # Dark mode theme
+        dark:
+            src: assets/icon_dark.svg
+            background_color: '#000000'
+            border_radius: 18
+            image_scale: 80
+            svg_attr:
+                fill: '#ffffff'
+                stroke: '#2196f3'
+
+        # Platform-specific
+        safari_pinned_tab_color: '#2196f3'
+        use_silhouette: true
+        tile_color: '#2196f3'
+
+        # Additional options
+        use_start_image: true
+        low_resolution: false
+        potrace: 'potrace'  # Path to potrace binary
+```
+{% endcode %}
+
+### Legacy Configuration (Still Supported)
+
+For backward compatibility, the legacy format still works:
+
+{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    favicons:
+        enabled: true
+
+        # Source (will be converted to default.src)
+        src: assets/icon.svg
+        svg_color: '#2196f3'  # Converted to default.svg_attr.color
         background_color: '#ffffff'
 
         # Styling
@@ -364,11 +435,12 @@ pwa:
         safari_pinned_tab_color: '#2196f3'
         use_silhouette: true
         tile_color: '#2196f3'
-
-        # Legacy support
-        low_resolution: false
 ```
 {% endcode %}
+
+{% hint style="warning" %}
+The legacy format (using `src`, `svg_color`, `background_color` directly) is deprecated and will be removed in version 2.x. Migrate to the `default` and `dark` structure for full control.
+{% endhint %}
 
 ## Best Practices
 
