@@ -75,6 +75,7 @@
 * [Periodic Sync](symfony-ux/periodic-sync.md)
 * [Presentation and Receiver](symfony-ux/presentation-and-receiver.md)
 * [Service Worker](symfony-ux/service-worker.md)
+* [Speech Synthesis](symfony-ux/speech-synthesis.md)
 * [Touch](symfony-ux/touch.md)
 * [Vibration](symfony-ux/vibration.md)
 * [Wake Lock](symfony-ux/wake-lock.md)
