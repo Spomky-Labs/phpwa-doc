@@ -1,8 +1,69 @@
 # Web Push Notifications
 
-If you are interested in Web Push notifications, please read about the bundle we maintain: [https://web-push.spomky-labs.com/](https://web-push.spomky-labs.com/). This bundle provides a Stimulus Controller to ease the push notification subscription and clicks on the message or buttons (if any).
+The Web Push Notifications component integrates with the [Web Push Bundle](https://web-push.spomky-labs.com/) to enable push notifications in your Progressive Web App. This Stimulus controller manages push notification subscriptions and handles user permission requests.
 
-To implement this, you must create either a Stimulus Controller to intercept events or a Twig Live Component. Below is an example of the latter. Please note that you shall hook into the Service Worker to shwo the notifications to the user and allow action interaction
+## Introduction
+
+Web Push Notifications allow you to send timely, relevant updates to users even when they're not actively using your application. The component provides a simple interface to:
+
+* Subscribe users to push notifications
+* Manage user permission states (granted, denied, default)
+* Handle subscription lifecycle events
+* Integrate with the Web Push Bundle for server-side notification delivery
+
+{% hint style="info" %}
+This component requires the [Web Push Bundle](https://web-push.spomky-labs.com/) to be installed and configured. The bundle handles server-side notification delivery using VAPID authentication.
+{% endhint %}
+
+## Browser Support
+
+<table><thead><tr><th width="200">Browser</th><th width="150">Desktop</th><th>Mobile</th></tr></thead><tbody>
+<tr><td>Chrome/Edge</td><td>✅ Full</td><td>✅ Full</td></tr>
+<tr><td>Firefox</td><td>✅ Full</td><td>✅ Full</td></tr>
+<tr><td>Safari</td><td>✅ 16.1+</td><td>✅ 16.4+</td></tr>
+<tr><td>Opera</td><td>✅ Full</td><td>✅ Full</td></tr>
+<tr><td>Samsung Internet</td><td>N/A</td><td>✅ Full</td></tr>
+</tbody></table>
+
+{% hint style="warning" %}
+Safari on macOS requires version 16.1+ and Safari on iOS requires version 16.4+. Web Push is not available in Safari Private Browsing mode.
+{% endhint %}
+
+## Prerequisites
+
+Before using Web Push Notifications, you need to:
+
+1. **Install and configure the Web Push Bundle**:
+
+```bash
+composer require spomky-labs/web-push
+```
+
+2. **Configure VAPID keys** in your `config/packages/web_push.yaml`:
+
+{% code title="config/packages/web_push.yaml" lineNumbers="true" %}
+```yaml
+web_push:
+    vapid:
+        subject: 'mailto:your-email@example.com'
+        public_key: '%env(VAPID_PUBLIC_KEY)%'
+        private_key: '%env(VAPID_PRIVATE_KEY)%'
+```
+{% endcode %}
+
+3. **Generate VAPID keys** using the Web Push Bundle command:
+
+```bash
+php bin/console web-push:generate:keys
+```
+
+4. **Enable Service Worker** in your PWA configuration as Web Push requires an active service worker.
+
+## Usage
+
+### Basic Setup with Twig Live Component
+
+To implement Web Push, you should create either a Stimulus Controller to intercept events or a Twig Live Component. Below is an example of the latter. Please note that you must hook into the Service Worker to show the notifications to the user and allow action interaction
 
 {% code title="src/App/Twig/Component/WebPush.php" lineNumbers="true" %}
 ```php
@@ -172,28 +233,395 @@ registerNotificationAction('*', async (event) => {
 ```
 {% endcode %}
 
-### Parameters
+## Best Practices
 
-`applicationServerKey`: the public key for the cypher operations. This parameter is mandatory.
+### Permission Request Timing
+
+Don't request notification permission immediately when the user visits your site. Instead:
+
+```php
+// ❌ Bad: Request permission on page load
+#[Route('/')]
+public function index(): Response
+{
+    // Immediately showing permission prompt
+    return $this->render('home.html.twig');
+}
+
+// ✅ Good: Request permission contextually
+#[Route('/subscribe-to-updates')]
+public function subscribeToUpdates(): Response
+{
+    // User explicitly chose to enable notifications
+    return $this->render('subscribe.html.twig');
+}
+```
+
+### Handle Permission States
+
+Always handle all three permission states:
+
+1. **Default**: User hasn't decided yet
+2. **Granted**: User allowed notifications
+3. **Denied**: User blocked notifications
+
+```twig
+{% if this.status == 'denied' %}
+<div class="alert alert-warning">
+    Notifications are blocked. Please enable them in your browser settings.
+</div>
+{% endif %}
+```
+
+### Store Subscriptions Securely
+
+Store subscription data securely and associate it with authenticated users:
+
+```php
+#[LiveListener('subscribed')]
+public function onSubscription(
+    #[LiveArg] string $endpoint,
+    #[LiveArg] array $keys,
+    #[LiveArg] array $supportedContentEncodings
+): void {
+    $subscription = Subscription::create($endpoint)
+        ->setKey('auth', $keys['auth'])
+        ->setKey('p256dh', $keys['p256dh'])
+        ->withContentEncodings($supportedContentEncodings);
+
+    // Store in database with user association
+    $this->subscriptionRepository->save(
+        $this->getUser(),
+        $subscription
+    );
+}
+```
+
+### Notification Delivery
+
+When sending notifications from the server, use the Web Push service:
+
+```php
+use WebPush\Bundle\Service\WebPush;
+use WebPush\Message;
+use WebPush\Action;
+use WebPush\Notification;
+
+class NotificationService
+{
+    public function __construct(
+        private readonly WebPush $webPush
+    ) {}
+
+    public function sendNotification(Subscription $subscription): void
+    {
+        $message = Message::create('New Update Available', 'Click to view details')
+            ->withIcon('/icon-192.png')
+            ->withBadge('/badge-96.png')
+            ->addAction(Action::create('view', 'View Now'))
+            ->addAction(Action::create('dismiss', 'Later'));
+
+        $notification = Notification::create()
+            ->withPayload($message->toString())
+            ->withTTL(3600) // 1 hour
+            ->highUrgency();
+
+        $statusReport = $this->webPush->send($notification, $subscription);
+
+        // Check if subscription expired
+        if ($statusReport->isSubscriptionExpired()) {
+            // Remove subscription from database
+            $this->subscriptionRepository->remove($subscription);
+        }
+    }
+}
+```
+
+## Common Use Cases
+
+### 1. News and Content Updates
+
+Notify users when new content is published:
+
+```php
+// Send notification when article is published
+class ArticlePublisher
+{
+    public function publish(Article $article): void
+    {
+        // ... publish article
+
+        $message = Message::create(
+            $article->getTitle(),
+            substr($article->getContent(), 0, 100) . '...'
+        )
+        ->withImage($article->getFeaturedImage())
+        ->withIcon('/icon-192.png')
+        ->withData(json_encode([
+            'url' => $this->urlGenerator->generate('article_view', [
+                'slug' => $article->getSlug()
+            ])
+        ]));
+
+        $notification = Notification::create()
+            ->withPayload($message->toString())
+            ->withTTL(86400) // 24 hours
+            ->normalUrgency();
+
+        foreach ($this->getSubscribedUsers($article->getCategory()) as $subscription) {
+            $this->webPush->send($notification, $subscription);
+        }
+    }
+}
+```
+
+### 2. Real-time Messaging
+
+Send instant message notifications:
+
+```php
+class ChatNotifier
+{
+    public function notifyNewMessage(User $recipient, Message $message): void
+    {
+        $notification = Message::create(
+            $message->getSender()->getName(),
+            $message->getContent()
+        )
+        ->withIcon($message->getSender()->getAvatarUrl())
+        ->withBadge('/badge-unread.png')
+        ->renotify() // Always notify even if previous notification exists
+        ->withTag('chat-' . $message->getConversationId())
+        ->withData(json_encode([
+            'conversationUrl' => $this->urlGenerator->generate('chat_conversation', [
+                'id' => $message->getConversationId()
+            ])
+        ]));
+
+        $pushNotification = Notification::create()
+            ->withPayload($notification->toString())
+            ->highUrgency()
+            ->withTTL(3600);
+
+        foreach ($recipient->getPushSubscriptions() as $subscription) {
+            $this->webPush->send($pushNotification, $subscription);
+        }
+    }
+}
+```
+
+### 3. E-commerce Order Updates
+
+Keep customers informed about their orders:
+
+```php
+class OrderStatusNotifier
+{
+    public function notifyStatusChange(Order $order, string $newStatus): void
+    {
+        $statusMessages = [
+            'confirmed' => 'Your order has been confirmed!',
+            'shipped' => 'Your order has been shipped!',
+            'delivered' => 'Your order has been delivered!',
+        ];
+
+        $message = Message::create(
+            'Order #' . $order->getNumber(),
+            $statusMessages[$newStatus] ?? 'Order status updated'
+        )
+        ->withIcon('/icon-192.png')
+        ->withBadge('/badge-order.png')
+        ->addAction(Action::create('view', 'View Order'))
+        ->addAction(Action::create('track', 'Track Package'))
+        ->withData(json_encode([
+            'orderUrl' => $this->urlGenerator->generate('order_view', [
+                'id' => $order->getId()
+            ]),
+            'trackingUrl' => $order->getTrackingUrl()
+        ]));
+
+        $notification = Notification::create()
+            ->withPayload($message->toString())
+            ->withTTL(604800) // 7 days
+            ->highUrgency();
+
+        foreach ($order->getCustomer()->getPushSubscriptions() as $subscription) {
+            $this->webPush->send($notification, $subscription);
+        }
+    }
+}
+```
+
+### 4. Reminder System
+
+Send time-based reminders to users:
+
+```php
+class ReminderService
+{
+    public function sendReminder(Reminder $reminder): void
+    {
+        $message = Message::create(
+            $reminder->getTitle(),
+            $reminder->getDescription()
+        )
+        ->withIcon('/icon-reminder.png')
+        ->withBadge('/badge-bell.png')
+        ->vibrate(200, 100, 200)
+        ->interactionRequired() // Keep notification visible until user interacts
+        ->withTag('reminder-' . $reminder->getId())
+        ->addAction(Action::create('complete', 'Mark Complete'))
+        ->addAction(Action::create('snooze', 'Snooze'))
+        ->withData(json_encode([
+            'reminderId' => $reminder->getId(),
+            'snoozeUrl' => $this->urlGenerator->generate('reminder_snooze', [
+                'id' => $reminder->getId()
+            ])
+        ]));
+
+        $notification = Notification::create()
+            ->withPayload($message->toString())
+            ->highUrgency()
+            ->withTTL(86400);
+
+        foreach ($reminder->getUser()->getPushSubscriptions() as $subscription) {
+            $this->webPush->send($notification, $subscription);
+        }
+    }
+}
+```
+
+## API Reference
+
+### Values
+
+#### `applicationServerKey`
+
+**Type**: `String` (required)
+
+The VAPID public key for authentication. This is your `VAPID_PUBLIC_KEY` from the Web Push Bundle configuration.
+
+```twig
+{{ stimulus_controller('@pwa/web-push', {
+    applicationServerKey: vapid_public_key
+}) }}
+```
 
 ### Actions
 
-`status`: Signals the Stimulus Component to verify subscription status and triggers an event.
+#### `status()`
 
-`subscribe`: Asks the user to accept or decline web push notification on the current device.
+Checks the current push notification subscription status and dispatches an event with the result.
 
-`unsubscribe`: Unsubscribe the user from future web push notification on the current device.
+```twig
+<button {{ stimulus_action('@pwa/web-push', 'status') }}>
+    Check Status
+</button>
+```
 
-### Targets
+**Dispatches**: `pwa--web-push:subscribed` or `pwa--web-push:unsubscribed`
 
-None
+#### `subscribe()`
+
+Requests notification permission from the user and subscribes to push notifications if granted.
+
+```twig
+<button {{ stimulus_action('@pwa/web-push', 'subscribe') }}>
+    Enable Notifications
+</button>
+```
+
+**Dispatches**:
+- `pwa--web-push:subscribed` on success
+- `pwa--web-push:denied` if user denies permission
+- `pwa--web-push:error` on error
+
+#### `unsubscribe()`
+
+Unsubscribes the current device from push notifications.
+
+```twig
+<button {{ stimulus_action('@pwa/web-push', 'unsubscribe') }}>
+    Disable Notifications
+</button>
+```
+
+**Dispatches**: `pwa--web-push:unsubscribed`
 
 ### Events
 
-`pwa--web-push:unsubscribed`
+#### `pwa--web-push:subscribed`
 
-`pwa--web-push:subscribed`
+Fired when a user successfully subscribes to push notifications or when checking status finds an active subscription.
 
-`pwa--web-push:denied`
+**Event Details**:
+```javascript
+{
+    endpoint: string,                    // Push service endpoint
+    keys: {
+        auth: string,                    // Authentication secret
+        p256dh: string                   // Public key for encryption
+    },
+    supportedContentEncodings: string[]  // Supported encoding methods
+}
+```
 
-`pwa--web-push:error`
+**Example**:
+```javascript
+element.addEventListener('pwa--web-push:subscribed', (event) => {
+    console.log('Subscription endpoint:', event.detail.endpoint);
+    console.log('Auth key:', event.detail.keys.auth);
+    console.log('P256dh key:', event.detail.keys.p256dh);
+});
+```
+
+#### `pwa--web-push:unsubscribed`
+
+Fired when a user unsubscribes or when checking status finds no active subscription.
+
+**Example**:
+```javascript
+element.addEventListener('pwa--web-push:unsubscribed', () => {
+    console.log('User is not subscribed to push notifications');
+});
+```
+
+#### `pwa--web-push:denied`
+
+Fired when the user denies notification permission.
+
+**Example**:
+```javascript
+element.addEventListener('pwa--web-push:denied', () => {
+    alert('Please enable notifications in your browser settings');
+});
+```
+
+#### `pwa--web-push:error`
+
+Fired when an error occurs during subscription or unsubscription.
+
+**Event Details**:
+```javascript
+{
+    error: Error  // The error object
+}
+```
+
+**Example**:
+```javascript
+element.addEventListener('pwa--web-push:error', (event) => {
+    console.error('Push notification error:', event.detail.error);
+});
+```
+
+## Related Components
+
+* [Service Worker](../the-service-worker/) - Required for Web Push functionality
+* [Web Push Bundle Documentation](https://web-push.spomky-labs.com/) - Server-side notification delivery
+
+## Additional Resources
+
+* [Web Push API on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
+* [Notifications API on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API)
+* [VAPID Protocol Specification](https://datatracker.ietf.org/doc/html/rfc8292)
