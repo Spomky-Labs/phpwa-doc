@@ -120,39 +120,57 @@ Dark mode icons automatically generate dark startup images:
 pwa:
     favicons:
         enabled: true
-        src: assets/icon.svg
-        background_color: '#ffffff'
+
+        # Light mode
+        default:
+            src: assets/icon.svg
+            background_color: '#ffffff'
 
         # Dark mode
-        src_dark: assets/icon_dark.svg
-        background_color_dark: '#000000'
+        dark:
+            src: assets/icon_dark.svg
+            background_color: '#000000'
 ```
 {% endcode %}
 
 **Result:**
-- Light startup images for light mode
-- Dark startup images for dark mode
+- Light startup images for light mode (from `default`)
+- Dark startup images for dark mode (from `dark`)
 - Automatic switching based on system theme
+- All device sizes generated for both themes
 
 ### Custom Background Colors
 
 Choose backgrounds that match your app's theme:
 
 ```yaml
-# Light theme
-background_color: '#f5f5f5'  # Light gray
+pwa:
+    favicons:
+        enabled: true
 
-# Brand color
-background_color: '#2196f3'  # Material blue
+        # Light theme with brand color
+        default:
+            src: assets/icon.svg
+            background_color: '#2196f3'  # Material blue
 
-# Dark theme
-background_color_dark: '#121212'  # Near black
+        # Dark theme
+        dark:
+            src: assets/icon_dark.svg
+            background_color: '#121212'  # Near black
 ```
 
+**Color examples:**
+- Light gray: `#f5f5f5`
+- White: `#ffffff`
+- Brand colors: `#2196f3`, `#ff5722`, etc.
+- Dark gray: `#121212`
+- Black: `#000000`
+
 **Best practices:**
-- Match your app's theme color
+- Match your app's `theme_color` from manifest
 - Ensure good contrast with icon
-- Use `theme_color` from manifest for consistency
+- Use colors that represent your brand
+- Keep consistency between light and dark themes
 
 ## Generated Files
 
@@ -274,10 +292,12 @@ pwa:
 pwa:
     favicons:
         enabled: true
-        src: assets/icon.svg
-        background_color: '#ffffff'
-        src_dark: assets/icon_dark.svg
-        background_color_dark: '#1a1a1a'
+        default:
+            src: assets/icon.svg
+            background_color: '#ffffff'
+        dark:
+            src: assets/icon_dark.svg
+            background_color: '#1a1a1a'
 ```
 
 ### Brand Colors

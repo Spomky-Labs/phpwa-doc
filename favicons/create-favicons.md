@@ -239,24 +239,41 @@ Support dark themes with dedicated dark mode icons. Modern devices automatically
 
 {% code title="config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
-favicons:
+pwa:
+    favicons:
         enabled: true
-        src: assets/icon.svg
-        background_color: "#ffffff"
-        src_dark: asset/icon_dark.svg # Dark icon asset
-        background_color_dark: "#000000" # Background for the dark icon
+
+        # Light mode icon (shown in light theme)
+        default:
+            src: assets/icon.svg
+            background_color: '#ffffff'
+
+        # Dark mode icon (shown in dark theme)
+        dark:
+            src: assets/icon_dark.svg
+            background_color: '#000000'
 ```
 {% endcode %}
+
+**How it works:**
+- `default`: Light theme icon (used when system is in light mode)
+- `dark`: Dark theme icon (used when system is in dark mode)
+- Browser automatically switches based on user's system theme preference
 
 **Benefits:**
 - Better user experience in dark mode
 - Maintains brand visibility in all themes
 - Professional, modern appearance
+- Automatic theme switching
 
 **Example scenarios:**
 - Light background icon for light mode, dark background for dark mode
 - Inverted color scheme for better contrast
 - Different icon variants optimized for each theme
+
+{% hint style="info" %}
+When `dark` is defined, `default` becomes the light mode variant. Without `dark`, `default` is used for both themes.
+{% endhint %}
 
 ## Platform-Specific Features
 
@@ -439,7 +456,18 @@ pwa:
 {% endcode %}
 
 {% hint style="warning" %}
-The legacy format (using `src`, `svg_color`, `background_color` directly) is deprecated and will be removed in version 2.x. Migrate to the `default` and `dark` structure for full control.
+**Deprecated:** The legacy format is deprecated and will be removed in version 2.x.
+
+Deprecated options:
+- `src` → use `default.src`
+- `svg_color` → use `default.svg_attr.color` or `svg_attr`
+- `background_color` → use `default.background_color`
+- `src_dark` → use `dark.src`
+- `background_color_dark` → use `dark.background_color`
+- `border_radius` → use `default.border_radius` and/or `dark.border_radius`
+- `image_scale` → use `default.image_scale` and/or `dark.image_scale`
+
+Migrate to the `default` and `dark` structure for full control and future compatibility.
 {% endhint %}
 
 ## Best Practices
@@ -480,8 +508,9 @@ The legacy format (using `src`, `svg_color`, `background_color` directly) is dep
 
 **Verify:**
 - Device/browser supports dark mode
-- Both `src_dark` and `background_color_dark` are set
+- Both `default` and `dark` sections are configured
 - Icons have been recompiled
+- System theme is actually changing (test in browser DevTools)
 
 ## What Gets Generated
 
