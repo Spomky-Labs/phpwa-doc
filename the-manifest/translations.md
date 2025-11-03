@@ -10,7 +10,7 @@ pwa:
         name: "app.name"
         short_name: "app.short_name"
         start_url: "/index.html"
-        displa": "standalone"
+        display: "standalone"
         background_color: "#ffffff"
         theme_color: "#4285f4"
         shortcuts:
@@ -18,7 +18,7 @@ pwa:
               short_name: "app.feature1.shorcut.short_name"
               description: "app.feature1.shorcut.description"
               url: "/start-chat"
-              icons":          
+              icons:
                 - src: "icons/feature1-96x96.png"
                   sizes: [96]
 ```

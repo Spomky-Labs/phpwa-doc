@@ -74,9 +74,84 @@ Conversion to SVG is not possible.
 
 ### `purpose` Parameter
 
+The `purpose` parameter defines how the icon should be used by the operating system. Common values include:
+
+* `"any"` (default): The icon can be used in any context
+* `"maskable"`: The icon has a safe zone and can be cropped by the platform
+* `"monochrome"`: The icon is intended to be used as a monochrome icon with a solid fill
+
 The `maskable` purpose indicates the icon has a security margin and borders can be cropped on certain devices.
 
 <figure><img src="../.gitbook/assets/maskable-icon-safe-area (1).png" alt=""><figcaption><p>Maskable image safe area</p></figcaption></figure>
+
+### `border_radius` Parameter
+
+The `border_radius` parameter allows you to add rounded corners to your icon. This is particularly useful for creating modern-looking icons that match current design trends.
+
+The value must be an integer between 1 and 50, representing the radius as a percentage of the icon size.
+
+{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
+```yaml
+pwa:
+    manifest:
+        icons:
+            - src: "icons/icon.png"
+              sizes: [192, 512]
+              border_radius: 20
+```
+{% endcode %}
+
+**Common values:**
+* `0`: No rounding (sharp corners)
+* `10-20`: Slightly rounded corners
+* `30-40`: Well-rounded corners
+* `50`: Fully circular icon
+
+{% hint style="info" %}
+The border radius is applied proportionally to all icon sizes generated from the same source.
+{% endhint %}
+
+### `image_scale` Parameter
+
+The `image_scale` parameter controls how much padding or scaling is applied to your icon. This is useful when you need to adjust the visual weight of your icon or add breathing room around it.
+
+The value must be an integer between 1 and 100, where:
+* `100`: Icon fills the entire space (no padding)
+* `80`: Icon is scaled to 80% with 10% padding on each side
+* `50`: Icon is scaled to 50% with 25% padding on each side
+
+{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
+```yaml
+pwa:
+    manifest:
+        icons:
+            - src: "icons/icon.png"
+              sizes: [192, 512]
+              image_scale: 85
+```
+{% endcode %}
+
+This is particularly useful when:
+* Your icon design is too large and needs padding
+* You want consistent spacing across different icon sizes
+* You need to adapt an existing icon to maskable requirements
+
+### `background_color` Parameter
+
+When using `image_scale` or `border_radius`, you can specify a `background_color` to fill the space around or behind the icon:
+
+{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
+```yaml
+pwa:
+    manifest:
+        icons:
+            - src: "icons/icon.png"
+              sizes: [192, 512]
+              image_scale: 85
+              border_radius: 20
+              background_color: "#ffffff"
+```
+{% endcode %}
 
 ### SVG Attributes
 
