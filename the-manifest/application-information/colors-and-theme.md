@@ -1,6 +1,21 @@
 # Colors and Theme
 
-The PWA manifest allows you to customize the visual appearance of your application through color properties. These colors define how your app looks both when launching and while running.
+The PWA manifest allows you to customize the visual appearance of your application through color properties. These colors define how your app looks both when launching and while running, creating a seamless and branded user experience.
+
+## Overview
+
+PWA color properties control three main aspects:
+
+1. **theme_color**: Browser UI elements (address bar, status bar, taskbar)
+2. **dark_theme_color**: Browser UI in dark mode
+3. **background_color**: Splash screen and initial load placeholder
+
+**Why colors matter**:
+- Brand consistency across all platforms
+- Professional appearance
+- Smooth loading experience
+- Dark mode support
+- User experience enhancement
 
 ## Theme Color
 
