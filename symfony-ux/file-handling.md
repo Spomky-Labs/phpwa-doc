@@ -11,37 +11,105 @@ This component is particularly useful for:
 * Design tools (SVG, CAD files)
 * Data import/export applications
 
+{% hint style="success" %}
+**Looking for something else?**
+
+* **Manifest configuration** (which file types to handle): See [File Handlers documentation](../the-manifest/file-handlers.md)
+* **Client-side implementation** (how to process files): You're on the right page!
+* **Complete quick start example**: See [Quick Start in File Handlers](../the-manifest/file-handlers.md#quick-start)
+{% endhint %}
+
+## How It Works
+
+The File Handling feature consists of two parts:
+
+1. **Manifest Configuration**: Declare which file types your PWA can handle ([see File Handlers documentation](../the-manifest/file-handlers.md))
+2. **Client-Side Handling**: Receive and process files using the Stimulus controller (this page)
+
+### Complete Workflow
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ 1. User Action                                                  │
+│    User double-clicks a .jpg file or right-clicks → Open with  │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+┌────────────────────────────▼────────────────────────────────────┐
+│ 2. Operating System                                             │
+│    - Checks file type (.jpg)                                    │
+│    - Looks for registered PWA handlers                          │
+│    - Finds your PWA in manifest file_handlers                   │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+┌────────────────────────────▼────────────────────────────────────┐
+│ 3. PWA Launch                                                   │
+│    - Opens PWA to the URL specified in action parameter         │
+│    - Adds file(s) to Launch Queue                               │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+┌────────────────────────────▼────────────────────────────────────┐
+│ 4. Stimulus Controller (@pwa/file-handling)                     │
+│    - Detects Launch Queue has files                             │
+│    - Creates blob URL for each file                             │
+│    - Dispatches pwa--file-handling:selected event               │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+┌────────────────────────────▼────────────────────────────────────┐
+│ 5. Your Application Code                                        │
+│    - Listens to pwa--file-handling:selected                     │
+│    - Receives file data (blob URL)                              │
+│    - Processes file (display, edit, convert, etc.)              │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Key Points:**
+* The manifest `action` URL must match the page where you add the Stimulus controller
+* The `accept` configuration in the manifest determines which files trigger your PWA
+* Each file generates a separate `pwa--file-handling:selected` event
+* The event provides a blob URL that you can use immediately
+
+This page focuses on **steps 4-5** (client-side implementation). For **step 3** (manifest configuration), see the [File Handlers manifest documentation](../the-manifest/file-handlers.md).
+
 ## Browser Support
 
 The File Handling API is currently supported in Chromium-based browsers (Chrome, Edge) on desktop platforms. Support on mobile and other browsers is limited or not available.
 
-{% hint style="info" %}
-Your application must declare the appropriate [file handlers](../the-manifest/file-handlers.md) in the manifest for the operating system to associate file types with your PWA.
-{% endhint %}
-
 ## Prerequisites
 
-Before using file handling, you need to configure your manifest to declare which file types your app can handle:
+### Step 1: Configure Manifest File Handlers
+
+Before your PWA can receive files, you must declare the file types it can handle in the manifest. This tells the operating system to associate your PWA with specific file extensions.
 
 {% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
 pwa:
     manifest:
         file_handlers:
-            -
-                action: '/open-file'
-                accept:
-                    'image/png':
-                        - '.png'
-                    'image/jpeg':
-                        - '.jpg'
-                        - '.jpeg'
-                    'image/webp':
-                        - '.webp'
+            - action: "app_file_handler"  # Route name or URL
+              accept:
+                  "image/png": [".png"]
+                  "image/jpeg": [".jpg", ".jpeg"]
+                  "image/webp": [".webp"]
 ```
 {% endcode %}
 
-See the [File Handlers documentation](../the-manifest/file-handlers.md) for complete configuration details.
+{% hint style="info" %}
+The `action` parameter should point to the route/page where you'll add the Stimulus controller (Step 2). See the [File Handlers manifest documentation](../the-manifest/file-handlers.md) for detailed configuration options including wildcards, multiple handlers, and advanced URL configuration.
+{% endhint %}
+
+### Step 2: Add the Stimulus Controller
+
+Add the `@pwa/file-handling` controller to the template/page specified in the manifest's `action` parameter:
+
+{% code title="templates/file_handler.html.twig" lineNumbers="true" %}
+```twig
+<div {{ stimulus_controller('@pwa/file-handling') }}>
+    <!-- Your file handling UI -->
+</div>
+```
+{% endcode %}
+
+The controller automatically listens for files passed through the Launch Queue API and dispatches the `pwa--file-handling:selected` event for each file.
 
 ## Usage
 
