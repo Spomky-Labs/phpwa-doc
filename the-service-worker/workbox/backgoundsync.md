@@ -11,7 +11,7 @@ pwa:
         workbox:
             background_sync:
                 - queue_name: 'api'
-                  match_callback: startsWith: /api/ # All requests starting with /api/
+                  match_callback: 'startsWith: /api/' # All requests starting with /api/
                   method: POST
                   max_retention_time: 7_200 # 5 days in minutes
                   force_sync_fallback: true #Optional
@@ -23,9 +23,114 @@ pwa:
 ```
 {% endcode %}
 
-* `queue_name`: Unique queue name for each queue to easily identify and manage separate background sync processes. This is essential for categorizing different types of requests such as API calls and form submissions.
-* `match_callback`: [see on this page](broken-reference).
-* `method`: Specifies the HTTP method (e.g., POST) for the requests to be queued. This helps in filtering which request methods should be considered for background synchronization.
-* `max_retention_time`: The maximum time (in minutes) that a request will be retried in the background. This is crucial for managing storage and ensuring outdated requests are not unnecessarily retried.
-* `force_sync_fallback`: (Optional) A boolean value that, when set to true, forces the background sync to attempt a sync even under conditions where it might not normally do so. Useful in critical data submission scenarios.
-* `broadcast_channel`: Specifies the name of the Broadcast Channel API channel used to communicate the status of the background sync process to the rest of the application. This enables real-time update capabilities on the user interface regarding the sync status. See[ the Stimulus Component](../../symfony-ux/sync-broadcast.md) for communication between the Service Worker and the frontend.
+### Configuration Parameters
+
+#### queue_name
+
+**Type**: `string`
+**Required**: Yes
+
+Unique queue name to identify and manage separate background sync processes. Essential for categorizing different types of requests such as API calls and form submissions.
+
+```yaml
+queue_name: 'form-submissions'
+```
+
+#### match_callback
+
+**Type**: `string`
+**Required**: Yes
+
+Defines which requests should be queued for background sync. Uses the same match callback system as [resource caching](resource-caching.md#match-callback).
+
+**Supported patterns**:
+- `startsWith: /path/` - Match URLs starting with a path
+- `regex: /pattern/` - Match URLs with regex pattern
+- `origin: https://api.example.com` - Match specific origin
+- JavaScript callback - Custom matching logic
+
+**Examples**:
+```yaml
+match_callback: 'startsWith: /api/'  # All API calls
+match_callback: 'regex: /\/submit\//''  # Submission endpoints
+match_callback: '({url}) => url.pathname.includes("/api/")'  # Custom
+```
+
+See [Resource Caching Match Callback documentation](resource-caching.md#match-callback) for complete details.
+
+#### method
+
+**Type**: `string`
+**Default**: `POST`
+
+HTTP method for requests to be queued. Typically POST for form submissions and data modifications.
+
+```yaml
+method: POST
+# or
+method: PUT
+```
+
+#### max_retention_time
+
+**Type**: `integer` (minutes)
+**Required**: Yes
+
+Maximum time a request will be retried in the background. After this duration, failed requests are discarded.
+
+```yaml
+max_retention_time: 7200  # 5 days in minutes
+# or
+max_retention_time: 120   # 2 hours
+```
+
+**Recommendations**:
+- **Critical data**: 7200 minutes (5 days)
+- **User forms**: 2880 minutes (2 days)
+- **Analytics**: 1440 minutes (1 day)
+- **Comments/posts**: 720 minutes (12 hours)
+
+#### force_sync_fallback
+
+**Type**: `boolean`
+**Default**: `false`
+**Optional**: Yes
+
+Forces background sync to attempt a sync even under conditions where it might not normally do so. Useful in critical data submission scenarios.
+
+```yaml
+force_sync_fallback: true
+```
+
+**When to use**:
+- Critical business transactions
+- Payment submissions
+- User registration data
+- Important form submissions
+
+#### broadcast_channel
+
+**Type**: `string`
+**Optional**: Yes
+
+Name of the Broadcast Channel API channel for communicating sync status to your application. Enables real-time UI updates about sync progress.
+
+```yaml
+broadcast_channel: 'form-sync-status'
+```
+
+See the [Sync Broadcast Stimulus Component](../../symfony-ux/sync-broadcast.md) for implementation details on receiving these updates in your frontend.
+
+#### Additional Parameters
+
+**error_on_4xx**: `boolean` (default: `false`)
+- Treat 4xx status codes as errors requiring retry
+
+**error_on_5xx**: `boolean` (default: `true`)
+- Treat 5xx status codes as errors requiring retry
+
+**expect_redirect**: `boolean` (default: `false`)
+- Expect redirect responses as success
+
+**expected_status_codes**: `array`
+- List of specific status codes to treat as success
