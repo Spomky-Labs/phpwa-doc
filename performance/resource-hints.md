@@ -126,6 +126,36 @@ pwa:
 Fonts always require `crossorigin` attribute. If not specified, the bundle automatically adds `crossorigin="anonymous"` for font preloads.
 {% endhint %}
 
+#### Asset Mapper Support
+
+The `href` attribute supports Asset Mapper logical paths. Paths without a leading `/` or `http(s)://` are automatically resolved to versioned URLs:
+
+```yaml
+pwa:
+  resource_hints:
+    preload:
+      # Asset Mapper path - resolved to versioned URL
+      - href: 'fonts/inter-var.woff2'
+        as: font
+        type: 'font/woff2'
+      # Absolute path - kept as-is
+      - href: '/fonts/custom.woff2'
+        as: font
+      # External URL - kept as-is
+      - href: 'https://cdn.example.com/font.woff2'
+        as: font
+```
+
+| Input | Output |
+|-------|--------|
+| `fonts/inter.woff2` | `/assets/fonts/inter-abc123.woff2` (versioned) |
+| `/fonts/custom.woff2` | `/fonts/custom.woff2` (unchanged) |
+| `https://cdn.example.com/font.woff2` | `https://cdn.example.com/font.woff2` (unchanged) |
+
+{% hint style="tip" %}
+Using Asset Mapper paths ensures your preload hints always point to the correct versioned assets, even after deployments.
+{% endhint %}
+
 ## Auto-Detection
 
 When `auto_preconnect` is enabled (default), the bundle automatically detects external origins from your PWA configuration:
@@ -176,20 +206,20 @@ pwa:
     dns_prefetch:
       - 'https://analytics.google.com'
     preload:
-      # Critical font
-      - href: '/fonts/inter-var.woff2'
+      # Critical font (Asset Mapper path - auto-versioned)
+      - href: 'fonts/inter-var.woff2'
         as: font
         type: 'font/woff2'
-      # Critical CSS
-      - href: '/css/critical.css'
+      # Critical CSS (Asset Mapper path)
+      - href: 'styles/critical.css'
         as: style
         fetchpriority: high
-      # Hero image (desktop only)
-      - href: '/images/hero-desktop.webp'
+      # Hero image - desktop (Asset Mapper path)
+      - href: 'images/hero-desktop.webp'
         as: image
         media: '(min-width: 1024px)'
-      # Hero image (mobile)
-      - href: '/images/hero-mobile.webp'
+      # Hero image - mobile (Asset Mapper path)
+      - href: 'images/hero-mobile.webp'
         as: image
         media: '(max-width: 1023px)'
 ```
