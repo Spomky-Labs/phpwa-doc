@@ -60,6 +60,7 @@
 
 * [Resource Hints](performance/resource-hints.md)
 * [Early Hints](performance/early-hints.md)
+* [Speculation Rules](performance/speculation-rules.md)
 
 ## Experimental Features
 
