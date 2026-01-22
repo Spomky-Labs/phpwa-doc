@@ -59,6 +59,7 @@
 ## Performance
 
 * [Resource Hints](performance/resource-hints.md)
+* [Early Hints](performance/early-hints.md)
 
 ## Experimental Features
 
