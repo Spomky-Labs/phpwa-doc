@@ -56,6 +56,10 @@
 * [Icons](image-management/icons.md)
 * [Screenshots](image-management/screenshots.md)
 
+## Performance
+
+* [Resource Hints](performance/resource-hints.md)
+
 ## Experimental Features
 
 * [Non-Standard Parameters](experimental-features/non-standard-parameters/README.md)
