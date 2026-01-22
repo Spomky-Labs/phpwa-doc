@@ -39,6 +39,7 @@
   * [BackgoundSync](the-service-worker/workbox/backgoundsync.md)
   * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
   * [Cache Cleaning](the-service-worker/workbox/cache-names-and-purge.md)
+  * [Navigation Preload](the-service-worker/workbox/navigation-preload.md)
   * [Custom Cache Strategy](the-service-worker/workbox/custom-cache-strategy.md)
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
