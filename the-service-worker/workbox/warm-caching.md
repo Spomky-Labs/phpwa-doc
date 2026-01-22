@@ -2,7 +2,11 @@
 
 Developers can build more resilient and user-friendly web applications that perform reliably under various network conditions. Also, it is possible to warm cache a selection of resources. This is powerfull as it allows applications to partially work offline.
 
-The default strategy applied for resources is Network First i.e. the resource from the web server is fetched first. In case of failure, the cached data is served. By default, the service worker will wait 3 seconds before serving the cached version. This value can be configured.
+The default strategy applied for resources is **StaleWhileRevalidate**. This means the cached version is served immediately for instant page loads, while the service worker fetches an updated version in the background. The `broadcast` option is also enabled by default, allowing your application to notify users when new content is available.
+
+{% hint style="info" %}
+**Changed in 1.5**: The default strategy was changed from `NetworkFirst` to `StaleWhileRevalidate` for better perceived performance. If you need the previous behavior, explicitly set `strategy: NetworkFirst` in your configuration.
+{% endhint %}
 
 <pre class="language-yaml" data-title="/config/packages/pwa.yaml" data-line-numbers><code class="lang-yaml"><strong>pwa:
 </strong>    serviceworker:
