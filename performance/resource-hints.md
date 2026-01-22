@@ -172,14 +172,61 @@ If Google Fonts caching is enabled in Workbox, preconnect hints are added for:
 - `https://fonts.googleapis.com`
 - `https://fonts.gstatic.com`
 
-## HTTP Link Headers
+## HTTP Link Headers & Early Hints
 
-In addition to HTML link tags, the bundle automatically adds resource hints as HTTP `Link` headers on the response. This enables:
+In addition to HTML link tags, the bundle automatically adds resource hints as HTTP `Link` headers on the response via a dedicated event listener. This enables:
 
 - **HTTP/2 Server Push** (if supported by your server)
-- **HTTP/103 Early Hints** (when combined with the Early Hints feature)
+- **HTTP/103 Early Hints** (when combined with the [Early Hints feature](early-hints.md))
 
-The headers are added via Symfony's WebLink component for PSR-13 compliance.
+### How It Works
+
+The `ResourceHintsListener` runs early in the request lifecycle (on `kernel.request` event) and adds all configured resource hints to the request's `_links` attribute. This makes them available to:
+
+1. **Symfony's WebLink component** for adding `Link` headers to the response
+2. **Compatible servers** (FrankenPHP, Caddy) that can send HTTP 103 Early Hints responses
+
+### HTTP 103 Early Hints
+
+When using a server that supports Early Hints (like FrankenPHP with Caddy), the resource hints are sent to the browser **before** your application finishes processing the request. This allows the browser to start preconnecting, DNS prefetching, and preloading resources while waiting for the main response.
+
+```
+Client                    Server
+  |                         |
+  |---- GET /page --------->|
+  |                         | (starts processing)
+  |<--- 103 Early Hints ----|  Link: <https://api.example.com>; rel=preconnect
+  |                         |  Link: </fonts/inter.woff2>; rel=preload; as=font
+  |  (browser preconnects)  |
+  |  (browser preloads)     | (still processing)
+  |                         |
+  |<--- 200 OK -------------|  (main response)
+  |                         |
+```
+
+### Combining with Early Hints Feature
+
+For the best results, enable both Resource Hints and [Early Hints](early-hints.md):
+
+```yaml
+pwa:
+  resource_hints:
+    enabled: true
+    preconnect:
+      - 'https://api.example.com'
+    preload:
+      - href: 'fonts/inter.woff2'
+        as: font
+
+  early_hints:
+    enabled: true
+```
+
+This ensures your resource hints benefit from HTTP 103 Early Hints when your server supports it.
+
+{% hint style="info" %}
+The `ResourceHintsListener` runs at priority 99, just after the `EarlyHintsListener` (priority 100), ensuring proper coordination between the two features.
+{% endhint %}
 
 ## Best Practices
 
