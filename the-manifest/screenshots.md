@@ -12,35 +12,23 @@ In the example below, a selection of screenshots are visible and the user can na
 
 <figure><img src="../.gitbook/assets/Capture d&#x27;écran 2024-02-01 101647.png" alt=""><figcaption></figcaption></figure>
 
-## Configuration
+## Generating Screenshots
 
-You can add as many screenshots as you need. But keep in mind that the host device or the platform may  show only a selection of them.
+The recommended way to manage screenshots is using the `#[Screenshot]` PHP attribute on your controller methods. This approach automatically generates screenshots and integrates them into your manifest.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
-pwa:
-    manifest:
-        enabled: true
-        screenshots:
-            - "images/screenshot-feature1.png"
-            - 
-              src: "images/screenshot-feature2.png"
-              platform: "android"
-              type: "image/png"
-            -
-              src: "images/screenshot-feature3.png"
-              label: "Feature #3 in action"
-              form_factor: "narrow"
-```
-{% endcode %}
+{% content-ref url="../image-management/screenshots.md" %}
+[screenshots.md](../image-management/screenshots.md)
+{% endcontent-ref %}
+
+## Manifest Parameters
+
+When screenshots are added to the manifest (either automatically via attributes or manually), the following parameters are available:
 
 ### `src` Parameter
 
 See the description [on the `icon` page](icons.md#src-parameter).
 
-Ensure that the screenshots you provide are of high quality. Crisp and clear images can make a significant difference in how users perceive your app. Always aim for the highest resolution possible, without compromising the load times or performance of the installation interface.
-
-Remember, these screenshots are part of your app's first impression on potential users. Take the time to choose them wisely, ensuring they accurately represent your app and its key features.
+Ensure that the screenshots you provide are of high quality. Crisp and clear images can make a significant difference in how users perceive your app.
 
 ### `type` Parameter
 
@@ -48,25 +36,13 @@ This parameter is similar to [the `format` parameter for the icons](icons.md#typ
 
 ### `label` Parameter
 
-The label parameter provides a way to give a brief description or caption for the screenshot. This helps users to understand what the feature or screen is about before they have installed the app. It assists in providing context and can be particularly useful when displaying a series of screenshots.
-
-Example:
-
-```yaml
-label: "Main dashboard view"
-```
+The label parameter provides a way to give a brief description or caption for the screenshot. This helps users to understand what the feature or screen is about before they have installed the app.
 
 ### `platform` Parameter
 
-The `platform` parameter can be used to specify which operating system the screenshot is intended for. This helps to display the appropriate screenshots for users on different devices. For instance, you might have specific screenshots for Android users versus those using a desktop browser.
+The `platform` parameter specifies which operating system the screenshot is intended for.
 
-Example:
-
-```yaml
-platform: "android"
-```
-
-Possible values are listed below. This list is not exhaustive.
+Possible values include:
 
 * Device platform identifiers:
   * `"android"`
@@ -86,15 +62,13 @@ Possible values are listed below. This list is not exhaustive.
 
 ### `form_factor` Parameter
 
-The `form_factor` parameter allows you to define the intended device form factor for your screenshots. This can help cater to different device types, such as mobile, tablet, or desktop, ensuring that the screenshots displayed are relevant to the user's device.
+The `form_factor` parameter defines the intended device form factor for your screenshots.
 
-Possible values include:
+Possible values:
 
-* `"narrow"`: Suggests the screenshot is best suited for narrow screen devices, like phones.
-* `"wide"`: Implies the screenshot is intended for wider screen devices, such as tablets or desktops.
+* `"narrow"`: For narrow screen devices, like phones.
+* `"wide"`: For wider screen devices, such as tablets or desktops.
 
-Example:
-
-```yaml
-form_factor: "narrow"
-```
+{% hint style="info" %}
+When using the `#[Screenshot]` attribute, `form_factor` is automatically calculated based on the screenshot dimensions.
+{% endhint %}
