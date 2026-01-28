@@ -45,10 +45,6 @@ class HomeController extends AbstractController
 
 ### Generating Screenshots
 
-Screenshots can be generated in two ways:
-
-#### With `pwa:compile` (Recommended)
-
 The `pwa:compile` command automatically generates screenshots from attributes before compiling the manifest:
 
 ```sh
@@ -59,16 +55,6 @@ Use `--no-screenshots` to skip screenshot generation:
 
 ```sh
 php bin/console pwa:compile --no-screenshots
-```
-
-#### Standalone Command
-
-You can also generate screenshots independently:
-
-```sh
-php bin/console pwa:create:screenshot --from-attributes
-# or short form:
-php bin/console pwa:create:screenshot -a
 ```
 
 The command will automatically discover all routes with `#[Screenshot]` attributes and generate the screenshots.
@@ -254,21 +240,3 @@ pwa:
         web_client: 'my_custom_panther_client'  # Service ID
 ```
 
-## Legacy Command (Deprecated)
-
-The simple URL-based command is still available but deprecated:
-
-```sh
-php bin/console pwa:create:screenshot https://example.com
-```
-
-Options:
-- `--output` / `-o`: Output directory (default: `assets/screenshots/`)
-- `--filename`: Base filename (default: `screenshot`)
-- `--width`: Screenshot width
-- `--height`: Screenshot height
-- `--format` / `-f`: Output format (png, jpg, webp)
-
-{% hint style="warning" %}
-This legacy command does not support automatic manifest integration. Use the `#[Screenshot]` attribute approach instead.
-{% endhint %}
