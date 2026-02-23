@@ -3,6 +3,10 @@
 Progressive Web Apps may have icons of multiple formats and sizes to be correctly shown on targeted plaforms. This task may become boring as your application evolves. The bundle provides a simple console command to ease the creation of these icons.
 
 {% hint style="warning" %}
+**Deprecated**: The `pwa:create:icons` command is deprecated. Prefer declaring icons in your manifest configuration and using `pwa:compile` to generate them automatically.
+{% endhint %}
+
+{% hint style="warning" %}
 Icons shall be square images
 {% endhint %}
 

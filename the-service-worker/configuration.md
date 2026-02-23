@@ -82,3 +82,46 @@ pwa:
         skip_waiting: false
 ```
 {% endcode %}
+
+### Compiling the Service Worker
+
+The service worker is compiled using the `pwa:compile` command:
+
+```sh
+php bin/console pwa:compile
+```
+
+**Options:**
+- `--context-only` - Compile only assets that depend on the application context (e.g., the manifest). Useful for locale-specific compilations.
+- `--no-screenshots` - Skip screenshot generation during compilation.
+
+### Background Fetch
+
+The Background Fetch API allows your PWA to handle long-running downloads in the background. Configure it in the workbox section:
+
+{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    serviceworker:
+        workbox:
+            background_fetch:
+                enabled: true
+                success_url: 'app_download_success'  # Route name or URL
+                progress_url: 'app_download_progress'
+                success_message: 'Download complete!'
+                failure_message: 'Download failed.'
+                db_name: 'bgfetch-completed'
+```
+{% endcode %}
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `success_url` | URL/route | - | URL to open when download completes |
+| `progress_url` | URL/route | - | URL to display download progress |
+| `success_message` | string | `null` | Success notification message (translatable) |
+| `failure_message` | string | `null` | Failure notification message (translatable) |
+| `db_name` | string | `bgfetch-completed` | IndexedDB name for download storage |
+
+{% hint style="info" %}
+Background Fetch is supported in Chromium-based browsers. It handles downloads that would otherwise be interrupted when the user closes the tab.
+{% endhint %}

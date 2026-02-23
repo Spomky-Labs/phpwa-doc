@@ -51,6 +51,7 @@
   * [Cache Cleaning](the-service-worker/workbox/cache-cleaning.md)
   * [Navigation Preload](the-service-worker/workbox/navigation-preload.md)
   * [Custom Cache Strategy](the-service-worker/workbox/custom-cache-strategy.md)
+  * [Service Worker Creation](the-service-worker/workbox/service-worker-creation.md)
 * [Periodic Sync](the-service-worker/periodic-sync.md)
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
