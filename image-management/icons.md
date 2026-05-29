@@ -26,6 +26,10 @@ pwa:
 ```
 {% endcode %}
 
+{% hint style="warning" %}
+SVG format is currently only supported by the Imagick processor.
+{% endhint %}
+
 ### Resizing Icons
 
 From your shell, you can use the following command line to convert an image to a preset of sizes and using the same format as the input:
