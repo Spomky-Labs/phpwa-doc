@@ -1,6 +1,8 @@
 # Translations
 
-The bundle leverages on Symfony Translation component is available. The texts you pass for almost all names, short names, descriptions, labels... can be translation keys.
+The bundle can leverage the Symfony Translation component. The text you provide for almost all names, abbreviations, descriptions, labels, etc., can be used as translation keys.
+
+These translations must be placed in a `pwa` domain (e.g. `pwa.en.yaml` or `pwa.fr.yaml`)
 
 {% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
@@ -21,6 +23,19 @@ pwa:
               icons":          
                 - src: "icons/feature1-96x96.png"
                   sizes: [96]
+```
+{% endcode %}
+
+{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
+```yaml
+app:
+    name: "My App"
+    short_name: "My App"
+    feature1:
+        shortcut:
+            name: "Start chat"
+            short_name: "Start chat"
+            description: "Start a chat with your friends"
 ```
 {% endcode %}
 

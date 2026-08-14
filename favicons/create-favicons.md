@@ -31,12 +31,19 @@ With this bundle, generating all necessary favicons takes just seconds. You only
 - Square icon (recommended)
 - SVG format (preferred) or PNG (512x512px minimum)
 - Transparent background (highly recommended)
+- GD or Imagick PHP extension installed
+
+{% hint style="warning" %}
+SVG format is currently only supported by the Imagick processor.
+{% endhint %}
 
 **Basic configuration:**
 
 {% code title="config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
 pwa:
+    image_processor: 'pwa.image_processor.imagick' # or 'pwa.image_processor.gd'
+  
     favicons:
         enabled: true
         default:
