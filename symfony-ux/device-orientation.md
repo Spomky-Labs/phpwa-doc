@@ -1,5 +1,15 @@
 # Device Orientation
 
+{% hint style="danger" %}
+**Deprecated since 1.6.0, removed in 2.0.0.**
+
+The Stimulus controllers are leaving the bundle. Copy the ones you use into your own application
+and register them there: they are plain Stimulus controllers with no dependency on the bundle.
+
+See the [upgrade guide](../upgrades/from-1.5.x-to-1.6.0.md) and
+[the rationale](https://github.com/Spomky-Labs/pwa-bundle/issues/372#issuecomment-5295710299).
+{% endhint %}
+
 The Device Orientation component provides access to the Device Orientation API, allowing your application to detect and respond to changes in the physical orientation of a mobile device or tablet. This enables creating immersive experiences that react to how users hold and move their devices.
 
 This component is particularly useful for:

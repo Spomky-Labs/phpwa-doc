@@ -1,5 +1,15 @@
 # Network Information
 
+{% hint style="danger" %}
+**Deprecated since 1.6.0, removed in 2.0.0.**
+
+The Stimulus controllers are leaving the bundle. Copy the ones you use into your own application
+and register them there: they are plain Stimulus controllers with no dependency on the bundle.
+
+See the [upgrade guide](../upgrades/from-1.5.x-to-1.6.0.md) and
+[the rationale](https://github.com/Spomky-Labs/pwa-bundle/issues/372#issuecomment-5295710299).
+{% endhint %}
+
 The Network Information component provides access to the Network Information API, allowing your Progressive Web App to detect and respond to changes in the user's network connection. This enables you to create adaptive experiences that optimize content delivery based on connection quality and type.
 
 This component is particularly useful for:

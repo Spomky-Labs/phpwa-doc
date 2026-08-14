@@ -1,5 +1,15 @@
 # Contact Picker
 
+{% hint style="danger" %}
+**Deprecated since 1.6.0, removed in 2.0.0.**
+
+The Stimulus controllers are leaving the bundle. Copy the ones you use into your own application
+and register them there: they are plain Stimulus controllers with no dependency on the bundle.
+
+See the [upgrade guide](../upgrades/from-1.5.x-to-1.6.0.md) and
+[the rationale](https://github.com/Spomky-Labs/pwa-bundle/issues/372#issuecomment-5295710299).
+{% endhint %}
+
 The Contact Picker component provides access to the Contact Picker API, allowing users to select one or more contacts directly from their device's native address book. This enables seamless integration with the device's contact system while maintaining user privacy through explicit consent for each selection.
 
 This component is particularly useful for:

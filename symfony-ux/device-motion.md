@@ -1,5 +1,15 @@
 # Device Motion
 
+{% hint style="danger" %}
+**Deprecated since 1.6.0, removed in 2.0.0.**
+
+The Stimulus controllers are leaving the bundle. Copy the ones you use into your own application
+and register them there: they are plain Stimulus controllers with no dependency on the bundle.
+
+See the [upgrade guide](../upgrades/from-1.5.x-to-1.6.0.md) and
+[the rationale](https://github.com/Spomky-Labs/pwa-bundle/issues/372#issuecomment-5295710299).
+{% endhint %}
+
 The Device Motion component provides access to motion sensor data from your device's accelerometer and gyroscope. This component listens to devicemotion events from the Device Motion API and emits normalized update events containing acceleration, acceleration including gravity, rotation rate, and sampling interval. It automatically manages the permission flow when required by the device.
 
 This component is particularly useful for:

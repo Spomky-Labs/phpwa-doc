@@ -56,7 +56,7 @@
 * [Push Notifications](the-service-worker/push-notifications.md)
 * [Complete Example](the-service-worker/complete-example.md)
 
-## Symfony UX
+## Symfony UX (deprecated, removed in 2.0.0)
 
 * [Background Fetch](symfony-ux/background-fetch.md)
 * [BackgroundSync Form](symfony-ux/backgroundsync-form.md)
@@ -110,4 +110,5 @@
 
 ## Upgrades
 
+* [From 1.5.x to 1.6.0](upgrades/from-1.5.x-to-1.6.0.md)
 * [From 1.4.x to 1.5.0](upgrades/from-1.4.x-to-1.5.0.md)

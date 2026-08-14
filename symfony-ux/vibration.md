@@ -1,5 +1,15 @@
 # Vibration
 
+{% hint style="danger" %}
+**Deprecated since 1.6.0, removed in 2.0.0.**
+
+The Stimulus controllers are leaving the bundle. Copy the ones you use into your own application
+and register them there: they are plain Stimulus controllers with no dependency on the bundle.
+
+See the [upgrade guide](../upgrades/from-1.5.x-to-1.6.0.md) and
+[the rationale](https://github.com/Spomky-Labs/pwa-bundle/issues/372#issuecomment-5295710299).
+{% endhint %}
+
 The Vibration component provides an interface to the Vibration API, allowing your Progressive Web App to trigger haptic feedback on devices that support it. This creates tactile sensations that enhance user experience and provide physical feedback for actions.
 
 This component is particularly useful for:

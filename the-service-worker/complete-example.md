@@ -145,15 +145,21 @@ Add periodic background sync for content updates:
 
 {% code title="assets/sw.js" lineNumbers="true" %}
 ```javascript
+const syncChannel = new BroadcastChannel('my-app-sync');
+
 const syncContent = async () => {
     const cache = await openCache('pages-cache');
     const response = await fetch('/api/content/latest');
     await cache.put('/api/content/latest', response.clone());
 
-    notifyPeriodicSyncClients('content-sync', { updated: true });
+    syncChannel.postMessage({ tag: 'content-sync', updated: true, timestamp: Date.now() });
 };
 
-registerPeriodicSyncTask('content-sync', syncContent);
+self.addEventListener('periodicsync', (event) => {
+    if (event.tag === 'content-sync') {
+        event.waitUntil(syncContent());
+    }
+});
 ```
 {% endcode %}
 

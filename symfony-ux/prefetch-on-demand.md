@@ -1,5 +1,15 @@
 # Prefetch on demand
 
+{% hint style="danger" %}
+**Deprecated since 1.6.0, removed in 2.0.0.**
+
+The Stimulus controllers are leaving the bundle. Copy the ones you use into your own application
+and register them there: they are plain Stimulus controllers with no dependency on the bundle.
+
+See the [upgrade guide](../upgrades/from-1.5.x-to-1.6.0.md) and
+[the rationale](https://github.com/Spomky-Labs/pwa-bundle/issues/372#issuecomment-5295710299).
+{% endhint %}
+
 Modern browsers are able to prefetch pages. Let say an article is displayed to the user. This article has related articles or pages the user may read. These pages can be prefetched so that when the user will click on the related link, the page will be available instantly.
 
 To acheive that, you can add the follwing HTML tag:
