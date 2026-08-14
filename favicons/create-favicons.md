@@ -403,6 +403,7 @@ All files are automatically optimized and cached for production.
 2. File format is supported (SVG, PNG)
 3. Compilation ran successfully (`php bin/console pwa:compile`)
 4. HTML includes `{{ pwa() }}` function
+5. If the icons return a 404 and your application is served from a sub-directory, see [Applications Served From A Sub-Directory](../deployment.md#applications-served-from-a-sub-directory)
 
 ### Silhouette not generating
 
