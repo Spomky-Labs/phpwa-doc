@@ -74,6 +74,12 @@ Link: <https://storage.googleapis.com>; rel="preconnect"; crossorigin
 
 This establishes an early connection to the CDN, reducing latency when loading Workbox modules.
 
+{% hint style="warning" %}
+`use_cdn` is deprecated since 1.6.0 and will be removed in 2.0.0, together with this hint: the bundled
+Workbox files are served by your own server, which needs no preconnect. See
+[Workbox Files](../the-service-worker/workbox/cdn-and-versions.md).
+{% endhint %}
+
 **Default:** `true`
 
 ## Usage with FrankenPHP

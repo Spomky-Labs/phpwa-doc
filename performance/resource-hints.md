@@ -166,6 +166,12 @@ If you're using Workbox from CDN (`use_cdn: true`), preconnect hints are added f
 - `https://storage.googleapis.com`
 - `https://cdn.jsdelivr.net`
 
+{% hint style="warning" %}
+`use_cdn` is deprecated since 1.6.0 and will be removed in 2.0.0, together with these hints: the bundled
+Workbox files are served by your own server, which needs no preconnect. See
+[Workbox Files](../the-service-worker/workbox/cdn-and-versions.md).
+{% endhint %}
+
 ### Google Fonts
 
 If Google Fonts caching is enabled in Workbox, preconnect hints are added for:

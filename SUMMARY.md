@@ -47,7 +47,7 @@
   * [Font Caching](the-service-worker/workbox/font-caching.md)
   * [Offline Fallbacks](the-service-worker/workbox/offline-fallback.md)
   * [Background Sync](the-service-worker/workbox/background-sync.md)
-  * [CDN and Versions](the-service-worker/workbox/cdn-and-versions.md)
+  * [Workbox Files](the-service-worker/workbox/cdn-and-versions.md)
   * [Cache Cleaning](the-service-worker/workbox/cache-cleaning.md)
   * [Navigation Preload](the-service-worker/workbox/navigation-preload.md)
   * [Custom Cache Strategy](the-service-worker/workbox/custom-cache-strategy.md)

@@ -278,13 +278,10 @@ pwa:
 
 See [Translations](../experimental-features/translations.md).
 
-## Changed: Workbox 7.4.1
+## Deprecated: choosing the Workbox version
 
 The bundle carried two copies of the Workbox libraries, 7.0.0 and 7.3.0. Both are replaced by a single
-7.4.1 copy, which becomes the default `serviceworker.workbox.config.version`.
-
-**What to do:** if you pinned a version explicitly, either drop the option to follow the bundled one, or
-add `use_cdn: true` — only the bundled version can be served from your own public folder.
+7.4.1 copy, and choosing anything else is deprecated:
 
 {% code title="config/packages/pwa.yaml" lineNumbers="true" %}
 ```yaml
@@ -292,13 +289,36 @@ pwa:
     serviceworker:
         workbox:
             config:
-                version: '7.3.0'
-                use_cdn: true     # now required for any version but 7.4.1
+                use_cdn: true       # deprecated since 1.6.0
+                version: '7.3.0'    # deprecated since 1.6.0
 ```
 {% endcode %}
 
-Also remember to clear the stale copies from your public folder: `pwa:compile` writes the new ones but
-does not remove the old directories.
+Everything the bundle generates — the imports, the caching strategies, the plugins, the helpers — is
+written against the API of the version it ships. Pinning another one produced a service worker written
+for one version and running against another, failing in the browser rather than at compile time.
+
+**What to do:** remove both options and let the bundled files be served from your own public folder.
+Then clear the stale copies, which `pwa:compile` writes past but never removes:
+
+{% code title="terminal" %}
+```bash
+rm -rf public/workbox-v7.0.0 public/workbox-v7.3.0
+php bin/console pwa:compile
+```
+{% endcode %}
+
+{% hint style="info" %}
+The flat `workbox.use_cdn` and `workbox.version`, deprecated since 1.5.0, no longer point at their
+`workbox.config.*` counterparts: those are deprecated too. An application still on the flat spelling is
+told twice — once for the option it wrote, once for the section the value is migrated into. Removing the
+option silences both.
+{% endhint %}
+
+`workbox_public_url` and `debug` are **not** deprecated: where your server exposes the files, and whether
+Workbox logs, remain yours to decide.
+
+See [Workbox Files](../the-service-worker/workbox/cdn-and-versions.md).
 
 ## Changed: the two image processors agree on their output
 
@@ -339,7 +359,7 @@ triggers a deprecation of its own instead of a spurious one. Nothing to change b
 - [ ] Replace `background_fetch` with your own `backgroundfetchsuccess` handler
 - [ ] Declare the caches you open yourself with `registerClearCacheListener()`
 - [ ] Move `favicons.use_start_image` to `startup_images.enabled`
-- [ ] Drop any pinned Workbox `version`, or add `use_cdn: true`, and delete the stale `workbox-v7.*` folders from `public/`
+- [ ] Remove `use_cdn` and `version` from the Workbox configuration, both spellings, and delete the stale `workbox-v7.*` folders from `public/`
 - [ ] Replace any remaining `Dto\PageCache` reference with `Dto\ResourceCache`
 - [ ] Run `php bin/console pwa:compile` and test with `APP_ENV=dev` to surface the deprecations
 
@@ -349,8 +369,8 @@ The following options were deprecated in earlier versions and will also be remov
 
 | Option | Replacement | Since |
 |--------|-------------|-------|
-| `pwa.serviceworker.workbox.use_cdn` | `pwa.serviceworker.workbox.config.use_cdn` | 1.5.0 |
-| `pwa.serviceworker.workbox.version` | `pwa.serviceworker.workbox.config.version` | 1.5.0 |
+| `pwa.serviceworker.workbox.use_cdn` | None — remove it, see above | 1.5.0 |
+| `pwa.serviceworker.workbox.version` | None — remove it, see above | 1.5.0 |
 | `pwa.serviceworker.workbox.workbox_public_url` | `pwa.serviceworker.workbox.config.workbox_public_url` | 1.5.0 |
 | `pwa.favicons.src` | `pwa.favicons.default.src` | 1.3.0 |
 | `pwa.favicons.src_dark` | `pwa.favicons.dark.src` | 1.3.0 |

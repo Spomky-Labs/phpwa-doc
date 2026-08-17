@@ -10,12 +10,12 @@ pwa:
         dest: /sw.js
         scope: /
         skip_waiting: true
-        config:
-            use_cdn: false
-            version: '7.3.0'
-            workbox_public_url: '/workbox'
 
         workbox:
+            config:
+                workbox_public_url: '/workbox'
+                debug: false
+
             # Asset caching (CSS, JS from Asset Mapper)
             asset_cache:
                 enabled: true

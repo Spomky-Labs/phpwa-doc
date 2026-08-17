@@ -64,6 +64,12 @@ pwa:
 | `pwa.serviceworker.workbox.version` | `pwa.serviceworker.workbox.config.version` | 1.5.0 |
 | `pwa.serviceworker.workbox.workbox_public_url` | `pwa.serviceworker.workbox.config.workbox_public_url` | 1.5.0 |
 
+{% hint style="warning" %}
+If you are reading this on your way to 1.6.0, do not move `use_cdn` and `version` into `config`: both are
+deprecated there too since 1.6.0. Remove them instead — see
+[From 1.5.x to 1.6.0](from-1.5.x-to-1.6.0.md). Only `workbox_public_url` is worth moving.
+{% endhint %}
+
 A new `debug` option has also been added under `config`:
 
 ```yaml
