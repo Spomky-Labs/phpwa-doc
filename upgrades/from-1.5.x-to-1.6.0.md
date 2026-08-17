@@ -219,6 +219,114 @@ Callbacks may be async, and one throwing is logged without stopping the others.
 
 See [Cache Cleaning](../the-service-worker/workbox/cache-cleaning.md).
 
+## Deprecated: `favicons.use_start_image`
+
+The iOS startup images used to be a favicon setting, which they only ever were because they shared a
+source image. They now have a section of their own:
+
+{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    favicons:
+        enabled: true
+        use_start_image: false   # deprecated since 1.6.0
+
+    startup_images:
+        enabled: false           # this instead
+```
+{% endcode %}
+
+Nothing else has to move. `use_start_image` still seeds `startup_images.enabled`, and the images keep
+borrowing their source, background color, border radius and SVG attributes from the favicon of the same
+color scheme. An existing configuration produces the very same files, content hashes included.
+
+## New: startup images described by a Twig template
+
+A startup image could only ever be the favicon source, scaled down and centered over a background
+color. It can now be any document you care to write:
+
+{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    startup_images:
+        template: 'pwa/startup_image.html.twig'
+        context:
+            subtitle: 'Identify every plant, even offline.'
+```
+{% endcode %}
+
+The template is rendered by your own Twig environment and painted by a headless Chrome driven by
+Panther — a **compile-time** dependency, and only when a template is configured. Without one, nothing
+new is required.
+
+See [Startup Images](../favicons/startup-images.md).
+
+## New: localized manifest members
+
+The manifest can now carry every translation in a single file, through the `*_localized` members of the
+specification, instead of one compiled file per locale:
+
+{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    manifest:
+        localization_strategy: 'inline'   # or 'both', or 'files'
+```
+{% endcode %}
+
+`files` is the default and the historical behaviour, so nothing changes unless you ask for it.
+
+See [Translations](../experimental-features/translations.md).
+
+## Changed: Workbox 7.4.1
+
+The bundle carried two copies of the Workbox libraries, 7.0.0 and 7.3.0. Both are replaced by a single
+7.4.1 copy, which becomes the default `serviceworker.workbox.config.version`.
+
+**What to do:** if you pinned a version explicitly, either drop the option to follow the bundled one, or
+add `use_cdn: true` — only the bundled version can be served from your own public folder.
+
+{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
+```yaml
+pwa:
+    serviceworker:
+        workbox:
+            config:
+                version: '7.3.0'
+                use_cdn: true     # now required for any version but 7.4.1
+```
+{% endcode %}
+
+Also remember to clear the stale copies from your public folder: `pwa:compile` writes the new ones but
+does not remove the old directories.
+
+## Changed: the two image processors agree on their output
+
+GD and Imagick used to leave the encoding quality to their extension, so the very same configuration
+produced noticeably different files: GD fell back on its default of 75, Imagick picked 92, or the quality
+of the source when that source was a JPEG. Both now state **85** explicitly, and both spell `jpg` and
+`jpeg` the same way.
+
+**What to do:** nothing, beyond expecting your lossy images (screenshots, and any icon compiled to JPEG,
+WebP or AVIF) to be regenerated with a slightly different weight on the next `pwa:compile`. PNG output
+is unaffected.
+
+## Changed: a missing image processor extension is reported earlier
+
+Pointing `pwa.image_processor` at a built-in processor whose PHP extension is not loaded used to fail
+much later, inside the container compilation, with a bare *"You have requested a non-existent service
+pwa.image_processor.imagick"*. It now fails at configuration time, naming the missing extension.
+
+## Changed: `Dto\PageCache` is an alias
+
+`SpomkyLabs\PwaBundle\Dto\PageCache`, deprecated since 1.2.0 in favour of `ResourceCache`, was a
+subclass of a class documented as final. Symfony's `DebugClassLoader` told every application running in
+dev or test off for an inheritance the bundle owned and they had no way to remove.
+
+The name is now a class alias. It still resolves, still passes any `instanceof ResourceCache` check, and
+triggers a deprecation of its own instead of a spurious one. Nothing to change beyond migrating to
+`ResourceCache`, as 1.2.0 already asked.
+
 ## Migration Checklist
 
 - [ ] Copy the Stimulus controllers you use into your own application, register them there
@@ -230,6 +338,9 @@ See [Cache Cleaning](../the-service-worker/workbox/cache-cleaning.md).
 - [ ] If you used `self.idb` in your own source, switch to `indexedDB.open()`
 - [ ] Replace `background_fetch` with your own `backgroundfetchsuccess` handler
 - [ ] Declare the caches you open yourself with `registerClearCacheListener()`
+- [ ] Move `favicons.use_start_image` to `startup_images.enabled`
+- [ ] Drop any pinned Workbox `version`, or add `use_cdn: true`, and delete the stale `workbox-v7.*` folders from `public/`
+- [ ] Replace any remaining `Dto\PageCache` reference with `Dto\ResourceCache`
 - [ ] Run `php bin/console pwa:compile` and test with `APP_ENV=dev` to surface the deprecations
 
 ## Still Deprecated (from earlier versions)

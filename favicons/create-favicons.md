@@ -34,7 +34,13 @@ With this bundle, generating all necessary favicons takes just seconds. You only
 - GD or Imagick PHP extension installed
 
 {% hint style="warning" %}
-SVG format is currently only supported by the Imagick processor.
+SVG format is currently only supported by the Imagick processor, and only when ImageMagick was built with
+an SVG delegate. GD cannot rasterize an SVG at all.
+{% endhint %}
+
+{% hint style="info" %}
+Since 1.6.0, selecting a processor whose PHP extension is not loaded fails at configuration time with an
+explicit message, instead of a missing-service error much later in the container compilation.
 {% endhint %}
 
 **Basic configuration:**
@@ -345,11 +351,15 @@ pwa:
         tile_color: '#2196f3'
 
         # Additional options
-        use_start_image: true
         low_resolution: false
         potrace: 'potrace'
 ```
 {% endcode %}
+
+{% hint style="warning" %}
+**Deprecated since 1.6.0:** `use_start_image` moved out of this section. It now only seeds
+`pwa.startup_images.enabled` — see [Startup Images](startup-images.md).
+{% endhint %}
 
 {% hint style="warning" %}
 **Deprecated options:** The following flat options are deprecated since 1.3.0 and will be removed in 2.0:
