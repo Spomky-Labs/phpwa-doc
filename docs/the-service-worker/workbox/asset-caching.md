@@ -1,4 +1,4 @@
-# Asset Caching
+# Asset caching
 
 !!! danger
 

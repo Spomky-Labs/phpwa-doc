@@ -9,13 +9,13 @@ This component is particularly useful for applications that need to:
 * Crop or restrict the captured area to specific DOM elements
 * Process media streams for video conferencing, tutorials, or content creation
 
-## Browser Support
+## Browser support
 
 The Media Capture API and Screen Capture API are widely supported in modern browsers. However, some advanced features like `restrictToElement()` and `restrictToRegion()` may have limited support. Always check browser compatibility before implementing these features.
 
 **Usage**
 
-### Basic Camera and Microphone Capture
+### Basic camera and microphone capture
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/capture') }}>
@@ -37,7 +37,7 @@ The Media Capture API and Screen Capture API are widely supported in modern brow
 </script>
 ```
 
-### Screen Capture with Recording
+### Screen capture with recording
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/capture') }}>
@@ -80,7 +80,7 @@ The Media Capture API and Screen Capture API are widely supported in modern brow
 </script>
 ```
 
-### Capture with Region Restriction
+### Capture with region restriction
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/capture') }}>
@@ -107,7 +107,7 @@ The Media Capture API and Screen Capture API are widely supported in modern brow
 
 ### Parameters
 
-#### For the `media` Action
+#### For the `media` action
 
 The `media` action captures audio and video from the user's camera and microphone.
 
@@ -129,7 +129,7 @@ Example:
 }
 ```
 
-#### For the `capture` Action
+#### For the `capture` action
 
 The `capture` action initiates screen sharing with advanced options.
 
@@ -142,7 +142,7 @@ The `capture` action initiates screen sharing with advanced options.
 * `surfaceSwitching`: Allow switching between surfaces. Values: `"include"` or `"exclude"`
 * `systemAudio`: Capture system audio. Values: `"include"` or `"exclude"`
 
-#### For the `record` Action
+#### For the `record` action
 
 * `timeSlice`: The number of milliseconds to record into each Blob. If not specified, the entire recording is in a single Blob. Default: `1000`
 
@@ -176,7 +176,7 @@ The `capture` action initiates screen sharing with advanced options.
 * `pwa--capture:track:ended`: Dispatched when a media track ends (e.g., user stops sharing)
 * `pwa--capture:error`: Dispatched when an error occurs. Payload: `{error}`
 
-### Best Practices
+### Best practices
 
 1. **Always handle the `error` event**: Media capture can fail for various reasons (permissions denied, unsupported constraints, etc.)
 2. **Clean up resources**: Call the `stop` action when the capture is no longer needed to release camera/screen resources

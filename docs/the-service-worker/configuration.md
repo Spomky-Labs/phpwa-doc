@@ -36,7 +36,7 @@ pwa:
         dest: "/foo/service-worker.js"
 ```
 
-### Service Worker Initialization
+### Service worker initialization
 
 The Service Worker initialization script uses either Workbox Window if enabled or a smiliar Vanilla JS script.
 
@@ -48,7 +48,7 @@ symfony console importmap:require workbox-window
 
 The two other options are also available:
 
-### Other Options
+### Other options
 
 The Service worker section has other options you may be interested in.
 
@@ -60,7 +60,7 @@ The `scope` parameter defaults to `/`. It is a string representing the service w
 
 The `use_cache` parameter is enable by default. It is a boolean that sets how the HTTP cache is used for service worker script resources during updates.
 
-#### Skip Waiting
+#### Skip waiting
 
 The `skip_waiting` parameter is disabled by default. It ensures that any new versions of a service worker will take over the page and become activated immediately. It is safe in general, but may create issues when the old service worker is handling events while it is updated.
 
@@ -75,7 +75,7 @@ pwa:
         skip_waiting: false
 ```
 
-### Compiling the Service Worker
+### Compiling the service worker
 
 The service worker is compiled using the `pwa:compile` command:
 

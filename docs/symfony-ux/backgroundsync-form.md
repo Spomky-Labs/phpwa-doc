@@ -1,4 +1,4 @@
-# BackgroundSync Form
+# BackgroundSync form
 
 The BackgroundSync Form controller handles form submission with offline support. When the user is online, forms are submitted normally. When offline, form data is queued and automatically retried when the connection is restored.
 
@@ -63,7 +63,7 @@ Enable the controller in your `assets/controllers.json`:
 | `after:send` | `{ url, params, response }` | Dispatched after the fetch response is received. |
 | `error` | `{ error }` | Fetch request failed. |
 
-## Supported Content Types
+## Supported content types
 
 The controller supports the following form encoding types:
 
@@ -71,7 +71,7 @@ The controller supports the following form encoding types:
 - `application/json` - JSON-encoded form data
 - `application/x-www-form-urlencoded` - Standard URL-encoded form data
 
-## How It Works
+## How it works
 
 1. User submits the form
 2. The controller validates the form using HTML5 validation
@@ -82,7 +82,7 @@ The controller supports the following form encoding types:
 7. When the connection is restored, the service worker replays the queued request
 8. On success, the user is optionally redirected to the `redirection` URL
 
-## Example: Contact Form with Offline Support
+## Example: Contact form with offline support
 
 ```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -116,7 +116,7 @@ pwa:
 </form>
 ```
 
-## Example: JSON API Form
+## Example: JSON API form
 
 ```twig title="templates/api/form.html.twig" linenums="1"
 <form {{ stimulus_controller('pwa/backgroundsync-form', {
@@ -136,7 +136,7 @@ pwa:
 </form>
 ```
 
-## Related Documentation
+## Related documentation
 
 - [Background Sync](../the-service-worker/workbox/background-sync.md) - Service worker background sync configuration
 - [Sync Broadcast](sync-broadcast.md) - Monitor sync queue status

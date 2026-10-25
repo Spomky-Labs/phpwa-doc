@@ -1,4 +1,4 @@
-# Share Target
+# Share target
 
 The Share Target feature enhances the functionality of Progressive Web Apps (PWAs) by seamlessly integrating them into the native operating system's sharing capabilities. This means that when users come across content that they want to share from any app or browser, your PWA can appear in the list of sharing options alongside other native applications.
 
@@ -22,21 +22,21 @@ pwa:
 
     The `POST` request is ideally replied with an _HTTP 303 See Other redirect_ to avoid multiple `POST` requests from being submitted if a page refresh was initiated by the user, for example.
 
-### `action` Parameter
+### `action` parameter
 
 The URL of the share target. See the [URL parameter](shortcuts.md#url-parameter) for the details.
 
-### `method` Parameter
+### `method` parameter
 
 The HTTP request method to use. Either `GET` or `POST`.
 
 Use `POST` if the shared data includes binary data like image(s), or if it changes the target app, for example, if it creates a data point like a bookmark.
 
-### `enctype` Parameter
+### `enctype` parameter
 
 The encoding of the share data when a `POST` request is used. Ignored with `GET` requests.
 
-### `params` Parameter
+### `params` parameter
 
 An object to configure the share parameters.
 

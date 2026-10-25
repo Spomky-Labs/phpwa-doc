@@ -1,4 +1,4 @@
-# Content Security Policy
+# Content security policy
 
 If your application uses Content Security Policy (CSP) to declare and restrict script execution, the Service Worker will not be loaded as expected.
 

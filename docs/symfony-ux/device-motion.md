@@ -1,4 +1,4 @@
-# Device Motion
+# Device motion
 
 The Device Motion component provides access to motion sensor data from your device's accelerometer and gyroscope. This component listens to devicemotion events from the Device Motion API and emits normalized update events containing acceleration, acceleration including gravity, rotation rate, and sampling interval. It automatically manages the permission flow when required by the device.
 
@@ -13,7 +13,7 @@ This component is particularly useful for:
 * Building immersive storytelling and multimedia applications
 * Implementing gesture-based navigation and controls
 
-## Browser Support
+## Browser support
 
 The Device Motion API is part of the Generic Sensor API family and relies on the `devicemotion` event which is widely supported across modern browsers.
 
@@ -29,7 +29,7 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
 
 ## Usage
 
-### Basic Motion Detection
+### Basic motion detection
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion') }}>
@@ -62,7 +62,7 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
 </script>
 ```
 
-### Shake Detection
+### Shake detection
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion') }}>
@@ -114,7 +114,7 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
 </style>
 ```
 
-### Tilt-Based UI Control
+### Tilt-based UI control
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion', { throttleValue: 100 }) }}>
@@ -147,7 +147,7 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
 </script>
 ```
 
-### Motion-Based Game Controller
+### Motion-based game controller
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion', { throttleValue: 50 }) }}>
@@ -215,9 +215,9 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
 </script>
 ```
 
-## Best Practices
+## Best practices
 
-### Performance Optimization
+### Performance optimization
 
 !!! success
 
@@ -235,7 +235,7 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
 </div>
 ```
 
-### Permission Handling
+### Permission handling
 
 !!! warning
 
@@ -271,7 +271,7 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
 </script>
 ```
 
-### Coordinate System Understanding
+### Coordinate system understanding
 
 !!! info
 
@@ -282,7 +282,7 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
 
     Understanding this coordinate system is crucial for implementing motion-based features correctly.
 
-### Battery Consideration
+### Battery consideration
 
 !!! warning
 
@@ -291,7 +291,7 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
     - Using appropriate throttle values
     - Stopping tracking when not actively needed
 
-### Null Value Handling
+### Null value handling
 
 ```javascript linenums="1"
 host.addEventListener('device-motion:updated', (e) => {
@@ -309,9 +309,9 @@ host.addEventListener('device-motion:updated', (e) => {
 });
 ```
 
-## Common Use Cases
+## Common use cases
 
-### 1. Shake to Undo/Refresh
+### 1. Shake to undo/refresh
 
 Implement a shake gesture to undo actions or refresh content, similar to many mobile apps.
 
@@ -352,7 +352,7 @@ Implement a shake gesture to undo actions or refresh content, similar to many mo
 </script>
 ```
 
-### 2. Step Counter
+### 2. Step counter
 
 Track device movement to count steps (simplified implementation).
 
@@ -399,7 +399,7 @@ Track device movement to count steps (simplified implementation).
 </script>
 ```
 
-### 3. Orientation-Adaptive Content
+### 3. Orientation-adaptive content
 
 Display different content or adjust UI based on how the user is holding their device.
 
@@ -442,7 +442,7 @@ Display different content or adjust UI based on how the user is holding their de
 </style>
 ```
 
-### 4. Gesture-Based Navigation
+### 4. Gesture-based navigation
 
 Navigate through content using tilt gestures.
 
@@ -492,7 +492,7 @@ Navigate through content using tilt gestures.
 </script>
 ```
 
-## API Reference
+## API reference
 
 ### Parameters
 
@@ -579,7 +579,7 @@ Fired on every device motion event (as delivered by the browser and subject to t
     - `rotationRate`: Angular velocity around each axis in degrees per second
     - `interval`: Time interval between motion samples in milliseconds
 
-## Related Components
+## Related components
 
 - [Device Orientation](device-orientation.md) - Access device orientation angles (alpha, beta, gamma)
 - [Geolocation](geolocation.md) - Track device position and movement

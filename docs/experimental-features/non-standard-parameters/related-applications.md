@@ -1,4 +1,4 @@
-# Related Applications
+# Related applications
 
 The `prefer_related_applications` member is a boolean value that specifies that applications listed in `related_applications` should be preferred over the web application.
 

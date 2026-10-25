@@ -1,4 +1,4 @@
-# Image Caching
+# Image caching
 
 By default, a maximum of 60 images are cached for 1 year. The supported image extensions extensions are as follows:&#x20;
 

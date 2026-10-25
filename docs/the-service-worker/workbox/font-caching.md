@@ -1,4 +1,4 @@
-# Font Caching
+# Font caching
 
 By default, 30 fonts can be cached for 1 year. This only comprises fonts served directly by your application. The supported fonts are as follows:
 
@@ -20,7 +20,7 @@ pwa:
                 max_age: 30 days
 ```
 
-### Google Font Caching
+### Google font caching
 
 Fonts served by Google Fonts have a dedicated rule. It is enabled by default and you can disable it or customize some parameters.
 

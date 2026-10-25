@@ -2,9 +2,9 @@
 
 This page describes the changes you need to make when upgrading from version 1.4.x to 1.5.0.
 
-## Breaking Changes
+## Breaking changes
 
-### Default Caching Strategy Changed
+### Default caching strategy changed
 
 The default resource cache strategy has been changed from `NetworkFirst` to `StaleWhileRevalidate`.
 
@@ -21,15 +21,15 @@ pwa:
                   strategy: 'NetworkFirst'
 ```
 
-### Broadcast Default Changed
+### Broadcast default changed
 
 The `broadcast` option for `StaleWhileRevalidate` resource caches now defaults to `true` (was `false`).
 
 **Impact**: Clients will be notified via BroadcastChannel when cached content is updated in the background. This is generally desirable for StaleWhileRevalidate but may trigger unexpected behavior if you listen to broadcast events.
 
-## Deprecated Configuration Options
+## Deprecated configuration options
 
-### Workbox Configuration Restructuring
+### Workbox configuration restructuring
 
 Three Workbox configuration options have been moved under a new `config` node. The old options still work but trigger deprecation warnings and will be removed in 2.0.0.
 
@@ -68,9 +68,9 @@ pwa:
                 debug: true  # Controls Workbox debug logging (default: true)
 ```
 
-## New Features
+## New features
 
-### Navigation Preload
+### Navigation preload
 
 Speeds up navigation requests by starting network requests in parallel with service worker boot-up.
 
@@ -87,7 +87,7 @@ pwa:
 
 See [Navigation Preload](../the-service-worker/workbox/navigation-preload.md) for details.
 
-### Resource Hints
+### Resource hints
 
 Automatically inject `<link>` tags for preconnect, dns-prefetch, and preload resources.
 
@@ -109,7 +109,7 @@ pwa:
 
 See [Resource Hints](../performance/resource-hints.md) for details.
 
-### Early Hints (HTTP 103)
+### Early hints (HTTP 103)
 
 Send HTTP 103 Early Hints responses for faster resource loading on supported servers (FrankenPHP, Caddy, etc.).
 
@@ -145,7 +145,7 @@ pwa:
 
 See [Speculation Rules](../performance/speculation-rules.md) for details.
 
-### Screenshot Generation with PHP Attribute
+### Screenshot generation with PHP attribute
 
 Generate screenshots automatically from your routes using the `#[Screenshot]` PHP attribute:
 
@@ -166,11 +166,11 @@ public function index(): Response
 
 See [Screenshots](../image-management/screenshots.md) for details.
 
-### Mobile Web App Capable Meta Tag
+### Mobile web app capable meta tag
 
 The bundle now automatically injects the `<meta name="mobile-web-app-capable" content="yes">` tag when the manifest `display` mode is set to `standalone`, `fullscreen`, or `minimal-ui`. This improves iOS compatibility.
 
-### Cache Strategy Listing Command
+### Cache strategy listing command
 
 A new console command lists all registered cache strategies:
 
@@ -178,7 +178,7 @@ A new console command lists all registered cache strategies:
 php bin/console pwa:cache:list
 ```
 
-### PreloadUrl Attribute
+### PreloadUrl attribute
 
 The `#[PreloadUrl]` attribute allows you to declare URLs that should be precached by the service worker:
 
@@ -195,7 +195,7 @@ public function dashboard(): Response
 
 See the [PreloadUrl documentation](../the-service-worker/workbox/resource-caching.md) for details.
 
-## Migration Checklist
+## Migration checklist
 
 - [ ] Move `use_cdn`, `version`, and `workbox_public_url` under the `config` node
 - [ ] Review default caching strategy change (NetworkFirst → StaleWhileRevalidate)
@@ -205,7 +205,7 @@ See the [PreloadUrl documentation](../the-service-worker/workbox/resource-cachin
 - [ ] Evaluate new features: Navigation Preload, Resource Hints, Speculation Rules
 - [ ] Run `php bin/console pwa:compile` to regenerate assets
 
-## Still Deprecated (from earlier versions)
+## Still deprecated (from earlier versions)
 
 The following options were deprecated in earlier versions and will also be removed in 2.0.0:
 

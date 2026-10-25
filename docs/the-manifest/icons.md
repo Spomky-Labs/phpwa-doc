@@ -18,7 +18,7 @@ pwa:
               sizes: 0
 ```
 
-### `src` Parameter
+### `src` parameter
 
 The `src` parameter is the path to the resource file. It can be an [Asset Mapper resource](https://pwa.spomky-labs.com/), a relative path or an absolute path to the resource.
 
@@ -34,7 +34,7 @@ pwa:
               sizes: [48]
 ```
 
-### `sizes` Parameter
+### `sizes` parameter
 
 The sizes parameter indicates the suitable sizes for the icon. The expected value is an positive integer or a list of positive integers.
 
@@ -52,7 +52,7 @@ pwa:
               sizes: 0
 ```
 
-### `format` Parameter
+### `format` parameter
 
 The `format` parameter corresponds to the mime type of the icon.
 
@@ -60,7 +60,7 @@ If this value is omitted and the component `symfony/mime` is present, the bundle
 
 In general, browsers can read `image/png` and `image/jpg` types. Modern browsers may support `image/webp`.
 
-### `purpose` Parameter
+### `purpose` parameter
 
 The purpose `maskable` icons indicates the icon has a security margin and borders can be cropped on certain devices.
 

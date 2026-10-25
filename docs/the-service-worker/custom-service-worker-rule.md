@@ -1,4 +1,4 @@
-# Custom Service Worker Rule
+# Custom service worker rule
 
 If needed, you can define custom sections in the service worker appended by your own services and depending on your application configuration or requirements.
 

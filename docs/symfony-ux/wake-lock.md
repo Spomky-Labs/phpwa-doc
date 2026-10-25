@@ -11,7 +11,7 @@ This component is useful for applications such as:
 * Fitness or workout apps displaying exercise instructions
 * Navigation or map applications
 
-## Browser Support
+## Browser support
 
 The Screen Wake Lock API is supported in most modern browsers including Chrome, Edge, and Safari. Always check browser compatibility and handle the case where the API is not available.
 
@@ -21,7 +21,7 @@ The Screen Wake Lock API is supported in most modern browsers including Chrome, 
 
 ## Usage
 
-### Basic Wake Lock Toggle
+### Basic Wake Lock toggle
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/wake-lock') }}>
@@ -41,7 +41,7 @@ The Screen Wake Lock API is supported in most modern browsers including Chrome, 
 </script>
 ```
 
-### Explicit Lock and Unlock
+### Explicit lock and unlock
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/wake-lock') }}>
@@ -72,7 +72,7 @@ The Screen Wake Lock API is supported in most modern browsers including Chrome, 
 </script>
 ```
 
-### Recipe App Example
+### Recipe app example
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/wake-lock') }} class="recipe-viewer">
@@ -170,7 +170,7 @@ document.addEventListener('pwa--wake-lock:updated', (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Always provide UI feedback**: Show users when the wake lock is active so they understand why their screen isn't dimming
 2. **Make it optional**: Allow users to enable/disable the wake lock based on their preference
@@ -179,14 +179,14 @@ document.addEventListener('pwa--wake-lock:updated', (event) => {
 5. **Provide a toggle**: Use the `toggle` action with checkboxes or switches for better UX
 6. **Consider battery impact**: Inform users that keeping the screen awake will consume more battery
 
-## Common Pitfalls
+## Common pitfalls
 
 * **Wake lock requires user interaction**: The lock can only be requested after a user gesture (click, touch, etc.)
 * **Automatic release**: Wake locks are automatically released when the page becomes hidden (user switches tabs or minimizes browser)
 * **No persistent wake locks**: Wake locks don't persist across page reloads
 * **HTTPS required**: Like most modern web APIs, the Screen Wake Lock API requires a secure context (HTTPS)
 
-## Complete Example
+## Complete example
 
 Here's a complete example for a meditation timer app:
 

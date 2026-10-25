@@ -1,8 +1,8 @@
-# Navigation Preload
+# Navigation preload
 
 Navigation Preload is a feature that speeds up navigation requests by allowing the browser to make network requests in parallel with service worker boot-up. Without Navigation Preload, the browser must wait for the service worker to start before making network requests, which can introduce latency.
 
-## How It Works
+## How it works
 
 When a user navigates to a page:
 
@@ -11,7 +11,7 @@ When a user navigates to a page:
 
 This can significantly improve perceived performance, especially on devices where service worker startup is slow.
 
-## When to Use Navigation Preload
+## When to use navigation preload
 
 Navigation Preload is beneficial when:
 
@@ -19,7 +19,7 @@ Navigation Preload is beneficial when:
 - You are **not** precaching HTML pages
 - You want to reduce the latency introduced by service worker startup
 
-## When NOT to Use Navigation Preload
+## When NOT to use navigation preload
 
 !!! warning
 
@@ -40,11 +40,11 @@ pwa:
             navigation_preload: true
 ```
 
-## Browser Support
+## Browser support
 
 Navigation Preload is supported in modern browsers including Chrome, Edge, and Opera. Firefox and Safari do not currently support this feature, but Workbox handles this gracefully by falling back to standard behavior.
 
-## Further Reading
+## Further reading
 
 - [Workbox Navigation Preload Documentation](https://developer.chrome.com/docs/workbox/modules/workbox-navigation-preload/)
 - [Speed up Service Worker with Navigation Preloads](https://web.dev/navigation-preload/)

@@ -1,4 +1,4 @@
-# Complete Example
+# Complete example
 
 Here's a comprehensive manifest configuration showing all available features:
 
@@ -56,7 +56,7 @@ pwa:
             note_taking_url: "app_note_taking"
 ```
 
-## Scope Extensions
+## Scope extensions
 
 The `scope_extensions` property allows your PWA to control multiple subdomains and top-level domains as a single entity:
 
@@ -68,7 +68,7 @@ pwa:
             - origin: "*.example.co.uk"
 ```
 
-## Note Taking
+## Note taking
 
 The `note_taking` property declares note-taking capabilities, allowing the application to be registered as a note-taking app:
 

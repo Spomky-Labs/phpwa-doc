@@ -9,11 +9,11 @@ composer require --dev symfony/panther
 composer require --dev dbrekelmans/bdi && vendor/bin/bdi detect drivers
 ```
 
-## Image Processor
+## Image processor
 
 Please read the section on [the Icons page](icons.md#image-processor).
 
-## Using PHP Attributes
+## Using PHP attributes
 
 Declare screenshots directly on your controller methods using the `#[Screenshot]` attribute. This provides automatic manifest integration.
 
@@ -43,7 +43,7 @@ class HomeController extends AbstractController
 }
 ```
 
-### Generating Screenshots
+### Generating screenshots
 
 The `pwa:compile` command automatically generates screenshots from attributes before compiling the manifest:
 
@@ -59,7 +59,7 @@ php bin/console pwa:compile --no-screenshots
 
 The command will automatically discover all routes with `#[Screenshot]` attributes and generate the screenshots.
 
-### Attribute Parameters
+### Attribute parameters
 
 | Parameter    | Type   | Required | Description |
 |--------------|--------|----------|-------------|
@@ -72,7 +72,7 @@ The command will automatically discover all routes with `#[Screenshot]` attribut
 | `output`     | string | No       | Custom output directory (defaults to `assets/screenshots/`) |
 | `format`     | string | No       | Output format: png, jpg, webp (defaults to png) |
 
-### Automatic Manifest Integration
+### Automatic manifest integration
 
 Screenshots declared with `#[Screenshot]` attributes are **automatically integrated into your PWA manifest**. The `ManifestScreenshotListener` discovers all controller methods with the attribute and adds the corresponding screenshot files to your manifest during compilation.
 
@@ -87,7 +87,7 @@ When a screenshot file exists, it's automatically added to the manifest with:
 
 **No manual configuration needed!**
 
-### Multi-Locale Support
+### Multi-locale support
 
 For internationalized applications, use the `locales` parameter to generate screenshots for multiple locales with a single attribute:
 
@@ -108,7 +108,7 @@ This generates screenshots for each locale with appropriate filenames (e.g., `ap
 
 The manifest compiler filters screenshots by the current locale, ensuring only relevant screenshots are included in the localized manifest.
 
-### Routes with Parameters
+### Routes with parameters
 
 For routes with other parameters (like entity IDs), use the `parameters` attribute. Use multiple `#[Screenshot]` attributes for different parameter combinations:
 
@@ -132,7 +132,7 @@ public function show(int $id): Response
 }
 ```
 
-## Size Profiles
+## Size profiles
 
 The `sizes` array accepts:
 - **Predefined profile names**: `"fhd"`, `"iphone-14"`, `"ipad"`, `"desktop-lg"`, etc.
@@ -141,9 +141,9 @@ The `sizes` array accepts:
 
 Example: `"ipad/LP"` generates both 768x1024 (portrait) and 1024x768 (landscape) screenshots.
 
-### Available Size Profiles
+### Available size profiles
 
-#### Standard Resolutions (Landscape)
+#### Standard resolutions (landscape)
 
 | Profile | Dimensions | Form Factor |
 |---------|------------|-------------|
@@ -153,7 +153,7 @@ Example: `"ipad/LP"` generates both 768x1024 (portrait) and 1024x768 (landscape)
 | `4k` | 3840×2160 | wide |
 | `8k` | 7680×4320 | wide |
 
-#### Portrait Resolutions
+#### Portrait resolutions
 
 | Profile | Dimensions | Form Factor |
 |---------|------------|-------------|
@@ -162,7 +162,7 @@ Example: `"ipad/LP"` generates both 768x1024 (portrait) and 1024x768 (landscape)
 | `1080p` | 1080×1920 | narrow |
 | `1440p` | 1440×2560 | narrow |
 
-#### iPhone Models
+#### iPhone models
 
 | Profile | Dimensions | Form Factor |
 |---------|------------|-------------|
@@ -177,7 +177,7 @@ Example: `"ipad/LP"` generates both 768x1024 (portrait) and 1024x768 (landscape)
 | `iphone-15` | 393×852 | narrow |
 | `iphone-15-pro-max` | 430×932 | narrow |
 
-#### Android Devices
+#### Android devices
 
 | Profile | Dimensions | Form Factor |
 |---------|------------|-------------|
@@ -201,7 +201,7 @@ Example: `"ipad/LP"` generates both 768x1024 (portrait) and 1024x768 (landscape)
 
     For tablets, use orientation selectors to generate both portrait and landscape: `ipad/LP`
 
-#### Web Breakpoints
+#### Web breakpoints
 
 | Profile | Dimensions | Form Factor |
 |---------|------------|-------------|
@@ -216,7 +216,7 @@ Example: `"ipad/LP"` generates both 768x1024 (portrait) and 1024x768 (landscape)
 
 ## Configuration
 
-### User Agent
+### User agent
 
 During screenshot generation, the bundle uses a special user agent (`PWAScreenshotBot` by default) to identify screenshot requests. When this user agent is detected, the Symfony profiler and debug toolbar are automatically disabled to ensure clean screenshots.
 
@@ -229,7 +229,7 @@ pwa:
         user_agent: 'MyCustomScreenshotBot'
 ```
 
-### Custom Web Client
+### Custom web client
 
 For advanced use cases, you can provide a custom Panther client:
 

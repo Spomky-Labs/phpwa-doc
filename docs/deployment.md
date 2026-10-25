@@ -16,7 +16,7 @@ This command also compiles the PWA files. If you disabled that integration with 
 symfony console pwa:compile
 ```
 
-## Applications Served From A Sub-Directory
+## Applications served from a sub-directory
 
 If your application is not served from the root of its domain, e.g. `https://example.com/my-project/`, all the URLs the bundle generates — favicons, manifest, service worker, Workbox scripts, precached assets — are prefixed with the base path, exactly like the URLs returned by the `asset()` Twig function.
 

@@ -1,4 +1,4 @@
-# Service Worker Creation
+# Service worker creation
 
 The bundle provides a simple console command to create a very basic Service Worker:
 

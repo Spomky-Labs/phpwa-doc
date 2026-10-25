@@ -1,4 +1,4 @@
-# Complete Example
+# Complete example
 
 This page shows a comprehensive service worker configuration using all available features.
 
@@ -84,9 +84,9 @@ pwa:
             navigation_preload: true
 ```
 
-## What This Configuration Does
+## What this configuration does
 
-### Asset, Image, and Font Caching
+### Asset, image, and font caching
 
 Static resources are cached with long expiration times for instant loading:
 - **Assets** (CSS, JS): CacheFirst, up to 100 entries, 1 year max
@@ -94,12 +94,12 @@ Static resources are cached with long expiration times for instant loading:
 - **Fonts**: CacheFirst, up to 30 entries, 1 year max
 - **Google Fonts**: Stylesheets via StaleWhileRevalidate, font files via CacheFirst
 
-### Page and API Caching
+### Page and API caching
 
 - **Navigation requests**: StaleWhileRevalidate with broadcast updates, so users see cached pages instantly while fresh content loads in the background
 - **API calls**: NetworkFirst with 3-second timeout, falling back to cache when offline
 
-### Offline Support
+### Offline support
 
 - Offline fallback page shown when no cached page is available
 - Fallback image and font for graceful degradation
@@ -110,7 +110,7 @@ Static resources are cached with long expiration times for instant loading:
 - **Navigation Preload**: Network requests start in parallel with service worker boot
 - **Cache Cleaning**: Old caches are removed on service worker install
 
-## Combining with Push Notifications
+## Combining with push notifications
 
 Add push notification support alongside caching:
 
@@ -135,7 +135,7 @@ self.addEventListener('notificationclick', (event) => {
 });
 ```
 
-## Combining with Periodic Sync
+## Combining with periodic sync
 
 Add periodic background sync for content updates:
 
@@ -151,7 +151,7 @@ const syncContent = async () => {
 registerPeriodicSyncTask('content-sync', syncContent);
 ```
 
-## Related Documentation
+## Related documentation
 
 - [Configuration](configuration.md) - Service worker configuration reference
 - [Content Security Policy](content-security-policy.md) - CSP and nonce support

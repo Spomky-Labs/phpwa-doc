@@ -1,4 +1,4 @@
-# EDGE Side Panel
+# EDGE side panel
 
 Progressive Web Apps can opt-in to be pinned to the sidebar in Microsoft Edge.
 

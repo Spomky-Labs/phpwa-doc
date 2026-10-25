@@ -2,11 +2,11 @@
 
 This page explains how to debug and monitor your PWA during development.
 
-## Debug Toolbar Integration
+## Debug toolbar integration
 
 The bundle integrates with Symfony's Web Debug Toolbar, providing a dedicated PWA panel for inspecting your Progressive Web App configuration.
 
-### What the Toolbar Shows
+### What the toolbar shows
 
 **Manifest Tab:**
 - Current manifest configuration
@@ -28,7 +28,7 @@ The bundle integrates with Symfony's Web Debug Toolbar, providing a dedicated PW
 - Screenshot images
 - Startup images (iOS)
 
-### Installability Checker
+### Installability checker
 
 The toolbar includes an installability checker that analyzes your PWA configuration:
 
@@ -40,11 +40,11 @@ The toolbar includes an installability checker that analyzes your PWA configurat
 
     Browser installation requirements change frequently. The bundle's installability indicator is a guide, but actual installation availability depends on the browser and platform.
 
-## Service Worker Debugging
+## Service worker debugging
 
 Debugging service workers requires a different approach than regular JavaScript.
 
-### Development Mode Features
+### Development mode features
 
 In development (`APP_ENV=dev`), the service worker includes:
 
@@ -78,7 +78,7 @@ From here you can:
 2. Go to **Application** tab (or `about:debugging#/runtime/this-firefox`)
 3. View service workers and storage
 
-### Common Debugging Tasks
+### Common debugging tasks
 
 **Force Service Worker Update:**
 ```javascript
@@ -102,7 +102,7 @@ caches.keys().then(names => {
 navigator.serviceWorker.controller
 ```
 
-### Production Mode
+### Production mode
 
 In production (`APP_ENV=prod`), the service worker is optimized:
 
@@ -110,15 +110,15 @@ In production (`APP_ENV=prod`), the service worker is optimized:
 - Comments stripped out
 - Console logging disabled
 
-## Logging Configuration
+## Logging configuration
 
 The bundle uses PSR-3 logging to record important events and errors.
 
-### Default Logger
+### Default logger
 
 By default, the bundle uses Symfony's default logger channel.
 
-### Custom Logger
+### Custom logger
 
 Configure a custom logger for PWA-specific logging:
 
@@ -141,7 +141,7 @@ monolog:
             channels: ['pwa']
 ```
 
-### What Gets Logged
+### What gets logged
 
 The bundle logs:
 - Manifest compilation events
@@ -151,16 +151,16 @@ The bundle logs:
 - Configuration errors
 - Runtime warnings
 
-### Logging Levels
+### Logging levels
 
 - **DEBUG**: Detailed processing information (development only)
 - **INFO**: Normal operational messages
 - **WARNING**: Non-critical issues (e.g., missing optional config)
 - **ERROR**: Critical problems that prevent PWA functionality
 
-## Development Tips
+## Development tips
 
-### Testing Offline Mode
+### Testing offline mode
 
 **Method 1: Browser DevTools**
 1. Open DevTools → Network tab
@@ -172,7 +172,7 @@ The bundle logs:
 2. Select "Slow 3G" or "Fast 3G"
 3. Test performance with limited connectivity
 
-### Testing Installation
+### Testing installation
 
 **Desktop:**
 1. Open your app in Chrome/Edge
@@ -184,7 +184,7 @@ The bundle logs:
 2. Look for "Add to Home Screen" prompt
 3. Test the installed app experience
 
-### Cache Inspection
+### Cache inspection
 
 View cached resources:
 1. DevTools → Application tab
@@ -192,7 +192,7 @@ View cached resources:
 3. Click on cache names to see contents
 4. Right-click resources to delete
 
-### Manifest Validation
+### Manifest validation
 
 Validate your manifest:
 1. DevTools → Application tab
@@ -200,7 +200,7 @@ Validate your manifest:
 3. Review all properties
 4. Check for warnings or errors
 
-### Testing Updates
+### Testing updates
 
 Test how your PWA handles updates:
 
@@ -212,9 +212,9 @@ Test how your PWA handles updates:
 
 Use `skip_waiting: false` in config to test manual update flows.
 
-## Common Development Issues
+## Common development issues
 
-### Manifest Not Loading
+### Manifest not loading
 
 **Symptoms:** Manifest link appears in HTML but DevTools shows "No manifest detected"
 
@@ -224,7 +224,7 @@ Use `skip_waiting: false` in config to test manual update flows.
 3. Verify JSON syntax (use a JSON validator)
 4. Ensure `{{ pwa() }}` is in `<head>` section
 
-### Service Worker Not Updating
+### Service worker not updating
 
 **Symptoms:** Changes to service worker don't appear
 
@@ -234,7 +234,7 @@ Use `skip_waiting: false` in config to test manual update flows.
 3. Check "Update on reload" in DevTools
 4. Unregister and re-register the service worker
 
-### Install Prompt Not Showing
+### Install prompt not showing
 
 **Symptoms:** No install option appears
 
@@ -245,7 +245,7 @@ Use `skip_waiting: false` in config to test manual update flows.
 4. No console errors
 5. User engagement criteria met (varies by browser)
 
-### Caching Issues
+### Caching issues
 
 **Symptoms:** Old content still showing after updates
 
@@ -255,7 +255,7 @@ Use `skip_waiting: false` in config to test manual update flows.
 3. Implement cache expiration strategies
 4. Use cache-first only for static assets
 
-## Best Practices for Development
+## Best practices for development
 
 1. **Use HTTPS locally**: Use `symfony serve` with TLS or configure a local SSL certificate
 2. **Test on real devices**: Emulators don't perfectly match real device behavior

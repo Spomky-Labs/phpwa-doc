@@ -1,4 +1,4 @@
-# Connection Status
+# Connection status
 
 The Connection Status component is designed to monitor and react to changes in the user's internet connection status. This component provides a simple way to show a notification or change the state of your application when the user's device goes offline or comes back online.
 

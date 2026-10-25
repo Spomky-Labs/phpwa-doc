@@ -14,7 +14,7 @@ This component is particularly useful for:
 * Emergency contact selection in forms
 * Group creation and management features
 
-## Browser Support
+## Browser support
 
 The Contact Picker API is currently only available on Android devices with Chrome/Edge browsers. It's not supported on desktop or iOS platforms.
 
@@ -30,7 +30,7 @@ The Contact Picker API is currently only available on Android devices with Chrom
 
 ## Usage
 
-### Basic Contact Selection
+### Basic contact selection
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
@@ -72,7 +72,7 @@ The Contact Picker API is currently only available on Android devices with Chrom
 </script>
 ```
 
-### Multiple Contact Selection
+### Multiple contact selection
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
@@ -180,7 +180,7 @@ The Contact Picker API is currently only available on Android devices with Chrom
 </style>
 ```
 
-### Form Integration
+### Form integration
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
@@ -503,7 +503,7 @@ The Contact Picker API is currently only available on Android devices with Chrom
 </style>
 ```
 
-### Event Attendees Selector
+### Event attendees selector
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
@@ -808,7 +808,7 @@ The Contact Picker API is currently only available on Android devices with Chrom
 </style>
 ```
 
-### Contact Import for CRM
+### Contact import for CRM
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
@@ -1190,7 +1190,7 @@ document.addEventListener('pwa--contact-picker:unavailable', () => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Always provide fallback**: Not all platforms support Contact Picker - provide manual input
 2. **Handle empty data**: Contact properties can be null or empty - always check before using
@@ -1203,9 +1203,9 @@ document.addEventListener('pwa--contact-picker:unavailable', () => {
 9. **Use progressive enhancement**: Build core functionality without Contact Picker first
 10. **Inform users**: Explain why you need contact access and what you'll do with it
 
-## Handling Contact Data
+## Handling contact data
 
-### Extracting Primary Contact Info
+### Extracting primary contact info
 
 ```javascript
 function getPrimaryContactInfo(contact) {
@@ -1218,7 +1218,7 @@ function getPrimaryContactInfo(contact) {
 }
 ```
 
-### Validating Contact Data
+### Validating contact data
 
 ```javascript
 function validateContact(contact) {
@@ -1251,7 +1251,7 @@ function isValidEmail(email) {
 }
 ```
 
-### Deduplicating Contacts
+### Deduplicating contacts
 
 ```javascript
 function deduplicateContacts(contacts) {
@@ -1275,7 +1275,7 @@ function deduplicateContacts(contacts) {
 }
 ```
 
-## Complete Example: Contact Management App
+## Complete example: Contact management app
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
@@ -1706,7 +1706,7 @@ if (contact.icon) {
 }
 ```
 
-## Platform Compatibility
+## Platform compatibility
 
 | Platform | Support |
 |----------|---------|

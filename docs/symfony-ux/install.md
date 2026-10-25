@@ -10,7 +10,7 @@ This component is essential for:
 * Creating a seamless installation experience
 * Showing/hiding install prompts based on installation status
 
-## Browser Support
+## Browser support
 
 The installation prompt API (`beforeinstallprompt` event) is supported in Chromium-based browsers (Chrome, Edge, Opera). Other browsers may use different installation mechanisms. The controller gracefully handles all scenarios.
 
@@ -20,7 +20,7 @@ The installation prompt API (`beforeinstallprompt` event) is supported in Chromi
 
 ## Usage
 
-### Basic Install Button
+### Basic install button
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/install') }}>
@@ -44,7 +44,7 @@ The installation prompt API (`beforeinstallprompt` event) is supported in Chromi
 </script>
 ```
 
-### Install Banner with Animation
+### Install banner with animation
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/install') }}>
@@ -149,7 +149,7 @@ The installation prompt API (`beforeinstallprompt` event) is supported in Chromi
 </style>
 ```
 
-### Install Card in App Settings
+### Install card in app settings
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/install') }}>
@@ -199,7 +199,7 @@ The installation prompt API (`beforeinstallprompt` event) is supported in Chromi
 </script>
 ```
 
-### Smart Install Prompt with User Tracking
+### Smart install prompt with user tracking
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/install') }}>
@@ -345,7 +345,7 @@ document.addEventListener('pwa--install:cancelled', () => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Don't be pushy**: Show install prompts after users have engaged with your app
 2. **Provide value**: Explain benefits of installation (offline access, faster loading, etc.)
@@ -355,7 +355,7 @@ document.addEventListener('pwa--install:cancelled', () => {
 6. **Make it optional**: Never force installation; let users discover and install when ready
 7. **Track metrics**: Monitor installation rates and prompt dismissals to optimize your approach
 
-## Detection of Already Installed Apps
+## Detection of already installed apps
 
 The controller automatically detects if your PWA is already installed by checking if the app is running in standalone mode. This detection happens immediately on page load, so you can hide install buttons for users who have already installed your app.
 
@@ -366,9 +366,9 @@ document.addEventListener('pwa--install:installed', () => {
 });
 ```
 
-## Common Scenarios
+## Common scenarios
 
-### E-commerce Site
+### E-commerce site
 
 Show install prompt after user adds first item to cart:
 
@@ -384,7 +384,7 @@ function addToCart(item) {
 }
 ```
 
-### Content Site
+### Content site
 
 Show install prompt after user reads 3 articles:
 
@@ -398,7 +398,7 @@ if (articlesRead >= 3) {
 }
 ```
 
-### Gaming App
+### Gaming app
 
 Show install prompt after first game completed:
 

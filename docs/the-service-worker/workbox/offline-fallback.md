@@ -1,4 +1,4 @@
-# Offline Fallbacks
+# Offline fallbacks
 
 Workbox makes it easy to create robust offline experiences in web applications. When a user navigates to a page without an internet connection, instead of showing an error, your application can serve a predefined fallback page, image or font.
 

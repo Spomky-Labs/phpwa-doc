@@ -10,7 +10,7 @@ Progressive Web Apps may have icons of multiple formats and sizes to be correctl
 
     Icons shall be square images
 
-### Image Processor
+### Image processor
 
 The icon command requires an image processor to work to be declared in the configuration file. Two Image Processors are provided by the bundle.
 
@@ -28,7 +28,7 @@ pwa:
 
     SVG format is currently only supported by the Imagick processor.
 
-### Resizing Icons
+### Resizing icons
 
 From your shell, you can use the following command line to convert an image to a preset of sizes and using the same format as the input:
 
@@ -53,7 +53,7 @@ pwa:
 
     This configuration is to be adapt depending on the icon type (application, shortcut, widget...)
 
-### Formats And Sizes
+### Formats and sizes
 
 You can change the format and sizes by setting the values you need as options
 
@@ -61,7 +61,7 @@ You can change the format and sizes by setting the values you need as options
 symfony console pwa:create:icons /path/to/the/image.png --format="jpg" 48 96 256
 ```
 
-### Output Folder
+### Output folder
 
 Similarily, if you want to change the output folder, you can set it as an option.
 

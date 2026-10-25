@@ -1,4 +1,4 @@
-# Push Notifications
+# Push notifications
 
 If you are interested in Web Push notifications from the server side, please read about the bundle we maintain: [https://web-push.spomky-labs.com/](https://web-push.spomky-labs.com/)
 

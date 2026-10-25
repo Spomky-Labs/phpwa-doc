@@ -1,4 +1,4 @@
-# Resource Caching
+# Resource caching
 
 Developers can build more resilient and user-friendly web applications that perform reliably under various network conditions. Also, it is possible to warm cache a selection of resources. This is powerfull as it allows applications to partially work offline.
 
@@ -37,7 +37,7 @@ pwa:
 
     Please note that you can refer to any URLs, but only URLs served by your application will be cached.
 
-### Match Callback
+### Match callback
 
 The `match_callback` option is designed to specify the condition used to determine which requests should be cached based on the request URL. This option can take different types of values, such as
 
@@ -45,7 +45,7 @@ The `match_callback` option is designed to specify the condition used to determi
 * A Javasrcipt callback
 * A prefixed statement
 
-#### Regular Expression
+#### Regular expression
 
 You can directly pass a regular expression as a string or using the JS `RegExp` object.
 
@@ -56,7 +56,7 @@ You can directly pass a regular expression as a string or using the JS `RegExp` 
 
     Quotes are important!
 
-#### Javascript Callback
+#### Javascript callback
 
 Workbox gives you the `url`, the `params`, the `request` and the `event` objects. You can use any of those parameters to match with your cache.
 
@@ -67,7 +67,7 @@ Workbox gives you the `url`, the `params`, the `request` and the `event` objects
 
     Quotes are important!
 
-#### Prefixed Statements
+#### Prefixed statements
 
 This bundle allows the use of handlers to avoid the use of JS and simplify the way you declare the callbacks.
 
@@ -89,7 +89,7 @@ Provided Match Callback Handlers:
 | startsWith:  | Matches all pathnames starting with the value                                                                                                                                | <ul><li>startsWith: /dashboard</li><li>startsWith: /admin</li></ul>                        |
 | endsWith:    | Matches all pathnames ending with the value                                                                                                                                  | <ul><li>endsWith: .css</li><li>endsWith: -report.pdf</li></ul>                             |
 
-#### Custom Match Callback Handler
+#### Custom match callback handler
 
 If needed, you can create your own Match Callback Handler. It must implement `SpomkyLabs\PwaBundle\MatchCallbackHandler\MatchCallbackHandler` and should return a value compatible with[ the `capture` argument of the Workbox method `registerRoute`](https://developer.chrome.com/docs/workbox/modules/workbox-routing#method-registerRoute).
 
@@ -122,11 +122,11 @@ final readonly class MyVideosMatchCallbackHandler implements MatchCallbackHandle
 
     The class shall be declared as a service.
 
-### Cache Name Parameter
+### Cache name parameter
 
 The `cache_name` parameter is used to customize the cache name. If not set, a default value is defined.
 
-### Strategy Parameter
+### Strategy parameter
 
 The `strategy` option corresponds to the Workbox strategy.
 
@@ -152,11 +152,11 @@ Conversely, the Cache Only strategy serves responses from the cache, ignoring th
 
 Leveraging Workbox strategies allows you to fine-tune how your application handles caching, ensuring that your users get the best possible experience whether they are online or offline.
 
-### Network Timeout
+### Network timeout
 
 The Workbox `network_timeout` option indicates the number of seconds before the request falls back to the strategy. It is only available with NetworkFirst and NetworkOnly.
 
-### Max Entries / Max Age
+### Max entries / max age
 
 When set, this indicates the expiration strategy used for the resource cache. max\_age can be in seconds or a human-readable string
 
@@ -164,13 +164,13 @@ When set, this indicates the expiration strategy used for the resource cache. ma
 
 `max_entries` is a positive number. When the cache reaches the number of cached resources, old resources are removed.
 
-### Range Requests
+### Range requests
 
 When making a request, a `range` header can be set that tells the server to return only a portion of the full request. This is useful for certain files like a video file, where a user might change where to play the video.
 
 By setting the `range_requests: true`, this type of requests will be supported.
 
-### Broadcast Parameter
+### Broadcast parameter
 
 When accessing a page with the `StaleWhileRevalidate` strategy, the Service Worker will verify if a page update exists and will save it in the cache if any.
 
@@ -193,7 +193,7 @@ navigator.serviceWorker.addEventListener('message', async event => {
 });
 ```
 
-#### Broadcast Header
+#### Broadcast header
 
 By default, the page header used to check if the page is outdated or not are `Content-Length`, `ETag`, `Last-Modified`. These headers can be changed.
 
@@ -207,7 +207,7 @@ pwa:
                       - 'X-App-Cache'
 ```
 
-### Cacheable Responses
+### Cacheable responses
 
 By default, all responses with a `0` or `200` status code and that match with the `match_callback` option will be cached. It is possible to tell Workbox to cache only resources with a dedicated header or other status codes:
 

@@ -1,8 +1,8 @@
-# Custom Cache Strategy
+# Custom cache strategy
 
 The bundle provides a comprehensive set of cache strategies through configuration. However, for advanced use cases requiring specific behaviors not covered by the YAML configuration, you can create custom cache strategies programmatically.
 
-## When to Use Custom Strategies
+## When to use custom strategies
 
 Use custom cache strategies when you need:
 
@@ -14,7 +14,7 @@ Use custom cache strategies when you need:
 
 For most use cases, the [YAML configuration](../configuration.md) and [resource caching](resource-caching.md) are sufficient.
 
-## Quick Start: Using WorkboxCacheStrategy
+## Quick start: Using WorkboxCacheStrategy
 
 The easiest way to create custom cache strategies is using the `WorkboxCacheStrategy` helper class:
 
@@ -60,7 +60,7 @@ final readonly class MyCustomCacheStrategies implements HasCacheStrategiesInterf
 
     With service autoconfiguration enabled (default in Symfony), the tag `spomky_labs_pwa.cache_strategy` is added automatically. Otherwise, you need to tag your service manually.
 
-## Complete Example: Multiple Strategies
+## Complete example: Multiple strategies
 
 ```php title="src/Service/AdvancedCacheStrategies.php" linenums="1"
 <?php
@@ -175,7 +175,7 @@ WorkboxCacheStrategy::create(
 - `CacheStrategyInterface::STRATEGY_CACHE_ONLY` - Cache only, never network
 - `CacheStrategyInterface::STRATEGY_NETWORK_ONLY` - Network only, never cache
 
-### Fluent Methods
+### Fluent methods
 
 | Method | Description |
 |--------|-------------|
@@ -185,7 +185,7 @@ WorkboxCacheStrategy::create(
 | `withPreloadUrl(string, ...)` | Precache specific URLs on service worker install |
 | `withOptions(array)` | Set additional Workbox options (e.g., `networkTimeoutSeconds`) |
 
-## Available Workbox Plugins
+## Available Workbox plugins
 
 ### ExpirationPlugin
 
@@ -264,36 +264,36 @@ use SpomkyLabs\PwaBundle\WorkboxPlugin\RangeRequestsPlugin;
 RangeRequestsPlugin::create()
 ```
 
-## Match Callback Patterns
+## Match callback patterns
 
 The `matchCallback` parameter supports several formats:
 
-### Path Prefix
+### Path prefix
 ```php
 matchCallback: 'startsWith: /api/'
 ```
 
-### Regular Expression
+### Regular expression
 ```php
 matchCallback: 'regex: /\\/product\\/[0-9]+/'
 ```
 
-### Origin Match
+### Origin match
 ```php
 matchCallback: 'origin: https://api.example.com'
 ```
 
-### Custom JavaScript Callback
+### Custom JavaScript callback
 ```php
 matchCallback: '({url, request}) => url.pathname.endsWith(".json") && request.method === "GET"'
 ```
 
-### Navigation Requests
+### Navigation requests
 ```php
 matchCallback: 'navigate'
 ```
 
-## Conditional Strategies
+## Conditional strategies
 
 Create strategies that adapt based on conditions:
 
@@ -352,7 +352,7 @@ final readonly class ConditionalCacheStrategy implements HasCacheStrategiesInter
 }
 ```
 
-## Implementing CacheStrategyInterface Directly
+## Implementing CacheStrategyInterface directly
 
 For complete control, implement `CacheStrategyInterface` directly to generate raw JavaScript:
 
@@ -411,7 +411,7 @@ JS;
 
     When implementing the full interface, you're responsible for all JavaScript generation. This approach is powerful but requires careful testing.
 
-## Service Registration
+## Service registration
 
 If service autoconfiguration is disabled, register your service manually:
 
@@ -422,7 +422,7 @@ services:
             - { name: 'spomky_labs_pwa.cache_strategy' }
 ```
 
-## Listing Cache Strategies
+## Listing cache strategies
 
 Use the console command to list all registered cache strategies:
 
@@ -434,7 +434,7 @@ This displays all strategies (from YAML config and custom services) with their c
 
 ## Debugging
 
-### Check Generated Service Worker
+### Check generated service worker
 
 View the compiled service worker to see the generated JavaScript:
 
@@ -452,7 +452,7 @@ When debug is enabled, the generated code includes comments explaining each stra
 3. Check **Application** → **Cache Storage** to see your custom caches
 4. Use **Network** tab with "Offline" to test cache behavior
 
-## Best Practices
+## Best practices
 
 1. **Start with YAML configuration**: Only use custom strategies when necessary
 2. **Use descriptive names**: Make cache names clear (e.g., `api-user-data` not `cache1`)
@@ -460,7 +460,7 @@ When debug is enabled, the generated code includes comments explaining each stra
 4. **Test offline**: Verify strategies work correctly without network
 5. **Document complex logic**: Add comments explaining why custom strategies exist
 
-## Related Documentation
+## Related documentation
 
 - [Service Worker Configuration](../configuration.md) - Standard YAML configuration
 - [Resource Caching](resource-caching.md) - Configure caching via YAML

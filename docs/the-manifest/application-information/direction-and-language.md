@@ -1,4 +1,4 @@
-# Direction and Language
+# Direction and language
 
 The PWA dir and lang parameters.
 
@@ -13,7 +13,7 @@ Please note that those values should be in accordance with the ones set as `<htm
 </html>
 ```
 
-### The `dir` Parameter
+### The `dir` parameter
 
 The `dir` parameter specifies the text directionality of the content in your PWA. It can have one of three values:
 
@@ -23,7 +23,7 @@ The `dir` parameter specifies the text directionality of the content in your PWA
 
 Example usage in HTML:
 
-### The `lang` Parameter
+### The `lang` parameter
 
 The `lang` parameter declares the default language of the text in the page. This is important for accessibility tools and search engines.
 

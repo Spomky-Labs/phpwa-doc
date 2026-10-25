@@ -13,7 +13,7 @@ This component is particularly useful for:
 * Disabling power-intensive features when battery is critical
 * Optimizing app performance based on charging status
 
-## Browser Support
+## Browser support
 
 The Battery Status API has limited browser support and is primarily available on Chromium-based browsers. It requires HTTPS for security reasons.
 
@@ -29,7 +29,7 @@ The Battery Status API has limited browser support and is primarily available on
 
 ## Usage
 
-### Basic Battery Display
+### Basic battery display
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
@@ -105,7 +105,7 @@ The Battery Status API has limited browser support and is primarily available on
 </style>
 ```
 
-### Visual Battery Indicator
+### Visual battery indicator
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
@@ -233,7 +233,7 @@ The Battery Status API has limited browser support and is primarily available on
 </style>
 ```
 
-### Power-Saving Mode
+### Power-saving mode
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
@@ -357,7 +357,7 @@ The Battery Status API has limited browser support and is primarily available on
 </style>
 ```
 
-### Low Battery Warning
+### Low battery warning
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
@@ -499,7 +499,7 @@ The Battery Status API has limited browser support and is primarily available on
 </style>
 ```
 
-### Adaptive Video Quality
+### Adaptive video quality
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
@@ -603,7 +603,7 @@ The Battery Status API has limited browser support and is primarily available on
 </style>
 ```
 
-### Battery Monitor Dashboard
+### Battery monitor dashboard
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
@@ -844,7 +844,7 @@ The Battery Status API has limited browser support and is primarily available on
 </style>
 ```
 
-### Integration with Symfony Live Components
+### Integration with Symfony live components
 
 For applications using Symfony UX Live Components, here's an advanced integration example:
 
@@ -1083,7 +1083,7 @@ document.addEventListener('pwa--battery:unsupported', () => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Always provide fallbacks**: Not all browsers support the Battery API
 2. **Respect user privacy**: Don't share battery information with third parties
@@ -1096,9 +1096,9 @@ document.addEventListener('pwa--battery:unsupported', () => {
 9. **Monitor updates**: Battery status can change frequently - be prepared
 10. **Graceful degradation**: Core functionality should work regardless of battery level
 
-## Common Use Cases
+## Common use cases
 
-### Power-Saving Mode Activation
+### Power-saving mode activation
 
 ```javascript
 let powerSavingEnabled = false;
@@ -1132,7 +1132,7 @@ document.addEventListener('pwa--battery:updated', (event) => {
 });
 ```
 
-### Background Task Scheduling
+### Background task scheduling
 
 ```javascript
 document.addEventListener('pwa--battery:updated', (event) => {
@@ -1154,7 +1154,7 @@ function scheduleBackgroundTasks() {
 }
 ```
 
-### Critical Operation Warning
+### Critical operation warning
 
 ```javascript
 function performExpensiveOperation() {
@@ -1175,7 +1175,7 @@ function performExpensiveOperation() {
 }
 ```
 
-## Complete Example: Adaptive Application
+## Complete example: Adaptive application
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
@@ -1520,7 +1520,7 @@ if (chargingTime !== null && isFinite(chargingTime)) {
 
 **Solution**: The Battery Status API requires a secure context (HTTPS or localhost)
 
-## Browser Compatibility
+## Browser compatibility
 
 | Browser | Support |
 |---------|---------|

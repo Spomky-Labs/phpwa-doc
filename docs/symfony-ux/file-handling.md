@@ -19,14 +19,14 @@ This component is particularly useful for:
     * **Client-side implementation** (how to process files): You're on the right page!
     * **Complete quick start example**: See [Quick Start in File Handlers](../the-manifest/file-handlers.md#quick-start)
 
-## How It Works
+## How it works
 
 The File Handling feature consists of two parts:
 
 1. **Manifest Configuration**: Declare which file types your PWA can handle ([see File Handlers documentation](../the-manifest/file-handlers.md))
 2. **Client-Side Handling**: Receive and process files using the Stimulus controller (this page)
 
-### Complete Workflow
+### Complete workflow
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -70,13 +70,13 @@ The File Handling feature consists of two parts:
 
 This page focuses on **steps 4-5** (client-side implementation). For **step 3** (manifest configuration), see the [File Handlers manifest documentation](../the-manifest/file-handlers.md).
 
-## Browser Support
+## Browser support
 
 The File Handling API is currently supported in Chromium-based browsers (Chrome, Edge) on desktop platforms. Support on mobile and other browsers is limited or not available.
 
 ## Prerequisites
 
-### Step 1: Configure Manifest File Handlers
+### Step 1: Configure manifest file handlers
 
 Before your PWA can receive files, you must declare the file types it can handle in the manifest. This tells the operating system to associate your PWA with specific file extensions.
 
@@ -95,7 +95,7 @@ pwa:
 
     The `action` parameter should point to the route/page where you'll add the Stimulus controller (Step 2). See the [File Handlers manifest documentation](../the-manifest/file-handlers.md) for detailed configuration options including wildcards, multiple handlers, and advanced URL configuration.
 
-### Step 2: Add the Stimulus Controller
+### Step 2: Add the Stimulus controller
 
 Add the `@pwa/file-handling` controller to the template/page specified in the manifest's `action` parameter:
 
@@ -109,7 +109,7 @@ The controller automatically listens for files passed through the Launch Queue A
 
 ## Usage
 
-### Basic Image Viewer
+### Basic image viewer
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
@@ -143,7 +143,7 @@ The controller automatically listens for files passed through the Launch Queue A
 </script>
 ```
 
-### Photo Editor with Multiple Files
+### Photo editor with multiple files
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
@@ -260,7 +260,7 @@ The controller automatically listens for files passed through the Launch Queue A
 </style>
 ```
 
-### Document Viewer (PDF, Text)
+### Document viewer (PDF, text)
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
@@ -312,7 +312,7 @@ The controller automatically listens for files passed through the Launch Queue A
 </script>
 ```
 
-### Media Player with Playlist
+### Media player with playlist
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
@@ -400,7 +400,7 @@ The controller automatically listens for files passed through the Launch Queue A
 </style>
 ```
 
-### Code Editor with Syntax Highlighting
+### Code editor with syntax highlighting
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
@@ -508,7 +508,7 @@ The controller automatically listens for files passed through the Launch Queue A
 </style>
 ```
 
-### CSV Data Importer
+### CSV data importer
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
@@ -671,7 +671,7 @@ document.addEventListener('pwa--file-handling:selected', async (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Validate file types**: Always validate that received files match expected types
 2. **Handle errors gracefully**: File loading can fail for various reasons
@@ -681,7 +681,7 @@ document.addEventListener('pwa--file-handling:selected', async (event) => {
 6. **Declare file handlers**: Properly configure manifest file handlers
 7. **Test thoroughly**: Test with various file types and sizes
 
-## File Type Detection
+## File type detection
 
 ```javascript
 document.addEventListener('pwa--file-handling:selected', async (event) => {
@@ -709,7 +709,7 @@ document.addEventListener('pwa--file-handling:selected', async (event) => {
 });
 ```
 
-## Resource Cleanup
+## Resource cleanup
 
 Always clean up blob URLs to prevent memory leaks:
 
@@ -739,7 +739,7 @@ function cleanup() {
 window.addEventListener('beforeunload', cleanup);
 ```
 
-## Complete Example: Multi-Format File Viewer
+## Complete example: Multi-format file viewer
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
@@ -948,7 +948,7 @@ window.addEventListener('beforeunload', cleanup);
 </style>
 ```
 
-## Browser Compatibility
+## Browser compatibility
 
 | Feature | Chrome | Edge | Safari | Firefox |
 |---------|--------|------|--------|---------|

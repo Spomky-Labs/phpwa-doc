@@ -1,8 +1,8 @@
-# Create Favicons
+# Create favicons
 
 Favicons are the small icons that appear in browser tabs, bookmarks, and address bars. Providing favicons that look great across all devices, browsers, and operating systems is traditionally complex and time-consuming.
 
-## Why Favicons Matter
+## Why favicons matter
 
 **Brand Recognition:**
 - Instant visual identification in crowded browser tabs
@@ -23,7 +23,7 @@ Favicons are the small icons that appear in browser tabs, bookmarks, and address
 
     Favicons are separate from app icons declared in the Web App Manifest, though they serve similar purposes. The bundle automatically generates both from a single source image.
 
-## Quick Setup
+## Quick setup
 
 With this bundle, generating all necessary favicons takes just seconds. You only need one source file:
 
@@ -56,11 +56,11 @@ pwa:
 - Safari pinned tabs
 - And more...
 
-## Icon Source Options
+## Icon source options
 
 The bundle supports three types of icon sources, giving you flexibility in how you provide your favicon:
 
-### 1. Asset Mapper Asset (Recommended)
+### 1. Asset Mapper asset (recommended)
 
 Reference icons managed by Symfony's Asset Mapper:
 
@@ -76,7 +76,7 @@ pwa:
 - Automatic cache busting
 - Works with build pipeline
 
-### 2. Absolute File Path
+### 2. Absolute file path
 
 Use an existing file from your project directory:
 
@@ -92,7 +92,7 @@ pwa:
 - Dynamic file locations
 - Legacy icon files
 
-### 3. Symfony UX Icons
+### 3. Symfony UX icons
 
 Use any icon from the [Symfony UX Icons](https://ux.symfony.com/icons) library:
 
@@ -114,9 +114,9 @@ pwa:
 - `bx:` - BoxIcons
 - `lucide:` - Lucide Icons
 
-## Customization Options
+## Customization options
 
-### SVG Attributes
+### SVG attributes
 
 You can customize any SVG attribute directly to control how your icon is rendered. The bundle allows you to modify fill colors, stroke properties, and any other SVG root attributes:
 
@@ -139,7 +139,7 @@ pwa:
 - `opacity`: Overall transparency
 - `color`: Used when SVG uses `currentColor`
 
-### Icon Scaling and Safe Zone
+### Icon scaling and safe zone
 
 Different platforms apply masks to icons (circular, rounded square, etc.). To ensure your icon looks good on all platforms, use the safe zone feature.
 
@@ -165,7 +165,7 @@ pwa:
 
     The bundle automatically adds transparent padding to maintain the original canvas size while scaling the icon content.
 
-### Background Color and Rounded Corners
+### Background color and rounded corners
 
 Create polished, platform-native looking icons by adding backgrounds and rounded corners:
 
@@ -191,7 +191,7 @@ pwa:
 
     The `border_radius` option only works when `background_color` is set. Without a background, corners remain transparent.
 
-### Dark Mode Icons
+### Dark mode icons
 
 Support dark themes with dedicated dark mode icons. Modern devices automatically switch between light and dark icons based on system theme:
 
@@ -220,9 +220,9 @@ pwa:
 
     When `dark` is defined, `default` becomes the light mode variant. Without `dark`, `default` is used for both themes.
 
-## Platform-Specific Features
+## Platform-specific features
 
-### Safari Pinned Tab Icon
+### Safari pinned tab icon
 
 Safari's pinned tabs use a special monochrome icon. Configure it with a single color:
 
@@ -245,7 +245,7 @@ Generates a single-color silhouette of your icon, perfect for Safari's minimalis
 
     Silhouette mode requires [potrace](https://en.wikipedia.org/wiki/Potrace) to be installed on your system. Install it via your package manager (e.g., `apt install potrace` on Debian/Ubuntu).
 
-### Windows Tiles
+### Windows tiles
 
 Enable special tiles for Windows 8/10 Start Menu and taskbar:
 
@@ -268,9 +268,9 @@ pwa:
 
     Windows tiles ignore `background_color` and `border_radius` options. The tile color is applied as a flat background by Windows itself.
 
-## Legacy Browser Support
+## Legacy browser support
 
-### Low Resolution Icons
+### Low resolution icons
 
 By default, the bundle generates icons optimized for modern devices. Enable additional icon sizes for legacy browsers and older devices:
 
@@ -295,7 +295,7 @@ pwa:
 
     Enabling `low_resolution` increases compilation time and generates more files. Only enable if you need legacy browser support.
 
-## Complete Configuration Example
+## Complete configuration example
 
 ```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -346,7 +346,7 @@ pwa:
 
     Migrate to the `default` and `dark` structure for full control and future compatibility.
 
-## What Gets Generated
+## What gets generated
 
 When you compile favicons, the bundle creates:
 
@@ -367,7 +367,7 @@ When you compile favicons, the bundle creates:
 
 All files are automatically optimized and cached for production.
 
-## Best Practices
+## Best practices
 
 1. **Use SVG when possible**: Scales perfectly to all sizes without quality loss
 2. **Transparent backgrounds**: Works on any platform background color

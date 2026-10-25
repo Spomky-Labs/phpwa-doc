@@ -1,10 +1,10 @@
-# How To Create A PWA?
+# How to create a PWA?
 
 As the name suggests, the development of a Progressive Web App (PWA) is an incremental process. Two pivotal components define a PWA: the **Manifest** and the **Service Worker**. These elements are independent of each other and not obligatory.
 
 By integrating these two elements, the Manifest and the Service Worker, a PWA delivers an optimal user experience with easy installation, offline accessibility, and heightened performance, all while retaining the flexibility of web development.
 
-### The Manifest
+### The manifest
 
 The Manifest, typically a JSON file, encompasses crucial metadata detailing the application, including its name, icons, theme, and launch configurations. This facilitates the installation of the PWA on the user's device and grants accessibility from the home screen, thereby creating an experience akin to that of a native app.
 
@@ -52,7 +52,7 @@ The Manifest file integration is done into your HTML file using appropriate tag:
 
 ```
 
-### The Service Worker
+### The service worker
 
 The Service Worker, a background-executed JavaScript script, stands as the other key element. It enables the application to function offline by intercepting network requests and providing cached responses. The Service Worker also contributes to features such as resource caching, push notification management, and overall performance enhancement.
 

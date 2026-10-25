@@ -1,4 +1,4 @@
-# Launch Handler
+# Launch handler
 
 The Launch Handler API allows developers to control how your PWA is launched. For example if it uses an existing window or creates a new one, and how the app's target launch URL is handled.
 

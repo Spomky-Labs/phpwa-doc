@@ -30,7 +30,7 @@ The integration in your application is very simple. You are only required to add
 
     You may need to clear the cache after the bundle is installed
 
-## Twig Function Options
+## Twig function options
 
 The `pwa()` Twig function accepts several optional parameters to control what is injected:
 
@@ -56,13 +56,13 @@ The `pwa()` Twig function accepts several optional parameters to control what is
 | `injectResourceHints` | bool | `true` | Inject [resource hints](performance/resource-hints.md) (preconnect, dns-prefetch, preload) |
 | `injectSpeculationRules` | bool | `true` | Inject [speculation rules](performance/speculation-rules.md) for prefetch/prerender |
 
-### Example: Disable Resource Hints
+### Example: Disable resource hints
 
 ```twig
 {{ pwa(injectResourceHints: false) }}
 ```
 
-### Example: Localized Manifest
+### Example: Localized manifest
 
 ```twig
 {{ pwa(locale: app.request.locale) }}

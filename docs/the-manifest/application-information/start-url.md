@@ -2,7 +2,7 @@
 
 The `start_url` parameter defines the URL that should be loaded when a user launches your PWA from their home screen or app launcher. This is typically the main entry point of your application.
 
-## Basic Usage
+## Basic usage
 
 The simplest way to define a start URL is to provide a Symfony route name:
 
@@ -22,7 +22,7 @@ pwa:
         start_url: "/"
 ```
 
-## Advanced Configuration
+## Advanced configuration
 
 For more complex scenarios, you can use the full URL object configuration that allows you to specify route parameters and path types:
 
@@ -38,7 +38,7 @@ pwa:
             path_type_reference: 1
 ```
 
-### Path Parameter
+### Path parameter
 
 The `path` parameter can be:
 * A Symfony route name (e.g., `"app_homepage"`)
@@ -46,7 +46,7 @@ The `path` parameter can be:
 * A relative path (e.g., `"/app"`)
 * A network path (e.g., `"//example.com/app"`)
 
-### Params Parameter
+### Params parameter
 
 The `params` parameter allows you to pass route parameters or query string parameters:
 
@@ -65,7 +65,7 @@ This is particularly useful for:
 * Pre-loading specific content when the app launches
 * Passing initial state to your application
 
-### Path Type Reference
+### Path type reference
 
 The `path_type_reference` option controls how the URL is generated:
 
@@ -78,7 +78,7 @@ The `path_type_reference` option controls how the URL is generated:
 
     When using absolute URLs (`path_type_reference: 0`), make sure the [Symfony Router Request Context](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) is properly configured. This is especially important when generating the manifest outside of HTTP requests (e.g., in console commands).
 
-## Best Practices
+## Best practices
 
 1. **Keep it within scope**: The `start_url` must be within the application's `scope`.
 2. **Use route names**: Prefer Symfony route names over hardcoded paths for better maintainability.

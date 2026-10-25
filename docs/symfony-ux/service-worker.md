@@ -1,4 +1,4 @@
-# Service Worker
+# Service worker
 
 The Service Worker controller provides useful methods to facilitate interaction with the service worker lifecycle. It enables you to manually update the service worker and notify users when updates are available, particularly useful when the [`skipWaiting`](../the-service-worker/configuration.md#skip-waiting) option is set to `false`.
 
@@ -15,7 +15,7 @@ This component is essential for:
 
 ## Usage
 
-### Basic Update Button
+### Basic update button
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/service-worker') }}>
@@ -35,7 +35,7 @@ This component is essential for:
 </script>
 ```
 
-### Update Notification Banner
+### Update notification banner
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/service-worker') }}>
@@ -80,7 +80,7 @@ This component is essential for:
 </style>
 ```
 
-### Toast Notification with Countdown
+### Toast notification with countdown
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/service-worker') }}>
@@ -114,7 +114,7 @@ This component is essential for:
 </script>
 ```
 
-### Integration with User Settings
+### Integration with user settings
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/service-worker') }}>
@@ -207,7 +207,7 @@ document.addEventListener('pwa--service-worker:update-available', () => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Clear communication**: Always inform users that updating will refresh the page
 2. **Save user work**: If your app has forms or unsaved data, warn users before updating
@@ -216,7 +216,7 @@ document.addEventListener('pwa--service-worker:update-available', () => {
 5. **Graceful timing**: Consider detecting idle time before prompting for updates
 6. **Persistent notification**: Keep the update notification visible until user acts on it
 
-## Configuration Reference
+## Configuration reference
 
 This component works in conjunction with the service worker configuration. To enable manual updates, ensure `skipWaiting` is set to `false`:
 
@@ -230,7 +230,7 @@ pwa:
 
 For more information on service worker configuration, see the [Service Worker Configuration](../the-service-worker/configuration.md) page.
 
-## Advanced Example: Update Manager
+## Advanced example: Update manager
 
 Here's a complete example of an update manager with user preferences and smart update timing:
 

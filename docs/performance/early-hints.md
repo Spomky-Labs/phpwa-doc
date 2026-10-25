@@ -1,8 +1,8 @@
-# Early Hints (HTTP 103)
+# Early hints (HTTP 103)
 
 Early Hints is a feature that allows the server to send preliminary HTTP headers before the main response is ready. This enables browsers to start loading critical resources even before the HTML document arrives.
 
-## How It Works
+## How it works
 
 1. Browser requests a page
 2. Server sends **103 Early Hints** response with `Link` headers
@@ -12,7 +12,7 @@ Early Hints is a feature that allows the server to send preliminary HTTP headers
 
 This can significantly improve **Largest Contentful Paint (LCP)** by several hundred milliseconds.
 
-## Server Requirements
+## Server requirements
 
 Early Hints requires a compatible server:
 
@@ -83,7 +83,7 @@ FrankenPHP automatically handles Early Hints when `Link` headers are present in 
 // FrankenPHP detects these and sends 103 Early Hints
 ```
 
-## Combining with Resource Hints
+## Combining with resource hints
 
 Early Hints works well with the [Resource Hints](resource-hints.md) feature. Both features add `Link` headers to the request, but they serve different purposes:
 
@@ -94,9 +94,9 @@ When both are enabled, resources get the benefit of:
 1. Early Hints for compatible servers (103 response)
 2. HTML link tags as fallback for all browsers
 
-## Example Response Flow
+## Example response flow
 
-### With Early Hints (FrankenPHP/Caddy)
+### With early hints (FrankenPHP/Caddy)
 
 ```http
 HTTP/1.1 103 Early Hints
@@ -111,7 +111,7 @@ Link: </site.webmanifest>; rel="preload"; as="fetch"; crossorigin="anonymous"
 ...
 ```
 
-### Without Early Hints (standard server)
+### Without early hints (standard server)
 
 ```http
 HTTP/1.1 200 OK
@@ -122,7 +122,7 @@ Link: </site.webmanifest>; rel="preload"; as="fetch"; crossorigin="anonymous"
 ...
 ```
 
-## Performance Benefits
+## Performance benefits
 
 | Metric | Improvement |
 |--------|-------------|
@@ -130,7 +130,7 @@ Link: </site.webmanifest>; rel="preload"; as="fetch"; crossorigin="anonymous"
 | TTFB perceived | Improved (resources load during server processing) |
 | PWA prompt | Faster appearance |
 
-## Best Practices
+## Best practices
 
 1. **Enable for production**: Early Hints has minimal overhead and provides significant benefits on compatible servers.
 
@@ -140,7 +140,7 @@ Link: </site.webmanifest>; rel="preload"; as="fetch"; crossorigin="anonymous"
 
 4. **Monitor Core Web Vitals**: Track LCP improvements after enabling Early Hints.
 
-## Further Reading
+## Further reading
 
 - [Symfony Early Hints Blog Post](https://symfony.com/blog/new-in-symfony-6-3-early-hints)
 - [FrankenPHP Early Hints](https://frankenphp.dev/docs/early-hints/)

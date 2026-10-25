@@ -21,7 +21,7 @@ Hereafter the main benefits of Precache:
 * **Consistency**: All users receive the same version of files, ensuring a consistent experience.
 * **Background Updates**: Assets are updated in the background, preventing any interruption to the user experience.
 
-## Key Features
+## Key features
 
 * **Precaching**: Workbox can precache the assets in your web app and keep them up to date.
 * **Runtime Caching**: Flexible strategies for handling runtime requests, such as stale-while-revalidate, cache first, and network first.

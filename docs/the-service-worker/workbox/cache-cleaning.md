@@ -1,4 +1,4 @@
-# Cache Cleaning
+# Cache cleaning
 
 When the service worker changes and is activated, the cache is purged. This feature is made to avoid the cache to grow in size and prevent your application to reach the limit of the host system or browser.
 

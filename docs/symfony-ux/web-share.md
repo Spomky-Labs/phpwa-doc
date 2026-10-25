@@ -10,7 +10,7 @@ This component is particularly useful for:
 * Enabling social media sharing without third-party widgets
 * Sharing files directly from your web application
 
-## Browser Support
+## Browser support
 
 The Web Share API is supported in most modern mobile browsers and increasingly in desktop browsers. The API requires user interaction (e.g., click) to trigger the share dialog.
 
@@ -20,7 +20,7 @@ The Web Share API is supported in most modern mobile browsers and increasingly i
 
 ## Usage
 
-### Basic Text and URL Sharing
+### Basic text and URL sharing
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/web-share') }}>
@@ -49,7 +49,7 @@ The Web Share API is supported in most modern mobile browsers and increasingly i
 </script>
 ```
 
-### Sharing Current Page
+### Sharing current page
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/web-share') }}>
@@ -63,7 +63,7 @@ The Web Share API is supported in most modern mobile browsers and increasingly i
 </div>
 ```
 
-### Sharing Files
+### Sharing files
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/web-share') }}>
@@ -107,7 +107,7 @@ The Web Share API is supported in most modern mobile browsers and increasingly i
 </script>
 ```
 
-### Social Media Share with Fallback
+### Social media share with fallback
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/web-share') }}>
@@ -191,7 +191,7 @@ Triggers the native share dialog with the provided data. The action requires a `
 
     When sharing files, the browser will download them before sharing. **Ensure files are small and of shareable types**. Refer to [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share#shareable_file_types) for acceptable file types.
 
-### Shareable File Types
+### Shareable file types
 
 The following file types are commonly supported for sharing:
 * Images: `.jpg`, `.jpeg`, `.png`, `.gif`, `.webp`
@@ -249,7 +249,7 @@ document.addEventListener('pwa--web-share:error', (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Check for support**: Always verify browser support before showing share buttons
 2. **Require user interaction**: The share dialog can only be triggered by user actions (clicks, touches)
@@ -259,7 +259,7 @@ document.addEventListener('pwa--web-share:error', (event) => {
 6. **File size limits**: Keep shared files small to avoid long downloads
 7. **Handle errors gracefully**: Always listen for error events and provide feedback
 
-## Error Handling
+## Error handling
 
 Common errors you might encounter:
 
@@ -269,7 +269,7 @@ Common errors you might encounter:
 * **TypeError**: Invalid data provided (e.g., malformed URL)
 * **DataError**: Issues with file sharing (unsupported type, too large, etc.)
 
-## Complete Example
+## Complete example
 
 Here's a complete example with proper fallback handling:
 

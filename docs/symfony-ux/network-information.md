@@ -1,4 +1,4 @@
-# Network Information
+# Network information
 
 The Network Information component provides access to the Network Information API, allowing your Progressive Web App to detect and respond to changes in the user's network connection. This enables you to create adaptive experiences that optimize content delivery based on connection quality and type.
 
@@ -14,7 +14,7 @@ This component is particularly useful for:
 * User experience optimization for different connection types
 * Bandwidth-conscious feature toggling
 
-## Browser Support
+## Browser support
 
 The Network Information API is currently supported in Chromium-based browsers (Chrome, Edge, Opera) and partially in Firefox. Safari does not support this API.
 
@@ -31,7 +31,7 @@ The Network Information API is currently supported in Chromium-based browsers (C
 
 ## Usage
 
-### Basic Network Detection
+### Basic network detection
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
@@ -58,7 +58,7 @@ The Network Information API is currently supported in Chromium-based browsers (C
 </script>
 ```
 
-### Adaptive Image Loading
+### Adaptive image loading
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
@@ -126,7 +126,7 @@ The Network Information API is currently supported in Chromium-based browsers (C
 </style>
 ```
 
-### Video Quality Adjustment
+### Video quality adjustment
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
@@ -212,7 +212,7 @@ The Network Information API is currently supported in Chromium-based browsers (C
 </style>
 ```
 
-### Conditional Preloading
+### Conditional preloading
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
@@ -326,7 +326,7 @@ The Network Information API is currently supported in Chromium-based browsers (C
 </style>
 ```
 
-### Data Saver Mode Detection
+### Data saver mode detection
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
@@ -406,7 +406,7 @@ The Network Information API is currently supported in Chromium-based browsers (C
 </style>
 ```
 
-### Network-Aware Feature Toggling
+### Network-aware feature toggling
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
@@ -513,7 +513,7 @@ The Network Information API is currently supported in Chromium-based browsers (C
 </style>
 ```
 
-### Connection Type Monitoring
+### Connection type monitoring
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
@@ -785,7 +785,7 @@ document.addEventListener('pwa--network-information:unsupported', () => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Always provide fallbacks**: Not all browsers support this API - design for graceful degradation
 2. **Respect Data Saver mode**: When `saveData` is `true`, minimize data usage
@@ -798,9 +798,9 @@ document.addEventListener('pwa--network-information:unsupported', () => {
 9. **Inform users**: Let users know when you're adapting content based on their connection
 10. **Allow overrides**: Provide manual quality controls for user preference
 
-## Connection Type Reference
+## Connection type reference
 
-### Effective Types
+### Effective types
 
 | Type | Minimum RTT | Maximum Downlink | Use Case |
 |------|-------------|------------------|----------|
@@ -809,7 +809,7 @@ document.addEventListener('pwa--network-information:unsupported', () => {
 | `3g` | 270ms | 0.7 Mbps | Standard content, compressed media |
 | `4g` | 0ms | ∞ | Full quality, preloading enabled |
 
-### Adapting Content by Connection
+### Adapting content by connection
 
 ```javascript
 function getContentStrategy(connection) {
@@ -860,7 +860,7 @@ function getContentStrategy(connection) {
 }
 ```
 
-## Complete Example: Adaptive Media Gallery
+## Complete example: Adaptive media gallery
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
@@ -1284,7 +1284,7 @@ document.addEventListener('pwa--network-information:change', (event) => {
 });
 ```
 
-### Data Saver not detected
+### Data saver not detected
 
 **Issue**: `saveData` always returns `false`
 

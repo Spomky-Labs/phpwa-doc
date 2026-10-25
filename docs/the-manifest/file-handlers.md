@@ -1,4 +1,4 @@
-# File Handlers
+# File handlers
 
 If your PWA is able to load certain type of files, you can declare in the Manifest file the supported MIME types and tell the host system you are able to manage those files.
 

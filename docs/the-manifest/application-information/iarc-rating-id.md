@@ -1,4 +1,4 @@
-# IARC Rating ID
+# IARC rating ID
 
 The International Age Rating Coalition (IARC) rating system ID. This is not mandatory but is useful for digital content that requires an age rating.
 

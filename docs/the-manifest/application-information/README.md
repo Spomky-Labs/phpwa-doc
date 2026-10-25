@@ -1,4 +1,4 @@
-# Application Information
+# Application information
 
 For a Progressive Web App (PWA) to be installable, the manifest file must include certain mandatory information. These details help the browser understand how the application should be presented to the user and its behavior upon installation.
 

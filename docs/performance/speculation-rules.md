@@ -45,7 +45,7 @@ To disable speculation rules injection:
 {{ pwa(injectSpeculationRules: false) }}
 ```
 
-## Rule Types
+## Rule types
 
 ### Prefetch
 
@@ -79,9 +79,9 @@ pwa:
 
     Prerendering consumes more resources than prefetching. Use it sparingly for pages with high navigation probability.
 
-## Source Types
+## Source types
 
-### Document Source
+### Document source
 
 Match links in the current document using CSS selectors or URL patterns:
 
@@ -103,7 +103,7 @@ pwa:
         selector_matches: '.checkout-link'
 ```
 
-### List Source
+### List source
 
 Specify explicit URLs to prefetch or prerender:
 
@@ -117,7 +117,7 @@ pwa:
           - '/frequently-visited'
 ```
 
-## Eagerness Levels
+## Eagerness levels
 
 The `eagerness` property controls when speculation happens:
 
@@ -152,9 +152,9 @@ pwa:
 
     Start with `moderate` or `conservative` eagerness and increase based on analytics data showing actual navigation patterns.
 
-## Advanced Options
+## Advanced options
 
-### Referrer Policy
+### Referrer policy
 
 Control the referrer sent with speculative requests:
 
@@ -167,7 +167,7 @@ pwa:
         referrer_policy: 'no-referrer'
 ```
 
-## Generated Output
+## Generated output
 
 The bundle generates a `<script type="speculationrules">` tag:
 
@@ -192,7 +192,7 @@ The bundle generates a `<script type="speculationrules">` tag:
 </script>
 ```
 
-## Browser Support
+## Browser support
 
 Speculation Rules are supported in:
 - Chrome 109+ (prefetch)
@@ -205,7 +205,7 @@ For unsupported browsers, the script tag is simply ignored.
 
     Check [caniuse.com/speculation-rules](https://caniuse.com/speculation-rules) for current browser support.
 
-## Best Practices
+## Best practices
 
 1. **Start conservative**: Begin with `conservative` or `moderate` eagerness and monitor performance impact.
 
@@ -219,7 +219,7 @@ For unsupported browsers, the script tag is simply ignored.
 
 6. **Combine with analytics**: Use navigation analytics to identify pages that benefit most from speculation.
 
-## Example: E-commerce Site
+## Example: E-commerce site
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:

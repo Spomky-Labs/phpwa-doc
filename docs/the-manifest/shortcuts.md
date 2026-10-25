@@ -41,11 +41,11 @@ pwa:
                   sizes: [96]
 ```
 
-### `name` and `short_name` Parameters
+### `name` and `short_name` parameters
 
 The `name` parameter in each shortcut object is used to define the full name of the shortcut, which will be displayed to the user. It should be descriptive enough to communicate the action that will be taken when the shortcut is activated, but also concise enough to be quickly understood.&#x20;
 
-#### Best Practices for Naming Shortcuts:
+#### Best practices for naming shortcuts:
 
 * **Be Descriptive**: Choose a name that clearly explains what the shortcut does (e.g., "Add to Favorites" is better than just "Add").
 * **Be Consistent**: Use a consistent naming convention across all shortcuts to prevent user confusion.
@@ -53,7 +53,7 @@ The `name` parameter in each shortcut object is used to define the full name of 
 
 Don't forget to include the `short_name` parameter if the name is too long to be displayed in full on all devices. The `short_name` is a more concise version of `name`, which can be used when there's insufficient space.
 
-### `url` Parameter
+### `url` parameter
 
 The `url` parameter specifies the URL to which the user should be navigated when they activate the shortcut. It indicates the location or feature within the application that corresponds to that specific shortcut.
 
@@ -97,11 +97,11 @@ The path\_type\_reference option expects an integer where:
 
     With absolut URLs, please make sure the Request Context is set. See [the router configuration](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) for more informaiton.
 
-### `description` Parameter
+### `description` parameter
 
 The description parameter helps the user understanding the purpose of the shortcut.
 
-### `icons` Parameter
+### `icons` parameter
 
 Adding icons to shortcuts not only makes them visually appealing but also helps users to quickly identify the action they represent. Icons for shortcuts can be defined within the `icons` array and it's important that these are clear and relevant to the function of the shortcut. Icons should be provided in multiple sizes to ensure that they display well on all devices.
 

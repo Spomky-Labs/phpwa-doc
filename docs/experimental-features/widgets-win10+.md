@@ -39,7 +39,7 @@ pwa:
                   - src: 'images/widget-weather-icon.svg'
 ```
 
-## Configuration Reference
+## Configuration reference
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
@@ -56,9 +56,9 @@ pwa:
 | `multiple` | boolean | No | Allow multiple widget instances (default: `true`) |
 | `icons` | array | No | Widget-specific icons (falls back to manifest icons) |
 
-## Server-Side Implementation
+## Server-side implementation
 
-### Adaptive Cards Template
+### Adaptive cards template
 
 Create a controller that returns an Adaptive Cards template:
 
@@ -111,7 +111,7 @@ final class WidgetController extends AbstractController
 }
 ```
 
-## How the Service Worker Works
+## How the service worker works
 
 The bundle automatically generates service worker code that:
 
@@ -131,7 +131,7 @@ The bundle automatically generates service worker code that:
 4. **On service worker activation**:
    - Updates all registered widgets with fresh data
 
-## Multiple Widgets
+## Multiple widgets
 
 You can configure multiple widgets:
 
@@ -159,7 +159,7 @@ pwa:
                     label: 'News headlines'
 ```
 
-## Requirements and Limitations
+## Requirements and limitations
 
 - **Platform**: Microsoft Edge on Windows 11+ only
 - **Template format**: Must use [Adaptive Cards](https://adaptivecards.io/) JSON format

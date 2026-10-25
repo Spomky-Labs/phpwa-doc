@@ -9,13 +9,13 @@ pwa:
         scope: "/"
 ```
 
-#### Defining Scope:
+#### Defining scope:
 
 * The scope can be a relative path or an absolute URL.
 * If omitted, it defaults to the location of the manifest.
 * The `start_url` must be within the scope.
 
-#### Best Practices:
+#### Best practices:
 
 1. Keep the scope as restrictive as possible to maintain control over your app's user experience.
 2. Set the `start_url` to a URL within the app's scope so it starts in the right context.

@@ -1,4 +1,4 @@
-# Display Override
+# Display override
 
 The `display_override` property in a PWA manifest allows developers to specify a preferred display mode with fallbacks for cases where a certain display mode is not supported by the platform or browser. This ensures that the best possible display mode is used for the PWA without errors.
 

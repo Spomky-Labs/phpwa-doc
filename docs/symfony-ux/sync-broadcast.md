@@ -1,4 +1,4 @@
-# Sync Broadcast
+# Sync broadcast
 
 The Sync Broadcast controller (`backgroundsync-queue`) monitors background sync queue status using the BroadcastChannel API. It allows your application to display real-time information about pending sync operations and trigger replays.
 
@@ -58,7 +58,7 @@ Enable the controller in your `assets/controllers.json`:
 | `error` | `{ reason }` | BroadcastChannel initialization failed. |
 | `status` | Status data from service worker | Status message received from the background sync queue. |
 
-## How It Works
+## How it works
 
 1. The controller opens a `BroadcastChannel` with the specified name
 2. It requests the current sync queue status
@@ -66,7 +66,7 @@ Enable the controller in your `assets/controllers.json`:
 4. The controller dispatches `status` events that you can listen for to update the UI
 5. The `replay` action tells the service worker to retry all pending requests
 
-## Example: Showing Pending Request Count
+## Example: Showing pending request count
 
 ```twig title="templates/components/sync-indicator.html.twig" linenums="1"
 <div {{ stimulus_controller('pwa/backgroundsync-queue', {
@@ -88,7 +88,7 @@ function updateStatus(event) {
 </script>
 ```
 
-## Related Configuration
+## Related configuration
 
 This controller works with the [Background Sync](../the-service-worker/workbox/background-sync.md) service worker feature. Make sure the `broadcast_channel` name in your service worker configuration matches the `channel` parameter:
 

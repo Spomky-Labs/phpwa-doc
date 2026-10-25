@@ -1,4 +1,4 @@
-# Resource Hints
+# Resource hints
 
 Resource Hints allow browsers to perform optimizations like DNS lookups, TCP connections, and resource fetching before they're actually needed. This bundle automatically generates and injects resource hints via `{{ pwa() }}`.
 
@@ -53,7 +53,7 @@ To disable resource hints:
 {{ pwa(injectResourceHints: false) }}
 ```
 
-## Hint Types
+## Hint types
 
 ### Preconnect
 
@@ -72,7 +72,7 @@ Generated HTML:
 <link rel="preconnect" href="https://api.example.com" crossorigin>
 ```
 
-### DNS Prefetch
+### DNS prefetch
 
 DNS prefetch performs only the DNS lookup, which is less aggressive than preconnect but still helpful for origins you'll connect to later.
 
@@ -109,7 +109,7 @@ pwa:
         media: '(min-width: 768px)'
 ```
 
-#### Preload Attributes
+#### Preload attributes
 
 | Attribute | Description | Required |
 |-----------|-------------|----------|
@@ -124,7 +124,7 @@ pwa:
 
     Fonts always require `crossorigin` attribute. If not specified, the bundle automatically adds `crossorigin="anonymous"` for font preloads.
 
-#### Asset Mapper Support
+#### Asset Mapper support
 
 The `href` attribute supports Asset Mapper logical paths. Paths without a leading `/` or `http(s)://` are automatically resolved to versioned URLs:
 
@@ -154,7 +154,7 @@ pwa:
 
     Using Asset Mapper paths ensures your preload hints always point to the correct versioned assets, even after deployments.
 
-## Auto-Detection
+## Auto-detection
 
 When `auto_preconnect` is enabled (default), the bundle automatically detects external origins from your PWA configuration:
 
@@ -164,27 +164,27 @@ If you're using Workbox from CDN (`use_cdn: true`), preconnect hints are added f
 - `https://storage.googleapis.com`
 - `https://cdn.jsdelivr.net`
 
-### Google Fonts
+### Google fonts
 
 If Google Fonts caching is enabled in Workbox, preconnect hints are added for:
 - `https://fonts.googleapis.com`
 - `https://fonts.gstatic.com`
 
-## HTTP Link Headers & Early Hints
+## HTTP link headers & early hints
 
 In addition to HTML link tags, the bundle automatically adds resource hints as HTTP `Link` headers on the response via a dedicated event listener. This enables:
 
 - **HTTP/2 Server Push** (if supported by your server)
 - **HTTP/103 Early Hints** (when combined with the [Early Hints feature](early-hints.md))
 
-### How It Works
+### How it works
 
 The `ResourceHintsListener` runs early in the request lifecycle (on `kernel.request` event) and adds all configured resource hints to the request's `_links` attribute. This makes them available to:
 
 1. **Symfony's WebLink component** for adding `Link` headers to the response
 2. **Compatible servers** (FrankenPHP, Caddy) that can send HTTP 103 Early Hints responses
 
-### HTTP 103 Early Hints
+### HTTP 103 early hints
 
 When using a server that supports Early Hints (like FrankenPHP with Caddy), the resource hints are sent to the browser **before** your application finishes processing the request. This allows the browser to start preconnecting, DNS prefetching, and preloading resources while waiting for the main response.
 
@@ -202,7 +202,7 @@ Client                    Server
   |                         |
 ```
 
-### Combining with Early Hints Feature
+### Combining with early hints feature
 
 For the best results, enable both Resource Hints and [Early Hints](early-hints.md):
 
@@ -226,7 +226,7 @@ This ensures your resource hints benefit from HTTP 103 Early Hints when your ser
 
     The `ResourceHintsListener` runs at priority 99, just after the `EarlyHintsListener` (priority 100), ensuring proper coordination between the two features.
 
-## Best Practices
+## Best practices
 
 1. **Don't overuse preconnect**: Limit to 2-4 critical origins. Too many hints can delay more important resources.
 
@@ -238,7 +238,7 @@ This ensures your resource hints benefit from HTTP 103 Early Hints when your ser
 
 5. **Consider media queries**: Use the `media` attribute to preload responsive images only when needed.
 
-## Example: Complete Configuration
+## Example: Complete configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:

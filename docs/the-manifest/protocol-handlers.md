@@ -24,7 +24,7 @@ pwa:
               title: "Open with Feature #1"
 ```
 
-### Considerations When Using Protocol Handlers
+### Considerations when using Protocol Handlers
 
 * Ensure that your PWA is served over HTTPS, as handling protocols can present security risks if not properly secured.
 * Test the protocol handlers thoroughly on different browsers, as support for this feature can vary.
