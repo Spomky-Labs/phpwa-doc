@@ -1,8 +1,8 @@
 # EDGE Side Panel
 
-{% hint style="warning" %}
-**Microsoft Edge Only**: The `edge_side_panel` property is specific to Microsoft Edge and will be ignored by other browsers.
-{% endhint %}
+!!! warning
+
+    **Microsoft Edge Only**: The `edge_side_panel` property is specific to Microsoft Edge and will be ignored by other browsers.
 
 ## Overview
 
@@ -33,14 +33,12 @@ The Edge sidebar is ideal for applications that users want to access while brows
 
 Enable sidebar support without specifying width:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         edge_side_panel: ~
 ```
-{% endcode %}
 
 With this configuration, your PWA can be added to the Edge sidebar with default width.
 
@@ -48,15 +46,13 @@ With this configuration, your PWA can be added to the Edge sidebar with default 
 
 Set a preferred width for your sidebar panel:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         edge_side_panel:
             preferred_width: 400
 ```
-{% endcode %}
 
 **Width Guidelines**:
 - **Minimum**: 200px (Edge enforced minimum)
@@ -67,8 +63,7 @@ pwa:
 
 For sidebar-only apps, use `browser` display mode:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -76,14 +71,12 @@ pwa:
         edge_side_panel:
             preferred_width: 400
 ```
-{% endcode %}
 
 Setting `display: "browser"` tells Edge that your app is designed for the sidebar and shouldn't be offered as a standalone installable app.
 
 ### Complete Example
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -99,7 +92,6 @@ pwa:
             - src: "icons/icon-512.png"
               sizes: [512]
 ```
-{% endcode %}
 
 ## Width Recommendations by Application Type
 
@@ -178,9 +170,9 @@ edge_side_panel:
 | Safari | ❌ Not supported (property ignored) |
 | Firefox | ❌ Not supported (property ignored) |
 
-{% hint style="info" %}
-**Graceful Degradation**: Other browsers will simply ignore the `edge_side_panel` property. Your app will work normally in those browsers.
-{% endhint %}
+!!! info
+
+    **Graceful Degradation**: Other browsers will simply ignore the `edge_side_panel` property. Your app will work normally in those browsers.
 
 ## Responsive Design
 
@@ -188,8 +180,7 @@ Design your app to work both in the sidebar and as a standalone page:
 
 ### CSS Media Queries
 
-{% code title="public/css/responsive.css" lineNumbers="true" %}
-```css
+```css title="public/css/responsive.css" linenums="1"
 /* Default layout */
 .app-container {
     max-width: 1200px;
@@ -240,14 +231,12 @@ Design your app to work both in the sidebar and as a standalone page:
     }
 }
 ```
-{% endcode %}
 
 ### JavaScript Detection
 
 Detect narrow viewport and adjust functionality:
 
-{% code title="public/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="public/app.js" linenums="1"
 // Detect if running in sidebar (narrow viewport)
 function isSidebarMode() {
     return window.innerWidth < 600;
@@ -281,7 +270,6 @@ adaptToViewport();
 // Adapt on resize (if user resizes sidebar)
 window.addEventListener('resize', adaptToViewport);
 ```
-{% endcode %}
 
 ## User Experience Best Practices
 
@@ -427,8 +415,7 @@ body {
 
 ### Example 1: Calculator App
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Quick Calculator"
@@ -445,12 +432,10 @@ pwa:
             - src: "icons/calc-512.png"
               sizes: [512]
 ```
-{% endcode %}
 
 ### Example 2: Notes App
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Quick Notes"
@@ -464,12 +449,10 @@ pwa:
             - src: "icons/notes-192.png"
               sizes: [192]
 ```
-{% endcode %}
 
 ### Example 3: Music Player
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Music Player"
@@ -483,12 +466,10 @@ pwa:
             - src: "icons/music-192.png"
               sizes: [192]
 ```
-{% endcode %}
 
 ### Example 4: Translation Tool
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Quick Translate"
@@ -502,7 +483,6 @@ pwa:
             - src: "icons/translate-192.png"
               sizes: [192]
 ```
-{% endcode %}
 
 ## Common Issues
 

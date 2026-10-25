@@ -1,21 +1,19 @@
 # Site Manifest Cache
 
-{% hint style="warning" %}
-**Deprecated Feature**: As of version 1.4, the `cache_manifest` configuration option is deprecated and no longer has any effect. The manifest caching strategy was removed to simplify the Workbox configuration. This page is maintained for reference purposes only.
-{% endhint %}
+!!! warning
+
+    **Deprecated Feature**: As of version 1.4, the `cache_manifest` configuration option is deprecated and no longer has any effect. The manifest caching strategy was removed to simplify the Workbox configuration. This page is maintained for reference purposes only.
 
 ## Background
 
 The Site Manifest file (`manifest.json`) is automatically served by your application and is typically very small (a few kilobytes). Previously, the bundle provided an option to cache the manifest file using Workbox.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
             cache_manifest: true  # DEPRECATED - No longer functional
 ```
-{% endcode %}
 
 ## Why Was It Removed?
 
@@ -61,8 +59,7 @@ location /manifest.json {
 
 Add the manifest to a custom resource cache strategy:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -72,7 +69,6 @@ pwa:
                   cache_name: 'manifest'
                   max_age: 1 hour
 ```
-{% endcode %}
 
 ### 3. Browser Default Behavior
 
@@ -94,9 +90,9 @@ If your configuration includes `cache_manifest`, you can:
 
 3. **Use HTTP caching** - Configure your web server for better performance (recommended)
 
-{% hint style="info" %}
-**No Action Required**: Removing this option from your configuration has no impact on your PWA functionality. The manifest will continue to work exactly as before.
-{% endhint %}
+!!! info
+
+    **No Action Required**: Removing this option from your configuration has no impact on your PWA functionality. The manifest will continue to work exactly as before.
 
 ## Related Documentation
 

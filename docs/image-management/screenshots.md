@@ -1,8 +1,8 @@
 # Screenshot Management
 
-{% hint style="warning" %}
-**Deprecated**: The command `pwa:create:screenshot` is deprecated and has been removed. Create screenshots manually or use screen capture tools.
-{% endhint %}
+!!! warning
+
+    **Deprecated**: The command `pwa:create:screenshot` is deprecated and has been removed. Create screenshots manually or use screen capture tools.
 
 ## Overview
 
@@ -14,8 +14,7 @@ Screenshots are defined in your manifest configuration. See the complete [Screen
 
 ### Basic Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         screenshots:
@@ -26,7 +25,6 @@ pwa:
               sizes: [750, 1334]
               form_factor: "narrow"
 ```
-{% endcode %}
 
 ## Creating Screenshots
 

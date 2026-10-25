@@ -11,13 +11,13 @@ This component is particularly useful for:
 * Design tools (SVG, CAD files)
 * Data import/export applications
 
-{% hint style="success" %}
-**Looking for something else?**
+!!! success
 
-* **Manifest configuration** (which file types to handle): See [File Handlers documentation](../the-manifest/file-handlers.md)
-* **Client-side implementation** (how to process files): You're on the right page!
-* **Complete quick start example**: See [Quick Start in File Handlers](../the-manifest/file-handlers.md#quick-start)
-{% endhint %}
+    **Looking for something else?**
+
+    * **Manifest configuration** (which file types to handle): See [File Handlers documentation](../the-manifest/file-handlers.md)
+    * **Client-side implementation** (how to process files): You're on the right page!
+    * **Complete quick start example**: See [Quick Start in File Handlers](../the-manifest/file-handlers.md#quick-start)
 
 ## How It Works
 
@@ -80,8 +80,7 @@ The File Handling API is currently supported in Chromium-based browsers (Chrome,
 
 Before your PWA can receive files, you must declare the file types it can handle in the manifest. This tells the operating system to associate your PWA with specific file extensions.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         file_handlers:
@@ -91,23 +90,20 @@ pwa:
                   "image/jpeg": [".jpg", ".jpeg"]
                   "image/webp": [".webp"]
 ```
-{% endcode %}
 
-{% hint style="info" %}
-The `action` parameter should point to the route/page where you'll add the Stimulus controller (Step 2). See the [File Handlers manifest documentation](../the-manifest/file-handlers.md) for detailed configuration options including wildcards, multiple handlers, and advanced URL configuration.
-{% endhint %}
+!!! info
+
+    The `action` parameter should point to the route/page where you'll add the Stimulus controller (Step 2). See the [File Handlers manifest documentation](../the-manifest/file-handlers.md) for detailed configuration options including wildcards, multiple handlers, and advanced URL configuration.
 
 ### Step 2: Add the Stimulus Controller
 
 Add the `@pwa/file-handling` controller to the template/page specified in the manifest's `action` parameter:
 
-{% code title="templates/file_handler.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/file_handler.html.twig" linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
     <!-- Your file handling UI -->
 </div>
 ```
-{% endcode %}
 
 The controller automatically listens for files passed through the Launch Queue API and dispatches the `pwa--file-handling:selected` event for each file.
 
@@ -115,8 +111,7 @@ The controller automatically listens for files passed through the Launch Queue A
 
 ### Basic Image Viewer
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
     <div class="viewer">
         <p id="status">Waiting for files to open...</p>
@@ -147,12 +142,10 @@ The controller automatically listens for files passed through the Launch Queue A
     });
 </script>
 ```
-{% endcode %}
 
 ### Photo Editor with Multiple Files
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
     <div class="photo-editor">
         <h2>Photo Editor</h2>
@@ -266,12 +259,10 @@ The controller automatically listens for files passed through the Launch Queue A
     }
 </style>
 ```
-{% endcode %}
 
 ### Document Viewer (PDF, Text)
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
     <div class="document-viewer">
         <div class="toolbar">
@@ -320,12 +311,10 @@ The controller automatically listens for files passed through the Launch Queue A
     });
 </script>
 ```
-{% endcode %}
 
 ### Media Player with Playlist
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
     <div class="media-player">
         <h2>Media Player</h2>
@@ -410,12 +399,10 @@ The controller automatically listens for files passed through the Launch Queue A
     }
 </style>
 ```
-{% endcode %}
 
 ### Code Editor with Syntax Highlighting
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
     <div class="code-editor">
         <div class="editor-header">
@@ -520,12 +507,10 @@ The controller automatically listens for files passed through the Launch Queue A
     }
 </style>
 ```
-{% endcode %}
 
 ### CSV Data Importer
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
     <div class="csv-importer">
         <h2>CSV Data Importer</h2>
@@ -638,7 +623,6 @@ The controller automatically listens for files passed through the Launch Queue A
     }
 </style>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -757,8 +741,7 @@ window.addEventListener('beforeunload', cleanup);
 
 ## Complete Example: Multi-Format File Viewer
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
     <div class="file-viewer">
         <div class="viewer-header">
@@ -964,7 +947,6 @@ window.addEventListener('beforeunload', cleanup);
     }
 </style>
 ```
-{% endcode %}
 
 ## Browser Compatibility
 

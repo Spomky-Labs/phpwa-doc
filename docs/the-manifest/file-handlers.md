@@ -9,13 +9,13 @@ Implementing file handling in your PWA involves two steps:
 1. **Manifest Configuration** (this page): Declare which file types your app supports
 2. **Client-Side Implementation**: Use the [Symfony UX File Handling component](../symfony-ux/file-handling.md) to receive and process opened files
 
-{% hint style="success" %}
-**Looking for something else?**
+!!! success
 
-* **Manifest configuration** (which file types to handle): You're on the right page!
-* **Client-side implementation** (how to process files): See [File Handling Symfony UX](../symfony-ux/file-handling.md)
-* **Examples**: Image viewers, document processors, media players - See [Symfony UX Examples](../symfony-ux/file-handling.md#usage)
-{% endhint %}
+    **Looking for something else?**
+
+    * **Manifest configuration** (which file types to handle): You're on the right page!
+    * **Client-side implementation** (how to process files): See [File Handling Symfony UX](../symfony-ux/file-handling.md)
+    * **Examples**: Image viewers, document processors, media players - See [Symfony UX Examples](../symfony-ux/file-handling.md#usage)
 
 This page covers the manifest configuration. For client-side implementation with complete examples, see the [File Handling Symfony UX documentation](../symfony-ux/file-handling.md).
 
@@ -61,8 +61,7 @@ For more advanced examples (multiple files, different file types, editing capabi
 
 To declare the supported file types, you can add a `file_handlers` entry to your web app manifest. This entry specifies the types of files that the app can open, along with an `action` URL that handles the opening of those files.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -72,7 +71,6 @@ pwa:
                   "image/png": [".png"]
                   "image/jpeg": [".jpg", ".jpeg"]
 ```
-{% endcode %}
 
 By adding a file handler for the above image types, your PWA will announce to the operating system that it can handle these types of files. When users open files with these extensions, your PWA will be suggested as an application to open them with.
 
@@ -83,28 +81,23 @@ The `action` property refers to the URL within the PWA context that will handle 
 The `action` property can be a simple string or a full URL object configuration, just like [shortcuts](shortcuts.md#url-parameter) and [start_url](application-information/start-url.md):
 
 **Simple string format:**
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 file_handlers:
     - action: "/open-file"
       accept:
           "image/png": [".png"]
 ```
-{% endcode %}
 
 **Route name:**
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 file_handlers:
     - action: "app_file_handler"
       accept:
           "image/png": [".png"]
 ```
-{% endcode %}
 
 **Advanced object format with parameters:**
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 file_handlers:
     - action:
           path: "app_file_handler"
@@ -115,7 +108,6 @@ file_handlers:
       accept:
           "image/*": [".png", ".jpg", ".jpeg"]
 ```
-{% endcode %}
 
 ## Accept Parameter
 
@@ -126,8 +118,7 @@ The `accept` parameter is an object that maps MIME types to arrays of file exten
 You can use specific MIME types or wildcards:
 
 **Specific MIME types:**
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 file_handlers:
     - action: "/open"
       accept:
@@ -135,18 +126,15 @@ file_handlers:
           "image/jpeg": [".jpg", ".jpeg"]
           "image/webp": [".webp"]
 ```
-{% endcode %}
 
 **Wildcard MIME types:**
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 file_handlers:
     - action: "/open"
       accept:
           "image/*": [".png", ".jpg", ".jpeg", ".gif", ".webp"]
           "text/*": [".txt", ".md", ".json"]
 ```
-{% endcode %}
 
 ### Common File Types
 
@@ -185,8 +173,7 @@ accept:
 
 You can register multiple file handlers for different file types:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         file_handlers:
@@ -202,7 +189,6 @@ pwa:
                   "audio/*": [".mp3", ".wav"]
                   "video/*": [".mp4", ".webm"]
 ```
-{% endcode %}
 
 ## Best Practices
 
@@ -212,9 +198,9 @@ pwa:
 4. **Security**: Validate and sanitize file content before processing
 5. **Performance**: Handle large files efficiently with streaming or progressive loading
 
-{% hint style="warning" %}
-File handlers are an advanced PWA feature with varying browser support. Always check browser compatibility and provide alternative ways to upload or open files.
-{% endhint %}
+!!! warning
+
+    File handlers are an advanced PWA feature with varying browser support. Always check browser compatibility and provide alternative ways to upload or open files.
 
 ## Handling Files in Your Application
 
@@ -226,8 +212,7 @@ The `@pwa/file-handling` Stimulus controller automatically listens for files pas
 
 **Basic implementation:**
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/file-handling') }}>
     <div id="file-viewer"></div>
 </div>
@@ -246,7 +231,6 @@ The `@pwa/file-handling` Stimulus controller automatically listens for files pas
     });
 </script>
 ```
-{% endcode %}
 
 ### Complete Workflow
 
@@ -255,9 +239,9 @@ The `@pwa/file-handling` Stimulus controller automatically listens for files pas
 3. **Listen for the `pwa--file-handling:selected` event**
 4. **Process the file data** as needed
 
-{% hint style="info" %}
-For complete examples and advanced usage patterns, including handling multiple files, different file types, and resource cleanup, see the [File Handling Symfony UX documentation](../symfony-ux/file-handling.md).
-{% endhint %}
+!!! info
+
+    For complete examples and advanced usage patterns, including handling multiple files, different file types, and resource cleanup, see the [File Handling Symfony UX documentation](../symfony-ux/file-handling.md).
 
 ### When Files Are Received
 
@@ -270,8 +254,7 @@ Your application will receive files when users:
 ### Example: Image Editor Configuration
 
 **Step 1 - Configure manifest:**
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         file_handlers:
@@ -279,11 +262,9 @@ pwa:
               accept:
                   "image/*": [".png", ".jpg", ".jpeg", ".gif", ".webp"]
 ```
-{% endcode %}
 
 **Step 2 - Create the route and template:**
-{% code title="templates/image_editor.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/image_editor.html.twig" linenums="1"
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -310,6 +291,5 @@ pwa:
 </script>
 {% endblock %}
 ```
-{% endcode %}
 
 See the [File Handling Symfony UX component documentation](../symfony-ux/file-handling.md) for more advanced examples including photo galleries, document viewers, media players, and code editors.

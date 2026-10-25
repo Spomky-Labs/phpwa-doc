@@ -19,13 +19,13 @@ The Prefetch on Demand component relies on service workers and the Cache API, wh
 
 **Support level:** Excellent - Works on all modern browsers that support service workers (Chrome, Firefox, Safari, Edge).
 
-{% hint style="info" %}
-This component requires an active service worker with Workbox configured. Ensure your PWA Bundle service worker is properly registered before using this component.
-{% endhint %}
+!!! info
 
-{% hint style="success" %}
-Unlike native `<link rel="prefetch">`, which may be ignored by browsers under certain conditions (like when on cellular data), service worker-based prefetching gives you more control over caching behavior.
-{% endhint %}
+    This component requires an active service worker with Workbox configured. Ensure your PWA Bundle service worker is properly registered before using this component.
+
+!!! success
+
+    Unlike native `<link rel="prefetch">`, which may be ignored by browsers under certain conditions (like when on cellular data), service worker-based prefetching gives you more control over caching behavior.
 
 ## Traditional Prefetching vs. On-Demand
 
@@ -33,13 +33,11 @@ Unlike native `<link rel="prefetch">`, which may be ignored by browsers under ce
 
 Traditional HTML-based prefetching uses link tags:
 
-{% code lineNumbers="true" %}
-```html
+```html linenums="1"
 <link rel="prefetch" href="/article-2">
 <link rel="prefetch" href="/article-3">
 <link rel="prefetch" href="/author-18">
 ```
-{% endcode %}
 
 **Limitations:**
 - Prefetching starts immediately on page load
@@ -60,8 +58,7 @@ The Prefetch on Demand component offers more flexibility:
 
 ### Basic Hover-Based Prefetching
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <section {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
     <main>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -74,14 +71,12 @@ The Prefetch on Demand component offers more flexibility:
     </aside>
 </section>
 ```
-{% endcode %}
 
 When users hover over the aside section, the specified URLs are prefetched and cached.
 
 ### Individual Link Prefetching
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
     <h2>Related Articles</h2>
     <ul>
@@ -104,12 +99,10 @@ When users hover over the aside section, the specified URLs are prefetched and c
     </ul>
 </div>
 ```
-{% endcode %}
 
 ### Intersection Observer - Prefetch on Scroll
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
     {% for article in articles %}
         <article class="article-card"
@@ -134,12 +127,10 @@ When users hover over the aside section, the specified URLs are prefetched and c
   };
 </script>
 ```
-{% endcode %}
 
 ### Programmatic Prefetching
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
     <button id="load-next-chapter">Next Chapter</button>
     <div id="chapter-content"></div>
@@ -177,12 +168,10 @@ When users hover over the aside section, the specified URLs are prefetched and c
   });
 </script>
 ```
-{% endcode %}
 
 ### Menu Navigation Prefetching
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <nav {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
     <ul class="main-menu">
         <li {{ stimulus_action('@pwa/prefetch-on-demand', 'prefetch', 'mouseenter', {
@@ -206,22 +195,20 @@ When users hover over the aside section, the specified URLs are prefetched and c
     </ul>
 </nav>
 ```
-{% endcode %}
 
 ## Best Practices
 
 ### Be Selective with Prefetching
 
-{% hint style="warning" %}
-Don't prefetch everything! Prefetching consumes bandwidth and cache storage. Only prefetch pages users are likely to visit based on:
-- User behavior patterns
-- Navigation flow analysis
-- Content relationships
-- User intent signals (hovering, scrolling direction)
-{% endhint %}
+!!! warning
 
-{% code lineNumbers="true" %}
-```twig
+    Don't prefetch everything! Prefetching consumes bandwidth and cache storage. Only prefetch pages users are likely to visit based on:
+    - User behavior patterns
+    - Navigation flow analysis
+    - Content relationships
+    - User intent signals (hovering, scrolling direction)
+
+```twig linenums="1"
 {# Good: Prefetch likely next pages #}
 <div {{ stimulus_action('@pwa/prefetch-on-demand', 'prefetch', 'mouseenter', {
     urls: ['/checkout/shipping']
@@ -236,16 +223,14 @@ Don't prefetch everything! Prefetching consumes bandwidth and cache storage. Onl
     Continue
 </div>
 ```
-{% endcode %}
 
 ### Use Hover Intent, Not Immediate Hover
 
-{% hint style="success" %}
-Consider using `mouseenter` instead of `mouseover`, or add a small delay before prefetching to avoid unnecessary prefetches when users move their mouse across the page.
-{% endhint %}
+!!! success
 
-{% code lineNumbers="true" %}
-```javascript
+    Consider using `mouseenter` instead of `mouseover`, or add a small delay before prefetching to avoid unnecessary prefetches when users move their mouse across the page.
+
+```javascript linenums="1"
 // Add intelligent hover detection
 let hoverTimeout;
 element.addEventListener('mouseenter', () => {
@@ -259,31 +244,29 @@ element.addEventListener('mouseleave', () => {
   clearTimeout(hoverTimeout);
 });
 ```
-{% endcode %}
 
 ### Prioritize High-Value Pages
 
-{% hint style="info" %}
-Prefetch pages that provide the most value when loaded instantly:
-- Next steps in user workflows
-- High-traffic destination pages
-- Content directly related to current page
-- Pages that require authentication or API calls
-{% endhint %}
+!!! info
+
+    Prefetch pages that provide the most value when loaded instantly:
+    - Next steps in user workflows
+    - High-traffic destination pages
+    - Content directly related to current page
+    - Pages that require authentication or API calls
 
 ### Monitor Cache Size
 
-{% hint style="warning" %}
-Service worker caches have storage limits. Implement cache management strategies to prevent filling up user storage:
-- Set cache expiration policies in Workbox
-- Limit the number of cached entries
-- Clear old prefetched pages periodically
-{% endhint %}
+!!! warning
+
+    Service worker caches have storage limits. Implement cache management strategies to prevent filling up user storage:
+    - Set cache expiration policies in Workbox
+    - Limit the number of cached entries
+    - Clear old prefetched pages periodically
 
 ### Respect User Preferences
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 // Check for data saver mode before prefetching
 const connection = navigator.connection;
 if (connection && connection.saveData) {
@@ -293,14 +276,12 @@ if (connection && connection.saveData) {
   host.controller.prefetch({ params: { urls: ['/next-page'] } });
 }
 ```
-{% endcode %}
 
 ## Common Use Cases
 
 ### 1. Multi-Step Form/Checkout Flow
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# Step 1: Cart #}
 <div {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
     <h2>Your Cart</h2>
@@ -315,12 +296,10 @@ if (connection && connection.saveData) {
     </button>
 </div>
 ```
-{% endcode %}
 
 ### 2. Blog Article Navigation
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <article {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
     <h1>{{ article.title }}</h1>
     <div class="article-content">
@@ -350,12 +329,10 @@ if (connection && connection.saveData) {
     </footer>
 </article>
 ```
-{% endcode %}
 
 ### 3. E-Commerce Product Listing
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div class="product-grid" {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
     {% for product in products %}
         <div class="product-card"
@@ -370,12 +347,10 @@ if (connection && connection.saveData) {
     {% endfor %}
 </div>
 ```
-{% endcode %}
 
 ### 4. Documentation Navigation
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div class="docs-layout" {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
     <aside class="sidebar">
         <nav>
@@ -425,12 +400,10 @@ if (connection && connection.saveData) {
     </main>
 </div>
 ```
-{% endcode %}
 
 ### 5. Infinite Scroll Feed
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/prefetch-on-demand') }} id="feed-container">
     {% for post in posts %}
         <article class="post">
@@ -485,7 +458,6 @@ if (connection && connection.saveData) {
   }
 </script>
 ```
-{% endcode %}
 
 ## API Reference
 
@@ -502,25 +474,21 @@ Prefetches and caches the specified URLs through the service worker.
 **Parameters:**
 - `urls` (array, required): Array of URL strings to prefetch and cache
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {{ stimulus_action('@pwa/prefetch-on-demand', 'prefetch', 'mouseenter', {
     urls: ['/page-1', '/page-2', '/api/data']
 }) }}
 ```
-{% endcode %}
 
 **Example with custom event:**
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.controller.prefetch({
   params: {
     urls: ['/page-1', '/page-2']
   }
 });
 ```
-{% endcode %}
 
 ### Targets
 
@@ -535,13 +503,11 @@ Fired when the service worker successfully receives and processes the prefetch r
 **Event detail:**
 - `params.urls` (array): The URLs that were requested to be prefetched
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('prefetch-on-demand:prefetched', (e) => {
   console.log('Prefetch command processed:', e.detail.params.urls);
 });
 ```
-{% endcode %}
 
 #### `error`
 
@@ -550,8 +516,7 @@ Fired when the prefetch operation fails (e.g., service worker not available, Wor
 **Event detail:**
 - `params.urls` (array): The URLs that failed to prefetch
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('prefetch-on-demand:error', (e) => {
   console.error('Prefetch failed for:', e.detail.params.urls);
   // Optionally fall back to native prefetch
@@ -563,7 +528,6 @@ host.addEventListener('prefetch-on-demand:error', (e) => {
   });
 });
 ```
-{% endcode %}
 
 ## How It Works
 
@@ -580,8 +544,7 @@ Ensure your service worker is configured to handle the `CACHE_URLS` message. The
 
 If you need custom cache configuration:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -599,7 +562,6 @@ pwa:
                             maxEntries: 50
                             maxAgeSeconds: 86400  # 1 day
 ```
-{% endcode %}
 
 ## Related Components
 
@@ -613,4 +575,4 @@ pwa:
 - [MDN: Link types: prefetch](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/prefetch)
 - [Web.dev: Resource Hints](https://web.dev/learn/performance/resource-hints)
 - [Workbox: Cache URLs on demand](https://developer.chrome.com/docs/workbox/managing-fallback-responses/)
-- [PWA Bundle Service Worker Documentation](../the-service-worker/workbox/)
+- [PWA Bundle Service Worker Documentation](../the-service-worker/workbox/README.md)

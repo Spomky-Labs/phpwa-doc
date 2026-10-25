@@ -24,18 +24,16 @@ IARC ratings help:
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         iarc_rating_id: "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7"
 ```
-{% endcode %}
 
-{% hint style="info" %}
-The `iarc_rating_id` is optional. Only include it if you have obtained an official IARC certificate for your application.
-{% endhint %}
+!!! info
+
+    The `iarc_rating_id` is optional. Only include it if you have obtained an official IARC certificate for your application.
 
 ## When You Need an IARC Rating
 

@@ -4,8 +4,7 @@ To integrate the icon details into the Progressive Web App (PWA) manifest file, 
 
 The `sizes` attribute indicates the size of the icon to the browser. For PNG or JPEG icons, specify the dimensions (e.g., 48, 96, 256). For vector icons, you can use "any" as they are scalable without losing quality. The `format` attribute is also important as it tells the browser what the file format is, helping it to render the image correctly or the browser to select the most suitable format.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -18,7 +17,6 @@ pwa:
             - src: "icons/icon.svg"
               sizes: 0
 ```
-{% endcode %}
 
 ### `src` Parameter
 
@@ -28,8 +26,7 @@ The `src` parameter is the path to the resource file. It can be:
 * an absolute path to the resource,
 * a [Symfony UX Icon](https://ux.symfony.com/icons) if the `symfony/ux-icons` bundle is installed.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         icons:
@@ -40,7 +37,6 @@ pwa:
             - src: "bx:badge-check"
               sizes: [48]
 ```
-{% endcode %}
 
 ### `sizes` Parameter
 
@@ -50,8 +46,7 @@ The sizes parameter indicates the suitable sizes for the icon. The expected valu
 
 The recommended sizes for application icons are as 48, 72, 96, 144, 168, 192, 256 and 512 pixels.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         icons:
@@ -60,7 +55,6 @@ pwa:
             - src: "icons/icon.svg"
               sizes: 0
 ```
-{% endcode %}
 
 ### `format` Parameter
 
@@ -68,9 +62,9 @@ When the `format` parameter is set, the bundle will try to save the image in the
 
 In general, browsers can read `svg`, `png` and `jpg` types. Modern browsers may support `webp`.
 
-{% hint style="info" %}
-Conversion to SVG is not possible.
-{% endhint %}
+!!! info
+
+    Conversion to SVG is not possible.
 
 ### `purpose` Parameter
 
@@ -82,7 +76,10 @@ The `purpose` parameter defines how the icon should be used by the operating sys
 
 The `maskable` purpose indicates the icon has a security margin and borders can be cropped on certain devices.
 
-<figure><img src="../.gitbook/assets/maskable-icon-safe-area (1).png" alt=""><figcaption><p>Maskable image safe area</p></figcaption></figure>
+<figure markdown="span">
+  ![Maskable image safe area](../assets/images/maskable-icon-safe-area-1.png)
+  <figcaption>Maskable image safe area</figcaption>
+</figure>
 
 ### `border_radius` Parameter
 
@@ -90,8 +87,7 @@ The `border_radius` parameter allows you to add rounded corners to your icon. Th
 
 The value must be an integer between 1 and 50, representing the radius as a percentage of the icon size.
 
-{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         icons:
@@ -99,7 +95,6 @@ pwa:
               sizes: [192, 512]
               border_radius: 20
 ```
-{% endcode %}
 
 **Common values:**
 * `0`: No rounding (sharp corners)
@@ -107,9 +102,9 @@ pwa:
 * `30-40`: Well-rounded corners
 * `50`: Fully circular icon
 
-{% hint style="info" %}
-The border radius is applied proportionally to all icon sizes generated from the same source.
-{% endhint %}
+!!! info
+
+    The border radius is applied proportionally to all icon sizes generated from the same source.
 
 ### `image_scale` Parameter
 
@@ -120,8 +115,7 @@ The value must be an integer between 1 and 100, where:
 * `80`: Icon is scaled to 80% with 10% padding on each side
 * `50`: Icon is scaled to 50% with 25% padding on each side
 
-{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         icons:
@@ -129,7 +123,6 @@ pwa:
               sizes: [192, 512]
               image_scale: 85
 ```
-{% endcode %}
 
 This is particularly useful when:
 * Your icon design is too large and needs padding
@@ -140,8 +133,7 @@ This is particularly useful when:
 
 When using `image_scale` or `border_radius`, you can specify a `background_color` to fill the space around or behind the icon:
 
-{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         icons:
@@ -151,14 +143,12 @@ pwa:
               border_radius: 20
               background_color: "#ffffff"
 ```
-{% endcode %}
 
 ### SVG Attributes
 
 You can customize any SVG attribute to control how your icon is rendered. The bundle allows you to modify fill colors, stroke properties, and other SVG root attributes:
 
-{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         icons:
@@ -169,7 +159,6 @@ pwa:
                   stroke: '#ffffff'
                   stroke-width: '2'
 ```
-{% endcode %}
 
 **Common attributes:**
 - `fill`: Main fill color
@@ -191,6 +180,6 @@ pwa:
               svg_color: '#15fe68'  # Equivalent to svg_attr.color
 ```
 
-{% hint style="info" %}
-Use `svg_attr` for full control over SVG rendering. The `svg_color` shorthand is maintained for backward compatibility.
-{% endhint %}
+!!! info
+
+    Use `svg_attr` for full control over SVG rendering. The `svg_color` shorthand is maintained for backward compatibility.

@@ -26,9 +26,9 @@ The bundle automatically caches self-hosted fonts with these settings:
 /\.(ttf|eot|otf|woff|woff2?)$/
 ```
 
-{% hint style="info" %}
-Font caching only applies to fonts served by your application, not external CDNs (except Google Fonts, which has dedicated handling).
-{% endhint %}
+!!! info
+
+    Font caching only applies to fonts served by your application, not external CDNs (except Google Fonts, which has dedicated handling).
 
 ### Configuration Options
 
@@ -69,8 +69,7 @@ pwa:
 
 How long fonts remain in cache before refresh.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -79,7 +78,6 @@ pwa:
                 max_entries: 20
                 max_age: 180 days  # 6 months
 ```
-{% endcode %}
 
 **Font-specific considerations**:
 - **Custom brand fonts**: 1 year or more (rarely change)
@@ -123,8 +121,7 @@ pwa:
 
 ### Complete Self-Hosted Example
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -137,7 +134,6 @@ pwa:
                 max_age: 180 days
                 regex: '/\.(woff2?|ttf)$/'
 ```
-{% endcode %}
 
 ## Google Fonts Caching
 
@@ -157,8 +153,7 @@ The bundle handles both automatically.
 
 ### Configuration Options
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -170,11 +165,10 @@ pwa:
                 max_entries: 30               # Font files to cache
                 max_age: 2 days               # CSS cache duration
 ```
-{% endcode %}
 
-{% hint style="warning" %}
-**Typo in original docs**: The cache_prefix was "goolge-fonts" but should be "google-fonts"
-{% endhint %}
+!!! warning
+
+    **Typo in original docs**: The cache_prefix was "goolge-fonts" but should be "google-fonts"
 
 ### Google Fonts Options Explained
 
@@ -242,8 +236,7 @@ pwa:
 
 Configuration for an app using both self-hosted and Google Fonts:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -264,7 +257,6 @@ pwa:
                 max_entries: 25
                 max_age: 3 days
 ```
-{% endcode %}
 
 ## Use Cases
 
@@ -372,6 +364,6 @@ This ensures:
 - Custom font loads from cache (fast)
 - No layout shift when font loads
 
-{% hint style="success" %}
-**Recommended setup**: Use WOFF2 self-hosted fonts with `font-display: swap` and cache them for 1 year. This provides the best performance and user experience.
-{% endhint %}
+!!! success
+
+    **Recommended setup**: Use WOFF2 self-hosted fonts with `font-display: swap` and cache them for 1 year. This provides the best performance and user experience.

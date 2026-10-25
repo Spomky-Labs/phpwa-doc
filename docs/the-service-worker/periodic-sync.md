@@ -10,9 +10,9 @@ Periodic sync enables:
 - **Reduced data usage**: Sync only when on WiFi/charging
 - **Battery efficiency**: Browser controls execution based on engagement
 
-{% hint style="info" %}
-**Important**: Unlike other PWA Bundle features, Periodic Sync requires writing JavaScript code in both the service worker and your application.
-{% endhint %}
+!!! info
+
+    **Important**: Unlike other PWA Bundle features, Periodic Sync requires writing JavaScript code in both the service worker and your application.
 
 ## How It Works
 
@@ -23,9 +23,9 @@ Periodic sync enables:
 
 ## Browser Support
 
-{% hint style="warning" %}
-**Limited Support**: Periodic Background Sync is currently only supported in Chromium-based browsers (Chrome, Edge) on Android and Desktop. Not available in Safari or Firefox.
-{% endhint %}
+!!! warning
+
+    **Limited Support**: Periodic Background Sync is currently only supported in Chromium-based browsers (Chrome, Edge) on Android and Desktop. Not available in Safari or Firefox.
 
 **Check support**:
 ```javascript
@@ -42,8 +42,7 @@ if ('periodicSync' in ServiceWorkerRegistration.prototype) {
 
 Create periodic tasks in your service worker:
 
-{% code title="assets/sw.js" overflow="wrap" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 const ping = async () => {
     const cache = await openCache('ping-cache');
     const res = await fetch('/ping');
@@ -54,18 +53,16 @@ const ping = async () => {
 
 registerPeriodicSyncTask('ping', ping);
 ```
-{% endcode %}
 
-{% hint style="success" %}
-**Helper Functions**: The bundle provides `openCache`, `notifyPeriodicSyncClients`, and `registerPeriodicSyncTask` helpers in your service worker.
-{% endhint %}
+!!! success
+
+    **Helper Functions**: The bundle provides `openCache`, `notifyPeriodicSyncClients`, and `registerPeriodicSyncTask` helpers in your service worker.
 
 ### Multiple Tasks Under Same Tag
 
 Register multiple related tasks:
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 // Task 1: Update news cache
 const updateNews = async () => {
     const cache = await openCache('news-cache');
@@ -94,12 +91,10 @@ const cleanOldNews = async () => {
 registerPeriodicSyncTask('news-sync', updateNews);
 registerPeriodicSyncTask('news-sync', cleanOldNews);
 ```
-{% endcode %}
 
 ### Complete Example: Blog Post Sync
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 const syncBlogPosts = async () => {
     try {
         // Fetch latest posts
@@ -141,7 +136,6 @@ const syncBlogPosts = async () => {
 
 registerPeriodicSyncTask('blog-sync', syncBlogPosts);
 ```
-{% endcode %}
 
 ## Client-Side Registration
 
@@ -149,19 +143,16 @@ registerPeriodicSyncTask('blog-sync', syncBlogPosts);
 
 Request periodic sync from your application:
 
-{% code title="assets/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync } from '@spomky-labs/pwa/helpers';
 
 // Register periodic sync for 'ping' tag every 6 hours
 await registerPeriodicSync('ping', 6 * 60 * 60 * 1000);
 ```
-{% endcode %}
 
 ### With Error Handling
 
-{% code title="assets/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync } from '@spomky-labs/pwa/helpers';
 
 async function setupPeriodicSync() {
@@ -182,14 +173,12 @@ async function setupPeriodicSync() {
 
 setupPeriodicSync();
 ```
-{% endcode %}
 
 ### Listening for Sync Updates
 
 Receive notifications when sync completes:
 
-{% code title="assets/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/app.js" linenums="1"
 // Listen for periodic sync updates
 navigator.serviceWorker.addEventListener('message', (event) => {
     if (event.data.type === 'periodicSync') {
@@ -226,7 +215,6 @@ function showNotification(message) {
     setTimeout(() => notification.remove(), 3000);
 }
 ```
-{% endcode %}
 
 ## Common Use Cases
 
@@ -234,8 +222,7 @@ function showNotification(message) {
 
 Keep articles fresh in the background:
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 const syncNews = async () => {
     const cache = await openCache('news-cache');
     const response = await fetch('/api/news/latest?limit=20');
@@ -250,21 +237,17 @@ const syncNews = async () => {
 
 registerPeriodicSyncTask('news-sync', syncNews);
 ```
-{% endcode %}
 
-{% code title="assets/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/app.js" linenums="1"
 // Sync news every 4 hours
 await registerPeriodicSync('news-sync', 4 * 60 * 60 * 1000);
 ```
-{% endcode %}
 
 ### 2. Social Media Feed
 
 Update social feed periodically:
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 const syncFeed = async () => {
     const cache = await openCache('social-cache');
     const response = await fetch('/api/feed?since=' + Date.now());
@@ -282,14 +265,12 @@ const syncFeed = async () => {
 
 registerPeriodicSyncTask('feed-sync', syncFeed);
 ```
-{% endcode %}
 
 ### 3. Weather Data
 
 Keep weather information up-to-date:
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 const syncWeather = async () => {
     try {
         const response = await fetch('/api/weather/current');
@@ -310,14 +291,12 @@ const syncWeather = async () => {
 
 registerPeriodicSyncTask('weather-sync', syncWeather);
 ```
-{% endcode %}
 
 ### 4. Cache Cleanup
 
 Periodically clean old cached data:
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 const cleanupCache = async () => {
     const cacheNames = await caches.keys();
     const now = Date.now();
@@ -345,14 +324,12 @@ const cleanupCache = async () => {
 
 registerPeriodicSyncTask('cleanup', cleanupCache);
 ```
-{% endcode %}
 
 ### 5. User Data Prefetch
 
 Preload user-specific data:
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 const prefetchUserData = async () => {
     const endpoints = [
         '/api/user/profile',
@@ -378,13 +355,12 @@ const prefetchUserData = async () => {
 
 registerPeriodicSyncTask('user-sync', prefetchUserData);
 ```
-{% endcode %}
 
 ## Browser Execution Control
 
-{% hint style="warning" %}
-**Important**: The browser controls when periodic sync actually runs. The interval you specify is a **minimum**, not a guarantee.
-{% endhint %}
+!!! warning
+
+    **Important**: The browser controls when periodic sync actually runs. The interval you specify is a **minimum**, not a guarantee.
 
 ### Factors Affecting Execution
 
@@ -739,7 +715,7 @@ console.log('Permission status:', status.state);
 
 - [Background Sync](workbox/backgoundsync.md) - One-time background sync
 - [Service Worker Configuration](configuration.md) - Service worker setup
-- [Workbox](workbox/) - Workbox features
+- [Workbox](workbox/README.md) - Workbox features
 
 ## Resources
 

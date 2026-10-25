@@ -1,8 +1,8 @@
 # Icon Management
 
-{% hint style="warning" %}
-**Deprecated**: The command `pwa:create:icons` is deprecated and has been removed. Use modern icon generation tools and configure icons directly in your manifest.
-{% endhint %}
+!!! warning
+
+    **Deprecated**: The command `pwa:create:icons` is deprecated and has been removed. Use modern icon generation tools and configure icons directly in your manifest.
 
 ## Overview
 
@@ -14,8 +14,7 @@ Icons are defined in your manifest configuration. See the complete [Icons docume
 
 ### Basic Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         icons:
@@ -27,7 +26,6 @@ pwa:
               sizes: [512]
               purpose: "maskable"
 ```
-{% endcode %}
 
 ## Recommended Icon Generation Tools
 

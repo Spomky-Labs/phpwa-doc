@@ -19,16 +19,16 @@ The BackgroundSync Queue component relies on the Broadcast Channel API for commu
 
 **Support level:** Excellent - Works on all modern browsers that support service workers and the Broadcast Channel API (Chrome, Firefox, Safari 15.4+, Edge).
 
-{% hint style="info" %}
-This component requires:
-- An active service worker with Workbox configured
-- Background Sync enabled in your PWA configuration
-- A broadcast channel configured for the queue
-{% endhint %}
+!!! info
 
-{% hint style="success" %}
-Background Sync automatically retries failed requests when the device regains connectivity. This component simply provides visibility and manual control over that process.
-{% endhint %}
+    This component requires:
+    - An active service worker with Workbox configured
+    - Background Sync enabled in your PWA configuration
+    - A broadcast channel configured for the queue
+
+!!! success
+
+    Background Sync automatically retries failed requests when the device regains connectivity. This component simply provides visibility and manual control over that process.
 
 ## How It Works
 
@@ -42,8 +42,7 @@ Background Sync automatically retries failed requests when the device regains co
 
 First, configure background sync with a broadcast channel in your PWA configuration:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -57,7 +56,6 @@ pwa:
                   broadcast_channel: 'api-queue-status'
                   max_retention_time: 4320   # 3 days in minutes
 ```
-{% endcode %}
 
 The `broadcast_channel` name must match the `channel` parameter in your component.
 
@@ -65,8 +63,7 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
 
 ### Basic Queue Status Display
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'form-queue-status'}) }}>
     <p>Pending form submissions: <strong id="queue-count">--</strong></p>
     <button {{ stimulus_action('@pwa/backgroundsync-queue', 'replay') }}>
@@ -97,12 +94,10 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
     });
 </script>
 ```
-{% endcode %}
 
 ### Visual Queue Status Indicator
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'form-queue-status'}) }}>
     <div id="sync-status" class="status-indicator hidden">
         <div class="status-icon">⏳</div>
@@ -167,12 +162,10 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
     }
 </style>
 ```
-{% endcode %}
 
 ### Multiple Queue Monitoring
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div class="queue-dashboard">
     <h2>Sync Status</h2>
 
@@ -257,12 +250,10 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
     }
 </style>
 ```
-{% endcode %}
 
 ### Automatic Polling for Status Updates
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'form-queue-status'}) }}
      id="sync-monitor">
     <div class="sync-header">
@@ -299,12 +290,10 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
     });
 </script>
 ```
-{% endcode %}
 
 ### Integration with Form Submission
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'form-queue-status'}) }}>
     {# Show queue status banner if items are pending #}
     <div id="sync-banner" class="hidden alert alert-warning">
@@ -354,18 +343,16 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
     });
 </script>
 ```
-{% endcode %}
 
 ## Best Practices
 
 ### Always Configure Broadcast Channel
 
-{% hint style="warning" %}
-The broadcast channel must be configured in both the PWA config file and the component. Mismatched channel names will prevent communication between the service worker and the component.
-{% endhint %}
+!!! warning
 
-{% code lineNumbers="true" %}
-```yaml
+    The broadcast channel must be configured in both the PWA config file and the component. Mismatched channel names will prevent communication between the service worker and the component.
+
+```yaml linenums="1"
 # config/packages/pwa.yaml
 pwa:
     serviceworker:
@@ -374,25 +361,21 @@ pwa:
                 - queue_name: 'my-queue'
                   broadcast_channel: 'my-queue-status'  # Must match component
 ```
-{% endcode %}
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# Channel name must match configuration #}
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {
     channel: 'my-queue-status'
 }) }}>
 ```
-{% endcode %}
 
 ### Handle Edge Cases
 
-{% hint style="info" %}
-Always check if the `remaining` value is an integer before displaying it. The initial value may be undefined until the first status update.
-{% endhint %}
+!!! info
 
-{% code lineNumbers="true" %}
-```javascript
+    Always check if the `remaining` value is an integer before displaying it. The initial value may be undefined until the first status update.
+
+```javascript linenums="1"
 host.addEventListener('backgroundsync-queue:status', (e) => {
     // Always validate the data type
     if (Number.isInteger(e.detail.remaining)) {
@@ -403,16 +386,14 @@ host.addEventListener('backgroundsync-queue:status', (e) => {
     }
 });
 ```
-{% endcode %}
 
 ### Provide User Feedback
 
-{% hint style="success" %}
-Always give users feedback when they trigger a manual replay. Even if the sync fails, users should know something happened.
-{% endhint %}
+!!! success
 
-{% code lineNumbers="true" %}
-```javascript
+    Always give users feedback when they trigger a manual replay. Even if the sync fails, users should know something happened.
+
+```javascript linenums="1"
 const replayBtn = document.querySelector('button');
 let isReplaying = false;
 
@@ -431,13 +412,12 @@ replayBtn.addEventListener('click', () => {
     }, 3000);
 });
 ```
-{% endcode %}
 
 ### Monitor Multiple Queues Separately
 
-{% hint style="info" %}
-If your application has multiple background sync queues (forms, API calls, uploads), use separate component instances with different channel names for each queue.
-{% endhint %}
+!!! info
+
+    If your application has multiple background sync queues (forms, API calls, uploads), use separate component instances with different channel names for each queue.
 
 ## Common Use Cases
 
@@ -445,8 +425,7 @@ If your application has multiple background sync queues (forms, API calls, uploa
 
 Track pending form submissions and show users what's waiting to sync:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'form-submissions'}) }}>
     <div class="submission-tracker">
         <div id="offline-notice" class="hidden">
@@ -487,14 +466,12 @@ Track pending form submissions and show users what's waiting to sync:
     });
 </script>
 ```
-{% endcode %}
 
 ### 2. E-Commerce Offline Checkout
 
 Show customers their pending orders waiting to process:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div class="checkout-status"
      {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'order-queue'}) }}>
     <div id="pending-orders" class="hidden">
@@ -528,14 +505,12 @@ Show customers their pending orders waiting to process:
     });
 </script>
 ```
-{% endcode %}
 
 ### 3. Todo/Task Management Offline Sync
 
 Display pending task changes waiting to sync with the server:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div class="task-manager">
     <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'task-sync'}) }}
          class="sync-indicator">
@@ -566,7 +541,6 @@ Display pending task changes waiting to sync with the server:
     });
 </script>
 ```
-{% endcode %}
 
 ## API Reference
 
@@ -579,13 +553,11 @@ Display pending task changes waiting to sync with the server:
 
 The name of the broadcast channel to listen to. Must match the `broadcast_channel` configured in your PWA configuration file.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {
     channel: 'form-queue-status'
 }) }}>
 ```
-{% endcode %}
 
 ### Actions
 
@@ -593,13 +565,11 @@ The name of the broadcast channel to listen to. Must match the `broadcast_channe
 
 Manually triggers replay of all pending requests in the queue. Sends a `replay-request` message to the service worker via the broadcast channel.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <button {{ stimulus_action('@pwa/backgroundsync-queue', 'replay') }}>
     Retry Now
 </button>
 ```
-{% endcode %}
 
 ### Targets
 
@@ -615,13 +585,11 @@ Fired when a status update is received from the service worker containing the cu
 - `name` (string): Name of the queue
 - `remaining` (number): Number of pending requests in the queue
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('backgroundsync-queue:status', (e) => {
     console.log(`Queue ${e.detail.name} has ${e.detail.remaining} pending requests`);
 });
 ```
-{% endcode %}
 
 #### `error`
 
@@ -630,13 +598,11 @@ Fired when an error occurs (e.g., no channel provided).
 **Event detail:**
 - `reason` (string): Description of the error
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('backgroundsync-queue:error', (e) => {
     console.error('Queue error:', e.detail.reason);
 });
 ```
-{% endcode %}
 
 ## How Queue Updates Work
 

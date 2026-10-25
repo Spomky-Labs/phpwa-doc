@@ -19,8 +19,7 @@ CSP headers control which resources can be loaded and executed. Service workers 
 
 The PWA Bundle supports CSP nonces for service worker registration:
 
-{% code title="templates/base.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/base.html.twig" linenums="1"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,18 +30,16 @@ The PWA Bundle supports CSP nonces for service worker registration:
 </body>
 </html>
 ```
-{% endcode %}
 
-{% hint style="success" %}
-**Nelmio Security Bundle**: If using [Nelmio Security Bundle](https://symfony.com/bundles/NelmioSecurityBundle/current/index.html#content-security-policy), nonces are automatically generated and applied. No manual configuration needed.
-{% endhint %}
+!!! success
+
+    **Nelmio Security Bundle**: If using [Nelmio Security Bundle](https://symfony.com/bundles/NelmioSecurityBundle/current/index.html#content-security-policy), nonces are automatically generated and applied. No manual configuration needed.
 
 ### Manual Nonce Generation
 
 If not using Nelmio, generate nonces manually:
 
-{% code title="src/Twig/CspExtension.php" lineNumbers="true" %}
-```php
+```php title="src/Twig/CspExtension.php" linenums="1"
 <?php
 
 namespace App\Twig;
@@ -71,7 +68,6 @@ class CspExtension extends AbstractExtension
     }
 }
 ```
-{% endcode %}
 
 Then add the nonce to your CSP header in a middleware or response listener.
 
@@ -142,8 +138,7 @@ pwa:
 
 ### Using Nelmio Security Bundle
 
-{% code title="config/packages/nelmio_security.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/nelmio_security.yaml" linenums="1"
 nelmio_security:
     content_security_policy:
         enabled: true
@@ -189,14 +184,12 @@ nelmio_security:
             - 'self'
             - 'blob:'
 ```
-{% endcode %}
 
 ### Custom Event Subscriber
 
 For custom CSP header management:
 
-{% code title="src/EventSubscriber/CspSubscriber.php" lineNumbers="true" %}
-```php
+```php title="src/EventSubscriber/CspSubscriber.php" linenums="1"
 <?php
 
 namespace App\EventSubscriber;
@@ -243,7 +236,6 @@ class CspSubscriber implements EventSubscriberInterface
     }
 }
 ```
-{% endcode %}
 
 ## Common CSP Issues
 
@@ -371,8 +363,7 @@ nelmio_security:
 
 ### Create Report Endpoint
 
-{% code title="src/Controller/CspController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/CspController.php" linenums="1"
 <?php
 
 namespace App\Controller;
@@ -400,7 +391,6 @@ class CspController extends AbstractController
     }
 }
 ```
-{% endcode %}
 
 ## Production vs Development
 
@@ -549,7 +539,7 @@ When CSP blocks your PWA:
 ## Related Documentation
 
 - [Service Worker Configuration](configuration.md) - Service worker setup
-- [Workbox](workbox/) - Workbox configuration options
+- [Workbox](workbox/README.md) - Workbox configuration options
 - [Nelmio Security Bundle](https://symfony.com/bundles/NelmioSecurityBundle/current/index.html) - Symfony CSP configuration
 
 ## Resources

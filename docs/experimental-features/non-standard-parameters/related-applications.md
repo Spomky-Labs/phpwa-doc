@@ -16,8 +16,7 @@ The `related_applications` property allows you to specify native applications av
 
 List related native apps without preferring them:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         prefer_related_applications: false  # Don't prefer native apps
@@ -26,7 +25,6 @@ pwa:
               url: "https://play.google.com/store/apps/details?id=com.example.app"
               id: "com.example.app"
 ```
-{% endcode %}
 
 **Result**: Browser shows PWA install prompt. Native apps listed as alternatives.
 
@@ -34,8 +32,7 @@ pwa:
 
 Suggest native apps over PWA installation:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         prefer_related_applications: true  # Prefer native apps
@@ -46,7 +43,6 @@ pwa:
             - platform: "itunes"
               url: "https://apps.apple.com/app/example-app/id123456789"
 ```
-{% endcode %}
 
 **Result**: Browser suggests installing native app first, PWA as fallback.
 
@@ -54,8 +50,7 @@ pwa:
 
 List apps for all major platforms:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         prefer_related_applications: false
@@ -73,7 +68,6 @@ pwa:
               url: "https://chrome.google.com/webstore/detail/example-app/abcdefghijklmnopqrstu"
               id: "abcdefghijklmnopqrstu"
 ```
-{% endcode %}
 
 ## Properties
 
@@ -113,14 +107,12 @@ Identifier for the app platform.
 
 **For**: Android devices
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 related_applications:
     - platform: "play"
       url: "https://play.google.com/store/apps/details?id=com.example.myapp"
       id: "com.example.myapp"
 ```
-{% endcode %}
 
 **URL Format**: `https://play.google.com/store/apps/details?id={package_name}`
 
@@ -136,14 +128,12 @@ related_applications:
 
 **For**: iOS, iPadOS devices
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 related_applications:
     - platform: "itunes"
       url: "https://apps.apple.com/app/example-app/id123456789"
       id: "123456789"
 ```
-{% endcode %}
 
 **URL Format**: `https://apps.apple.com/app/{app-name}/id{app_id}`
 
@@ -159,14 +149,12 @@ related_applications:
 
 **For**: Windows 10/11 devices
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 related_applications:
     - platform: "windows"
       url: "https://apps.microsoft.com/store/detail/9NBLGGH4NNS1"
       id: "9NBLGGH4NNS1"
 ```
-{% endcode %}
 
 **URL Format**: `https://apps.microsoft.com/store/detail/{store_id}`
 
@@ -182,14 +170,12 @@ related_applications:
 
 **For**: Chrome Extensions/Apps
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 related_applications:
     - platform: "chrome_web_store"
       url: "https://chrome.google.com/webstore/detail/abcdefghijklmnopqrst"
       id: "abcdefghijklmnopqrst"
 ```
-{% endcode %}
 
 **URL Format**: `https://chrome.google.com/webstore/detail/{extension_id}`
 
@@ -205,14 +191,12 @@ related_applications:
 
 **For**: Chrome OS devices with Play Store support
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 related_applications:
     - platform: "chromeos_play"
       url: "https://play.google.com/store/apps/details?id=com.example.app"
       id: "com.example.app"
 ```
-{% endcode %}
 
 **Format**: Same as Google Play Store
 
@@ -220,13 +204,11 @@ related_applications:
 
 **For**: Generic web applications
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 related_applications:
     - platform: "webapp"
       url: "https://app.example.com/install"
 ```
-{% endcode %}
 
 **URL Format**: Any URL to your web app
 
@@ -234,14 +216,12 @@ related_applications:
 
 **For**: Android open-source app repository
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 related_applications:
     - platform: "f-droid"
       url: "https://f-droid.org/packages/com.example.app"
       id: "com.example.app"
 ```
-{% endcode %}
 
 **URL Format**: `https://f-droid.org/packages/{package_name}`
 
@@ -249,14 +229,12 @@ related_applications:
 
 **For**: Amazon Fire devices, Android
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 related_applications:
     - platform: "amazon"
       url: "https://www.amazon.com/dp/B0123456789"
       id: "B0123456789"
 ```
-{% endcode %}
 
 **URL Format**: `https://www.amazon.com/dp/{asin}`
 
@@ -268,8 +246,7 @@ related_applications:
 
 PWA primary, native apps as enhancements:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "SocialApp"
@@ -286,14 +263,12 @@ pwa:
               url: "https://apps.apple.com/app/socialapp/id987654321"
               id: "987654321"
 ```
-{% endcode %}
 
 ### Example 2: Game
 
 Native apps preferred for performance:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Epic Game"
@@ -312,14 +287,12 @@ pwa:
               url: "https://apps.microsoft.com/store/detail/9NBLGGH4GAME"
               id: "9NBLGGH4GAME"
 ```
-{% endcode %}
 
 ### Example 3: Productivity Tool
 
 Available on all platforms:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "TaskMaster Pro"
@@ -345,14 +318,12 @@ pwa:
               url: "https://f-droid.org/packages/com.taskmaster.pro"
               id: "com.taskmaster.pro"
 ```
-{% endcode %}
 
 ### Example 4: PWA-Only with Web App Link
 
 No native apps, just PWA:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Web-Only App"
@@ -361,7 +332,6 @@ pwa:
             - platform: "webapp"
               url: "https://webapp.example.com"
 ```
-{% endcode %}
 
 ## Browser Support
 
@@ -373,9 +343,9 @@ pwa:
 | Safari | ❌ | Ignored |
 | Firefox | ❌ | Ignored |
 
-{% hint style="info" %}
-**Graceful Degradation**: Browsers that don't support this feature simply ignore it and show standard PWA install prompts.
-{% endhint %}
+!!! info
+
+    **Graceful Degradation**: Browsers that don't support this feature simply ignore it and show standard PWA install prompts.
 
 ## User Experience Flow
 
@@ -407,8 +377,7 @@ No: Falls back to "Add to Home Screen" (PWA)
 
 ### 1. Check Manifest
 
-{% code title="JavaScript Console" lineNumbers="true" %}
-```javascript
+```javascript title="JavaScript Console" linenums="1"
 fetch('/manifest.json')
     .then(r => r.json())
     .then(manifest => {
@@ -422,7 +391,6 @@ fetch('/manifest.json')
         });
     });
 ```
-{% endcode %}
 
 ### 2. Test on Android Chrome
 

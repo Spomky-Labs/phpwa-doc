@@ -4,16 +4,14 @@ One of the parameters included in this file is the `id` property. This parameter
 
 This `id` parameter should be consistent and not change, even if other manifest properties are updated. It's important for maintaining the application's identity for things like saved user preferences and home screen shortcuts.
 
-When absent, an ID is determined using the `start_url` parameter, the manifest location and its `scope`. Adding an `id` to the manifest allows to change the `start_url` and the manifest path. Note that <mark style="color:red;">the domain shall not change</mark>.
+When absent, an ID is determined using the `start_url` parameter, the manifest location and its `scope`. Adding an `id` to the manifest allows to change the `start_url` and the manifest path. Note that **the domain shall not change**.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         id: "/?homescreen=1"
 ```
-{% endcode %}
 
 ## Why Use an ID?
 
@@ -45,14 +43,13 @@ Common patterns include:
 * `"/app"` - Path-based approach
 * `"/"` - Root-level identification
 
-{% hint style="warning" %}
-Once you've set an `id` and users have installed your PWA, changing it will cause browsers to treat it as a completely different application. This means users would need to reinstall the app, and all saved data would be lost.
-{% endhint %}
+!!! warning
+
+    Once you've set an `id` and users have installed your PWA, changing it will cause browsers to treat it as a completely different application. This means users would need to reinstall the app, and all saved data would be lost.
 
 ## Example with Routing
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -60,10 +57,9 @@ pwa:
         start_url: "app_homepage"
         scope: "/"
 ```
-{% endcode %}
 
 In this example, even if the `app_homepage` route URL changes, the application identity remains stable thanks to the explicit `id`.
 
-{% hint style="info" %}
-If you don't specify an `id`, browsers will automatically compute one based on the `start_url`, manifest location, and `scope`. This works fine for most applications, but explicit IDs provide more control and flexibility.
-{% endhint %}
+!!! info
+
+    If you don't specify an `id`, browsers will automatically compute one based on the `start_url`, manifest location, and `scope`. This works fine for most applications, but explicit IDs provide more control and flexibility.

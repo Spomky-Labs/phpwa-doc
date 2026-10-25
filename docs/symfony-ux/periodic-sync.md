@@ -12,23 +12,23 @@ Periodic Background Sync allows your PWA to:
 * Provide up-to-date content when users return to the app
 * Reduce data usage by syncing only when conditions are optimal
 
-{% hint style="info" %}
-Periodic Sync requires an active service worker and is subject to browser-controlled intervals. The browser decides when to actually trigger syncs based on site engagement and device conditions.
-{% endhint %}
+!!! info
+
+    Periodic Sync requires an active service worker and is subject to browser-controlled intervals. The browser decides when to actually trigger syncs based on site engagement and device conditions.
 
 ## Browser Support
 
-<table><thead><tr><th width="200">Browser</th><th width="150">Desktop</th><th>Mobile</th></tr></thead><tbody>
-<tr><td>Chrome/Edge</td><td>✅ 80+</td><td>✅ 80+</td></tr>
-<tr><td>Firefox</td><td>❌ Not supported</td><td>❌ Not supported</td></tr>
-<tr><td>Safari</td><td>❌ Not supported</td><td>❌ Not supported</td></tr>
-<tr><td>Opera</td><td>✅ Full</td><td>✅ Full</td></tr>
-<tr><td>Samsung Internet</td><td>N/A</td><td>✅ 13+</td></tr>
-</tbody></table>
+| Browser | Desktop | Mobile |
+|---|---|---|
+| Chrome/Edge | ✅ 80+ | ✅ 80+ |
+| Firefox | ❌ Not supported | ❌ Not supported |
+| Safari | ❌ Not supported | ❌ Not supported |
+| Opera | ✅ Full | ✅ Full |
+| Samsung Internet | N/A | ✅ 13+ |
 
-{% hint style="warning" %}
-Periodic Background Sync is currently only supported in Chromium-based browsers (Chrome, Edge, Opera). The API requires the `periodic-background-sync` permission, which is automatically granted on desktop but may require user engagement on mobile.
-{% endhint %}
+!!! warning
+
+    Periodic Background Sync is currently only supported in Chromium-based browsers (Chrome, Edge, Opera). The API requires the `periodic-background-sync` permission, which is automatically granted on desktop but may require user engagement on mobile.
 
 ## Prerequisites
 
@@ -44,8 +44,7 @@ Before using Periodic Sync, ensure that:
 
 First, import the helpers in your JavaScript:
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 import { registerPeriodicSync, onPeriodicSync } from '@symfony/ux-pwa/helpers';
 
 // Register a periodic sync that runs at least every 24 hours
@@ -57,12 +56,10 @@ onPeriodicSync('content-sync', (data) => {
     updateUI(data);
 });
 ```
-{% endcode %}
 
 ### News Feed Synchronization
 
-{% code title="assets/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync, onPeriodicSync } from '@symfony/ux-pwa/helpers';
 
 // Register periodic sync for news updates (every 12 hours)
@@ -86,10 +83,8 @@ async function setupNewsFeedSync() {
 
 setupNewsFeedSync();
 ```
-{% endcode %}
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 // Register the task that will execute during periodic sync
 registerPeriodicSyncTask('news-feed-sync', async (event) => {
     console.log('Periodic sync triggered: news-feed-sync');
@@ -119,12 +114,10 @@ registerPeriodicSyncTask('news-feed-sync', async (event) => {
     }
 });
 ```
-{% endcode %}
 
 ### Weather Data Synchronization
 
-{% code title="assets/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync, onPeriodicSync } from '@symfony/ux-pwa/helpers';
 
 async function setupWeatherSync() {
@@ -145,10 +138,8 @@ async function setupWeatherSync() {
 
 setupWeatherSync();
 ```
-{% endcode %}
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 registerPeriodicSyncTask('weather-sync', async (event) => {
     try {
         // Get user location from IndexedDB or use default
@@ -176,12 +167,10 @@ registerPeriodicSyncTask('weather-sync', async (event) => {
     }
 });
 ```
-{% endcode %}
 
 ### Social Media Timeline Sync
 
-{% code title="assets/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync, onPeriodicSync } from '@symfony/ux-pwa/helpers';
 
 // Setup periodic sync for social media timeline
@@ -203,10 +192,8 @@ async function setupTimelineSync() {
 
 setupTimelineSync();
 ```
-{% endcode %}
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 registerPeriodicSyncTask('timeline-sync', async (event) => {
     try {
         // Get the timestamp of the last sync
@@ -238,12 +225,10 @@ registerPeriodicSyncTask('timeline-sync', async (event) => {
     }
 });
 ```
-{% endcode %}
 
 ### Podcast Episode Download
 
-{% code title="assets/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync, onPeriodicSync } from '@symfony/ux-pwa/helpers';
 
 async function setupPodcastSync() {
@@ -266,10 +251,8 @@ async function setupPodcastSync() {
 
 setupPodcastSync();
 ```
-{% endcode %}
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 registerPeriodicSyncTask('podcast-sync', async (event) => {
     try {
         // Get user's subscribed podcasts
@@ -312,7 +295,6 @@ registerPeriodicSyncTask('podcast-sync', async (event) => {
     }
 });
 ```
-{% endcode %}
 
 ## Best Practices
 

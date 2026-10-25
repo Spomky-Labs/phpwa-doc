@@ -28,7 +28,10 @@ The bundle integrates with Symfony's Web Debug Toolbar, providing a dedicated PW
 - Screenshot images
 - Startup images (iOS)
 
-<figure><img src=".gitbook/assets/2024-04-24_17h56_15.png" alt=""><figcaption><p>PWA Debug Toolbar - Manifest Tab</p></figcaption></figure>
+<figure markdown="span">
+  ![PWA Debug Toolbar - Manifest Tab](assets/images/2024-04-24-17h56-15.png)
+  <figcaption>PWA Debug Toolbar - Manifest Tab</figcaption>
+</figure>
 
 ### Installability Checker
 
@@ -38,9 +41,9 @@ The toolbar includes an installability checker that analyzes your PWA configurat
 ⚠️ **Yellow status**: App partially meets requirements (may work on some platforms)
 ❌ **Red status**: Missing required configuration
 
-{% hint style="warning" %}
-Browser installation requirements change frequently. The bundle's installability indicator is a guide, but actual installation availability depends on the browser and platform.
-{% endhint %}
+!!! warning
+
+    Browser installation requirements change frequently. The bundle's installability indicator is a guide, but actual installation availability depends on the browser and platform.
 
 ## Service Worker Debugging
 
@@ -131,17 +134,14 @@ By default, the bundle uses Symfony's default logger channel.
 
 Configure a custom logger for PWA-specific logging:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     logger: 'monolog.logger.pwa'
 ```
-{% endcode %}
 
 Then define the logger in your Monolog configuration:
 
-{% code title="config/packages/monolog.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/monolog.yaml" linenums="1"
 monolog:
     channels: ['pwa']
 
@@ -152,7 +152,6 @@ monolog:
             level: debug
             channels: ['pwa']
 ```
-{% endcode %}
 
 ### What Gets Logged
 

@@ -63,22 +63,19 @@ See [Resource Caching](resource-caching.md) for detailed strategy documentation.
 
 Workbox is enabled by default when you enable the service worker:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
         src: "sw.js"
         # Workbox is automatically enabled
 ```
-{% endcode %}
 
 ### Disabling Workbox
 
 If you want to write a custom service worker without Workbox:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -86,11 +83,10 @@ pwa:
         workbox:
             enabled: false
 ```
-{% endcode %}
 
-{% hint style="warning" %}
-Disabling Workbox removes all automatic caching, offline support, and related features. You'll need to implement everything manually in your service worker.
-{% endhint %}
+!!! warning
+
+    Disabling Workbox removes all automatic caching, offline support, and related features. You'll need to implement everything manually in your service worker.
 
 ### CDN vs Local Installation
 
@@ -109,15 +105,13 @@ Workbox can be loaded from a CDN or served locally via Asset Mapper.
 - Controlled versioning
 
 **Configuration**:
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
             enabled: true
             use_cdn: false  # Default - recommended
 ```
-{% endcode %}
 
 #### CDN Installation
 
@@ -127,19 +121,17 @@ pwa:
 - Don't want to manage Workbox updates
 
 **Configuration**:
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
             enabled: true
             use_cdn: true
 ```
-{% endcode %}
 
-{% hint style="info" %}
-When using local installation, Workbox files are automatically served by the bundle. You don't need to manually install or configure anything.
-{% endhint %}
+!!! info
+
+    When using local installation, Workbox files are automatically served by the bundle. You don't need to manually install or configure anything.
 
 ### Workbox Version
 
@@ -157,9 +149,9 @@ pwa:
             version: "7.0.0"   # Specific version
 ```
 
-{% hint style="warning" %}
-Changing the Workbox version may introduce breaking changes. Refer to the [Workbox release notes](https://github.com/GoogleChrome/workbox/releases) before upgrading.
-{% endhint %}
+!!! warning
+
+    Changing the Workbox version may introduce breaking changes. Refer to the [Workbox release notes](https://github.com/GoogleChrome/workbox/releases) before upgrading.
 
 ### Public URLs
 
@@ -222,8 +214,7 @@ When enabled, outdated caches are deleted when a new service worker activates, p
 
 ## Complete Workbox Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -247,7 +238,6 @@ pwa:
                   strategy: 'NetworkFirst'
             # ... more features
 ```
-{% endcode %}
 
 ## Available Features
 
@@ -269,6 +259,6 @@ The Workbox integration provides several specialized caching features:
 3. **Add offline support**: Configure [offline fallbacks](offline-fallback.md)
 4. **Optimize performance**: Implement [image](image-caching.md) and [font](font-caching.md) caching
 
-{% hint style="success" %}
-For most applications, the default Workbox configuration works great. Start simple and add features as needed.
-{% endhint %}
+!!! success
+
+    For most applications, the default Workbox configuration works great. Start simple and add features as needed.

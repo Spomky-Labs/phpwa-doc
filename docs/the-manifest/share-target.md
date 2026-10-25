@@ -20,9 +20,9 @@ Share Target enables:
 
 ## Browser Support
 
-{% hint style="info" %}
-**Good Support**: Web Share Target is supported in Chrome, Edge, and Samsung Internet on Android. Limited support on Desktop and iOS.
-{% endhint %}
+!!! info
+
+    **Good Support**: Web Share Target is supported in Chrome, Edge, and Samsung Internet on Android. Limited support on Desktop and iOS.
 
 **Check support**:
 - Chrome/Edge: Full support (Android, Desktop)
@@ -35,8 +35,7 @@ Share Target enables:
 
 Simple configuration to receive text and links:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         share_target:
@@ -47,7 +46,6 @@ pwa:
                 text: "text"
                 url: "url"
 ```
-{% endcode %}
 
 **How it works**: When content is shared, your PWA opens at `/share?title=...&text=...&url=...`
 
@@ -55,8 +53,7 @@ pwa:
 
 Accept image files via POST:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         share_target:
@@ -68,14 +65,12 @@ pwa:
                     - name: "image"
                       accept: ["image/*"]
 ```
-{% endcode %}
 
 ### Complete Configuration
 
 Handle text, URLs, and multiple file types:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         share_target:
@@ -93,7 +88,6 @@ pwa:
                           - "video/*"
                           - "audio/*"
 ```
-{% endcode %}
 
 ## Configuration Parameters
 
@@ -193,8 +187,7 @@ params:
 
 ### Controller for Text/URL Sharing (GET)
 
-{% code title="src/Controller/ShareController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/ShareController.php" linenums="1"
 <?php
 
 namespace App\Controller;
@@ -224,12 +217,10 @@ class ShareController extends AbstractController
     }
 }
 ```
-{% endcode %}
 
 ### Controller for File Sharing (POST)
 
-{% code title="src/Controller/ShareController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/ShareController.php" linenums="1"
 <?php
 
 namespace App\Controller;
@@ -279,12 +270,10 @@ class ShareController extends AbstractController
     }
 }
 ```
-{% endcode %}
 
 ### Complete Handler (Text + Files)
 
-{% code title="src/Controller/ShareController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/ShareController.php" linenums="1"
 <?php
 
 namespace App\Controller;
@@ -349,7 +338,6 @@ class ShareController extends AbstractController
     }
 }
 ```
-{% endcode %}
 
 ## Common Use Cases
 
@@ -357,8 +345,7 @@ class ShareController extends AbstractController
 
 Accept text and images for new posts:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         share_target:
@@ -373,14 +360,12 @@ pwa:
                     - name: "photo"
                       accept: ["image/*"]
 ```
-{% endcode %}
 
 ### 2. Bookmarking App
 
 Save shared URLs:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         share_target:
@@ -392,10 +377,8 @@ pwa:
                 url: "url"
                 text: "notes"
 ```
-{% endcode %}
 
-{% code title="src/Controller/BookmarkController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/BookmarkController.php" linenums="1"
 #[Route('/save-bookmark', name: 'app_save_bookmark', methods: ['POST'])]
 public function saveBookmark(Request $request, EntityManagerInterface $em): Response
 {
@@ -411,14 +394,12 @@ public function saveBookmark(Request $request, EntityManagerInterface $em): Resp
     return $this->redirectToRoute('app_bookmarks', [], Response::HTTP_SEE_OTHER);
 }
 ```
-{% endcode %}
 
 ### 3. Note-Taking App
 
 Capture shared text and links:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         share_target:
@@ -429,14 +410,12 @@ pwa:
                 text: "content"
                 url: "source"
 ```
-{% endcode %}
 
 ### 4. Photo Gallery
 
 Accept multiple images:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         share_target:
@@ -452,14 +431,12 @@ pwa:
                           - "image/webp"
                           - "image/heic"
 ```
-{% endcode %}
 
 ### 5. Music Player
 
 Share audio files:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         share_target:
@@ -475,14 +452,12 @@ pwa:
                           - "audio/ogg"
                           - "audio/wav"
 ```
-{% endcode %}
 
 ## Frontend Handling
 
 ### Pre-fill Form with Shared Data
 
-{% code title="templates/share/index.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/share/index.html.twig" linenums="1"
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -524,12 +499,10 @@ pwa:
 </div>
 {% endblock %}
 ```
-{% endcode %}
 
 ### Handle Shared Files with JavaScript
 
-{% code title="templates/share/upload.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/share/upload.html.twig" linenums="1"
 <form id="shareForm" method="post" enctype="multipart/form-data">
     <div id="preview"></div>
     <button type="submit">Upload</button>
@@ -570,7 +543,6 @@ function showFilePreview() {
 }
 </script>
 ```
-{% endcode %}
 
 ## File Type Handling
 

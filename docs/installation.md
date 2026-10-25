@@ -10,16 +10,15 @@ Install the bundle via Composer:
 composer require spomky-labs/pwa-bundle
 ```
 
-{% hint style="info" %}
-This bundle does not have a Symfony Flex recipe, so you'll need to create the configuration file manually in the next step.
-{% endhint %}
+!!! info
+
+    This bundle does not have a Symfony Flex recipe, so you'll need to create the configuration file manually in the next step.
 
 ## Step 2: Create Configuration File
 
 Create a configuration file to customize your PWA settings:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -29,7 +28,6 @@ pwa:
     serviceworker:
         enabled: true
 ```
-{% endcode %}
 
 You can start with minimal configuration (`pwa: ~`) and add settings as you build your PWA.
 
@@ -37,8 +35,7 @@ You can start with minimal configuration (`pwa: ~`) and add settings as you buil
 
 Add the PWA function to the `<head>` section of your base template:
 
-{% code title="templates/base.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/base.html.twig" linenums="1"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,15 +51,14 @@ Add the PWA function to the `<head>` section of your base template:
 </body>
 </html>
 ```
-{% endcode %}
 
-{% hint style="success" %}
-The `{{ pwa() }}` function automatically injects:
-- The Web App Manifest link
-- Service worker registration script
-- Theme color meta tags
-- Favicon links
-{% endhint %}
+!!! success
+
+    The `{{ pwa() }}` function automatically injects:
+    - The Web App Manifest link
+    - Service worker registration script
+    - Theme color meta tags
+    - Favicon links
 
 ## Step 4: Clear Cache
 
@@ -80,16 +76,16 @@ Visit your application in a browser and check:
 2. **Service Worker**: Look in Application tab → Service Workers
 3. **Install Prompt**: Visit your app on mobile or desktop - you should see an install option
 
-{% hint style="info" %}
-In development mode, the service worker may show debugging information. This is normal and will be removed in production.
-{% endhint %}
+!!! info
+
+    In development mode, the service worker may show debugging information. This is normal and will be removed in production.
 
 ## What's Next?
 
 Your Symfony application is now a basic PWA! Enhance it further:
 
-- **[Configure the manifest](the-manifest/application-information/)** - Customize app name, icons, colors
-- **[Set up caching](the-service-worker/workbox/)** - Enable offline functionality
+- **[Configure the manifest](the-manifest/application-information/README.md)** - Customize app name, icons, colors
+- **[Set up caching](the-service-worker/workbox/README.md)** - Enable offline functionality
 - **[Add icons](image-management/icons.md)** - Create app icons for all platforms
 - **[Configure the service worker](the-service-worker/configuration.md)** - Control caching behavior
 - **[Add UX components](symfony-ux/)** - Integrate device APIs
@@ -118,4 +114,4 @@ The install prompt requires:
 3. HTTPS connection (except localhost)
 4. User engagement (varies by browser)
 
-See [Application Information](the-manifest/application-information/) for complete requirements.
+See [Application Information](the-manifest/application-information/README.md) for complete requirements.

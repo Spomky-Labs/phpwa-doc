@@ -17,15 +17,13 @@ When enabled (default), the service worker automatically purges old caches durin
 - Frees device storage
 - Avoids browser storage limits
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
         workbox:
             clear_cache: true  # Default - recommended
 ```
-{% endcode %}
 
 ### How It Works
 
@@ -39,23 +37,21 @@ pwa:
 
 You can disable automatic cleaning if you want manual control:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
         workbox:
             clear_cache: false
 ```
-{% endcode %}
 
-{% hint style="warning" %}
-**Important**: When `clear_cache: false`, you must implement your own cache management to prevent unlimited storage growth. This can lead to:
-- Device storage exhaustion
-- Browser cache limits being hit
-- Application errors
-- Poor performance
-{% endhint %}
+!!! warning
+
+    **Important**: When `clear_cache: false`, you must implement your own cache management to prevent unlimited storage growth. This can lead to:
+    - Device storage exhaustion
+    - Browser cache limits being hit
+    - Application errors
+    - Poor performance
 
 ### When to Disable
 
@@ -156,8 +152,7 @@ pwa:
 
 Organized cache structure with custom names:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -196,7 +191,6 @@ pwa:
                 page: 'app_offline'
                 image: 'images/offline.svg'
 ```
-{% endcode %}
 
 ## Cache Inspection
 
@@ -309,9 +303,9 @@ if ('storage' in navigator && 'estimate' in navigator.storage) {
 - Look in **Application** → **Cache Storage** (not **Storage**)
 - Ensure service worker has run at least once
 
-{% hint style="success" %}
-**Recommended Setup**: Use automatic cache cleaning (`clear_cache: true`) with descriptive custom cache names. This provides the best balance of automatic management and debuggability.
-{% endhint %}
+!!! success
+
+    **Recommended Setup**: Use automatic cache cleaning (`clear_cache: true`) with descriptive custom cache names. This provides the best balance of automatic management and debuggability.
 
 ## Migration Strategy
 

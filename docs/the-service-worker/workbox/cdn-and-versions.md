@@ -1,8 +1,8 @@
 # CDN and Versions
 
-{% hint style="info" %}
-**Note**: This page covers advanced Workbox configuration. Most applications should use the [default configuration documented in the Workbox README](README.md#cdn-vs-local-installation).
-{% endhint %}
+!!! info
+
+    **Note**: This page covers advanced Workbox configuration. Most applications should use the [default configuration documented in the Workbox README](README.md#cdn-vs-local-installation).
 
 ## Default Configuration
 
@@ -13,15 +13,13 @@ The bundle ships with Workbox **7.3.0** (released October 2024) and serves all f
 - Better privacy
 - Controlled updates
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
             use_cdn: false  # Default
             version: "7.3.0"  # Default
 ```
-{% endcode %}
 
 ## Available Versions
 
@@ -33,8 +31,7 @@ The bundle includes these Workbox versions locally:
 
 For quick prototyping or bandwidth considerations, you can load Workbox from a CDN:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -43,7 +40,6 @@ pwa:
             use_cdn: true
             version: "7.3.0"
 ```
-{% endcode %}
 
 When `use_cdn: true`, Workbox files are loaded from `https://storage.googleapis.com/workbox-cdn/releases/{version}/`.
 
@@ -62,23 +58,21 @@ When `use_cdn: true`, Workbox files are loaded from `https://storage.googleapis.
 - **Offline delay**: Service worker can't work until Workbox loads
 - **Version risk**: CDN outages affect your app
 
-{% hint style="warning" %}
-**Production Recommendation**: Use local installation (`use_cdn: false`) for production applications. The benefits of local hosting far outweigh the small bandwidth savings of a CDN.
-{% endhint %}
+!!! warning
+
+    **Production Recommendation**: Use local installation (`use_cdn: false`) for production applications. The benefits of local hosting far outweigh the small bandwidth savings of a CDN.
 
 ## Custom Versions
 
 You can specify any Workbox version when using the CDN:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
             use_cdn: true
             version: "6.5.4"  # Older version
 ```
-{% endcode %}
 
 ### Version Selection Guidelines
 
@@ -97,16 +91,15 @@ pwa:
 - Breaking changes in 7.x affect your application
 - Need to maintain compatibility with older code
 
-{% hint style="danger" %}
-**Major Version Upgrades**: Workbox 7.x includes breaking changes from 6.x. Review the [Workbox migration guide](https://developer.chrome.com/docs/workbox/migration/migrate-from-v6/) before upgrading.
-{% endhint %}
+!!! danger
+
+    **Major Version Upgrades**: Workbox 7.x includes breaking changes from 6.x. Review the [Workbox migration guide](https://developer.chrome.com/docs/workbox/migration/migrate-from-v6/) before upgrading.
 
 ## Complete Configuration Examples
 
 ### Local Installation (Recommended)
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -118,12 +111,10 @@ pwa:
             workbox_public_url: "/workbox"  # Where Workbox is served
             idb_public_url: "/idb"          # Where IndexedDB lib is served
 ```
-{% endcode %}
 
 ### CDN Installation
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -133,12 +124,10 @@ pwa:
             use_cdn: true           # Load from Google CDN
             version: "7.3.0"        # Version to load
 ```
-{% endcode %}
 
 ### Legacy Version with CDN
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -148,14 +137,12 @@ pwa:
             use_cdn: true
             version: "6.5.4"        # Older version for compatibility
 ```
-{% endcode %}
 
 ## Custom Public URLs (Local Only)
 
 When using local installation, customize where Workbox files are served:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -163,7 +150,6 @@ pwa:
             workbox_public_url: "/assets/workbox"
             idb_public_url: "/assets/idb"
 ```
-{% endcode %}
 
 This is useful when:
 - Organizing assets by type
@@ -220,6 +206,6 @@ Then clear caches and re-register service worker.
 - Check `workbox_public_url` is accessible
 - Look for 404 errors in Network tab
 
-{% hint style="success" %}
-**Best Practice**: Start with local installation using the default version. Only use CDN for quick prototyping or specific use cases where bandwidth is critical and reliability of an external CDN is acceptable.
-{% endhint %}
+!!! success
+
+    **Best Practice**: Start with local installation using the default version. Only use CDN for quick prototyping or specific use cases where bandwidth is critical and reliability of an external CDN is acceptable.

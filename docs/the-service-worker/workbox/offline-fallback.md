@@ -23,8 +23,7 @@ Workbox's offline fallback plugin:
 
 ### Basic Setup
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -35,7 +34,6 @@ pwa:
                 image: 'images/offline.svg'
                 font: 'fonts/fallback.woff2'
 ```
-{% endcode %}
 
 ### Configuration Options
 
@@ -149,8 +147,7 @@ pwa:
 
 ## Complete Example
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -165,7 +162,6 @@ pwa:
                 image: 'images/offline-placeholder.svg'
                 font: 'fonts/system-fallback.woff2'
 ```
-{% endcode %}
 
 ## Creating Offline Fallback Pages
 
@@ -410,9 +406,9 @@ When a request fails:
 
 This ensures fallbacks are truly a last resort.
 
-{% hint style="info" %}
-**Tip**: Combine offline fallbacks with [resource caching](resource-caching.md) and [precaching](asset-caching.md) strategies for the best offline experience.
-{% endhint %}
+!!! info
+
+    **Tip**: Combine offline fallbacks with [resource caching](resource-caching.md) and [precaching](asset-caching.md) strategies for the best offline experience.
 
 ## Troubleshooting
 
@@ -427,6 +423,6 @@ This ensures fallbacks are truly a last resort.
 - Verify cache strategies aren't too aggressive
 - Look for JavaScript errors preventing network requests
 
-{% hint style="success" %}
-Start with just a page fallback. Once that works well, add image and font fallbacks as needed. Most apps only need a page fallback.
-{% endhint %}
+!!! success
+
+    Start with just a page fallback. Once that works well, add image and font fallbacks as needed. Most apps only need a page fallback.

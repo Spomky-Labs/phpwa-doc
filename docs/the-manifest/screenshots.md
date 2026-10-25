@@ -2,7 +2,10 @@
 
 Progressive Web App screenshots enable richer installation UI. As shown below, by default only the application name and short name are visible.
 
-<figure><img src="../.gitbook/assets/Capture d&#x27;écran 2024-01-31 193350.png" alt=""><figcaption><p>GitHub installation UI</p></figcaption></figure>
+<figure markdown="span">
+  ![GitHub installation UI](../assets/images/capture-d-ecran-2024-01-31-193350.png)
+  <figcaption>GitHub installation UI</figcaption>
+</figure>
 
 However, by including screenshots in the web app manifest, the installation experience can be significantly improved. These screenshots give users a visual preview of the app, enhancing their understanding and increasing the likelihood of installation.
 
@@ -10,7 +13,9 @@ Screenshots should showcase the most important functionalities of your applicati
 
 In the example below, a selection of screenshots are visible and the user can navigate to show them all. On mobile devices, the interface is different, but shows the same information.
 
-<figure><img src="../.gitbook/assets/Capture d&#x27;écran 2024-02-01 101647.png" alt=""><figcaption></figcaption></figure>
+<figure markdown="span">
+  ![](../assets/images/capture-d-ecran-2024-02-01-101647.png)
+</figure>
 
 ## Overview
 
@@ -40,8 +45,7 @@ Screenshots are an essential part of your PWA's installation experience. They he
 
 ### Simple Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -51,12 +55,10 @@ pwa:
             - "images/screenshot-feature2.png"
             - "images/screenshot-feature3.png"
 ```
-{% endcode %}
 
 ### Complete Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -87,7 +89,6 @@ pwa:
               form_factor: "wide"
               platform: "android"
 ```
-{% endcode %}
 
 ## Configuration Parameters
 
@@ -117,14 +118,12 @@ screenshots:
 
 Specify screenshot dimensions in pixels. If omitted, dimensions are detected automatically.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     - src: "images/desktop.png"
       width: 1920    # Width in pixels
       height: 1080   # Height in pixels
 ```
-{% endcode %}
 
 **Why specify dimensions?**
 - Improves manifest parsing performance
@@ -141,8 +140,7 @@ The `format` parameter specifies the image format. The bundle can **automaticall
 - `"jpg"` or `"jpeg"` - Lossy, smaller file sizes
 - `"webp"` - Modern format, best compression
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     # Source is PNG, bundle converts to WebP
     - src: "images/screenshot.png"
@@ -156,11 +154,10 @@ screenshots:
     - src: "images/screenshot.png"
       format: "jpg"
 ```
-{% endcode %}
 
-{% hint style="success" %}
-**Automatic Conversion**: The bundle automatically converts images when the `format` parameter differs from the source file format. This makes it easy to optimize all screenshots as WebP without manually converting files.
-{% endhint %}
+!!! success
+
+    **Automatic Conversion**: The bundle automatically converts images when the `format` parameter differs from the source file format. This makes it easy to optimize all screenshots as WebP without manually converting files.
 
 **Format Recommendations**:
 
@@ -175,8 +172,7 @@ screenshots:
 
 The label parameter provides a brief description or caption for the screenshot. This helps users understand what the feature or screen is about.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     - src: "images/dashboard.png"
       label: "Main dashboard view with real-time analytics"
@@ -184,7 +180,6 @@ screenshots:
     - src: "images/settings.png"
       label: "Customizable settings and preferences"
 ```
-{% endcode %}
 
 **Label Best Practices**:
 - Keep labels concise (5-10 words)
@@ -196,38 +191,31 @@ screenshots:
 
 The `label` parameter supports Symfony translations:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     - src: "images/dashboard.png"
       label: "app.screenshots.dashboard"  # Translation key
 ```
-{% endcode %}
 
-{% code title="/translations/messages.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/messages.en.yaml" linenums="1"
 app:
     screenshots:
         dashboard: "Main dashboard with analytics"
         settings: "User settings and preferences"
 ```
-{% endcode %}
 
-{% code title="/translations/messages.fr.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/messages.fr.yaml" linenums="1"
 app:
     screenshots:
         dashboard: "Tableau de bord principal avec analytique"
         settings: "Paramètres et préférences utilisateur"
 ```
-{% endcode %}
 
 ### `platform` Parameter
 
 The `platform` parameter specifies which operating system or distribution platform the screenshot is intended for. This helps display appropriate screenshots for users on different devices.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     # Android-specific screenshot
     - src: "images/android-home.png"
@@ -244,7 +232,6 @@ screenshots:
       platform: "windows"
       label: "Dashboard on Windows"
 ```
-{% endcode %}
 
 **Device Platform Identifiers**:
 - `"android"` - Android devices
@@ -263,9 +250,9 @@ screenshots:
 - `"microsoft-store"` - Microsoft Store
 - `"play"` - Google Play Store
 
-{% hint style="info" %}
-If `platform` is not specified, the screenshot is considered universal and may be shown on any platform.
-{% endhint %}
+!!! info
+
+    If `platform` is not specified, the screenshot is considered universal and may be shown on any platform.
 
 ### `form_factor` Parameter
 
@@ -275,8 +262,7 @@ The `form_factor` parameter defines the intended device form factor for your scr
 - `"narrow"` - Best suited for narrow screen devices (phones, portrait tablets)
 - `"wide"` - Intended for wider screen devices (desktops, landscape tablets)
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     # Mobile/phone screenshots
     - src: "images/mobile-1.png"
@@ -288,13 +274,12 @@ screenshots:
       form_factor: "wide"
       label: "Desktop dashboard"
 ```
-{% endcode %}
 
-{% hint style="info" %}
-**Automatic Detection**: If `form_factor` is not specified, it's automatically determined using the screenshot dimensions:
-- Aspect ratio > 1 (landscape) → "wide"
-- Aspect ratio ≤ 1 (portrait) → "narrow"
-{% endhint %}
+!!! info
+
+    **Automatic Detection**: If `form_factor` is not specified, it's automatically determined using the screenshot dimensions:
+    - Aspect ratio > 1 (landscape) → "wide"
+    - Aspect ratio ≤ 1 (portrait) → "narrow"
 
 **Form Factor Guidelines**:
 
@@ -309,14 +294,12 @@ screenshots:
 
 The `reference` parameter allows you to specify a URL reference for the screenshot. This is for documentation purposes only and is **not used by the bundle** in the generated manifest.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     - src: "images/dashboard.png"
       reference: "https://design.example.com/specs/dashboard-v2"
       label: "Dashboard v2 design"
 ```
-{% endcode %}
 
 **Use cases**:
 - Link to design specifications
@@ -363,8 +346,7 @@ screenshots:
 
 **2. Automated Tools (Puppeteer)**
 
-{% code title="scripts/generate-screenshots.js" lineNumbers="true" %}
-```javascript
+```javascript title="scripts/generate-screenshots.js" linenums="1"
 const puppeteer = require('puppeteer');
 
 async function captureScreenshots() {
@@ -392,12 +374,10 @@ async function captureScreenshots() {
 
 captureScreenshots();
 ```
-{% endcode %}
 
 **3. Playwright**
 
-{% code title="scripts/generate-screenshots.js" lineNumbers="true" %}
-```javascript
+```javascript title="scripts/generate-screenshots.js" linenums="1"
 const { chromium } = require('playwright');
 
 async function captureScreenshots() {
@@ -424,7 +404,6 @@ async function captureScreenshots() {
 
 captureScreenshots();
 ```
-{% endcode %}
 
 **4. OS Screenshot Tools**
 
@@ -436,8 +415,7 @@ captureScreenshots();
 
 ### Use Case 1: E-Commerce App
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "ShopPro"
@@ -493,12 +471,10 @@ pwa:
               form_factor: "narrow"
               platform: "android"
 ```
-{% endcode %}
 
 ### Use Case 2: Productivity App with Platform-Specific Screens
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "TaskMaster Pro"
@@ -548,12 +524,10 @@ pwa:
               platform: "macos"
               form_factor: "wide"
 ```
-{% endcode %}
 
 ### Use Case 3: Multi-Language App
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "GlobalNews"
@@ -576,27 +550,22 @@ pwa:
               label: "news.screenshots.mobile"
               form_factor: "narrow"
 ```
-{% endcode %}
 
-{% code title="/translations/messages.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/messages.en.yaml" linenums="1"
 news:
     screenshots:
         home: "Breaking news from around the world"
         articles: "In-depth articles and analysis"
         mobile: "Stay informed on the go"
 ```
-{% endcode %}
 
-{% code title="/translations/messages.fr.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/messages.fr.yaml" linenums="1"
 news:
     screenshots:
         home: "Actualités du monde entier"
         articles: "Articles et analyses approfondis"
         mobile: "Restez informé en déplacement"
 ```
-{% endcode %}
 
 ## Screenshot Optimization
 
@@ -606,14 +575,12 @@ news:
 
 WebP typically provides 25-35% better compression than PNG or JPEG:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     # Bundle automatically converts PNG to WebP
     - src: "screenshots/dashboard.png"
       format: "webp"  # Auto-conversion!
 ```
-{% endcode %}
 
 **2. Optimize Before Upload**
 
@@ -634,8 +601,7 @@ pngquant --quality=65-80 input.png -o output.png
 
 Using Node.js with Sharp:
 
-{% code title="scripts/optimize-screenshots.js" lineNumbers="true" %}
-```javascript
+```javascript title="scripts/optimize-screenshots.js" linenums="1"
 const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
@@ -654,7 +620,6 @@ fs.readdirSync(screenshotsDir).forEach(file => {
         .catch(err => console.error(`Error processing ${file}:`, err));
 });
 ```
-{% endcode %}
 
 ### File Size Guidelines
 
@@ -696,8 +661,7 @@ fs.readdirSync(screenshotsDir).forEach(file => {
 - Dimensions: 320px - 3840px (width or height)
 - Aspect ratio: 16:9 or 9:16 recommended
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     - src: "screenshots/android-1.png"
       width: 1080
@@ -713,7 +677,6 @@ screenshots:
       form_factor: "narrow"
       label: "Features view"
 ```
-{% endcode %}
 
 ### iOS / App Store
 
@@ -724,8 +687,7 @@ screenshots:
 - Actual device screenshots preferred
 - Different sizes for iPhone and iPad
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     # iPhone 14 Pro
     - src: "screenshots/iphone-14-pro-1.png"
@@ -741,7 +703,6 @@ screenshots:
       platform: "ipados"
       form_factor: "narrow"
 ```
-{% endcode %}
 
 ### Windows / Microsoft Store
 
@@ -751,8 +712,7 @@ screenshots:
 - Dimensions: Minimum 1366×768 or larger
 - Aspect ratio: 16:9 recommended
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     - src: "screenshots/windows-1.png"
       width: 1920
@@ -761,7 +721,6 @@ screenshots:
       form_factor: "wide"
       label: "Dashboard on Windows"
 ```
-{% endcode %}
 
 ## Testing Screenshots
 
@@ -841,8 +800,7 @@ npx lighthouse https://your-app.com --view --preset=desktop
 
 **Logical sequence**:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     # 1. Welcome/landing screen
     - src: "screenshots/01-welcome.png"
@@ -864,7 +822,6 @@ screenshots:
     - src: "screenshots/05-reports.png"
       label: "Track your productivity"
 ```
-{% endcode %}
 
 ### 2. Content Quality
 
@@ -892,8 +849,7 @@ screenshots:
 
 Provide screenshots for both narrow and wide form factors:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     # Mobile-first (narrow)
     - src: "screenshots/mobile-home.png"
@@ -911,7 +867,6 @@ screenshots:
     - src: "screenshots/desktop-settings.png"
       form_factor: "wide"
 ```
-{% endcode %}
 
 ### 4. Performance Optimization
 
@@ -950,15 +905,13 @@ screenshots:
 
 Use translation keys for international apps:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 screenshots:
     - src: "screenshots/home.png"
       label: "app.screenshots.home"
     - src: "screenshots/features.png"
       label: "app.screenshots.features"
 ```
-{% endcode %}
 
 ## Common Issues
 
@@ -1076,7 +1029,7 @@ Before submitting your PWA:
 ## Related Documentation
 
 - [Icons](icons.md) - Icon configuration for your PWA
-- [Application Information](application-information/) - App metadata configuration
+- [Application Information](application-information/README.md) - App metadata configuration
 - [Translations](translations.md) - Localizing your manifest
 
 ## Resources

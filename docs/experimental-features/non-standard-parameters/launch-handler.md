@@ -1,8 +1,8 @@
 # Launch Handler
 
-{% hint style="warning" %}
-**Experimental Feature**: The Launch Handler API is experimental and currently only supported in Chromium-based browsers (Chrome, Edge). The specification may change.
-{% endhint %}
+!!! warning
+
+    **Experimental Feature**: The Launch Handler API is experimental and currently only supported in Chromium-based browsers (Chrome, Edge). The specification may change.
 
 ## Overview
 
@@ -18,22 +18,19 @@ The Launch Handler API allows you to control how your PWA is launched and naviga
 
 ### Basic Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         launch_handler:
             client_mode: "focus-existing"
 ```
-{% endcode %}
 
 ### Multiple Client Modes (Fallback)
 
 Specify multiple modes with fallback behavior:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -42,14 +39,12 @@ pwa:
                 - "focus-existing"
                 - "auto"
 ```
-{% endcode %}
 
 The browser will try the first mode, falling back to the next if unsupported.
 
 ### Complete Example
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Task Manager"
@@ -58,7 +53,6 @@ pwa:
         launch_handler:
             client_mode: "focus-existing"
 ```
-{% endcode %}
 
 ## Client Modes
 
@@ -196,9 +190,9 @@ launch_handler:
 | Safari | All | ❌ Not supported |
 | Firefox | All | ❌ Not supported |
 
-{% hint style="info" %}
-**Fallback**: When not supported, the browser falls back to default launch behavior (typically opens new window).
-{% endhint %}
+!!! info
+
+    **Fallback**: When not supported, the browser falls back to default launch behavior (typically opens new window).
 
 ## LaunchQueue API
 
@@ -206,8 +200,7 @@ The LaunchQueue API allows you to handle launches programmatically in your JavaS
 
 ### Basic Usage
 
-{% code title="public/app.js" lineNumbers="true" %}
-```javascript
+```javascript title="public/app.js" linenums="1"
 // Set up launch handler
 if ('launchQueue' in window) {
     window.launchQueue.setConsumer((launchParams) => {
@@ -233,12 +226,10 @@ function handleLaunch(launchParams) {
     }
 }
 ```
-{% endcode %}
 
 ### Complete Example: Task Manager
 
-{% code title="public/task-manager.js" lineNumbers="true" %}
-```javascript
+```javascript title="public/task-manager.js" linenums="1"
 class TaskManager {
     constructor() {
         this.setupLaunchHandler();
@@ -301,14 +292,12 @@ class TaskManager {
 // Initialize
 new TaskManager();
 ```
-{% endcode %}
 
 ### Handling File Launches
 
 When combined with File Handling API:
 
-{% code title="public/document-editor.js" lineNumbers="true" %}
-```javascript
+```javascript title="public/document-editor.js" linenums="1"
 if ('launchQueue' in window) {
     window.launchQueue.setConsumer(async (launchParams) => {
         // Handle file launches
@@ -331,7 +320,6 @@ async function openFile(file) {
     console.log(`Opened file: ${file.name}`);
 }
 ```
-{% endcode %}
 
 ## Use Cases
 
@@ -339,18 +327,15 @@ async function openFile(file) {
 
 Focus existing window and open specific email:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Mail Client"
         launch_handler:
             client_mode: "focus-existing"
 ```
-{% endcode %}
 
-{% code title="public/mail-client.js" lineNumbers="true" %}
-```javascript
+```javascript title="public/mail-client.js" linenums="1"
 window.launchQueue.setConsumer((launchParams) => {
     const url = new URL(launchParams.targetURL);
 
@@ -370,38 +355,32 @@ function openEmail(emailId) {
         });
 }
 ```
-{% endcode %}
 
 ### 2. Multi-Document Editor
 
 Allow multiple document windows:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Document Editor"
         launch_handler:
             client_mode: "navigate-new"
 ```
-{% endcode %}
 
 ### 3. Single-Instance Media Player
 
 Reuse window and queue new media:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Media Player"
         launch_handler:
             client_mode: "focus-existing"
 ```
-{% endcode %}
 
-{% code title="public/media-player.js" lineNumbers="true" %}
-```javascript
+```javascript title="public/media-player.js" linenums="1"
 const playlist = [];
 
 window.launchQueue.setConsumer((launchParams) => {
@@ -425,14 +404,12 @@ function playNext() {
     }
 }
 ```
-{% endcode %}
 
 ### 4. Note-Taking App
 
 Focus window and create note from shared text:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Notes"
@@ -445,10 +422,8 @@ pwa:
                 title: "title"
                 text: "text"
 ```
-{% endcode %}
 
-{% code title="public/notes-app.js" lineNumbers="true" %}
-```javascript
+```javascript title="public/notes-app.js" linenums="1"
 window.launchQueue.setConsumer((launchParams) => {
     const url = new URL(launchParams.targetURL);
 
@@ -477,21 +452,18 @@ function createNote(title, content) {
     document.getElementById('note-content').value = content;
 }
 ```
-{% endcode %}
 
 ### 5. Platform-Optimized Behavior
 
 Let browser decide best behavior:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Universal App"
         launch_handler:
             client_mode: "auto"
 ```
-{% endcode %}
 
 ## Testing
 

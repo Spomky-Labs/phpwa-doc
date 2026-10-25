@@ -19,20 +19,19 @@ The Device Motion API is part of the Generic Sensor API family and relies on the
 
 **Support level:** Good - Available on most modern browsers on mobile devices and laptops with accelerometers/gyroscopes.
 
-{% hint style="warning" %}
-On iOS 13+ and some Android browsers, accessing motion sensors requires explicit user permission. The component automatically handles the permission request flow when necessary.
-{% endhint %}
+!!! warning
 
-{% hint style="info" %}
-Desktop devices without built-in accelerometers or gyroscopes will not be able to use this API. The component will emit an `unavailable` event in such cases.
-{% endhint %}
+    On iOS 13+ and some Android browsers, accessing motion sensors requires explicit user permission. The component automatically handles the permission request flow when necessary.
+
+!!! info
+
+    Desktop devices without built-in accelerometers or gyroscopes will not be able to use this API. The component will emit an `unavailable` event in such cases.
 
 ## Usage
 
 ### Basic Motion Detection
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion') }}>
   <p id="motion-status">Waiting for motion data…</p>
 </div>
@@ -62,12 +61,10 @@ Desktop devices without built-in accelerometers or gyroscopes will not be able t
   });
 </script>
 ```
-{% endcode %}
 
 ### Shake Detection
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion') }}>
   <div id="shake-status" class="p-4 rounded">
     <p>Shake your device to trigger an action!</p>
@@ -116,12 +113,10 @@ Desktop devices without built-in accelerometers or gyroscopes will not be able t
   }
 </style>
 ```
-{% endcode %}
 
 ### Tilt-Based UI Control
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion', { throttleValue: 100 }) }}>
   <div id="tilt-display" class="w-full h-64 flex items-center justify-center">
     <div id="tilt-ball" class="w-16 h-16 bg-blue-500 rounded-full transition-transform"></div>
@@ -151,12 +146,10 @@ Desktop devices without built-in accelerometers or gyroscopes will not be able t
   });
 </script>
 ```
-{% endcode %}
 
 ### Motion-Based Game Controller
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion', { throttleValue: 50 }) }}>
   <canvas id="game-canvas" width="400" height="400"
           style="border: 2px solid #333; background: #f0f0f0;"></canvas>
@@ -221,18 +214,16 @@ Desktop devices without built-in accelerometers or gyroscopes will not be able t
   });
 </script>
 ```
-{% endcode %}
 
 ## Best Practices
 
 ### Performance Optimization
 
-{% hint style="success" %}
-Always use the `throttleValue` parameter to limit the frequency of motion updates. Motion events can fire very frequently (up to 60Hz), which can impact performance if not throttled appropriately.
-{% endhint %}
+!!! success
 
-{% code lineNumbers="true" %}
-```twig
+    Always use the `throttleValue` parameter to limit the frequency of motion updates. Motion events can fire very frequently (up to 60Hz), which can impact performance if not throttled appropriately.
+
+```twig linenums="1"
 {# Throttle to ~10 updates per second for most UI updates #}
 <div {{ stimulus_controller('@pwa/device-motion', { throttleValue: 100 }) }}>
   <!-- Your content -->
@@ -243,16 +234,14 @@ Always use the `throttleValue` parameter to limit the frequency of motion update
   <!-- 60 FPS motion tracking -->
 </div>
 ```
-{% endcode %}
 
 ### Permission Handling
 
-{% hint style="warning" %}
-On iOS 13+ and some Android devices, motion sensor access requires user permission. Always handle the permission flow gracefully and provide feedback to users about why you need access to motion sensors.
-{% endhint %}
+!!! warning
 
-{% code lineNumbers="true" %}
-```twig
+    On iOS 13+ and some Android devices, motion sensor access requires user permission. Always handle the permission flow gracefully and provide feedback to users about why you need access to motion sensors.
+
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion') }}>
   <div id="motion-permission-status" class="p-4">
     <p>This feature requires motion sensor access.</p>
@@ -281,32 +270,30 @@ On iOS 13+ and some Android devices, motion sensor access requires user permissi
   });
 </script>
 ```
-{% endcode %}
 
 ### Coordinate System Understanding
 
-{% hint style="info" %}
-The Device Motion API uses a standard coordinate system:
-- **X-axis**: Points to the right of the device
-- **Y-axis**: Points to the top of the device
-- **Z-axis**: Points up and out of the screen
+!!! info
 
-Understanding this coordinate system is crucial for implementing motion-based features correctly.
-{% endhint %}
+    The Device Motion API uses a standard coordinate system:
+    - **X-axis**: Points to the right of the device
+    - **Y-axis**: Points to the top of the device
+    - **Z-axis**: Points up and out of the screen
+
+    Understanding this coordinate system is crucial for implementing motion-based features correctly.
 
 ### Battery Consideration
 
-{% hint style="warning" %}
-Continuous motion sensor monitoring can drain battery. Consider:
-- Disabling motion tracking when the app is in the background
-- Using appropriate throttle values
-- Stopping tracking when not actively needed
-{% endhint %}
+!!! warning
+
+    Continuous motion sensor monitoring can drain battery. Consider:
+    - Disabling motion tracking when the app is in the background
+    - Using appropriate throttle values
+    - Stopping tracking when not actively needed
 
 ### Null Value Handling
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('device-motion:updated', (e) => {
   const { acceleration, rotationRate } = e.detail;
 
@@ -321,7 +308,6 @@ host.addEventListener('device-motion:updated', (e) => {
   }
 });
 ```
-{% endcode %}
 
 ## Common Use Cases
 
@@ -329,8 +315,7 @@ host.addEventListener('device-motion:updated', (e) => {
 
 Implement a shake gesture to undo actions or refresh content, similar to many mobile apps.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion') }} data-last-action="">
   <div id="content">
     <p>Make some changes, then shake to undo!</p>
@@ -366,14 +351,12 @@ Implement a shake gesture to undo actions or refresh content, similar to many mo
   }
 </script>
 ```
-{% endcode %}
 
 ### 2. Step Counter
 
 Track device movement to count steps (simplified implementation).
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion', { throttleValue: 50 }) }}>
   <div class="text-center p-8">
     <h2 class="text-4xl font-bold" id="step-count">0</h2>
@@ -415,14 +398,12 @@ Track device movement to count steps (simplified implementation).
   });
 </script>
 ```
-{% endcode %}
 
 ### 3. Orientation-Adaptive Content
 
 Display different content or adjust UI based on how the user is holding their device.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion', { throttleValue: 200 }) }}>
   <div id="orientation-content" class="p-8 text-center transition-all">
     <p id="orientation-text">Hold your device in different orientations</p>
@@ -460,14 +441,12 @@ Display different content or adjust UI based on how the user is holding their de
   .orientation-right-side { background: linear-gradient(to right, #E2904A, #fff); }
 </style>
 ```
-{% endcode %}
 
 ### 4. Gesture-Based Navigation
 
 Navigate through content using tilt gestures.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-motion', { throttleValue: 100 }) }}>
   <div id="slider" class="overflow-hidden">
     <div id="slides" class="flex transition-transform duration-300">
@@ -512,7 +491,6 @@ Navigate through content using tilt gestures.
   }
 </script>
 ```
-{% endcode %}
 
 ## API Reference
 
@@ -520,13 +498,11 @@ Navigate through content using tilt gestures.
 
 `throttleValue`: Controls how often `updated` events are dispatched to avoid excessive UI updates. Value in milliseconds. Default varies by implementation.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# Throttle to 100ms (10 updates/second) #}
 <div {{ stimulus_controller('@pwa/device-motion', { throttleValue: 100 }) }}>
 </div>
 ```
-{% endcode %}
 
 ### Actions
 
@@ -542,37 +518,31 @@ None
 
 Fired when the Device Motion API is not supported by the device or browser.
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('device-motion:unavailable', () => {
   console.log('Device Motion API is not available');
 });
 ```
-{% endcode %}
 
 #### `permission-granted`
 
 Fired when the user grants permission to access motion sensors. The motion listener is now attached and `updated` events will start firing.
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('device-motion:permission-granted', () => {
   console.log('Permission granted, motion tracking active');
 });
 ```
-{% endcode %}
 
 #### `permission-denied`
 
 Fired when the user denies permission to access motion sensors, or an error occurs during the permission request.
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('device-motion:permission-denied', () => {
   console.log('Permission denied');
 });
 ```
-{% endcode %}
 
 #### `updated`
 
@@ -580,8 +550,7 @@ Fired on every device motion event (as delivered by the browser and subject to t
 
 **Event detail structure:**
 
-{% code lineNumbers="true" %}
-```typescript
+```typescript linenums="1"
 {
   acceleration: {
     x: number | null,  // m/s² (excludes gravity)
@@ -601,15 +570,14 @@ Fired on every device motion event (as delivered by the browser and subject to t
   interval: number // ms between samples
 }
 ```
-{% endcode %}
 
-{% hint style="info" %}
-**Coordinate System:**
-- `acceleration`: Device acceleration without gravity influence
-- `accelerationIncludingGravity`: Total acceleration including Earth's gravity (9.81 m/s²)
-- `rotationRate`: Angular velocity around each axis in degrees per second
-- `interval`: Time interval between motion samples in milliseconds
-{% endhint %}
+!!! info
+
+    **Coordinate System:**
+    - `acceleration`: Device acceleration without gravity influence
+    - `accelerationIncludingGravity`: Total acceleration including Earth's gravity (9.81 m/s²)
+    - `rotationRate`: Angular velocity around each axis in degrees per second
+    - `interval`: Time interval between motion samples in milliseconds
 
 ## Related Components
 

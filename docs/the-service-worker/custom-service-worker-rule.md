@@ -4,9 +4,9 @@ If needed, you can define custom sections in the service worker appended by your
 
 To do so, you can create a service that implements `SpomkyLabs\PwaBundle\ServiceWorkerRule\ServiceWorkerRuleInterface`.
 
-{% hint style="info" %}
-The method `process` shall return valid JavaScript as a string. This script will be executed by browsers.
-{% endhint %}
+!!! info
+
+    The method `process` shall return valid JavaScript as a string. This script will be executed by browsers.
 
 ## Basic Example
 
@@ -36,21 +36,19 @@ JS;
 }
 ```
 
-{% hint style="success" %}
-When using Symfony's service autoconfiguration, your rule will be automatically registered. If autoconfiguration is disabled, tag your service with `spomky_labs_pwa.service_worker_rule`.
-{% endhint %}
+!!! success
+
+    When using Symfony's service autoconfiguration, your rule will be automatically registered. If autoconfiguration is disabled, tag your service with `spomky_labs_pwa.service_worker_rule`.
 
 ## Manual Service Registration
 
 If you need to manually register your service:
 
-{% code title="config/services.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/services.yaml" linenums="1"
 services:
     App\ServiceWorkerRule\MyCustomRule:
         tags: ['spomky_labs_pwa.service_worker_rule']
 ```
-{% endcode %}
 
 ## Advanced Example with Configuration
 
@@ -165,6 +163,6 @@ JS;
 }
 ```
 
-{% hint style="warning" %}
-Be careful when manipulating the service worker lifecycle events (`install`, `activate`, `fetch`). Improper handling can break your application's offline functionality.
-{% endhint %}
+!!! warning
+
+    Be careful when manipulating the service worker lifecycle events (`install`, `activate`, `fetch`). Improper handling can break your application's offline functionality.

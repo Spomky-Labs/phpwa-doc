@@ -23,16 +23,15 @@ The Battery Status API has limited browser support and is primarily available on
 * Firefox: Removed in version 52 (privacy concerns)
 * Safari: Not supported
 
-{% hint style="warning" %}
-Always provide fallback behavior for browsers that don't support the Battery Status API. The component will dispatch an `unsupported` event when the API is not available.
-{% endhint %}
+!!! warning
+
+    Always provide fallback behavior for browsers that don't support the Battery Status API. The component will dispatch an `unsupported` event when the API is not available.
 
 ## Usage
 
 ### Basic Battery Display
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
     <div class="battery-widget">
         <h2>Battery Status</h2>
@@ -105,12 +104,10 @@ Always provide fallback behavior for browsers that don't support the Battery Sta
     }
 </style>
 ```
-{% endcode %}
 
 ### Visual Battery Indicator
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
     <div class="battery-display">
         <div class="battery-icon">
@@ -235,12 +232,10 @@ Always provide fallback behavior for browsers that don't support the Battery Sta
     }
 </style>
 ```
-{% endcode %}
 
 ### Power-Saving Mode
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
     <div class="power-aware-app">
         <div id="power-status" class="power-status"></div>
@@ -361,12 +356,10 @@ Always provide fallback behavior for browsers that don't support the Battery Sta
     }
 </style>
 ```
-{% endcode %}
 
 ### Low Battery Warning
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
     <div class="task-app">
         <h2>Important Task</h2>
@@ -505,12 +498,10 @@ Always provide fallback behavior for browsers that don't support the Battery Sta
     }
 </style>
 ```
-{% endcode %}
 
 ### Adaptive Video Quality
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
     <div class="video-player">
         <h2>Video Player</h2>
@@ -611,12 +602,10 @@ Always provide fallback behavior for browsers that don't support the Battery Sta
     }
 </style>
 ```
-{% endcode %}
 
 ### Battery Monitor Dashboard
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
     <div class="battery-dashboard">
         <div class="dashboard-header">
@@ -854,14 +843,12 @@ Always provide fallback behavior for browsers that don't support the Battery Sta
     }
 </style>
 ```
-{% endcode %}
 
 ### Integration with Symfony Live Components
 
 For applications using Symfony UX Live Components, here's an advanced integration example:
 
-{% code title="src/Twig/Component/Battery.php" lineNumbers="true" %}
-```php
+```php title="src/Twig/Component/Battery.php" linenums="1"
 <?php
 
 namespace App\Twig\Component;
@@ -934,10 +921,8 @@ class Battery
     }
 }
 ```
-{% endcode %}
 
-{% code title="templates/components/Battery.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/components/Battery.html.twig" linenums="1"
 <div {{ stimulus_controller('@pwa/battery', '@pwa/live') }} {{ attributes }}>
     <div class="battery-component battery-{{ this.statusClass }}">
         <div class="battery-header">
@@ -1030,7 +1015,6 @@ class Battery
     }
 </style>
 ```
-{% endcode %}
 
 Then use the component in your templates:
 
@@ -1193,8 +1177,7 @@ function performExpensiveOperation() {
 
 ## Complete Example: Adaptive Application
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/battery') }}>
     <div class="adaptive-app">
         <header class="app-header">
@@ -1495,7 +1478,6 @@ function performExpensiveOperation() {
     }
 </style>
 ```
-{% endcode %}
 
 ## Troubleshooting
 
@@ -1548,6 +1530,6 @@ if (chargingTime !== null && isFinite(chargingTime)) {
 | Safari | ✗ Not supported |
 | Opera | ✓ Full support |
 
-{% hint style="danger" %}
-Due to limited browser support and privacy concerns, always provide comprehensive fallback behavior when the Battery Status API is unavailable.
-{% endhint %}
+!!! danger
+
+    Due to limited browser support and privacy concerns, always provide comprehensive fallback behavior when the Battery Status API is unavailable.

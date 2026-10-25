@@ -25,13 +25,13 @@ By default, the bundle caches images with these settings:
 
 ## Asset Cache vs Image Cache
 
-{% hint style="info" %}
-**Important distinction**:
-- **Asset Cache**: Images managed by Symfony's Asset Mapper (precached during service worker installation)
-- **Image Cache**: Runtime caching for images NOT in Asset Mapper (external images, user uploads, CDN images)
+!!! info
 
-Both caches work together - Asset Mapper images are precached, while other images are cached on first request.
-{% endhint %}
+    **Important distinction**:
+    - **Asset Cache**: Images managed by Symfony's Asset Mapper (precached during service worker installation)
+    - **Image Cache**: Runtime caching for images NOT in Asset Mapper (external images, user uploads, CDN images)
+
+    Both caches work together - Asset Mapper images are precached, while other images are cached on first request.
 
 ## Configuration Options
 
@@ -49,8 +49,7 @@ pwa:
 
 Customize which image URLs are cached by modifying the regex pattern:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -58,7 +57,6 @@ pwa:
                 enabled: true
                 regex: '/\.(png|jpe?g|svg|webp)$/'  # Only these formats
 ```
-{% endcode %}
 
 **Use cases**:
 - Limit to specific formats (e.g., only PNG and JPG)
@@ -95,8 +93,7 @@ Consider your users' storage and typical image count.
 
 How long images remain in the cache before being refreshed.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -107,7 +104,6 @@ pwa:
                 # or
                 max_age: 6 months     # Also supported
 ```
-{% endcode %}
 
 **Human-readable format examples**:
 - `1 hour`, `2 hours`
@@ -144,8 +140,7 @@ pwa:
 
 ## Complete Example
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -158,7 +153,6 @@ pwa:
                 max_age: 90 days
                 regex: '/\.(png|jpe?g|svg|webp)$/'
 ```
-{% endcode %}
 
 ## Use Cases
 
@@ -232,6 +226,6 @@ To inspect the image cache in Chrome DevTools:
 4. **Consider user storage**: Mobile users have limited space
 5. **Use custom cache names**: Makes debugging and management easier
 
-{% hint style="success" %}
-The default configuration works well for most applications. Start with defaults and adjust based on your specific needs and user feedback.
-{% endhint %}
+!!! success
+
+    The default configuration works well for most applications. Start with defaults and adjust based on your specific needs and user feedback.

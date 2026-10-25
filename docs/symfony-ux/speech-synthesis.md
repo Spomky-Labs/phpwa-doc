@@ -20,16 +20,15 @@ The Speech Synthesis API is widely supported across modern browsers:
 * **Firefox**: Full support with system voices
 * **Mobile browsers**: Excellent support on both iOS and Android
 
-{% hint style="info" %}
-Voice availability varies by platform and language. Desktop browsers typically offer more voices than mobile browsers. The controller automatically handles voice detection and selection.
-{% endhint %}
+!!! info
+
+    Voice availability varies by platform and language. Desktop browsers typically offer more voices than mobile browsers. The controller automatically handles voice detection and selection.
 
 ## Usage
 
 ### Basic Text-to-Speech
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <p>Enter text to be spoken:</p>
     <textarea id="speech-text">Hello! Welcome to our Progressive Web App.</textarea>
@@ -53,12 +52,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     });
 </script>
 ```
-{% endcode %}
 
 ### Speaking HTML Elements
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <h2>Article Reader</h2>
 
@@ -85,12 +82,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     </button>
 </div>
 ```
-{% endcode %}
 
 ### Voice Selection with Custom Parameters
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     locale: 'en-US',
     rate: 1,
@@ -137,12 +132,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     </button>
 </div>
 ```
-{% endcode %}
 
 ### Multi-Language Content
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <h3>Multi-Language Reader</h3>
 
@@ -179,12 +172,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     </div>
 </div>
 ```
-{% endcode %}
 
 ### Playback Controls
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     enqueue: true
 }) }}>
@@ -236,12 +227,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     });
 </script>
 ```
-{% endcode %}
 
 ### Custom Internationalization
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     i18n: {
         loading: 'Chargement des voix…',
@@ -264,12 +253,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     </p>
 </div>
 ```
-{% endcode %}
 
 ### Per-Item Custom Parameters
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <h3>Dynamic Speech Parameters</h3>
 
@@ -319,12 +306,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     </p>
 </div>
 ```
-{% endcode %}
 
 ### Immediate vs Queue Mode
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <!-- Queue mode (default): Utterances are queued and played sequentially -->
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     enqueue: true
@@ -365,14 +350,12 @@ Voice availability varies by platform and language. Desktop browsers typically o
     <p><small>Click multiple buttons - only the latest will be spoken</small></p>
 </div>
 ```
-{% endcode %}
 
 ## Common Use Cases
 
 ### 1. Accessible News Reader
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     rate: 1.2,
     enqueue: true
@@ -401,12 +384,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     </button>
 </div>
 ```
-{% endcode %}
 
 ### 2. Language Learning App
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <h2>Pronunciation Practice</h2>
 
@@ -438,12 +419,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     });
 </script>
 ```
-{% endcode %}
 
 ### 3. Form Validation Feedback
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     enqueue: false
 }) }}>
@@ -475,12 +454,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     });
 </script>
 ```
-{% endcode %}
 
 ### 4. Navigation Assistant
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     enqueue: false,
     rate: 1.1
@@ -510,12 +487,10 @@ Voice availability varies by platform and language. Desktop browsers typically o
     });
 </script>
 ```
-{% endcode %}
 
 ### 5. Interactive Tutorial System
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     enqueue: true,
     rate: 0.9
@@ -545,7 +520,6 @@ Voice availability varies by platform and language. Desktop browsers typically o
     </button>
 </div>
 ```
-{% endcode %}
 
 ## API Reference
 
@@ -587,8 +561,7 @@ The controller accepts the following configuration values:
 - Keys: `loading`, `ready`, `unsupported`, `playing`, `paused`, `canceled`, `finished`
 
 **Example:**
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     locale: 'fr-FR',
     rate: 1.2,
@@ -603,7 +576,6 @@ The controller accepts the following configuration values:
 }) }}>
 </div>
 ```
-{% endcode %}
 
 ### Targets
 
@@ -622,15 +594,13 @@ The controller accepts the following configuration values:
 - Content controlled by `i18nValue` or defaults
 
 **Example:**
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <select {{ stimulus_target('@pwa/speech-synthesis', 'voiceSelect') }}></select>
     <p {{ stimulus_target('@pwa/speech-synthesis', 'item') }}>Speakable text</p>
     <div {{ stimulus_target('@pwa/speech-synthesis', 'status') }}></div>
 </div>
 ```
-{% endcode %}
 
 ### Actions
 
@@ -683,8 +653,7 @@ The controller accepts the following configuration values:
 - Parameters: `volume` (Number)
 
 **Example:**
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <button {{ stimulus_action('@pwa/speech-synthesis', 'speak', 'click', {
     text: 'Hello world',
     rate: 1.5
@@ -694,7 +663,6 @@ The controller accepts the following configuration values:
 <button {{ stimulus_action('@pwa/speech-synthesis', 'resume', 'click') }}>Resume</button>
 <button {{ stimulus_action('@pwa/speech-synthesis', 'cancel', 'click') }}>Cancel</button>
 ```
-{% endcode %}
 
 ### Item Data Attributes
 
@@ -719,8 +687,7 @@ When using `item` targets, you can customize speech parameters per element:
 - Speech volume for this item (Number)
 
 **Example:**
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <p {{ stimulus_target('@pwa/speech-synthesis', 'item') }}
    data-speech-text="Custom text to speak"
    data-speech-locale="fr-FR"
@@ -731,7 +698,6 @@ When using `item` targets, you can customize speech parameters per element:
     Click to hear custom speech
 </p>
 ```
-{% endcode %}
 
 ### Events
 
@@ -826,8 +792,7 @@ All events are prefixed with `pwa:speech-synthesis:` and dispatched on the contr
   - `volume` (Number): New volume value
 
 **Example:**
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 const controller = document.querySelector('[data-controller="@pwa/speech-synthesis"]');
 
 controller.addEventListener('pwa:speech-synthesis:start', (event) => {
@@ -847,7 +812,6 @@ controller.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
     });
 });
 ```
-{% endcode %}
 
 ### Properties
 
@@ -866,8 +830,7 @@ The controller exposes the following read-only properties:
 - Boolean property
 
 **Example:**
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 const controller = application.getControllerForElementAndIdentifier(
     document.querySelector('[data-controller="@pwa/speech-synthesis"]'),
     '@pwa/speech-synthesis'
@@ -877,14 +840,12 @@ console.log('Available voices:', controller.voices);
 console.log('Supported locales:', controller.locales);
 console.log('Is speaking:', controller.isSpeaking);
 ```
-{% endcode %}
 
 ## Best Practices
 
 ### 1. Always Check Browser Support
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 document.addEventListener('pwa:speech-synthesis:unsupported', () => {
     // Show alternative UI or fallback
     document.getElementById('speech-controls').style.display = 'none';
@@ -896,14 +857,12 @@ document.addEventListener('pwa:speech-synthesis:ready', () => {
     document.getElementById('speech-controls').style.display = 'block';
 });
 ```
-{% endcode %}
 
 ### 2. Provide Visual Feedback
 
 Always show the current state of speech synthesis:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <div {{ stimulus_target('@pwa/speech-synthesis', 'status') }}
          class="speech-status"></div>
@@ -931,14 +890,12 @@ Always show the current state of speech synthesis:
     });
 </script>
 ```
-{% endcode %}
 
 ### 3. Handle Long Content Appropriately
 
 For long articles, break content into manageable chunks:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     enqueue: true
 }) }}>
@@ -959,7 +916,6 @@ For long articles, break content into manageable chunks:
     </button>
 </div>
 ```
-{% endcode %}
 
 ### 4. Use Appropriate Speech Rates
 
@@ -972,8 +928,7 @@ Match speech rate to content type:
 
 ### 5. Respect User Preferences
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 // Save user preferences
 document.addEventListener('pwa:speech-synthesis:ratechange', (event) => {
     localStorage.setItem('speech-rate', event.detail.rate);
@@ -991,12 +946,10 @@ if (savedRate || savedVoice) {
     // Apply saved preferences to controller values
 }
 ```
-{% endcode %}
 
 ### 6. Optimize for Multi-Language Apps
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <!-- Automatically use correct locale per item -->
     <div {{ stimulus_target('@pwa/speech-synthesis', 'item') }}
@@ -1006,12 +959,10 @@ if (savedRate || savedVoice) {
     </div>
 </div>
 ```
-{% endcode %}
 
 ### 7. Use Boundary Events for Highlighting
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 let currentText = '';
 let highlightedEl = null;
 
@@ -1032,14 +983,12 @@ document.addEventListener('pwa:speech-synthesis:boundary', (event) => {
     }
 });
 ```
-{% endcode %}
 
 ### 8. Provide Keyboard Controls
 
 Make speech controls accessible via keyboard:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <button {{ stimulus_action('@pwa/speech-synthesis', 'speak', 'click') }}
             accesskey="s"
@@ -1054,7 +1003,6 @@ Make speech controls accessible via keyboard:
     </button>
 </div>
 ```
-{% endcode %}
 
 ## Troubleshooting
 
@@ -1067,8 +1015,7 @@ Make speech controls accessible via keyboard:
 2. Some browsers load voices asynchronously - the controller handles this automatically
 3. On some systems, text-to-speech voices may need to be installed separately
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
     if (event.detail.voices.length === 0) {
         console.warn('No voices available on this system');
@@ -1076,7 +1023,6 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
     }
 });
 ```
-{% endcode %}
 
 ### Speech Not Working on iOS
 
@@ -1096,8 +1042,7 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
 2. Voice must be available in the voices list
 3. Some voices are locale-specific - check voice's `lang` property matches utterance locale
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
     console.log('Available voices:');
     event.detail.voices.forEach(v => {
@@ -1105,7 +1050,6 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
     });
 });
 ```
-{% endcode %}
 
 ### Speech Cuts Off or Stops
 
@@ -1135,15 +1079,13 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
 2. Explicitly select a voice with desired accent using `voiceValue`
 3. Use `data-speech-locale` per item for multi-language content
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <!-- Explicit locale and voice for best results -->
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
     locale: 'en-GB',
     voice: 'Google UK English Female'
 }) }}>
 ```
-{% endcode %}
 
 ### Memory Issues with Long Content
 
@@ -1154,22 +1096,19 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
 2. Limit queue size - don't enqueue hundreds of items at once
 3. Cancel and clear queue when user navigates away
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 // Clear queue on page unload
 window.addEventListener('beforeunload', () => {
     const controller = document.querySelector('[data-controller="@pwa/speech-synthesis"]');
     controller?.dispatchEvent(new CustomEvent('cancel'));
 });
 ```
-{% endcode %}
 
 ## Accessibility Considerations
 
 ### 1. ARIA Attributes
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <button {{ stimulus_action('@pwa/speech-synthesis', 'speak', 'click') }}
             aria-label="Read this content aloud"
@@ -1178,14 +1117,12 @@ window.addEventListener('beforeunload', () => {
     </button>
 </div>
 ```
-{% endcode %}
 
 ### 2. Screen Reader Compatibility
 
 The component works alongside screen readers. Provide options to disable speech synthesis if user prefers their own assistive technology:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
     <label>
         <input type="checkbox" id="enable-tts" checked>
@@ -1202,14 +1139,12 @@ The component works alongside screen readers. Provide options to disable speech 
     });
 </script>
 ```
-{% endcode %}
 
 ### 3. Visual Indicators
 
 Always provide visual feedback that complements audio:
 
-{% code lineNumbers="true" %}
-```css
+```css linenums="1"
 .speaking {
     background-color: #fff9c4;
     border-left: 4px solid #fbc02d;
@@ -1222,4 +1157,3 @@ Always provide visual feedback that complements audio:
     50% { opacity: 0.7; }
 }
 ```
-{% endcode %}

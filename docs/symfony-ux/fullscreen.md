@@ -15,16 +15,15 @@ This component is particularly useful for:
 
 The Fullscreen API is widely supported in modern browsers. However, browser vendors may have different implementations and require user interaction to activate fullscreen mode.
 
-{% hint style="info" %}
-Fullscreen mode can only be triggered by user interaction (click, touch) for security reasons. Programmatic fullscreen requests without user gestures will be blocked.
-{% endhint %}
+!!! info
+
+    Fullscreen mode can only be triggered by user interaction (click, touch) for security reasons. Programmatic fullscreen requests without user gestures will be blocked.
 
 ## Usage
 
 ### Fullscreen for Entire Page
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <section {{ stimulus_controller('@pwa/fullscreen') }}>
     <h1>My Presentation</h1>
     <div class="content">
@@ -47,12 +46,10 @@ Fullscreen mode can only be triggered by user interaction (click, touch) for sec
     });
 </script>
 ```
-{% endcode %}
 
 ### Fullscreen for Specific Element
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <section {{ stimulus_controller('@pwa/fullscreen') }}>
     <img
         id="gallery-image"
@@ -72,12 +69,10 @@ Fullscreen mode can only be triggered by user interaction (click, touch) for sec
     </div>
 </section>
 ```
-{% endcode %}
 
 ### Video Player with Fullscreen
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/fullscreen') }}>
     <div id="video-container" class="video-wrapper">
         <video id="main-video" controls>
@@ -109,12 +104,10 @@ Fullscreen mode can only be triggered by user interaction (click, touch) for sec
     });
 </script>
 ```
-{% endcode %}
 
 ### Image Gallery with Fullscreen
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/fullscreen') }}>
     <div class="gallery">
         <div class="image-grid">
@@ -148,12 +141,10 @@ Fullscreen mode can only be triggered by user interaction (click, touch) for sec
     });
 </script>
 ```
-{% endcode %}
 
 ### Presentation Mode with Navigation
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/fullscreen') }}>
     <div id="presentation" class="slides-container">
         <div class="slide active">
@@ -231,7 +222,6 @@ Fullscreen mode can only be triggered by user interaction (click, touch) for sec
     }
 </style>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -255,9 +245,9 @@ Or for a specific element:
 {{ stimulus_action('@pwa/fullscreen', 'request', 'click', {target: '#my-element'}) }}
 ```
 
-{% hint style="warning" %}
-Fullscreen requests must be triggered by user interaction. Programmatic calls without user gestures will be rejected by the browser.
-{% endhint %}
+!!! warning
+
+    Fullscreen requests must be triggered by user interaction. Programmatic calls without user gestures will be rejected by the browser.
 
 ### `exit`
 
@@ -478,8 +468,7 @@ You can style elements differently when in fullscreen using CSS:
 
 ## Complete Example: Video Player
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/fullscreen') }}>
     <div id="player-container" class="video-player">
         <video id="video" src="/videos/sample.mp4"></video>
@@ -581,4 +570,3 @@ You can style elements differently when in fullscreen using CSS:
     }
 </style>
 ```
-{% endcode %}

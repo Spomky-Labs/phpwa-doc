@@ -21,16 +21,15 @@ The Geolocation API is widely supported across all modern browsers on both deskt
 2. **User Permission**: Users must explicitly grant permission to access their location
 3. **User Gesture**: Initial requests should be triggered by user interaction
 
-{% hint style="warning" %}
-Always handle permission denials gracefully and provide clear explanations of why your app needs location access.
-{% endhint %}
+!!! warning
+
+    Always handle permission denials gracefully and provide clear explanations of why your app needs location access.
 
 ## Usage
 
 ### Basic Location Request
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
     <h2>Find Your Location</h2>
 
@@ -58,12 +57,10 @@ Always handle permission denials gracefully and provide clear explanations of wh
     });
 </script>
 ```
-{% endcode %}
 
 ### Continuous Location Tracking
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
     <h2>Live Location Tracking</h2>
 
@@ -104,12 +101,10 @@ Always handle permission denials gracefully and provide clear explanations of wh
     });
 </script>
 ```
-{% endcode %}
 
 ### Distance Calculator
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
     <h2>Distance to Destination</h2>
 
@@ -164,12 +159,10 @@ Always handle permission denials gracefully and provide clear explanations of wh
     }
 </script>
 ```
-{% endcode %}
 
 ### Location-Based Content
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
     <h2>Local Weather</h2>
 
@@ -208,12 +201,10 @@ Always handle permission denials gracefully and provide clear explanations of wh
     });
 </script>
 ```
-{% endcode %}
 
 ### Geofencing
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
     <h2>Location Alerts</h2>
 
@@ -291,12 +282,10 @@ Always handle permission denials gracefully and provide clear explanations of wh
     }
 </script>
 ```
-{% endcode %}
 
 ### Fitness Tracker with Route Recording
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
     <div class="fitness-tracker">
         <h2>Run Tracker</h2>
@@ -477,12 +466,10 @@ Always handle permission denials gracefully and provide clear explanations of wh
     }
 </style>
 ```
-{% endcode %}
 
 ### Store Locator
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
     <h2>Find Nearest Store</h2>
 
@@ -567,7 +554,6 @@ Always handle permission denials gracefully and provide clear explanations of wh
     }
 </style>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -592,9 +578,9 @@ Retrieves the user's current position once. This is ideal for one-time location 
 }) }}
 ```
 
-{% hint style="info" %}
-`enableHighAccuracy: true` provides better accuracy but uses more battery and may take longer. Use it only when precision is important.
-{% endhint %}
+!!! info
+
+    `enableHighAccuracy: true` provides better accuracy but uses more battery and may take longer. Use it only when precision is important.
 
 ### `watch`
 
@@ -613,9 +599,9 @@ Starts continuous position tracking. The component will repeatedly update the po
 }) }}
 ```
 
-{% hint style="warning" %}
-Continuous tracking consumes significant battery power. Always provide a way to stop tracking when it's no longer needed.
-{% endhint %}
+!!! warning
+
+    Continuous tracking consumes significant battery power. Always provide a way to stop tracking when it's no longer needed.
 
 ### `clearWatch`
 
@@ -810,8 +796,7 @@ function handleLocationError(error) {
 
 ## Complete Example: Real-Time Delivery Tracker
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
     <div class="delivery-tracker">
         <h1>Delivery Tracking</h1>
@@ -1171,7 +1156,6 @@ function handleLocationError(error) {
     }
 </style>
 ```
-{% endcode %}
 
 ## Troubleshooting
 

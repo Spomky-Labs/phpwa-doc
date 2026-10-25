@@ -8,28 +8,25 @@ The PWA Bundle automatically generates and serves your service worker based on y
 
 The simplest configuration requires only specifying the source file:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker: "sw.js"
 ```
-{% endcode %}
 
 This shorthand configuration:
 - Enables the service worker
 - Uses `sw.js` from your `/assets/` folder as the source
 - Serves it publicly at `/sw.js`
 
-{% hint style="info" %}
-The `sw.js` file can start empty. The bundle will automatically populate it with functionality based on your configuration (Workbox, caching strategies, etc.).
-{% endhint %}
+!!! info
+
+    The `sw.js` file can start empty. The bundle will automatically populate it with functionality based on your configuration (Workbox, caching strategies, etc.).
 
 ### Expanded Configuration
 
 The shorthand above is equivalent to:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -37,14 +34,13 @@ pwa:
         dest: "/sw.js"  # Public URL (default)
         scope: "/"      # Service worker scope (default)
 ```
-{% endcode %}
 
-{% hint style="warning" %}
-Enabling or disabling the service worker affects Twig page rendering. Clear your cache after changing the `enabled` setting:
-```bash
-php bin/console cache:clear
-```
-{% endhint %}
+!!! warning
+
+    Enabling or disabling the service worker affects Twig page rendering. Clear your cache after changing the `enabled` setting:
+    ```bash
+    php bin/console cache:clear
+    ```
 
 ## Configuration Options
 
@@ -96,9 +92,9 @@ pwa:
         dest: "/assets/sw.js"
 ```
 
-{% hint style="info" %}
-Service workers must be served from the same origin as your application. The bundle handles this automatically.
-{% endhint %}
+!!! info
+
+    Service workers must be served from the same origin as your application. The bundle handles this automatically.
 
 ### Scope
 
@@ -175,9 +171,9 @@ pwa:
 - Old tabs might have old assets, new tabs new assets
 - Can break applications expecting consistent versions
 
-{% hint style="warning" %}
-Enabling `skip_waiting: true` can cause issues if your application assumes all tabs use the same version. Use with caution and thoroughly test your application's behavior.
-{% endhint %}
+!!! warning
+
+    Enabling `skip_waiting: true` can cause issues if your application assumes all tabs use the same version. Use with caution and thoroughly test your application's behavior.
 
 **Use case for `skip_waiting: true`**:
 - Critical bug fixes that must deploy immediately
@@ -186,8 +182,7 @@ Enabling `skip_waiting: true` can cause issues if your application assumes all t
 
 ## Complete Configuration Example
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -202,14 +197,12 @@ pwa:
             enabled: true
             # ... workbox options
 ```
-{% endcode %}
 
 ## Service Worker Initialization
 
 The service worker is automatically registered when you include the PWA Twig function in your template:
 
-{% code title="templates/base.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/base.html.twig" linenums="1"
 <!DOCTYPE html>
 <html>
 <head>
@@ -220,7 +213,6 @@ The service worker is automatically registered when you include the PWA Twig fun
 </body>
 </html>
 ```
-{% endcode %}
 
 The registration script:
 - Uses Workbox Window if Workbox is enabled

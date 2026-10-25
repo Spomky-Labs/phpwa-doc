@@ -13,22 +13,20 @@ Categories help with:
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         categories: ['productivity', 'business']
 ```
-{% endcode %}
 
-{% hint style="info" %}
-**Best practices**:
-- Use lowercase for consistency
-- Choose 1-3 most relevant categories
-- Start with the primary category
-- Categories are hints - platforms may use their own classification
-{% endhint %}
+!!! info
+
+    **Best practices**:
+    - Use lowercase for consistency
+    - Choose 1-3 most relevant categories
+    - Start with the primary category
+    - Categories are hints - platforms may use their own classification
 
 ## Standard Categories
 

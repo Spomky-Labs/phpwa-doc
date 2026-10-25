@@ -6,13 +6,11 @@ This page provides comprehensive examples of Service Worker configurations, from
 
 The simplest configuration that enables basic offline functionality:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest: "/manifest.json"
     serviceworker: "sw.js"  # Create an empty assets/sw.js file
 ```
-{% endcode %}
 
 This gives you:
 - Service worker registration
@@ -22,16 +20,15 @@ This gives you:
 - Page caching with NetworkFirst strategy
 - Automatic cache management
 
-{% hint style="info" %}
-The `sw.js` file in your `/assets/` folder can be empty. The bundle generates all the necessary code automatically.
-{% endhint %}
+!!! info
+
+    The `sw.js` file in your `/assets/` folder can be empty. The bundle generates all the necessary code automatically.
 
 ## Intermediate: Custom Cache Settings
 
 Enhanced configuration with customized caching behavior:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest: "/manifest.json"
 
@@ -82,14 +79,12 @@ pwa:
                 image: '/images/offline.svg'
                 font: false  # No font fallback
 ```
-{% endcode %}
 
 ## Advanced: Full-Featured PWA
 
 Complete configuration showcasing all major features:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest: "/manifest.json"
 
@@ -203,23 +198,21 @@ pwa:
                   max_retention_time: 1440  # 1 day
                   broadcast_channel: 'contact-sync'
 ```
-{% endcode %}
 
-{% hint style="success" %}
-This configuration provides:
-- Complete offline support
-- Optimized caching for different resource types
-- Network resilience with background sync
-- Automatic updates with skip_waiting
-- Multiple caching strategies for different use cases
-{% endhint %}
+!!! success
+
+    This configuration provides:
+    - Complete offline support
+    - Optimized caching for different resource types
+    - Network resilience with background sync
+    - Automatic updates with skip_waiting
+    - Multiple caching strategies for different use cases
 
 ## E-commerce Application Example
 
 Optimized for online stores with product images and dynamic content:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest: "/manifest.json"
 
@@ -281,14 +274,12 @@ pwa:
                 page: '/offline-shop'
                 image: '/images/product-placeholder.svg'
 ```
-{% endcode %}
 
 ## Content/Blog Application Example
 
 Optimized for content-heavy sites with articles and media:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest: "/manifest.json"
 
@@ -357,14 +348,12 @@ pwa:
                 page: '/offline-articles'
                 image: '/images/article-placeholder.svg'
 ```
-{% endcode %}
 
 ## SaaS/Dashboard Application Example
 
 Optimized for real-time data and user interactions:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest: "/manifest.json"
 
@@ -428,7 +417,6 @@ pwa:
             offline_fallback:
                 page: '/offline-dashboard'
 ```
-{% endcode %}
 
 ## Testing Your Configuration
 
@@ -538,7 +526,7 @@ After configuring your service worker:
 ## Related Documentation
 
 - [Configuration Reference](configuration.md) - All configuration options explained
-- [Workbox Documentation](workbox/) - Detailed Workbox feature guides
+- [Workbox Documentation](workbox/README.md) - Detailed Workbox feature guides
 - [Custom Service Worker Rules](custom-service-worker-rule.md) - Add custom logic
 - [Background Sync](workbox/backgoundsync.md) - Handle offline submissions
 - [Offline Fallbacks](workbox/offline-fallback.md) - Create offline pages

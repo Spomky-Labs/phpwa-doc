@@ -31,11 +31,11 @@ For your PWA to be installable, the manifest must include:
 - Start URL (`start_url`)
 - Display mode (`display`)
 
-See the [Application Information page](the-manifest/application-information/) for complete requirements.
+See the [Application Information page](the-manifest/application-information/README.md) for complete requirements.
 
-{% hint style="warning" %}
-Installation criteria vary by browser and may change over time. Some browsers require HTTPS, user engagement, or additional manifest properties.
-{% endhint %}
+!!! warning
+
+    Installation criteria vary by browser and may change over time. Some browsers require HTTPS, user engagement, or additional manifest properties.
 
 ## Installing a PWA
 
@@ -55,7 +55,10 @@ The PWA will appear:
 
 **Example:** Installing GitHub as a PWA:
 
-<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 193350.png" alt=""><figcaption><p>GitHub installation from Chrome</p></figcaption></figure>
+<figure markdown="span">
+  ![GitHub installation from Chrome](assets/images/capture-d-ecran-2024-01-31-193350.png)
+  <figcaption>GitHub installation from Chrome</figcaption>
+</figure>
 
 ### Microsoft Edge (Desktop & Android)
 
@@ -66,7 +69,10 @@ Edge provides the same installation experience as Chrome.
 2. Click **Install** in the popup dialog
 3. The app opens in its own window
 
-<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 193908.png" alt=""><figcaption><p>GitHub installation from Microsoft Edge</p></figcaption></figure>
+<figure markdown="span">
+  ![GitHub installation from Microsoft Edge](assets/images/capture-d-ecran-2024-01-31-193908.png)
+  <figcaption>GitHub installation from Microsoft Edge</figcaption>
+</figure>
 
 ### Firefox (Desktop)
 
@@ -77,9 +83,9 @@ Firefox supports PWA installation with a slightly different approach.
 2. Look for the option "Install [App Name]" or the install icon
 3. Confirm the installation
 
-{% hint style="info" %}
-Firefox PWA support varies by operating system. Linux has full support, while Windows and macOS support is more limited.
-{% endhint %}
+!!! info
+
+    Firefox PWA support varies by operating system. Linux has full support, while Windows and macOS support is more limited.
 
 ### Safari (iOS 16.4+)
 
@@ -93,9 +99,9 @@ On iPhone and iPad, Safari uses "Add to Home Screen" for PWA installation.
 
 The PWA icon will appear on your home screen like a native app.
 
-{% hint style="warning" %}
-iOS PWAs have some limitations compared to Android. Some features like push notifications require iOS 16.4 or later.
-{% endhint %}
+!!! warning
+
+    iOS PWAs have some limitations compared to Android. Some features like push notifications require iOS 16.4 or later.
 
 ## Uninstalling a PWA
 
@@ -107,7 +113,10 @@ iOS PWAs have some limitations compared to Android. Some features like push noti
 3. Select "Uninstall [App Name]"
 4. Confirm the uninstallation
 
-<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194648.png" alt=""><figcaption><p>Uninstalling from Chrome app menu</p></figcaption></figure>
+<figure markdown="span">
+  ![Uninstalling from Chrome app menu](assets/images/capture-d-ecran-2024-01-31-194648.png)
+  <figcaption>Uninstalling from Chrome app menu</figcaption>
+</figure>
 
 **Option 2: From Chrome settings**
 1. Open Chrome
@@ -133,11 +142,18 @@ iOS PWAs have some limitations compared to Android. Some features like push noti
 2. Select "App settings"
 3. Click "Uninstall" in the app settings panel
 
-<figure><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194733.png" alt=""><figcaption><p>Accessing Edge app settings</p></figcaption></figure>
+<figure markdown="span">
+  ![Accessing Edge app settings](assets/images/capture-d-ecran-2024-01-31-194733.png)
+  <figcaption>Accessing Edge app settings</figcaption>
+</figure>
 
 The app settings also let you clear cached data without uninstalling:
 
-<figure><picture><source srcset=".gitbook/assets/Capture d&#x27;écran 2024-02-09 111232.png" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/Capture d&#x27;écran 2024-02-09 111318.png" alt=""></picture><figcaption><p>Edge app settings panel</p></figcaption></figure>
+<figure markdown="span">
+  ![Edge app settings panel](assets/images/capture-d-ecran-2024-02-09-111318.png#only-light)
+  ![Edge app settings panel](assets/images/capture-d-ecran-2024-02-09-111232.png#only-dark)
+  <figcaption>Edge app settings panel</figcaption>
+</figure>
 
 ### Firefox (Desktop)
 
@@ -181,7 +197,11 @@ PWAs appear as regular applications in Windows:
 5. Select "Uninstall"
 6. Confirm removal
 
-<figure><picture><source srcset=".gitbook/assets/Capture d&#x27;écran 2024-02-09 111115.png" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/Capture d&#x27;écran 2024-01-31 194833.png" alt=""></picture><figcaption><p>Uninstalling PWA from Windows Settings</p></figcaption></figure>
+<figure markdown="span">
+  ![Uninstalling PWA from Windows Settings](assets/images/capture-d-ecran-2024-01-31-194833.png#only-light)
+  ![Uninstalling PWA from Windows Settings](assets/images/capture-d-ecran-2024-02-09-111115.png#only-dark)
+  <figcaption>Uninstalling PWA from Windows Settings</figcaption>
+</figure>
 
 ### macOS
 
@@ -190,6 +210,6 @@ PWAs appear as regular applications in Windows:
 3. Drag it to the Trash, or right-click → "Move to Trash"
 4. Empty the Trash to complete removal
 
-{% hint style="success" %}
-Uninstalling a PWA removes the app shortcut and clears cached data, but you can always reinstall it by visiting the website again.
-{% endhint %}
+!!! success
+
+    Uninstalling a PWA removes the app shortcut and clears cached data, but you can always reinstall it by visiting the website again.

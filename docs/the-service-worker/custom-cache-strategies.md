@@ -18,8 +18,7 @@ For most use cases, the [YAML configuration](configuration.md) and [resource cac
 
 The easiest way to create custom cache strategies is using the `WorkboxCacheStrategy` helper class:
 
-{% code title="src/Service/MyCustomCacheStrategies.php" lineNumbers="true" %}
-```php
+```php title="src/Service/MyCustomCacheStrategies.php" linenums="1"
 <?php
 
 declare(strict_types=1);
@@ -57,18 +56,16 @@ final readonly class MyCustomCacheStrategies implements HasCacheStrategiesInterf
     }
 }
 ```
-{% endcode %}
 
-{% hint style="info" %}
-With service autoconfiguration enabled (default in Symfony), the tag `spomky_labs_pwa.cache_strategy` is added automatically. Otherwise, you need to tag your service manually.
-{% endhint %}
+!!! info
+
+    With service autoconfiguration enabled (default in Symfony), the tag `spomky_labs_pwa.cache_strategy` is added automatically. Otherwise, you need to tag your service manually.
 
 ## Complete Example: Multiple Strategies
 
 A comprehensive example showing various cache strategies with different configurations:
 
-{% code title="src/Service/AdvancedCacheStrategies.php" lineNumbers="true" %}
-```php
+```php title="src/Service/AdvancedCacheStrategies.php" linenums="1"
 <?php
 
 declare(strict_types=1);
@@ -190,7 +187,6 @@ final readonly class AdvancedCacheStrategies implements HasCacheStrategiesInterf
     }
 }
 ```
-{% endcode %}
 
 ## WorkboxCacheStrategy API
 
@@ -382,8 +378,7 @@ matchCallback: 'navigate'  // Navigation requests (page loads)
 
 Create strategies that adapt based on conditions:
 
-{% code title="src/Service/ConditionalCacheStrategy.php" lineNumbers="true" %}
-```php
+```php title="src/Service/ConditionalCacheStrategy.php" linenums="1"
 <?php
 
 declare(strict_types=1);
@@ -448,7 +443,6 @@ final readonly class ConditionalCacheStrategy implements HasCacheStrategiesInter
     }
 }
 ```
-{% endcode %}
 
 ## Real-World Use Cases
 
@@ -561,8 +555,7 @@ public function getCacheStrategies(): array
 
 For complete control, implement `CacheStrategyInterface` directly:
 
-{% code title="src/Service/CustomJavaScriptStrategy.php" lineNumbers="true" %}
-```php
+```php title="src/Service/CustomJavaScriptStrategy.php" linenums="1"
 <?php
 
 declare(strict_types=1);
@@ -615,24 +608,21 @@ JS;
     }
 }
 ```
-{% endcode %}
 
-{% hint style="warning" %}
-When implementing the full interface, you're responsible for all JavaScript generation. This approach is powerful but requires careful testing.
-{% endhint %}
+!!! warning
+
+    When implementing the full interface, you're responsible for all JavaScript generation. This approach is powerful but requires careful testing.
 
 ## Service Registration
 
 If service autoconfiguration is disabled, register your service manually:
 
-{% code title="config/services.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/services.yaml" linenums="1"
 services:
     App\Service\MyCustomCacheStrategies:
         tags:
             - { name: 'spomky_labs_pwa.cache_strategy' }
 ```
-{% endcode %}
 
 ## Debugging Custom Strategies
 

@@ -1,8 +1,8 @@
 # Asset Caching
 
-{% hint style="danger" %}
-Contains a breaking change compared to v1.0.x
-{% endhint %}
+!!! danger
+
+    Contains a breaking change compared to v1.0.x
 
 Asset caching provides automatic precaching and efficient serving of your application's static assets managed by Symfony's AssetMapper component. This ensures your CSS, JavaScript, images, and other static files are available offline and load instantly from the cache.
 
@@ -18,8 +18,7 @@ The asset cache feature automatically:
 
 ## Default Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -30,7 +29,6 @@ pwa:
                 max_age: null  # Default: 1 year (31536000 seconds)
                 max_entries: 60  # Maximum number of cached assets
 ```
-{% endcode %}
 
 By default, the cache includes all common asset types:
 - **Stylesheets**: `.css`
@@ -199,22 +197,19 @@ workbox.routing.registerRoute(
 
 Use defaults for most applications:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
             asset_cache:
                 enabled: true  # Everything else uses defaults
 ```
-{% endcode %}
 
 ### CSS and JavaScript Only
 
 Cache only stylesheets and scripts:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -225,14 +220,12 @@ pwa:
                 max_age: '7 days'
                 max_entries: 30
 ```
-{% endcode %}
 
 ### Large Application
 
 Handle many assets with extended expiration:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -243,14 +236,12 @@ pwa:
                 max_age: '90 days'
                 max_entries: 200  # Allow many cached files
 ```
-{% endcode %}
 
 ### Separate Image Cache
 
 Cache assets but handle images separately:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -264,7 +255,6 @@ pwa:
             image_cache:
                 enabled: true  # Handle images separately with different settings
 ```
-{% endcode %}
 
 ## Precaching Behavior
 

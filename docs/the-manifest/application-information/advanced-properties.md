@@ -6,15 +6,13 @@ This page documents advanced manifest properties that provide fine-grained contr
 
 The `display_override` property allows you to specify a sequence of display modes that the browser will consider before falling back to the standard `display` property. This gives you more control over how your app is displayed on different platforms and browsers.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         display: "standalone"
         display_override: ['window-controls-overlay', 'minimal-ui']
 ```
-{% endcode %}
 
 ### Available Display Modes
 
@@ -29,8 +27,7 @@ The browser will try each mode in order and use the first one it supports:
 
 ### Example with Fallbacks
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         display: "standalone"
@@ -39,7 +36,6 @@ pwa:
             - 'minimal-ui'
             - 'standalone'
 ```
-{% endcode %}
 
 In this example:
 1. The browser first tries `window-controls-overlay` (modern desktop browsers)
@@ -47,22 +43,20 @@ In this example:
 3. If not supported, uses `standalone`
 4. If none are supported, uses the standard `display` value
 
-{% hint style="info" %}
-The `display_override` is particularly useful for providing an enhanced experience on desktop browsers that support window controls overlay while maintaining compatibility with mobile browsers.
-{% endhint %}
+!!! info
+
+    The `display_override` is particularly useful for providing an enhanced experience on desktop browsers that support window controls overlay while maintaining compatibility with mobile browsers.
 
 ## Use Credentials
 
 The `use_credentials` property controls whether the manifest is fetched with credentials (cookies, HTTP authentication). This is useful when your manifest file is protected or when you need to serve different manifests to different users.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         use_credentials: true
 ```
-{% endcode %}
 
 **Default value:** `true`
 
@@ -75,9 +69,9 @@ When set to `false`:
 * The manifest is fetched without credentials
 * No cookies or authentication headers are sent
 
-{% hint style="warning" %}
-If your manifest file is protected by authentication and `use_credentials` is `false`, the manifest fetch will fail, preventing PWA installation.
-{% endhint %}
+!!! warning
+
+    If your manifest file is protected by authentication and `use_credentials` is `false`, the manifest fetch will fail, preventing PWA installation.
 
 ### When to Use Credentials
 
@@ -95,14 +89,12 @@ If your manifest file is protected by authentication and `use_credentials` is `f
 
 The `handle_links` property specifies how the PWA should handle links when it's already open. This gives you control over whether links should open in the PWA window or in the browser.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         handle_links: "preferred"
 ```
-{% endcode %}
 
 ### Available Values
 
@@ -136,16 +128,15 @@ pwa:
 ```
 Most links point to external sites, so prefer opening in the browser.
 
-{% hint style="info" %}
-The `handle_links` property works in conjunction with the `scope` property. Links outside the scope are not affected by this setting.
-{% endhint %}
+!!! info
+
+    The `handle_links` property works in conjunction with the `scope` property. Links outside the scope are not affected by this setting.
 
 ## Complete Example
 
 Here's how these advanced properties work together:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -164,19 +155,18 @@ pwa:
         scope: "/"
         start_url: "app_homepage"
 ```
-{% endcode %}
 
 ## Browser Support
 
-{% hint style="warning" %}
-These advanced properties have varying levels of browser support:
+!!! warning
 
-* **display_override**: Supported in Chromium-based browsers (Chrome, Edge)
-* **use_credentials**: Widely supported across modern browsers
-* **handle_links**: Limited support, primarily in Chromium-based browsers
+    These advanced properties have varying levels of browser support:
 
-Always test your PWA on target browsers and provide sensible fallbacks through the standard `display` property.
-{% endhint %}
+    * **display_override**: Supported in Chromium-based browsers (Chrome, Edge)
+    * **use_credentials**: Widely supported across modern browsers
+    * **handle_links**: Limited support, primarily in Chromium-based browsers
+
+    Always test your PWA on target browsers and provide sensible fallbacks through the standard `display` property.
 
 ## Best Practices
 

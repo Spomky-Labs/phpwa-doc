@@ -19,16 +19,16 @@ The BackgroundSync Form component relies on the Background Sync API and service 
 
 **Support level:** Excellent - Works on all modern browsers that support service workers (Chrome, Firefox, Safari, Edge).
 
-{% hint style="info" %}
-This component requires:
-- An active service worker with Workbox configured
-- Background Sync enabled in your PWA configuration
-- Proper queue configuration matching your form endpoints
-{% endhint %}
+!!! info
 
-{% hint style="success" %}
-When online, forms submit normally with no performance penalty. The background sync mechanism only activates when the network is unavailable.
-{% endhint %}
+    This component requires:
+    - An active service worker with Workbox configured
+    - Background Sync enabled in your PWA configuration
+    - Proper queue configuration matching your form endpoints
+
+!!! success
+
+    When online, forms submit normally with no performance penalty. The background sync mechanism only activates when the network is unavailable.
 
 ## How It Works
 
@@ -43,8 +43,7 @@ When online, forms submit normally with no performance penalty. The background s
 
 First, configure background sync in your PWA configuration to handle form submissions:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -73,7 +72,6 @@ pwa:
                   method: [PUT, PATCH]
                   max_retention_time: 2880   # 2 days in minutes
 ```
-{% endcode %}
 
 Key configuration options:
 - `queue_name`: Unique identifier for this queue
@@ -87,8 +85,7 @@ Key configuration options:
 
 ### Basic Form with Background Sync
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
       action="/contact/submit"
       method="post">
@@ -128,12 +125,10 @@ Key configuration options:
     });
 </script>
 ```
-{% endcode %}
 
 ### Form with Custom Redirect
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
     redirection: '/thank-you'
 }) }}
@@ -148,14 +143,12 @@ Key configuration options:
     </button>
 </form>
 ```
-{% endcode %}
 
 After successful submission (or queueing if offline), the user is redirected to `/thank-you`.
 
 ### Form with Custom Headers
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
@@ -172,12 +165,10 @@ After successful submission (or queueing if offline), the user is redirected to 
     </button>
 </form>
 ```
-{% endcode %}
 
 ### Form with Custom Fetch Parameters
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
     params: {
         mode: 'cors',
@@ -196,12 +187,10 @@ After successful submission (or queueing if offline), the user is redirected to 
     </button>
 </form>
 ```
-{% endcode %}
 
 ### JSON Form Submission
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
       action="/api/data"
       method="post"
@@ -225,12 +214,10 @@ After successful submission (or queueing if offline), the user is redirected to 
     });
 </script>
 ```
-{% endcode %}
 
 ### File Upload Form
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
       action="/upload"
       method="post"
@@ -271,12 +258,10 @@ After successful submission (or queueing if offline), the user is redirected to 
     });
 </script>
 ```
-{% endcode %}
 
 ### Form with Loading State
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
       action="/submit"
       method="post"
@@ -318,12 +303,10 @@ After successful submission (or queueing if offline), the user is redirected to 
     });
 </script>
 ```
-{% endcode %}
 
 ### Form with Validation Feedback
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
       action="/submit"
       method="post">
@@ -380,18 +363,16 @@ After successful submission (or queueing if offline), the user is redirected to 
     });
 </script>
 ```
-{% endcode %}
 
 ## Best Practices
 
 ### Always Configure Matching Routes
 
-{% hint style="warning" %}
-Ensure your background sync configuration matches the form action URLs. Mismatched patterns will cause forms to fail offline instead of being queued.
-{% endhint %}
+!!! warning
 
-{% code lineNumbers="true" %}
-```yaml
+    Ensure your background sync configuration matches the form action URLs. Mismatched patterns will cause forms to fail offline instead of being queued.
+
+```yaml linenums="1"
 # Form action: /contact/submit
 # Configuration must match:
 pwa:
@@ -401,16 +382,14 @@ pwa:
                 - queue_name: 'contact'
                   match_callback: 'startsWith: /contact/'  # Matches /contact/*
 ```
-{% endcode %}
 
 ### Handle All Submission States
 
-{% hint style="success" %}
-Always provide feedback for all three states: loading, success, and offline queueing. Users need to know what's happening with their data.
-{% endhint %}
+!!! success
 
-{% code lineNumbers="true" %}
-```javascript
+    Always provide feedback for all three states: loading, success, and offline queueing. Users need to know what's happening with their data.
+
+```javascript linenums="1"
 // Loading state
 form.addEventListener('backgroundsync-form:before:send', () => {
     showLoadingIndicator();
@@ -430,16 +409,14 @@ form.addEventListener('backgroundsync-form:error', () => {
     showQueuedMessage();
 });
 ```
-{% endcode %}
 
 ### Validate Before Sending
 
-{% hint style="info" %}
-The component automatically calls `form.reportValidity()` before submission. Use HTML5 validation attributes (`required`, `pattern`, `min`, `max`) for client-side validation.
-{% endhint %}
+!!! info
 
-{% code lineNumbers="true" %}
-```twig
+    The component automatically calls `form.reportValidity()` before submission. Use HTML5 validation attributes (`required`, `pattern`, `min`, `max`) for client-side validation.
+
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}>
     <input type="email"
            name="email"
@@ -457,19 +434,17 @@ The component automatically calls `form.reportValidity()` before submission. Use
     </button>
 </form>
 ```
-{% endcode %}
 
 ### Choose Appropriate Encoding
 
-{% hint style="info" %}
-The component supports three encoding types:
-- `multipart/form-data`: For file uploads (default for forms with `<input type="file">`)
-- `application/x-www-form-urlencoded`: Standard form encoding (default)
-- `application/json`: For API submissions requiring JSON
-{% endhint %}
+!!! info
 
-{% code lineNumbers="true" %}
-```twig
+    The component supports three encoding types:
+    - `multipart/form-data`: For file uploads (default for forms with `<input type="file">`)
+    - `application/x-www-form-urlencoded`: Standard form encoding (default)
+    - `application/json`: For API submissions requiring JSON
+
+```twig linenums="1"
 {# For regular forms (default) #}
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
       enctype="application/x-www-form-urlencoded">
@@ -485,23 +460,21 @@ The component supports three encoding types:
       enctype="application/json">
 </form>
 ```
-{% endcode %}
 
 ### Set Appropriate Retention Times
 
-{% hint style="warning" %}
-Configure `max_retention_time` based on the importance and time-sensitivity of your data:
-- Critical data (orders, registrations): 7-14 days
-- Regular forms (contacts, feedback): 3-5 days
-- Non-critical updates: 1-2 days
-{% endhint %}
+!!! warning
+
+    Configure `max_retention_time` based on the importance and time-sensitivity of your data:
+    - Critical data (orders, registrations): 7-14 days
+    - Regular forms (contacts, feedback): 3-5 days
+    - Non-critical updates: 1-2 days
 
 ## Common Use Cases
 
 ### 1. Offline Contact Form
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div class="contact-section">
     <h2>Contact Us</h2>
 
@@ -581,12 +554,10 @@ Configure `max_retention_time` based on the importance and time-sensitivity of y
     });
 </script>
 ```
-{% endcode %}
 
 ### 2. E-Commerce Order Form
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
     headers: {
         'X-CSRF-Token': csrf_token()
@@ -646,12 +617,10 @@ Configure `max_retention_time` based on the importance and time-sensitivity of y
     });
 </script>
 ```
-{% endcode %}
 
 ### 3. Survey/Feedback Form
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
       action="/survey/submit"
       method="post"
@@ -707,12 +676,10 @@ Configure `max_retention_time` based on the importance and time-sensitivity of y
     });
 </script>
 ```
-{% endcode %}
 
 ### 4. Field Service Report
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
       action="/field/report/submit"
       method="post"
@@ -782,7 +749,6 @@ Configure `max_retention_time` based on the importance and time-sensitivity of y
     });
 </script>
 ```
-{% endcode %}
 
 ## API Reference
 
@@ -795,8 +761,7 @@ Configure `max_retention_time` based on the importance and time-sensitivity of y
 
 Fetch API parameters to use for the request.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
     params: {
         mode: 'cors',
@@ -805,7 +770,6 @@ Fetch API parameters to use for the request.
     }
 }) }}>
 ```
-{% endcode %}
 
 #### `headers`
 
@@ -814,8 +778,7 @@ Fetch API parameters to use for the request.
 
 Additional HTTP headers to include in the request.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
     headers: {
         'X-API-Key': 'your-api-key',
@@ -823,7 +786,6 @@ Additional HTTP headers to include in the request.
     }
 }) }}>
 ```
-{% endcode %}
 
 #### `redirection`
 
@@ -832,13 +794,11 @@ Additional HTTP headers to include in the request.
 
 URL to redirect to after form submission (success or queued). If `null`, no redirect occurs.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
     redirection: '/thank-you'
 }) }}>
 ```
-{% endcode %}
 
 #### `authenticating`
 
@@ -847,14 +807,12 @@ URL to redirect to after form submission (success or queued). If `null`, no redi
 
 If `true`, automatically adds JWT authorization header to the request.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
     authenticating: true,
     keyIdIndex: 'default'
 }) }}>
 ```
-{% endcode %}
 
 #### `keyIdIndex`
 
@@ -869,13 +827,11 @@ Key identifier to use for JWT signing when `authenticating` is `true`.
 
 Submits the form. Should be attached to the form's submit button.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <button {{ stimulus_action('@pwa/backgroundsync-form', 'send') }} type="submit">
     Submit
 </button>
 ```
-{% endcode %}
 
 ### Targets
 
@@ -891,14 +847,12 @@ Fired just before the form submission request is sent.
 - `url` (string): The form action URL
 - `params` (object): Complete fetch parameters including headers and body
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 form.addEventListener('backgroundsync-form:before:send', (e) => {
     console.log('Submitting to:', e.detail.url);
     console.log('With params:', e.detail.params);
 });
 ```
-{% endcode %}
 
 #### `after:send`
 
@@ -909,8 +863,7 @@ Fired immediately after receiving a response from the server.
 - `params` (object): Fetch parameters used
 - `response` (Response): The fetch Response object
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 form.addEventListener('backgroundsync-form:after:send', async (e) => {
     if (e.detail.response.ok) {
         const data = await e.detail.response.json();
@@ -920,7 +873,6 @@ form.addEventListener('backgroundsync-form:after:send', async (e) => {
     }
 });
 ```
-{% endcode %}
 
 #### `error`
 
@@ -929,38 +881,32 @@ Fired when the submission fails (typically due to network error/offline status).
 **Event detail:**
 - `error` (Error): The error object
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 form.addEventListener('backgroundsync-form:error', (e) => {
     console.log('Form queued for offline sync');
     console.error('Error:', e.detail.error);
 });
 ```
-{% endcode %}
 
 #### `invalid-data`
 
 Fired when form validation fails (form.reportValidity() returns false).
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 form.addEventListener('backgroundsync-form:invalid-data', () => {
     console.log('Please fill out all required fields');
 });
 ```
-{% endcode %}
 
 #### `unsupported-enctype`
 
 Fired when the form uses an unsupported encoding type.
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 form.addEventListener('backgroundsync-form:unsupported-enctype', () => {
     console.error('Form encoding not supported');
 });
 ```
-{% endcode %}
 
 #### `auth-missing-key`
 
@@ -969,13 +915,11 @@ Fired when `authenticating` is true but the JWT key is not found.
 **Event detail:**
 - `keyIdIndex` (string): The missing key identifier
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 form.addEventListener('backgroundsync-form:auth-missing-key', (e) => {
     console.error('Missing auth key:', e.detail.keyIdIndex);
 });
 ```
-{% endcode %}
 
 ## Related Components
 

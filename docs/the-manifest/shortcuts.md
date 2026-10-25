@@ -2,7 +2,9 @@
 
 PWA shortcuts provide quick access to key features of your app directly from the app icon. When users long-press (mobile) or right-click (desktop) your installed PWA icon, they see a menu of shortcuts that take them directly to specific parts of your application.
 
-<figure><img src="../.gitbook/assets/Capture d&#x27;écran 2024-02-01 114143.png" alt=""><figcaption></figcaption></figure>
+<figure markdown="span">
+  ![](../assets/images/capture-d-ecran-2024-02-01-114143.png)
+</figure>
 
 ## Overview
 
@@ -36,8 +38,7 @@ Shortcuts enhance user engagement by making your PWA's most important features i
 
 ### Simple Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -54,12 +55,10 @@ pwa:
                 - src: "icons/search.png"
                   sizes: [96]
 ```
-{% endcode %}
 
 ### Complete Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -92,7 +91,6 @@ pwa:
                 - src: "icons/profile-96.png"
                   sizes: [96]
 ```
-{% endcode %}
 
 ## Configuration Parameters
 
@@ -100,13 +98,11 @@ pwa:
 
 The `name` parameter defines the full name of the shortcut displayed to the user. It should be descriptive enough to communicate the action clearly.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     - name: "Create New Task"  # Clear and descriptive
       url: "/tasks/new"
 ```
-{% endcode %}
 
 **Best Practices**:
 - **Be Descriptive**: "Add to Favorites" > "Add"
@@ -119,36 +115,29 @@ shortcuts:
 
 The `name` parameter supports Symfony translations:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     - name: "app.shortcuts.new_task"  # Translation key
       url: "/tasks/new"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 app:
     shortcuts:
         new_task: "Create New Task"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.fr.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.fr.yaml" linenums="1"
 app:
     shortcuts:
         new_task: "Créer une nouvelle tâche"
 ```
-{% endcode %}
 
 ### `short_name` Parameter (Optional)
 
 The `short_name` is a concise version of `name`, used when space is limited on smaller screens or in condensed UI.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     - name: "Create New Task"
       short_name: "New Task"  # Shorter version
@@ -158,7 +147,6 @@ shortcuts:
       short_name: "Completed"  # Much shorter
       url: "/tasks/completed"
 ```
-{% endcode %}
 
 **Guidelines**:
 - Maximum: 12 characters recommended
@@ -170,8 +158,7 @@ shortcuts:
 
 The `description` provides additional context about what the shortcut does. This may be shown in some UI contexts or used for accessibility.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     - name: "New Task"
       description: "Create a new task and add it to your todo list"
@@ -181,7 +168,6 @@ shortcuts:
       description: "Search through all your tasks and projects"
       url: "/search"
 ```
-{% endcode %}
 
 **Best Practices**:
 - Keep to 1-2 sentences
@@ -195,8 +181,7 @@ The `url` parameter specifies where the user navigates when activating the short
 
 #### Simple String (Relative Path)
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     - name: "Dashboard"
       url: "/dashboard"  # Relative path
@@ -204,12 +189,10 @@ shortcuts:
     - name: "Settings"
       url: "/user/settings"  # Nested path
 ```
-{% endcode %}
 
 #### Symfony Route Name
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     - name: "New Task"
       url: "app_task_new"  # Route name without parameters
@@ -217,12 +200,10 @@ shortcuts:
     - name: "My Profile"
       url: "app_user_profile"  # Route name
 ```
-{% endcode %}
 
 #### Route with Parameters
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     - name: "Important Tasks"
       url:
@@ -237,12 +218,10 @@ shortcuts:
           params:
               teamId: "default"
 ```
-{% endcode %}
 
 #### Absolute URL
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     - name: "Help Center"
       url: "https://help.example.com"
@@ -250,14 +229,12 @@ shortcuts:
     - name: "Documentation"
       url: "https://docs.example.com/guide"
 ```
-{% endcode %}
 
 #### Path Type Reference
 
 The `path_type_reference` option controls URL generation format:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     # Absolute URL: https://app.com/dashboard
     - name: "Dashboard"
@@ -283,7 +260,6 @@ shortcuts:
           path: "app_admin"
           path_type_reference: 3
 ```
-{% endcode %}
 
 **Path Type Reference Values**:
 - `0`: Absolute URL (e.g., `https://app.com/foo/bar`)
@@ -291,16 +267,15 @@ shortcuts:
 - `2`: Relative path (e.g., `../bar`)
 - `3`: Network path (e.g., `//app.com/foo/bar`)
 
-{% hint style="warning" %}
-**Router Context Required**: For absolute URLs (type 0 or 3), ensure the Request Context is properly configured. See the [Symfony router configuration](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) for details.
-{% endhint %}
+!!! warning
+
+    **Router Context Required**: For absolute URLs (type 0 or 3), ensure the Request Context is properly configured. See the [Symfony router configuration](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) for details.
 
 ### `icons` Parameter (Optional, Recommended)
 
 Icons make shortcuts visually identifiable and more user-friendly. Each shortcut can have one or more icons in different sizes.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
     - name: "New Message"
       url: "/messages/new"
@@ -329,7 +304,6 @@ shortcuts:
             sizes: [96]
             purpose: "maskable"
 ```
-{% endcode %}
 
 **Icon Requirements**:
 - **Recommended size**: 96×96 pixels (minimum)
@@ -339,16 +313,15 @@ shortcuts:
 
 See the [Icons documentation](icons.md) for complete icon configuration options.
 
-{% hint style="warning" %}
-**96×96 Icon Highly Recommended**: A 96×96 pixel icon is the standard size for shortcuts on most platforms. Always provide this size at minimum.
-{% endhint %}
+!!! warning
+
+    **96×96 Icon Highly Recommended**: A 96×96 pixel icon is the standard size for shortcuts on most platforms. Always provide this size at minimum.
 
 ## Complete Use Cases
 
 ### Use Case 1: Task Management App
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "TaskMaster Pro"
@@ -397,12 +370,10 @@ pwa:
                   - src: "icons/shortcuts/search-96.png"
                     sizes: [96]
 ```
-{% endcode %}
 
 ### Use Case 2: E-Commerce App with Translated Shortcuts
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "shop.name"
@@ -442,10 +413,8 @@ pwa:
                   - src: "icons/deals-96.png"
                     sizes: [96]
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 shop:
     shortcuts:
         cart:
@@ -465,10 +434,8 @@ shop:
             short: "Deals"
             description: "View special offers"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.fr.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.fr.yaml" linenums="1"
 shop:
     shortcuts:
         cart:
@@ -488,12 +455,10 @@ shop:
             short: "Offres"
             description: "Voir les offres spéciales"
 ```
-{% endcode %}
 
 ### Use Case 3: News/Media App
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Daily News"
@@ -533,12 +498,10 @@ pwa:
                   - src: "icons/saved-96.png"
                     sizes: [96]
 ```
-{% endcode %}
 
 ### Use Case 4: Social/Communication App
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "ChatApp"
@@ -575,7 +538,6 @@ pwa:
                   - src: "icons/settings-96.png"
                     sizes: [96]
 ```
-{% endcode %}
 
 ## Platform-Specific Behavior
 
@@ -880,8 +842,7 @@ shortcuts:
 
 Track shortcut usage in your application:
 
-{% code title="src/Controller/TaskController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/TaskController.php" linenums="1"
 <?php
 
 namespace App\Controller;
@@ -907,7 +868,6 @@ class TaskController extends AbstractController
     }
 }
 ```
-{% endcode %}
 
 ### 6. Icon Consistency
 
@@ -1064,7 +1024,7 @@ Before deploying with shortcuts:
 
 - [Icons](icons.md) - Icon configuration for shortcuts
 - [Translations](translations.md) - Localizing shortcut names
-- [Application Information](application-information/) - Manifest configuration
+- [Application Information](application-information/README.md) - Manifest configuration
 - [Symfony Routing](https://symfony.com/doc/current/routing.html) - Route configuration
 
 ## Resources

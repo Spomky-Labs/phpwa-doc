@@ -53,12 +53,10 @@ If you're using Symfony's Asset Mapper (recommended), PWA assets are compiled to
 
 Ensure asset compilation is enabled (this is the default):
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     asset_compiler: true  # Default in 1.x
 ```
-{% endcode %}
 
 ### Step 2: Compile Assets
 
@@ -86,9 +84,9 @@ git commit -m "Compile assets for production"
 git push production main
 ```
 
-{% hint style="success" %}
-Asset Mapper integration is the simplest approach - everything is handled in one command!
-{% endhint %}
+!!! success
+
+    Asset Mapper integration is the simplest approach - everything is handled in one command!
 
 ## Deployment without Asset Mapper
 
@@ -98,16 +96,14 @@ If you're not using Asset Mapper or prefer standalone PWA asset compilation, use
 
 Configure the bundle to handle compilation independently:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     asset_compiler: false
 ```
-{% endcode %}
 
-{% hint style="info" %}
-In version 1.x, `asset_compiler` defaults to `true`. In version 2.x, it will default to `false`, requiring explicit Asset Mapper integration.
-{% endhint %}
+!!! info
+
+    In version 1.x, `asset_compiler` defaults to `true`. In version 2.x, it will default to `false`, requiring explicit Asset Mapper integration.
 
 ### Step 2: Compile PWA Assets
 
@@ -170,22 +166,20 @@ The `--context-only` flag:
 - Uses correct production URLs
 - Completes in seconds instead of minutes
 
-{% hint style="success" %}
-This two-step approach balances build time (icons generated once) with URL correctness (manifest uses production URLs).
-{% endhint %}
+!!! success
+
+    This two-step approach balances build time (icons generated once) with URL correctness (manifest uses production URLs).
 
 ### Setting Application Context
 
 Ensure your production environment has the correct context configured:
 
-{% code title="config/packages/framework.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/framework.yaml" linenums="1"
 # config/packages/prod/framework.yaml
 framework:
     router:
         default_uri: 'https://example.com'
 ```
-{% endcode %}
 
 Or set via environment variable:
 
@@ -212,8 +206,7 @@ Before deploying your PWA to production:
 
 Here's an example GitLab CI/CD configuration:
 
-{% code title=".gitlab-ci.yml" lineNumbers="true" %}
-```yaml
+```yaml title=".gitlab-ci.yml" linenums="1"
 stages:
   - build
   - deploy
@@ -235,7 +228,6 @@ deploy:production:
   only:
     - main
 ```
-{% endcode %}
 
 ## Verifying Deployment
 

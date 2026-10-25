@@ -1,8 +1,8 @@
 # Widgets (Win10+)
 
-{% hint style="warning" %}
-**Experimental Feature**: Windows widgets are an experimental feature currently only supported in Microsoft Edge on Windows 10 and later. The specification and implementation may change.
-{% endhint %}
+!!! warning
+
+    **Experimental Feature**: Windows widgets are an experimental feature currently only supported in Microsoft Edge on Windows 10 and later. The specification and implementation may change.
 
 ## Overview
 
@@ -26,16 +26,15 @@ Windows widgets allow your PWA to provide glanceable, at-a-glance information di
 | Android | All browsers | ❌ Not supported |
 | iOS | All browsers | ❌ Not supported |
 
-{% hint style="info" %}
-**Check before using**: Always feature-detect widget support in your service worker before attempting to update widgets.
-{% endhint %}
+!!! info
+
+    **Check before using**: Always feature-detect widget support in your service worker before attempting to update widgets.
 
 ## Configuration
 
 ### Basic Widget Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -50,14 +49,12 @@ pwa:
                     sizes: [300, 200]
               update: 1800  # Update every 30 minutes
 ```
-{% endcode %}
 
 ### Complete Widget Configuration
 
 All available widget properties:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         widgets:
@@ -79,7 +76,6 @@ pwa:
               update: 3600  # Update every hour
               multiple: true  # Allow multiple instances
 ```
-{% endcode %}
 
 ## Configuration Properties
 
@@ -111,8 +107,7 @@ Widgets use [Microsoft Adaptive Cards](https://adaptivecards.io/) for layout. Th
 
 ### Example Template
 
-{% code title="public/widgets/weather-template.json" lineNumbers="true" %}
-```json
+```json title="public/widgets/weather-template.json" linenums="1"
 {
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "type": "AdaptiveCard",
@@ -173,14 +168,12 @@ Widgets use [Microsoft Adaptive Cards](https://adaptivecards.io/) for layout. Th
     ]
 }
 ```
-{% endcode %}
 
 ### Data Endpoint
 
 The `data` URL should return JSON matching your template variables:
 
-{% code title="src/Controller/WidgetController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/WidgetController.php" linenums="1"
 <?php
 
 namespace App\Controller;
@@ -225,7 +218,6 @@ class WidgetController extends AbstractController
     }
 }
 ```
-{% endcode %}
 
 ## Service Worker Integration
 
@@ -422,9 +414,9 @@ The `update` property controls how often the widget refreshes (in seconds):
 | 30 minutes | 1800 | Weather, news headlines |
 | 1 hour | 3600 | Daily stats, summaries |
 
-{% hint style="warning" %}
-**Battery Consideration**: Frequent updates consume battery. Use the longest reasonable interval for your use case.
-{% endhint %}
+!!! warning
+
+    **Battery Consideration**: Frequent updates consume battery. Use the longest reasonable interval for your use case.
 
 ## Multiple Instances
 

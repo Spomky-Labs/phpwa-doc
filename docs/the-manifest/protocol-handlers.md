@@ -30,16 +30,15 @@ Protocol handlers allow your PWA to:
 | Safari | ❌ Not supported | - |
 | Firefox | ❌ Not supported | - |
 
-{% hint style="warning" %}
-**Limited Browser Support**: Protocol handlers are currently only supported in Chromium-based browsers (Chrome, Edge). Always provide fallback experiences.
-{% endhint %}
+!!! warning
+
+    **Limited Browser Support**: Protocol handlers are currently only supported in Chromium-based browsers (Chrome, Edge). Always provide fallback experiences.
 
 ## Configuration
 
 ### Basic Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -52,12 +51,10 @@ pwa:
                   params:
                       foo: "bar"
 ```
-{% endcode %}
 
 ### Complete Example
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -80,7 +77,6 @@ pwa:
               placeholder: "track"
               url: "/player?track=%s"
 ```
-{% endcode %}
 
 ## Protocol Parameter
 
@@ -138,9 +134,9 @@ protocol_handlers:
     - protocol: "myapp"         # ✗ Invalid - missing web+ prefix
 ```
 
-{% hint style="warning" %}
-**Custom Protocol Rules**: Custom protocols MUST use the `web+` prefix to be valid. Protocols without this prefix are reserved for standard web protocols.
-{% endhint %}
+!!! warning
+
+    **Custom Protocol Rules**: Custom protocols MUST use the `web+` prefix to be valid. Protocols without this prefix are reserved for standard web protocols.
 
 ## URL Parameter
 
@@ -148,13 +144,11 @@ The `url` parameter defines where to redirect when the protocol is triggered. Th
 
 ### Simple String Format
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 protocol_handlers:
     - protocol: "mailto"
       url: "/mail/compose?to=%s"
 ```
-{% endcode %}
 
 **How it works**:
 - User clicks: `mailto:user@example.com`
@@ -164,8 +158,7 @@ protocol_handlers:
 
 Just like with [shortcuts](shortcuts.md#url-parameter) and [start_url](application-information/start-url.md), you can use the full URL object configuration:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 protocol_handlers:
     - protocol: "web+recipe"
       url:
@@ -176,7 +169,6 @@ protocol_handlers:
               utm_medium: "web+recipe"
           path_type_reference: 1         # Absolute path
 ```
-{% endcode %}
 
 **Corresponding Symfony route**:
 ```php
@@ -212,14 +204,12 @@ protocol_handlers:
 
 When you need more control over the placeholder format, you can use the `placeholder` parameter. The bundle will automatically format it as `placeholder=%s`:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 protocol_handlers:
     - protocol: "web+jngl"
       placeholder: "type"
       url: "/handle?type=%s"
 ```
-{% endcode %}
 
 **How it works**:
 - User clicks: `web+jngl:example`
@@ -237,8 +227,7 @@ This allows you to create more semantic URL patterns for your protocol handlers.
 
 Handle `mailto:` links to compose emails in your PWA:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "WebMail Pro"
@@ -246,10 +235,8 @@ pwa:
             - protocol: "mailto"
               url: "/compose?to=%s"
 ```
-{% endcode %}
 
-{% code title="src/Controller/EmailController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/EmailController.php" linenums="1"
 <?php
 
 namespace App\Controller;
@@ -272,14 +259,12 @@ class EmailController extends AbstractController
     }
 }
 ```
-{% endcode %}
 
 ### 2. Phone Dialer
 
 Handle `tel:` links for a calling app:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "WebPhone"
@@ -288,10 +273,8 @@ pwa:
               placeholder: "number"
               url: "/call?number=%s"
 ```
-{% endcode %}
 
-{% code title="src/Controller/PhoneController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/PhoneController.php" linenums="1"
 #[Route('/call', name: 'app_call')]
 public function call(Request $request): Response
 {
@@ -305,14 +288,12 @@ public function call(Request $request): Response
     ]);
 }
 ```
-{% endcode %}
 
 ### 3. Recipe App
 
 Handle custom `web+recipe:` protocol:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "RecipeBook"
@@ -323,10 +304,8 @@ pwa:
                   params:
                       id: "%s"
 ```
-{% endcode %}
 
-{% code title="src/Controller/RecipeController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/RecipeController.php" linenums="1"
 #[Route('/recipe/{id}', name: 'app_recipe_view')]
 public function view(string $id, RecipeRepository $repository): Response
 {
@@ -341,7 +320,6 @@ public function view(string $id, RecipeRepository $repository): Response
     ]);
 }
 ```
-{% endcode %}
 
 **Sharing recipes**:
 ```html
@@ -354,8 +332,7 @@ public function view(string $id, RecipeRepository $repository): Response
 
 Handle `web+music:` protocol for streaming:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "MusicStream"
@@ -364,10 +341,8 @@ pwa:
               placeholder: "track"
               url: "/player?track=%s"
 ```
-{% endcode %}
 
-{% code title="src/Controller/MusicController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/MusicController.php" linenums="1"
 #[Route('/player', name: 'app_music_player')]
 public function player(Request $request): Response
 {
@@ -382,14 +357,12 @@ public function player(Request $request): Response
     ]);
 }
 ```
-{% endcode %}
 
 ### 5. Multi-Protocol App
 
 Support multiple protocols in one PWA:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         name: "Communication Hub"
@@ -411,7 +384,6 @@ pwa:
               placeholder: "room"
               url: "/video/join?room=%s"
 ```
-{% endcode %}
 
 ## Registration Process
 
@@ -444,8 +416,7 @@ If the user allows, your PWA becomes an available handler for those protocols.
 
 Create test HTML page with protocol links:
 
-{% code title="public/test-protocols.html" %}
-```html
+```html title="public/test-protocols.html"
 <!DOCTYPE html>
 <html>
 <head>
@@ -470,7 +441,6 @@ Create test HTML page with protocol links:
 </body>
 </html>
 ```
-{% endcode %}
 
 ### 2. Check Manifest in DevTools
 
@@ -495,8 +465,7 @@ Create test HTML page with protocol links:
 
 ### 4. JavaScript Testing
 
-{% code title="public/test-protocol.js" %}
-```javascript
+```javascript title="public/test-protocol.js"
 // Check if protocol handler is registered
 function checkProtocolHandler(protocol) {
     if ('getInstalledRelatedApps' in navigator) {
@@ -518,7 +487,6 @@ function testProtocol(protocol, value) {
 testProtocol('mailto', 'user@example.com');
 testProtocol('web+recipe', '123');
 ```
-{% endcode %}
 
 ## User Management
 

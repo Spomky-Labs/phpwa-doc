@@ -4,8 +4,9 @@ Developers can build more resilient and user-friendly web applications that perf
 
 The default strategy applied for resources is Network First i.e. the resource from the web server is fetched first. In case of failure, the cached data is served. By default, the service worker will wait 3 seconds before serving the cached version. This value can be configured.
 
-<pre class="language-yaml" data-title="/config/packages/pwa.yaml" data-line-numbers><code class="lang-yaml"><strong>pwa:
-</strong>    serviceworker:
+```yaml title="/config/packages/pwa.yaml" linenums="1" hl_lines="1"
+pwa:
+    serviceworker:
         enabled: true
         src: "sw.js"
         workbox:
@@ -23,7 +24,7 @@ The default strategy applied for resources is Network First i.e. the resource fr
                 - match_callback: 'origin: https://cdn.jsdelivr.net'
                   cache_name: 'jsdelivr'
                   strategy: 'CacheFirst'
-</code></pre>
+```
 
 ### Match Callback
 
@@ -40,9 +41,9 @@ You can directly pass a regular expression as a string or using the JS `RegExp` 
 * `match_callback: '"/styles/.*\.css"'`
 * `match_callback: 'new RegExp("/styles/.*\.css")'`
 
-{% hint style="danger" %}
-Quotes are important!
-{% endhint %}
+!!! danger
+
+    Quotes are important!
 
 #### Javascript Callback
 
@@ -51,9 +52,9 @@ Workbox gives you the `url`, the `params`, the `request` and the `event` objects
 * `match_callback: '({url}) => url.pathname === "/special/url"'`
 * `match_callback: '({request}) => request.destination === "image"'`
 
-{% hint style="danger" %}
-Quotes are important!
-{% endhint %}
+!!! danger
+
+    Quotes are important!
 
 #### Prefixed Statements
 
@@ -106,9 +107,9 @@ final readonly class MyVideosMatchCallbackHandler implements MatchCallbackHandle
 }
 ```
 
-{% hint style="warning" %}
-The class shall be declared as a service.
-{% endhint %}
+!!! warning
+
+    The class shall be declared as a service.
 
 ### Cache Name Parameter
 
@@ -185,8 +186,7 @@ navigator.serviceWorker.addEventListener('message', async event => {
 
 By default, the page header used to check if the page is outdated or not are `Content-Length`, `ETag`, `Last-Modified`. These headers can be changed.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -195,14 +195,14 @@ pwa:
                   broadcast_headers:
                       - 'X-App-Cache'
 ```
-{% endcode %}
 
 ### Cacheable Responses
 
 By default, all responses with a `0` or `200` status code and that match with the `match_callback` option will be cached. It is possible to tell Workbox to cache only resources with a dedicated header or other status codes:
 
-<pre class="language-yaml" data-title="/config/packages/pwa.yaml" data-line-numbers><code class="lang-yaml"><strong>pwa:
-</strong>    serviceworker:
+```yaml title="/config/packages/pwa.yaml" linenums="1" hl_lines="1"
+pwa:
+    serviceworker:
         enabled: true
         src: "sw.js"
         workbox:
@@ -211,7 +211,7 @@ By default, all responses with a `0` or `200` status code and that match with th
                   cacheable_response_headers:
                     'X-Is-Cacheable': 'true'
                   cacheable_response_statuses: [200]
-</code></pre>
+```
 
 ### URL Preload
 
@@ -219,8 +219,7 @@ The resource caching allows URLs to be preloaded. The accepted values are URLs a
 
 You can also set asset URLs like audio or videos.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -237,14 +236,12 @@ pwa:
                             display: 5
                       - 'assets/audio/start.mp3'
 ```
-{% endcode %}
 
 In addition, you can define URLs generators that will contain the logic for providing several URLs depending on your application needs.
 
 Let say you have 5 different locales and you want to preload all versions of the static pages. With the following service, you will be able to serve all of them at once
 
-{% code title="src/Generator/StaticPagesUrlGenerator .php" lineNumbers="true" %}
-```php
+```php title="src/Generator/StaticPagesUrlGenerator .php" linenums="1"
 <?php
 
 namespace App\Generator;
@@ -280,24 +277,20 @@ final readonly class StaticPagesUrlPreloadGenerator implements PreloadUrlsGenera
     }
 }
 ```
-{% endcode %}
 
 When using the service autoconfiguration, it will automatically be declared. If disable, tag your service with `spomky_labs_pwa.preload_urls_generator`.
 
-{% code title="config/services.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/services.yaml" linenums="1"
 services:
     #...
 
     App\Generator\StaticPagesUrlPreloadGenerator:
         tags: ['spomky_labs_pwa.preload_urls_generator']
 ```
-{% endcode %}
 
 Then, in the bundle configuration you only need to refer to the alias prefixed with a `@`.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -308,4 +301,3 @@ pwa:
                   preload_urls:
                       - '@static_pages' #The alias with the "@" prefix
 ```
-{% endcode %}

@@ -12,18 +12,16 @@ The scope controls:
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         scope: "/"  # Controls all URLs under your domain
 ```
-{% endcode %}
 
-{% hint style="info" %}
-If not specified, the scope defaults to the directory containing the manifest file.
-{% endhint %}
+!!! info
+
+    If not specified, the scope defaults to the directory containing the manifest file.
 
 ## How Scope Works
 
@@ -265,9 +263,9 @@ pwa:
         scope: "/app/"
 ```
 
-{% hint style="warning" %}
-If manifest scope and service worker scope don't align, you may experience unexpected behavior with offline functionality.
-{% endhint %}
+!!! warning
+
+    If manifest scope and service worker scope don't align, you may experience unexpected behavior with offline functionality.
 
 ## Testing Your Scope
 

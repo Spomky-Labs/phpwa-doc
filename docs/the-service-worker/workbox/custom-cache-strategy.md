@@ -18,8 +18,7 @@ Use custom cache strategies when you need to:
 
 ## Quick Example
 
-{% code title="src/ServiceWorker/CacheStrategy/ApiCacheStrategy.php" lineNumbers="true" %}
-```php
+```php title="src/ServiceWorker/CacheStrategy/ApiCacheStrategy.php" linenums="1"
 <?php
 
 namespace App\ServiceWorker\CacheStrategy;
@@ -49,7 +48,6 @@ final readonly class ApiCacheStrategy extends WorkboxCacheStrategy
     }
 }
 ```
-{% endcode %}
 
 This creates a cache strategy that:
 - Uses NetworkFirst strategy for all `/api/` routes

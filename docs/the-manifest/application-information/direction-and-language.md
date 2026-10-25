@@ -13,23 +13,21 @@ Language and direction settings enable:
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         dir: "ltr"       # Text direction
         lang: "en"       # Primary language (ISO 639-1)
 ```
-{% endcode %}
 
-{% hint style="info" %}
-**Important**: Manifest `dir` and `lang` should match your HTML `<html>` tag attributes for consistency.
+!!! info
 
-```html
-<html dir="ltr" lang="en">
-```
-{% endhint %}
+    **Important**: Manifest `dir` and `lang` should match your HTML `<html>` tag attributes for consistency.
+
+    ```html
+    <html dir="ltr" lang="en">
+    ```
 
 ## The `dir` Parameter
 
@@ -88,9 +86,9 @@ dir: "auto"
 - User-generated content with multiple languages
 - Dynamic content where direction varies
 
-{% hint style="warning" %}
-Using `auto` in manifests is uncommon. Most apps should explicitly set `ltr` or `rtl`.
-{% endhint %}
+!!! warning
+
+    Using `auto` in manifests is uncommon. Most apps should explicitly set `ltr` or `rtl`.
 
 ## The `lang` Parameter
 

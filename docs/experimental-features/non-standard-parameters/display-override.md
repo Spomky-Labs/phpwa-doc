@@ -1,8 +1,8 @@
 # Display Override
 
-{% hint style="warning" %}
-**Experimental Feature**: `display_override` is part of the PWA manifest specification but has limited browser support. Check compatibility before using in production.
-{% endhint %}
+!!! warning
+
+    **Experimental Feature**: `display_override` is part of the PWA manifest specification but has limited browser support. Check compatibility before using in production.
 
 ## Overview
 
@@ -23,22 +23,19 @@ The browser evaluates display modes in the `display_override` array **from left 
 
 ### Basic Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         display: "standalone"  # Fallback if display_override not supported
         display_override: ["fullscreen", "minimal-ui"]
 ```
-{% endcode %}
 
 **Fallback chain**: `fullscreen` → `minimal-ui` → `standalone` → `browser`
 
 ### Complete Example
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -49,7 +46,6 @@ pwa:
             - "window-controls-overlay"
             - "minimal-ui"
 ```
-{% endcode %}
 
 **Evaluation**:
 1. Try `fullscreen` (for media/games)
@@ -219,9 +215,9 @@ if ('windowControlsOverlay' in navigator) {
 
 *Desktop only
 
-{% hint style="info" %}
-**Support Detection**: Always include a well-supported fallback in your `display` property.
-{% endhint %}
+!!! info
+
+    **Support Detection**: Always include a well-supported fallback in your `display` property.
 
 ## Use Cases by Application Type
 
@@ -412,8 +408,7 @@ if ('windowControlsOverlay' in navigator) {
 
 ### Custom Title Bar with WCO
 
-{% code title="public/css/window-controls.css" lineNumbers="true" %}
-```css
+```css title="public/css/window-controls.css" linenums="1"
 /* Custom title bar styling */
 body {
     margin: 0;
@@ -449,10 +444,8 @@ body {
     margin-top: env(titlebar-area-height, 40px);
 }
 ```
-{% endcode %}
 
-{% code title="templates/base.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/base.html.twig" linenums="1"
 <!DOCTYPE html>
 <html>
 <head>
@@ -469,7 +462,6 @@ body {
 </body>
 </html>
 ```
-{% endcode %}
 
 ## Best Practices
 

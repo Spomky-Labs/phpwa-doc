@@ -29,8 +29,7 @@ The manifest is a JSON file that tells browsers how your application should beha
 
 **Example manifest file:**
 
-{% code title="/site.webmanifest" lineNumbers="true" %}
-```json
+```json title="/site.webmanifest" linenums="1"
 {
   "name": "My Progressive Web App",
   "short_name": "PWA",
@@ -53,7 +52,6 @@ The manifest is a JSON file that tells browsers how your application should beha
   ]
 }
 ```
-{% endcode %}
 
 **Key properties explained:**
 - `name` / `short_name`: Full and abbreviated app names
@@ -68,8 +66,7 @@ The manifest is a JSON file that tells browsers how your application should beha
 
 Add this link tag to your HTML `<head>` section:
 
-{% code lineNumbers="true" %}
-```html
+```html linenums="1"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,11 +79,10 @@ Add this link tag to your HTML `<head>` section:
 </html>
 
 ```
-{% endcode %}
 
-{% hint style="success" %}
-With this bundle, the manifest is automatically generated and injected - you don't need to create or link it manually!
-{% endhint %}
+!!! success
+
+    With this bundle, the manifest is automatically generated and injected - you don't need to create or link it manually!
 
 ### 2. The Service Worker
 
@@ -109,8 +105,7 @@ A service worker is a JavaScript file that runs in the background, separate from
 
 **Example service worker:**
 
-{% code title="/service-worker.js" lineNumbers="true" %}
-```javascript
+```javascript title="/service-worker.js" linenums="1"
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('my-cache').then((cache) => {
@@ -133,7 +128,6 @@ self.addEventListener('fetch', (event) => {
   );
 });
 ```
-{% endcode %}
 
 **How this service worker works:**
 
@@ -173,9 +167,9 @@ Add this script to your HTML to activate the service worker:
 
 ```
 
-{% hint style="success" %}
-This bundle automatically generates and registers the service worker for you, with advanced caching strategies powered by Google Workbox!
-{% endhint %}
+!!! success
+
+    This bundle automatically generates and registers the service worker for you, with advanced caching strategies powered by Google Workbox!
 
 ## How This Bundle Simplifies PWA Development
 
@@ -196,8 +190,8 @@ Instead of manually creating manifest files and service workers, this bundle:
 Ready to create your PWA?
 
 1. [Install the bundle](installation.md) - Quick setup guide
-2. [Configure your manifest](the-manifest/application-information/) - Customize app metadata
-3. [Set up caching](the-service-worker/workbox/) - Configure offline behavior
+2. [Configure your manifest](the-manifest/application-information/README.md) - Customize app metadata
+3. [Set up caching](the-service-worker/workbox/README.md) - Configure offline behavior
 4. [Add PWA features](symfony-ux/) - Enhance with device APIs
 
 Your Symfony application will be a fully functional Progressive Web App in minutes!

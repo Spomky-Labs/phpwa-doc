@@ -18,16 +18,15 @@ This component is particularly useful for:
 
 The Badging API is supported in Chromium-based browsers (Chrome, Edge, Opera) on desktop and Android. The badge appears on the PWA's icon when it's installed on the device.
 
-{% hint style="info" %}
-Badges only appear when the PWA is installed. Users must install your app to their home screen or desktop to see badges.
-{% endhint %}
+!!! info
+
+    Badges only appear when the PWA is installed. Users must install your app to their home screen or desktop to see badges.
 
 ## Usage
 
 ### Basic Badge Counter
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <body {{ stimulus_controller('@pwa/badge') }}>
     <div class="notifications">
         <h2>Notifications</h2>
@@ -49,12 +48,10 @@ Badges only appear when the PWA is installed. Users must install your app to the
     });
 </script>
 ```
-{% endcode %}
 
 ### Dynamic Badge Update on Page Load
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <body
     {{ stimulus_controller('@pwa/badge') }}
     {{ stimulus_action('@pwa/badge', 'update', 'load@window', {counter: 42}) }}
@@ -63,12 +60,10 @@ Badges only appear when the PWA is installed. Users must install your app to the
     <p>You have 42 unread messages</p>
 </body>
 ```
-{% endcode %}
 
 ### Real-time Badge Updates
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/badge') }}>
     <div class="inbox">
         <h2>Inbox</h2>
@@ -114,12 +109,10 @@ Badges only appear when the PWA is installed. Users must install your app to the
     });
 </script>
 ```
-{% endcode %}
 
 ### Badge with WebSocket Updates
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/badge') }}>
     <div class="notifications-panel">
         <h2>Live Notifications</h2>
@@ -168,12 +161,10 @@ Badges only appear when the PWA is installed. Users must install your app to the
     }
 </script>
 ```
-{% endcode %}
 
 ### E-commerce Shopping Cart Badge
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/badge') }}>
     <header>
         <nav>
@@ -242,7 +233,6 @@ Badges only appear when the PWA is installed. Users must install your app to the
     });
 </script>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -261,9 +251,9 @@ Sets the badge counter to a specified value. The action requires a `counter` par
 {{ stimulus_action('@pwa/badge', 'update', 'click', {counter: 10}) }}
 ```
 
-{% hint style="warning" %}
-Some browsers may display "99+" or similar for very large numbers. Keep badge counts reasonable for better user experience.
-{% endhint %}
+!!! warning
+
+    Some browsers may display "99+" or similar for very large numbers. Keep badge counts reasonable for better user experience.
 
 ### `clear`
 
@@ -356,8 +346,7 @@ self.addEventListener('push', (event) => {
 
 ## Complete Example: Messaging App
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/badge') }}>
     <div class="messaging-app">
         <header>
@@ -469,7 +458,6 @@ self.addEventListener('push', (event) => {
     });
 </script>
 ```
-{% endcode %}
 
 ## Troubleshooting
 

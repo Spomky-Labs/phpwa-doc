@@ -19,20 +19,19 @@ The Background Fetch API is a relatively new feature with limited but growing su
 
 **Support level:** Limited - Currently supported in Chromium-based browsers (Chrome, Edge, Opera) on Android and desktop. Not supported in Safari or Firefox as of early 2025.
 
-{% hint style="warning" %}
-Always check for Background Fetch API support before using this component. The component will emit an `unsupported` event when the API is not available.
-{% endhint %}
+!!! warning
 
-{% hint style="info" %}
-Background Fetch requires a registered service worker to function. Ensure your PWA has an active service worker before using this component.
-{% endhint %}
+    Always check for Background Fetch API support before using this component. The component will emit an `unsupported` event when the API is not available.
+
+!!! info
+
+    Background Fetch requires a registered service worker to function. Ensure your PWA has an active service worker before using this component.
 
 ## Usage
 
 ### Basic File Download
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
   <button {{ stimulus_action('@pwa/background-fetch', 'download', {
     id: 'video-download-1',
@@ -94,12 +93,10 @@ Background Fetch requires a registered service worker to function. Ensure your P
   }
 </style>
 ```
-{% endcode %}
 
 ### Multiple File Downloads
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
   <button {{ stimulus_action('@pwa/background-fetch', 'download', {
     id: 'podcast-series',
@@ -154,12 +151,10 @@ Background Fetch requires a registered service worker to function. Ensure your P
   });
 </script>
 ```
-{% endcode %}
 
 ### Download Management with Cancel
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
   <div id="download-manager">
     <button id="start-download" {{ stimulus_action('@pwa/background-fetch', 'download', {
@@ -224,12 +219,10 @@ Background Fetch requires a registered service worker to function. Ensure your P
   });
 </script>
 ```
-{% endcode %}
 
 ### Retrieving Downloaded Files
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
   <h2>My Downloaded Files</h2>
   <div id="files-list"></div>
@@ -285,18 +278,16 @@ Background Fetch requires a registered service worker to function. Ensure your P
   }
 </script>
 ```
-{% endcode %}
 
 ## Best Practices
 
 ### Always Provide downloadTotal
 
-{% hint style="success" %}
-Always specify the `downloadTotal` parameter when starting a background fetch. This allows the browser to display accurate progress information to the user in the system UI.
-{% endhint %}
+!!! success
 
-{% code lineNumbers="true" %}
-```twig
+    Always specify the `downloadTotal` parameter when starting a background fetch. This allows the browser to display accurate progress information to the user in the system UI.
+
+```twig linenums="1"
 {# Good - with downloadTotal #}
 <button {{ stimulus_action('@pwa/background-fetch', 'download', {
   id: 'file-1',
@@ -312,32 +303,28 @@ Always specify the `downloadTotal` parameter when starting a background fetch. T
   title: 'Downloading File'
 }) }}>Download</button>
 ```
-{% endcode %}
 
 ### Use Unique IDs
 
-{% hint style="warning" %}
-Each background fetch requires a unique ID. If you attempt to start a fetch with an ID that's already in use, the component will emit an `exists` event instead of starting a new download.
-{% endhint %}
+!!! warning
 
-{% code lineNumbers="true" %}
-```javascript
+    Each background fetch requires a unique ID. If you attempt to start a fetch with an ID that's already in use, the component will emit an `exists` event instead of starting a new download.
+
+```javascript linenums="1"
 // Generate unique IDs for downloads
 const downloadId = `download-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
 // Or use meaningful IDs based on content
 const downloadId = `video-${videoId}`;
 ```
-{% endcode %}
 
 ### Handle Browser Support Gracefully
 
-{% hint style="info" %}
-Always check for the `unsupported` event and provide fallback behavior for browsers that don't support the Background Fetch API.
-{% endhint %}
+!!! info
 
-{% code lineNumbers="true" %}
-```twig
+    Always check for the `unsupported` event and provide fallback behavior for browsers that don't support the Background Fetch API.
+
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
   <button id="download-btn" data-url="/file.mp4">Download</button>
 </div>
@@ -359,19 +346,17 @@ Always check for the `unsupported` event and provide fallback behavior for brows
   });
 </script>
 ```
-{% endcode %}
 
 ### Manage Storage Space
 
-{% hint style="warning" %}
-Background-fetched files are stored in IndexedDB, which has storage limits. Implement cleanup strategies to manage storage space:
-- Delete old downloads when new ones complete
-- Provide UI for users to manually delete downloads
-- Monitor storage quota usage
-{% endhint %}
+!!! warning
 
-{% code lineNumbers="true" %}
-```javascript
+    Background-fetched files are stored in IndexedDB, which has storage limits. Implement cleanup strategies to manage storage space:
+    - Delete old downloads when new ones complete
+    - Provide UI for users to manually delete downloads
+    - Monitor storage quota usage
+
+```javascript linenums="1"
 // Example: Delete old files when storage is low
 host.addEventListener('background-fetch:completed', async (e) => {
   const files = await host.controller.getStoredFiles();
@@ -384,18 +369,16 @@ host.addEventListener('background-fetch:completed', async (e) => {
   }
 });
 ```
-{% endcode %}
 
 ### Provide User Feedback
 
-{% hint style="success" %}
-The Background Fetch API shows system-level notifications, but always provide in-app UI feedback as well for a better user experience.
-{% endhint %}
+!!! success
+
+    The Background Fetch API shows system-level notifications, but always provide in-app UI feedback as well for a better user experience.
 
 ### Icons for Better UX
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# Provide icons for better visual feedback in system notifications #}
 <button {{ stimulus_action('@pwa/background-fetch', 'download', {
   id: 'podcast-1',
@@ -408,14 +391,12 @@ The Background Fetch API shows system-level notifications, but always provide in
   downloadTotal: 52428800
 }) }}>Download Episode</button>
 ```
-{% endcode %}
 
 ## Common Use Cases
 
 ### 1. Podcast/Music Download Manager
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
   <div class="podcast-library">
     {% for episode in podcasts %}
@@ -459,12 +440,10 @@ The Background Fetch API shows system-level notifications, but always provide in
   });
 </script>
 ```
-{% endcode %}
 
 ### 2. Video Course Offline Access
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
   <div class="course-section">
     <h2>Download Entire Course</h2>
@@ -525,12 +504,10 @@ The Background Fetch API shows system-level notifications, but always provide in
   });
 </script>
 ```
-{% endcode %}
 
 ### 3. Document Library Sync
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
   <div class="library-header">
     <h2>My Documents</h2>
@@ -573,12 +550,10 @@ The Background Fetch API shows system-level notifications, but always provide in
   });
 </script>
 ```
-{% endcode %}
 
 ### 4. Media Gallery Offline Mode
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
   <div class="gallery">
     {% for photo in photos %}
@@ -620,7 +595,6 @@ The Background Fetch API shows system-level notifications, but always provide in
   });
 </script>
 ```
-{% endcode %}
 
 ## API Reference
 
@@ -633,12 +607,10 @@ The Background Fetch API shows system-level notifications, but always provide in
 
 The name of the IndexedDB database used to store completed downloads.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch', { dbName: 'my-custom-db' }) }}>
 </div>
 ```
-{% endcode %}
 
 ### Actions
 
@@ -653,8 +625,7 @@ Starts a background fetch for one or more files.
 - `icons` (array, optional): Icons for system notifications
 - `downloadTotal` (number, optional but recommended): Total download size in bytes
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <button {{ stimulus_action('@pwa/background-fetch', 'download', {
   id: 'unique-id',
   url: '/file.mp4',
@@ -663,7 +634,6 @@ Starts a background fetch for one or more files.
   downloadTotal: 52428800
 }) }}>Download</button>
 ```
-{% endcode %}
 
 #### `cancel`
 
@@ -672,24 +642,20 @@ Cancels an in-progress background fetch.
 **Parameters:**
 - `id` (string, required): ID of the download to cancel
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <button {{ stimulus_action('@pwa/background-fetch', 'cancel', { id: 'download-id' }) }}>
   Cancel
 </button>
 ```
-{% endcode %}
 
 #### `list`
 
 Lists all current and completed background fetches. This action is automatically called on controller connection.
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 // Manually trigger list refresh
 host.controller.list();
 ```
-{% endcode %}
 
 ### Methods
 
@@ -702,14 +668,12 @@ Checks if a file with the given URL is stored in IndexedDB.
 
 **Returns:** `Promise<boolean>`
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 const isStored = await host.controller.has({ params: { url: '/file.mp4' } });
 if (isStored) {
   console.log('File is available offline');
 }
 ```
-{% endcode %}
 
 #### `get(event)`
 
@@ -719,8 +683,7 @@ Retrieves a downloaded file from IndexedDB and opens or downloads it.
 - `event.params.url` (string): URL of the stored file
 - `event.params.name` (string, optional): Filename for download (if omitted, file opens in new tab)
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 // Open in new tab
 host.controller.get({
   preventDefault: () => {},
@@ -733,7 +696,6 @@ host.controller.get({
   params: { url: '/file.mp4', name: 'my-video.mp4' }
 });
 ```
-{% endcode %}
 
 #### `delete(params)`
 
@@ -742,12 +704,10 @@ Deletes a stored file from IndexedDB.
 **Parameters:**
 - `params.url` (string): URL of the file to delete
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 await host.controller.delete({ params: { url: '/file.mp4' } });
 console.log('File deleted from storage');
 ```
-{% endcode %}
 
 #### `getStoredFiles()`
 
@@ -755,15 +715,13 @@ Returns all files stored in IndexedDB.
 
 **Returns:** `Promise<Array>`
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 const files = await host.controller.getStoredFiles();
 console.log(`You have ${files.length} downloaded files`);
 files.forEach(file => {
   console.log(`${file.name}: ${file.size} bytes`);
 });
 ```
-{% endcode %}
 
 ### Targets
 
@@ -775,14 +733,12 @@ None
 
 Fired when the Background Fetch API is not supported by the browser.
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('background-fetch:unsupported', () => {
   console.log('Background Fetch not supported');
   // Implement fallback behavior
 });
 ```
-{% endcode %}
 
 #### `started`
 
@@ -794,14 +750,12 @@ Fired when a background fetch starts successfully.
 - `title`: Download title
 - `downloadTotal`: Total size in bytes
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('background-fetch:started', (e) => {
   console.log(`Download started: ${e.detail.title}`);
   console.log(`Files: ${e.detail.urls.length}`);
 });
 ```
-{% endcode %}
 
 #### `in-progress`
 
@@ -812,14 +766,12 @@ Fired periodically during download to report progress.
 - `downloaded`: Bytes downloaded so far
 - `downloadTotal`: Total size in bytes
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('background-fetch:in-progress', (e) => {
   const percent = (e.detail.downloaded / e.detail.downloadTotal) * 100;
   console.log(`Progress: ${percent.toFixed(1)}%`);
 });
 ```
-{% endcode %}
 
 #### `completed`
 
@@ -831,13 +783,11 @@ Fired when a download completes successfully and is stored.
 - `size`: File size in bytes
 - `contentType`: MIME type
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('background-fetch:completed', (e) => {
   console.log(`Download completed: ${e.detail.name} (${e.detail.size} bytes)`);
 });
 ```
-{% endcode %}
 
 #### `failed`
 
@@ -849,13 +799,11 @@ Fired when a download fails.
 - `downloadTotal`: Total size
 - `urls`: Array of URLs
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('background-fetch:failed', (e) => {
   console.error(`Download failed: ${e.detail.id}`);
 });
 ```
-{% endcode %}
 
 #### `aborted`
 
@@ -864,13 +812,11 @@ Fired when a download is successfully cancelled.
 **Event detail:**
 - `id`: Download ID
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('background-fetch:aborted', (e) => {
   console.log(`Download cancelled: ${e.detail.id}`);
 });
 ```
-{% endcode %}
 
 #### `exists`
 
@@ -882,13 +828,11 @@ Fired when attempting to start a download with an ID that's already in use.
 - `title`: Title of existing download
 - `downloadTotal`: Total size
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('background-fetch:exists', (e) => {
   console.log(`Download ${e.detail.id} is already in progress`);
 });
 ```
-{% endcode %}
 
 #### `not-found`
 
@@ -897,13 +841,11 @@ Fired when attempting to cancel a download that doesn't exist.
 **Event detail:**
 - `id`: Download ID
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('background-fetch:not-found', (e) => {
   console.log(`Download ${e.detail.id} not found`);
 });
 ```
-{% endcode %}
 
 #### `cancel-refused`
 
@@ -913,13 +855,11 @@ Fired when a download cannot be cancelled (already finished or failed).
 - `id`: Download ID
 - `reason`: Reason why cancellation was refused
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('background-fetch:cancel-refused', (e) => {
   console.log(`Cannot cancel: ${e.detail.reason}`);
 });
 ```
-{% endcode %}
 
 ## Related Components
 

@@ -15,16 +15,15 @@ This component is particularly useful for:
 
 The Vibration API is supported on most Android devices in Chrome, Firefox, and Edge. iOS devices (iPhone, iPad) do not support the Vibration API due to platform restrictions.
 
-{% hint style="info" %}
-Always check for API support and provide visual alternatives for devices that don't support vibration.
-{% endhint %}
+!!! info
+
+    Always check for API support and provide visual alternatives for devices that don't support vibration.
 
 ## Usage
 
 ### Basic Vibration
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
     <button {{ stimulus_action('@pwa/vibration', 'vibrate', 'click', {pattern: [200]}) }}>
         Short Vibration (200ms)
@@ -41,12 +40,10 @@ Always check for API support and provide visual alternatives for devices that do
     });
 </script>
 ```
-{% endcode %}
 
 ### Vibration Patterns
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
     <h3>Vibration Patterns</h3>
 
@@ -73,12 +70,10 @@ Always check for API support and provide visual alternatives for devices that do
     </button>
 </div>
 ```
-{% endcode %}
 
 ### Persistent Vibration with Interval
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
     <h3>Repeating Vibration</h3>
 
@@ -106,12 +101,10 @@ Always check for API support and provide visual alternatives for devices that do
     });
 </script>
 ```
-{% endcode %}
 
 ### Form Validation Feedback
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
     <form id="login-form">
         <input type="email" id="email" placeholder="Email" required>
@@ -154,12 +147,10 @@ Always check for API support and provide visual alternatives for devices that do
     });
 </script>
 ```
-{% endcode %}
 
 ### Gaming Controls
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
     <div class="game-container">
         <canvas id="game-canvas"></canvas>
@@ -208,12 +199,10 @@ Always check for API support and provide visual alternatives for devices that do
     }
 </script>
 ```
-{% endcode %}
 
 ### Timer/Alarm Application
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
     <div class="timer-app">
         <h2>Pomodoro Timer</h2>
@@ -268,12 +257,10 @@ Always check for API support and provide visual alternatives for devices that do
     }
 </script>
 ```
-{% endcode %}
 
 ### Accessibility Features
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
     <div class="accessible-navigation">
         <button
@@ -318,7 +305,6 @@ Always check for API support and provide visual alternatives for devices that do
     });
 </script>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -345,9 +331,9 @@ With interval for repeating vibration:
 {{ stimulus_action('@pwa/vibration', 'vibrate', 'click', {pattern: [100], interval: 1000}) }}
 ```
 
-{% hint style="info" %}
-Pattern values are specified in milliseconds. The first value is always a vibration duration. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate#pattern) for more details.
-{% endhint %}
+!!! info
+
+    Pattern values are specified in milliseconds. The first value is always a vibration duration. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate#pattern) for more details.
 
 ### `stop`
 
@@ -491,8 +477,7 @@ if ('vibrate' in navigator) {
 
 ## Complete Example: Interactive Notification System
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
     <div class="notification-system">
         <h2>Notification Center</h2>
@@ -619,4 +604,3 @@ if ('vibrate' in navigator) {
     #error-notif { background: #ef4444; color: white; }
 </style>
 ```
-{% endcode %}

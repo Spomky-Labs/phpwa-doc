@@ -9,16 +9,15 @@ This component is essential for:
 * Ensuring users get the latest features without forced reloads
 * Creating a smooth update experience without interrupting user workflow
 
-{% hint style="info" %}
-When `skipWaiting` is enabled, the service worker automatically activates when updated. When disabled, you have more control over when the update is applied, which is useful to avoid interrupting user activities.
-{% endhint %}
+!!! info
+
+    When `skipWaiting` is enabled, the service worker automatically activates when updated. When disabled, you have more control over when the update is applied, which is useful to avoid interrupting user activities.
 
 ## Usage
 
 ### Basic Update Button
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/service-worker') }}>
     <button
         id="update-btn"
@@ -35,12 +34,10 @@ When `skipWaiting` is enabled, the service worker automatically activates when u
     });
 </script>
 ```
-{% endcode %}
 
 ### Update Notification Banner
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/service-worker') }}>
     <div id="update-banner" class="update-notification" style="display:none;">
         <p>A new version of this app is available!</p>
@@ -82,12 +79,10 @@ When `skipWaiting` is enabled, the service worker automatically activates when u
     }
 </style>
 ```
-{% endcode %}
 
 ### Toast Notification with Countdown
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/service-worker') }}>
     <div id="update-toast" class="toast" style="display:none;">
         <span id="toast-message">New version available!</span>
@@ -118,12 +113,10 @@ When `skipWaiting` is enabled, the service worker automatically activates when u
     });
 </script>
 ```
-{% endcode %}
 
 ### Integration with User Settings
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/service-worker') }}>
     <!-- Settings page -->
     <div class="settings">
@@ -158,7 +151,6 @@ When `skipWaiting` is enabled, the service worker automatically activates when u
     });
 </script>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -177,9 +169,9 @@ Triggers the service worker update process. When called:
 {{ stimulus_action('@pwa/service-worker', 'update', 'click') }}
 ```
 
-{% hint style="warning" %}
-Calling this action will refresh the current page. Ensure users are aware of this behavior and have saved any unsaved work before triggering the update.
-{% endhint %}
+!!! warning
+
+    Calling this action will refresh the current page. Ensure users are aware of this behavior and have saved any unsaved work before triggering the update.
 
 ## Targets
 
@@ -228,15 +220,13 @@ document.addEventListener('pwa--service-worker:update-available', () => {
 
 This component works in conjunction with the service worker configuration. To enable manual updates, ensure `skipWaiting` is set to `false`:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
         src: "sw.js"
         skip_waiting: false  # Allows manual control over updates
 ```
-{% endcode %}
 
 For more information on service worker configuration, see the [Service Worker Configuration](../the-service-worker/configuration.md) page.
 
@@ -244,8 +234,7 @@ For more information on service worker configuration, see the [Service Worker Co
 
 Here's a complete example of an update manager with user preferences and smart update timing:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/service-worker') }}>
     <div id="update-manager" style="display:none;">
         <div class="update-card">
@@ -307,4 +296,3 @@ Here's a complete example of an update manager with user preferences and smart u
     }
 </script>
 ```
-{% endcode %}

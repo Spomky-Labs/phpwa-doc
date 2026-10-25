@@ -4,7 +4,10 @@ description: Transform your Symfony application into a Progressive Web App
 
 # PWA Bundle
 
-<figure><picture><source srcset=".gitbook/assets/pwalogo-inverse.svg" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/pwalogo.svg" alt="PWA Logo"></picture><figcaption></figcaption></figure>
+<figure markdown="span">
+  ![PWA Logo](assets/images/pwalogo.svg#only-light)
+  ![PWA Logo](assets/images/pwalogo-inverse.svg#only-dark)
+</figure>
 
 Welcome! 👋
 
@@ -161,6 +164,6 @@ Ready to transform your Symfony app into a PWA?
 
 1. [Install the bundle](installation.md) - Get started in minutes
 2. [Learn PWA concepts](how-to-create-a-pwa.md) - Understand the fundamentals
-3. [Configure the manifest](the-manifest/application-information/) - Customize your app
+3. [Configure the manifest](the-manifest/application-information/README.md) - Customize your app
 4. [Set up the service worker](the-service-worker/configuration.md) - Enable offline mode
 5. [Add UX components](symfony-ux/) - Enhance user experience

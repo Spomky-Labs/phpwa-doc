@@ -13,14 +13,12 @@ The description serves multiple purposes:
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         description: "Track your fitness goals, log workouts, and monitor progress with detailed analytics and personalized recommendations."
 ```
-{% endcode %}
 
 ## Best Practices
 
@@ -131,8 +129,7 @@ pwa:
 
 For applications supporting multiple languages, use translatable objects:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         description:
@@ -143,7 +140,6 @@ pwa:
                 es: "Administra tus finanzas con herramientas de presupuesto y seguimiento de gastos."
                 de: "Verwalten Sie Ihre Finanzen mit Budgetierungs- und Ausgabenverfolgungstools."
 ```
-{% endcode %}
 
 See [Direction and Language](direction-and-language.md) for more details on translations.
 

@@ -25,8 +25,7 @@ When you configure your PWA manifest:
 3. **Locale-specific manifests generated**: A separate manifest is created for each enabled locale
 4. **Automatic locale detection**: The `pwa()` Twig function automatically serves the correct manifest based on `app.request.locale`
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -34,25 +33,20 @@ pwa:
         short_name: "app.short_name"  # Translation key
         description: "app.description" # Translation key
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 app:
     name: "My Awesome App"
     short_name: "AwesomeApp"
     description: "The best productivity app"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.fr.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.fr.yaml" linenums="1"
 app:
     name: "Mon Application Géniale"
     short_name: "AppGéniale"
     description: "La meilleure application de productivité"
 ```
-{% endcode %}
 
 ## Translatable Properties
 
@@ -66,13 +60,13 @@ The following properties are automatically translated by the bundle:
 | **Shortcut** | `name`, `short_name`, `description` |
 | **Widget** | `name`, `short_name`, `description` |
 
-{% hint style="warning" %}
-**Not Translatable**: The `categories` property should **not** be translated. This capability is deprecated and will be removed in version 2.0.0.
-{% endhint %}
+!!! warning
 
-{% hint style="danger" %}
-**Breaking Change**: The `start_url` property cannot be translated since version 1.3.0. See the [migration guide](../upgrades/from-1.2.x-to-1.3.0.md#start-url) for details.
-{% endhint %}
+    **Not Translatable**: The `categories` property should **not** be translated. This capability is deprecated and will be removed in version 2.0.0.
+
+!!! danger
+
+    **Breaking Change**: The `start_url` property cannot be translated since version 1.3.0. See the [migration guide](../upgrades/from-1.2.x-to-1.3.0.md#start-url) for details.
 
 ## Basic Configuration
 
@@ -80,8 +74,7 @@ The following properties are automatically translated by the bundle:
 
 First, configure the locales your app supports:
 
-{% code title="/config/packages/translation.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/translation.yaml" linenums="1"
 framework:
     enabled_locales: ['en', 'fr', 'de', 'es']
     default_locale: 'en'
@@ -89,7 +82,6 @@ framework:
         default_path: '%kernel.project_dir%/translations'
         fallbacks: ['en']
 ```
-{% endcode %}
 
 See the [Symfony Translation documentation](https://symfony.com/doc/current/translation.html) for more information about configuring locales.
 
@@ -97,8 +89,7 @@ See the [Symfony Translation documentation](https://symfony.com/doc/current/tran
 
 Add the `{locale}` placeholder to your manifest public URL:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -107,18 +98,16 @@ pwa:
         short_name: "app.short_name"
         description: "app.description"
 ```
-{% endcode %}
 
-{% hint style="info" %}
-**Important**: When using the `{locale}` placeholder, do **not** manually set the `lang` parameter. The bundle automatically sets it based on the current locale.
-{% endhint %}
+!!! info
+
+    **Important**: When using the `{locale}` placeholder, do **not** manually set the `lang` parameter. The bundle automatically sets it based on the current locale.
 
 ### Step 3: Use the pwa() Twig Function
 
 The `pwa()` Twig function automatically serves the correct localized manifest:
 
-{% code title="/templates/base.html.twig" lineNumbers="true" %}
-```twig
+```twig title="/templates/base.html.twig" linenums="1"
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
 <head>
@@ -129,42 +118,35 @@ The `pwa()` Twig function automatically serves the correct localized manifest:
 </body>
 </html>
 ```
-{% endcode %}
 
-{% hint style="success" %}
-**Automatic Detection**: Since version 1.3.0, you don't need to pass the locale to `pwa()`. It's automatically detected from `app.request.locale`.
-{% endhint %}
+!!! success
+
+    **Automatic Detection**: Since version 1.3.0, you don't need to pass the locale to `pwa()`. It's automatically detected from `app.request.locale`.
 
 ### Step 4: Create Translation Files
 
 Create translation files for each locale in the `pwa` domain:
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 app:
     name: "TaskMaster Pro"
     short_name: "TaskMaster"
     description: "Professional task management for teams"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.fr.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.fr.yaml" linenums="1"
 app:
     name: "TaskMaster Pro"
     short_name: "TaskMaster"
     description: "Gestion professionnelle des tâches pour équipes"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.de.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.de.yaml" linenums="1"
 app:
     name: "TaskMaster Pro"
     short_name: "TaskMaster"
     description: "Professionelles Aufgabenmanagement für Teams"
 ```
-{% endcode %}
 
 ## Translation File Formats
 
@@ -174,8 +156,7 @@ The PWA Bundle supports all Symfony translation formats.
 
 YAML is human-readable and easy to edit:
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 app:
     name: "My App"
     short_name: "MyApp"
@@ -193,14 +174,12 @@ screenshots:
     home: "Home screen with features"
     dashboard: "Analytics dashboard"
 ```
-{% endcode %}
 
 ### XLIFF Format
 
 XLIFF is ideal for professional translation workflows:
 
-{% code title="/translations/pwa+intl-icu.en.xlf" lineNumbers="true" %}
-```xml
+```xml title="/translations/pwa+intl-icu.en.xlf" linenums="1"
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
@@ -224,14 +203,12 @@ XLIFF is ideal for professional translation workflows:
   </file>
 </xliff>
 ```
-{% endcode %}
 
 ### PHP Format
 
 PHP format allows for dynamic translations:
 
-{% code title="/translations/pwa.en.php" lineNumbers="true" %}
-```php
+```php title="/translations/pwa.en.php" linenums="1"
 <?php
 
 return [
@@ -248,14 +225,12 @@ return [
     ],
 ];
 ```
-{% endcode %}
 
 ### JSON Format
 
 JSON is compatible with JavaScript tooling:
 
-{% code title="/translations/pwa.en.json" lineNumbers="true" %}
-```json
+```json title="/translations/pwa.en.json" linenums="1"
 {
     "app.name": "TaskMaster Pro",
     "app.short_name": "TaskMaster",
@@ -264,14 +239,12 @@ JSON is compatible with JavaScript tooling:
     "shortcuts.dashboard.description": "View your dashboard"
 }
 ```
-{% endcode %}
 
 ## Complete Use Cases
 
 ### Use Case 1: Multilingual E-Commerce App
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -305,10 +278,8 @@ pwa:
                 - src: "icons/orders.png"
                   sizes: [96]
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 shop:
     name: "ShopMaster"
     short_name: "Shop"
@@ -329,10 +300,8 @@ shop:
             short: "Orders"
             description: "Track your orders"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.fr.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.fr.yaml" linenums="1"
 shop:
     name: "ShopMaster"
     short_name: "Shop"
@@ -353,10 +322,8 @@ shop:
             short: "Commandes"
             description: "Suivez vos commandes"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.de.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.de.yaml" linenums="1"
 shop:
     name: "ShopMaster"
     short_name: "Shop"
@@ -377,20 +344,16 @@ shop:
             short: "Bestellungen"
             description: "Bestellungen verfolgen"
 ```
-{% endcode %}
 
 ### Use Case 2: Global News App with RTL Support
 
-{% code title="/config/packages/translation.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/translation.yaml" linenums="1"
 framework:
     enabled_locales: ['en', 'ar', 'he', 'fr', 'es']
     default_locale: 'en'
 ```
-{% endcode %}
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -406,10 +369,8 @@ pwa:
                 - src: "icons/breaking.png"
                   sizes: [96]
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 news:
     app:
         name: "Global News"
@@ -419,10 +380,8 @@ news:
         breaking:
             name: "Breaking News"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.ar.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.ar.yaml" linenums="1"
 news:
     app:
         name: "الأخبار العالمية"
@@ -432,10 +391,8 @@ news:
         breaking:
             name: "الأخبار العاجلة"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.he.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.he.yaml" linenums="1"
 news:
     app:
         name: "חדשות עולמיות"
@@ -445,16 +402,14 @@ news:
         breaking:
             name: "חדשות מהירות"
 ```
-{% endcode %}
 
-{% hint style="success" %}
-**RTL Support**: The bundle automatically sets the `dir` property based on the locale. For RTL languages like Arabic (`ar`) and Hebrew (`he`), the direction is set to `"rtl"` automatically.
-{% endhint %}
+!!! success
+
+    **RTL Support**: The bundle automatically sets the `dir` property based on the locale. For RTL languages like Arabic (`ar`) and Hebrew (`he`), the direction is set to `"rtl"` automatically.
 
 ### Use Case 3: SaaS Platform with Region-Specific Content
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -469,7 +424,6 @@ pwa:
             - src: "screenshots/analytics-{locale}.png"
               label: "saas.screenshots.analytics"
 ```
-{% endcode %}
 
 Note: The `{locale}` placeholder in screenshot paths allows for locale-specific screenshots.
 
@@ -625,8 +579,7 @@ diff <(jq -S . public/site.en.webmanifest) <(jq -S . public/site.fr.webmanifest)
 
 **Automated Testing with Puppeteer**:
 
-{% code title="tests/pwa-i18n.test.js" lineNumbers="true" %}
-```javascript
+```javascript title="tests/pwa-i18n.test.js" linenums="1"
 const puppeteer = require('puppeteer');
 
 async function testManifestTranslations() {
@@ -666,7 +619,6 @@ async function testManifestTranslations() {
 
 testManifestTranslations();
 ```
-{% endcode %}
 
 ### 4. Lighthouse Audit
 
@@ -717,20 +669,17 @@ app:
 
 ### 3. Provide Fallbacks
 
-{% code title="/config/packages/translation.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/translation.yaml" linenums="1"
 framework:
     translator:
         fallbacks: ['en']  # Fallback to English if translation missing
 ```
-{% endcode %}
 
 ### 4. Use Translation Parameters for Dynamic Content
 
 While the PWA manifest doesn't support dynamic parameters, you can use them in your translation files:
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 app:
     name: "MyApp"
     description: "Available in 20 countries"  # Static for manifest
@@ -739,7 +688,6 @@ app:
 messages:
     welcome: "Welcome, {username}!"  # Parameters work in regular translations
 ```
-{% endcode %}
 
 ### 5. Keep Translations Synchronized
 
@@ -811,14 +759,12 @@ php bin/console debug:config framework enabled_locales
 
 **Solutions**:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 # ✅ Ensure {locale} placeholder is present
 pwa:
     manifest:
         public_url: "/site.{locale}.webmanifest"  # Must include {locale}
 ```
-{% endcode %}
 
 ```bash
 # ✅ Check request locale
@@ -852,8 +798,7 @@ diff translations/pwa.en.yaml translations/pwa.fr.yaml
 
 **Solutions**:
 
-{% code title="/translations/pwa.fr.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.fr.yaml" linenums="1"
 # ✅ Ensure UTF-8 encoding
 # Save file as UTF-8 without BOM
 
@@ -861,7 +806,6 @@ app:
     name: "Application Géniale"  # é should display correctly
     description: "Optimisée pour vous"  # é should display correctly
 ```
-{% endcode %}
 
 ```bash
 # ✅ Check file encoding
@@ -875,8 +819,7 @@ file -i translations/pwa.fr.yaml
 
 **Solutions**:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 # ✅ Don't manually set 'dir' or 'lang'
 pwa:
     manifest:
@@ -884,7 +827,6 @@ pwa:
         # lang: "en"   ← Remove this! Let bundle auto-detect
         public_url: "/site.{locale}.webmanifest"
 ```
-{% endcode %}
 
 The bundle automatically sets `dir: "rtl"` for RTL locales (ar, he, fa, ur).
 
@@ -894,8 +836,7 @@ The bundle automatically sets `dir: "rtl"` for RTL locales (ar, he, fa, ur).
 
 **Before (Hard-coded text)**:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -904,12 +845,10 @@ pwa:
         short_name: "MyApp"  # Hard-coded
         description: "A great app"  # Hard-coded
 ```
-{% endcode %}
 
 **After (Translation keys)**:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -918,25 +857,20 @@ pwa:
         short_name: "app.short_name"  # Translation key
         description: "app.description"  # Translation key
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 app:
     name: "My App"
     short_name: "MyApp"
     description: "A great app"
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.fr.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.fr.yaml" linenums="1"
 app:
     name: "Mon Application"
     short_name: "MonApp"
     description: "Une excellente application"
 ```
-{% endcode %}
 
 ### Migration Steps
 

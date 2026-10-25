@@ -12,18 +12,16 @@ Screen orientation affects:
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         orientation: "portrait"  # or landscape, any, etc.
 ```
-{% endcode %}
 
-{% hint style="info" %}
-If not specified, the orientation defaults to `any`, allowing the device to rotate freely.
-{% endhint %}
+!!! info
+
+    If not specified, the orientation defaults to `any`, allowing the device to rotate freely.
 
 ## Available Orientations
 

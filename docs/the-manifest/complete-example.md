@@ -2,8 +2,7 @@
 
 This page provides a comprehensive example of a PWA manifest configuration showcasing most of the available features in the Spomky-Labs PWA Bundle.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         # Basic Configuration
@@ -154,7 +153,6 @@ pwa:
                       action: "%s"
 
 ```
-{% endcode %}
 
 ## Key Sections Explained
 
@@ -181,10 +179,10 @@ App shortcuts provide quick access to key features directly from the OS launcher
 - **File Handlers**: Registers your PWA as a handler for specific file types
 - **Protocol Handlers**: Enables your PWA to handle custom URL protocols
 
-{% hint style="info" %}
-This example shows many features together. In practice, you should only include the features that your application actually supports to keep your manifest file focused and maintainable.
-{% endhint %}
+!!! info
 
-{% hint style="warning" %}
-Some features like File Handlers and Protocol Handlers have limited browser support. Always check compatibility and provide fallback options for users on unsupported browsers.
-{% endhint %}
+    This example shows many features together. In practice, you should only include the features that your application actually supports to keep your manifest file focused and maintainable.
+
+!!! warning
+
+    Some features like File Handlers and Protocol Handlers have limited browser support. Always check compatibility and provide fallback options for users on unsupported browsers.

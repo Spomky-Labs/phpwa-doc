@@ -19,16 +19,15 @@ The Connection Status API is based on the `navigator.onLine` property and online
 
 **Support level:** Universal - works on all major browsers including Chrome, Firefox, Safari, Edge, and their mobile counterparts.
 
-{% hint style="info" %}
-The `navigator.onLine` property only indicates whether the browser has a network connection, not whether internet access is actually available. A device might be connected to a local network but have no internet access.
-{% endhint %}
+!!! info
+
+    The `navigator.onLine` property only indicates whether the browser has a network connection, not whether internet access is actually available. A device might be connected to a local network but have no internet access.
 
 ## Usage
 
 ### Basic Connection Status Display
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status', {
     onlineMessage: 'You are online',
     offlineMessage: 'You are offline'
@@ -43,12 +42,10 @@ The `navigator.onLine` property only indicates whether the browser has a network
     </div>
 </div>
 ```
-{% endcode %}
 
 ### Styled Connection Notification
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status', {
     onlineMessage: '✓ Connected to the internet',
     offlineMessage: '⚠ No internet connection'
@@ -92,12 +89,10 @@ The `navigator.onLine` property only indicates whether the browser has a network
     }
 </style>
 ```
-{% endcode %}
 
 ### Conditional Feature Display
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status') }}>
     <!-- Main content area with connection-aware features -->
     <div {{ stimulus_target('@pwa/connection-status', 'attribute') }}>
@@ -176,12 +171,10 @@ The `navigator.onLine` property only indicates whether the browser has a network
     }
 </style>
 ```
-{% endcode %}
 
 ### Form Behavior Based on Connection
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status') }}>
     <form id="contact-form" {{ stimulus_target('@pwa/connection-status', 'attribute') }}>
         <h2>Contact Us</h2>
@@ -252,12 +245,10 @@ The `navigator.onLine` property only indicates whether the browser has a network
     });
 </script>
 ```
-{% endcode %}
 
 ### Action Queue for Offline Operations
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status') }}>
     <div class="task-manager">
         <h2>Task Manager</h2>
@@ -400,12 +391,10 @@ The `navigator.onLine` property only indicates whether the browser has a network
     }
 </style>
 ```
-{% endcode %}
 
 ### Real-Time Sync Indicator
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status') }}>
     <div class="editor-container">
         <div class="editor-header" {{ stimulus_target('@pwa/connection-status', 'attribute') }}>
@@ -567,12 +556,10 @@ The `navigator.onLine` property only indicates whether the browser has a network
     }
 </style>
 ```
-{% endcode %}
 
 ### Multiple Status Indicators
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status', {
     onlineMessage: 'Online',
     offlineMessage: 'Offline'
@@ -632,7 +619,6 @@ The `navigator.onLine` property only indicates whether the browser has a network
     }
 </style>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -825,8 +811,7 @@ Then use these variants in your HTML:
 
 ## Complete Example: Offline-First Todo App
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status', {
     onlineMessage: 'Synced',
     offlineMessage: 'Working offline'
@@ -1125,7 +1110,6 @@ Then use these variants in your HTML:
     }
 </style>
 ```
-{% endcode %}
 
 ## Troubleshooting
 
@@ -1190,6 +1174,6 @@ async function checkRealConnectivity() {
 | Opera | ✓ Full support |
 | Mobile browsers | ✓ Full support |
 
-{% hint style="success" %}
-The Connection Status component works reliably across all modern browsers and is based on well-established web platform APIs.
-{% endhint %}
+!!! success
+
+    The Connection Status component works reliably across all modern browsers and is based on well-established web platform APIs.
