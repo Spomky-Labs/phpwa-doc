@@ -2,18 +2,16 @@
 
 The `categories` member is a string list that describes the application categories to which the web application belongs. It is meant as a hint to catalogs or stores listing web applications and it is expected that these will make a best effort to find appropriate categories (or category) under which to list the web application. Like search engines and meta keywords, catalogs and stores are not required to honor this hint.
 
-{% hint style="info" %}
-Manifest authors are encouraged to use lower-case.
-{% endhint %}
+!!! info
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+    Manifest authors are encouraged to use lower-case.
+
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         categories: ['games', 'kids']
 ```
-{% endcode %}
 
 List of known categories:
 

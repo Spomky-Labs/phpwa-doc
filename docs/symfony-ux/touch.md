@@ -24,16 +24,15 @@ The Touch API is widely supported on all modern mobile browsers and touch-enable
 * Mobile Firefox: Full support
 * Desktop browsers with touch hardware: Full support
 
-{% hint style="info" %}
-The component automatically detects touch capability. On non-touch devices, the events won't be dispatched.
-{% endhint %}
+!!! info
+
+    The component automatically detects touch capability. On non-touch devices, the events won't be dispatched.
 
 ## Usage
 
 ### Basic Touch Drawing
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
     <h2>Touch Drawing Pad</h2>
     <canvas {{ stimulus_target('@pwa/touch', 'canvas') }}
@@ -111,12 +110,10 @@ The component automatically detects touch capability. On non-touch devices, the 
     }
 </style>
 ```
-{% endcode %}
 
 ### Swipe Gesture Detection
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
     <div id="swipe-area">
         <h2>Swipe Here</h2>
@@ -195,12 +192,10 @@ The component automatically detects touch capability. On non-touch devices, the 
     }
 </style>
 ```
-{% endcode %}
 
 ### Pinch-to-Zoom
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
     <h2>Pinch to Zoom</h2>
 
@@ -296,12 +291,10 @@ The component automatically detects touch capability. On non-touch devices, the 
     }
 </style>
 ```
-{% endcode %}
 
 ### Multi-Touch Drawing with Different Colors
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
     <h2>Multi-Touch Paint</h2>
     <p>Use multiple fingers to draw with different colors!</p>
@@ -384,12 +377,10 @@ The component automatically detects touch capability. On non-touch devices, the 
     }
 </style>
 ```
-{% endcode %}
 
 ### Rotation Gesture
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
     <h2>Two-Finger Rotation</h2>
 
@@ -493,12 +484,10 @@ The component automatically detects touch capability. On non-touch devices, the 
     }
 </style>
 ```
-{% endcode %}
 
 ### Touch-Based Signature Pad
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
     <h2>Signature Pad</h2>
 
@@ -648,12 +637,10 @@ The component automatically detects touch capability. On non-touch devices, the 
     }
 </style>
 ```
-{% endcode %}
 
 ### Touch-Based Game (Bubble Pop)
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
     <div class="game-container">
         <h2>Bubble Pop Game</h2>
@@ -866,7 +853,6 @@ The component automatically detects touch capability. On non-touch devices, the 
     }
 </style>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -1118,8 +1104,7 @@ document.addEventListener('pwa--touch:moved', (event) => {
 
 ## Complete Example: Advanced Drawing App
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
     <div class="drawing-app">
         <header>
@@ -1418,7 +1403,6 @@ document.addEventListener('pwa--touch:moved', (event) => {
     }
 </style>
 ```
-{% endcode %}
 
 ## Troubleshooting
 
@@ -1510,6 +1494,6 @@ document.addEventListener('touchstart', (e) => {
 }, { passive: false });
 ```
 
-{% hint style="warning" %}
-Only prevent default when necessary, as it disables scrolling and other default behaviors.
-{% endhint %}
+!!! warning
+
+    Only prevent default when necessary, as it disables scrolling and other default behaviors.

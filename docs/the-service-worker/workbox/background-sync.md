@@ -2,8 +2,7 @@
 
 Background Sync is a feature provided by service workers that enables your Progressive Web App to defer actions until the user has stable connectivity. This is particularly useful for ensuring any requests or data submitted by the user are not lost if their internet connection is unreliable.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -21,7 +20,6 @@ pwa:
                   method: POST
                   max_retention_time: 120 # 2 hours in minutes
 ```
-{% endcode %}
 
 * `queue_name`: Unique queue name for each queue to easily identify and manage separate background sync processes. This is essential for categorizing different types of requests such as API calls and form submissions.
 * `match_callback`: [see on this page](warm-caching.md#match-callback).

@@ -6,8 +6,7 @@ Fortunately, you are able to pass attributes such as a `nonce` to the script dir
 
 In the example below, the nonce attribute is managed by [nelmio/security-bundle](https://symfony.com/bundles/NelmioSecurityBundle/current/index.html#content-security-policy).
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,4 +17,3 @@ In the example below, the nonce attribute is managed by [nelmio/security-bundle]
 </body>
 </html>
 ```
-{% endcode %}

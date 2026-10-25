@@ -4,8 +4,7 @@ If your PWA is able to load certain type of files, you can declare in the Manife
 
 To declare the supported file types, you can add a `file_handlers` entry to your web app manifest. This entry specifies the types of files that the app can open, along with an `action` URL that handles the opening of those files.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -15,7 +14,6 @@ pwa:
                   - "image/png": [".png"]
                   - "image/jpeg": [".jpg", ".jpeg"]
 ```
-{% endcode %}
 
 By adding a file handler for the above image types, your PWA will announce to the operating system that it can handle these types of files. When users open files with these extensions, your PWA will be suggested as an application to open them with.
 

@@ -33,8 +33,7 @@ Hereafter the main benefits of Precache:
 
 Workbox is enabled by default. You can disable it completely if you do not need it.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -42,4 +41,3 @@ pwa:
         workbox:
             enabled: false
 ```
-{% endcode %}

@@ -13,16 +13,15 @@ This component is particularly useful for applications that need to:
 
 The Barcode Detection API is currently supported in Chromium-based browsers (Chrome, Edge, Opera). Support in other browsers may be limited. The component gracefully handles unsupported browsers by dispatching an `unsupported` event.
 
-{% hint style="info" %}
-You can check the current browser support status at [caniuse.com/barcode-detector](https://caniuse.com/barcode-detector)
-{% endhint %}
+!!! info
+
+    You can check the current browser support status at [caniuse.com/barcode-detector](https://caniuse.com/barcode-detector)
 
 ## Usage
 
 ### Basic Barcode Detection from an Image
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/barcode-detection') }}>
     <img id="barcode-image" src="/path/to/barcode.jpg" alt="Barcode">
 
@@ -46,14 +45,12 @@ You can check the current browser support status at [caniuse.com/barcode-detecto
     });
 </script>
 ```
-{% endcode %}
 
 ### Detection with Specific Formats
 
 You can limit detection to specific barcode formats for better performance:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/barcode-detection', {formats: ['qr_code', 'ean_13']}) }}>
     <img id="qr-code" src="/path/to/qrcode.png" alt="QR Code">
 
@@ -72,12 +69,10 @@ You can limit detection to specific barcode formats for better performance:
     });
 </script>
 ```
-{% endcode %}
 
 ### Detection from Video Stream
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/barcode-detection') }}>
     <video id="camera-feed" autoplay playsinline></video>
 
@@ -102,7 +97,6 @@ You can limit detection to specific barcode formats for better performance:
     });
 </script>
 ```
-{% endcode %}
 
 ## Parameters
 

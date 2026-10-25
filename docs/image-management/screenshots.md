@@ -197,9 +197,9 @@ Example: `"ipad/LP"` generates both 768x1024 (portrait) and 1024x768 (landscape)
 | `ipad-pro-11` | 834×1194 | narrow |
 | `ipad-pro-129` | 1024×1366 | narrow |
 
-{% hint style="info" %}
-For tablets, use orientation selectors to generate both portrait and landscape: `ipad/LP`
-{% endhint %}
+!!! info
+
+    For tablets, use orientation selectors to generate both portrait and landscape: `ipad/LP`
 
 #### Web Breakpoints
 

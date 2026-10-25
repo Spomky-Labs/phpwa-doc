@@ -2,13 +2,13 @@
 
 Progressive Web Apps may have icons of multiple formats and sizes to be correctly shown on targeted plaforms. This task may become boring as your application evolves. The bundle provides a simple console command to ease the creation of these icons.
 
-{% hint style="warning" %}
-**Deprecated**: The `pwa:create:icons` command is deprecated. Prefer declaring icons in your manifest configuration and using `pwa:compile` to generate them automatically.
-{% endhint %}
+!!! warning
 
-{% hint style="warning" %}
-Icons shall be square images
-{% endhint %}
+    **Deprecated**: The `pwa:create:icons` command is deprecated. Prefer declaring icons in your manifest configuration and using `pwa:compile` to generate them automatically.
+
+!!! warning
+
+    Icons shall be square images
 
 ### Image Processor
 
@@ -19,16 +19,14 @@ The icon command requires an image processor to work to be declared in the confi
 
 You can use a custom service if needed. It must implement the interface `SpomkyLabs\PwaBundle\ImageProcessor\ImageProcessor`.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     image_processor: 'pwa.image_processor.imagick'
 ```
-{% endcode %}
 
-{% hint style="warning" %}
-SVG format is currently only supported by the Imagick processor.
-{% endhint %}
+!!! warning
+
+    SVG format is currently only supported by the Imagick processor.
 
 ### Resizing Icons
 
@@ -51,9 +49,9 @@ pwa:
             - ...
 ```
 
-{% hint style="info" %}
-This configuration is to be adapt depending on the icon type (application, shortcut, widget...)
-{% endhint %}
+!!! info
+
+    This configuration is to be adapt depending on the icon type (application, shortcut, widget...)
 
 ### Formats And Sizes
 

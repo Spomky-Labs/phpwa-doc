@@ -4,8 +4,7 @@ The Share Target feature enhances the functionality of Progressive Web Apps (PWA
 
 In the example below, the PWA indicates it can receive image files. The files are sent to the application using a `POST` request to `/share-target` and `multipart/form-data` encoding. The shared file is in the request body `file` member.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -18,11 +17,10 @@ pwa:
                       - name: "file",
                         accept: ["image/*"]
 ```
-{% endcode %}
 
-{% hint style="info" %}
-The `POST` request is ideally replied with an _HTTP 303 See Other redirect_ to avoid multiple `POST` requests from being submitted if a page refresh was initiated by the user, for example.
-{% endhint %}
+!!! info
+
+    The `POST` request is ideally replied with an _HTTP 303 See Other redirect_ to avoid multiple `POST` requests from being submitted if a page refresh was initiated by the user, for example.
 
 ### `action` Parameter
 

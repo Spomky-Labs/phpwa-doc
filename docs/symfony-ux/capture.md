@@ -17,8 +17,7 @@ The Media Capture API and Screen Capture API are widely supported in modern brow
 
 ### Basic Camera and Microphone Capture
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/capture') }}>
     <video id="preview" autoplay playsinline></video>
 
@@ -37,12 +36,10 @@ The Media Capture API and Screen Capture API are widely supported in modern brow
     });
 </script>
 ```
-{% endcode %}
 
 ### Screen Capture with Recording
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/capture') }}>
     <video id="screen-preview" autoplay playsinline></video>
 
@@ -82,12 +79,10 @@ The Media Capture API and Screen Capture API are widely supported in modern brow
     });
 </script>
 ```
-{% endcode %}
 
 ### Capture with Region Restriction
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/capture') }}>
     <div id="content-to-share" {{ stimulus_target('@pwa/capture', 'element') }}>
         This specific area will be captured
@@ -109,7 +104,6 @@ The Media Capture API and Screen Capture API are widely supported in modern brow
     });
 </script>
 ```
-{% endcode %}
 
 ### Parameters
 
@@ -168,9 +162,9 @@ The `capture` action initiates screen sharing with advanced options.
 * `element`: DOM element to which the screen capture should be restricted. When this target is set and the `capture` action is used, the capture will be automatically restricted to this element's bounds.
 * `region`: DOM element defining the region to which the captured video should be cropped. When this target is set and the `capture` action is used, the video will be automatically cropped to this region.
 
-{% hint style="info" %}
-The `restrictToElement` and `restrictToRegion` features use the Region Capture and Element Capture APIs, which may not be supported in all browsers. Check compatibility before using these features.
-{% endhint %}
+!!! info
+
+    The `restrictToElement` and `restrictToRegion` features use the Region Capture and Element Capture APIs, which may not be supported in all browsers. Check compatibility before using these features.
 
 ### Events
 

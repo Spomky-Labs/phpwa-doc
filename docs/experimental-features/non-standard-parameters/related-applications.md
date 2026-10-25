@@ -4,8 +4,7 @@ The `prefer_related_applications` member is a boolean value that specifies that 
 
 If the `prefer_related_applications` member is set to `true`, the user agent might suggest installing one of the related applications instead of this web application.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         prefer_related_applications: true
@@ -18,7 +17,6 @@ pwa:
             - platform: "windows"
               url: "https://apps.microsoft.com/store/detail/example-app1/id123456789"
 ```
-{% endcode %}
 
 Currently known possible values for the platform member are as follows;
 

@@ -22,16 +22,15 @@ This component is particularly useful for:
 * Can display any DOM content (not just video)
 * Currently experimental in other browsers
 
-{% hint style="info" %}
-The component automatically falls back to classic PiP for video elements when Document PiP is not available.
-{% endhint %}
+!!! info
+
+    The component automatically falls back to classic PiP for video elements when Document PiP is not available.
 
 ## Usage
 
 ### Basic Video Picture-in-Picture
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
     <div {{ stimulus_target('@pwa/picture-in-picture', 'container') }}>
         <video
@@ -57,12 +56,10 @@ The component automatically falls back to classic PiP for video elements when Do
     });
 </script>
 ```
-{% endcode %}
 
 ### Video Player with PiP Controls
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
     <div class="video-player" {{ stimulus_target('@pwa/picture-in-picture', 'container') }}>
         <video
@@ -112,12 +109,10 @@ The component automatically falls back to classic PiP for video elements when Do
     });
 </script>
 ```
-{% endcode %}
 
 ### Document PiP (Any Content)
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
     <div {{ stimulus_target('@pwa/picture-in-picture', 'container') }}>
         <div
@@ -163,12 +158,10 @@ The component automatically falls back to classic PiP for video elements when Do
     });
 </script>
 ```
-{% endcode %}
 
 ### Video Conference with PiP
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
     <div class="video-conference" {{ stimulus_target('@pwa/picture-in-picture', 'container') }}>
         <div
@@ -210,12 +203,10 @@ The component automatically falls back to classic PiP for video elements when Do
     });
 </script>
 ```
-{% endcode %}
 
 ### Live Stream Monitor
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
     <div class="stream-monitor" {{ stimulus_target('@pwa/picture-in-picture', 'container') }}>
         <div
@@ -251,12 +242,10 @@ The component automatically falls back to classic PiP for video elements when Do
     });
 </script>
 ```
-{% endcode %}
 
 ### Music Player with Lyrics
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
     <div class="music-player" {{ stimulus_target('@pwa/picture-in-picture', 'container') }}>
         <div
@@ -301,7 +290,6 @@ The component automatically falls back to classic PiP for video elements when Do
     });
 </script>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -493,8 +481,7 @@ When using Document PiP, you can style the floating content:
 
 ## Complete Example: Multi-Feature Video Player
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
     <div class="advanced-player" {{ stimulus_target('@pwa/picture-in-picture', 'container') }}>
         <video
@@ -680,4 +667,3 @@ When using Document PiP, you can style the floating content:
     }
 </style>
 ```
-{% endcode %}

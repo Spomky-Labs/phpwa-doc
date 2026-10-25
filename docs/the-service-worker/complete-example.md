@@ -2,8 +2,7 @@
 
 This page shows a comprehensive service worker configuration using all available features.
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -84,7 +83,6 @@ pwa:
             # Navigation preload
             navigation_preload: true
 ```
-{% endcode %}
 
 ## What This Configuration Does
 
@@ -116,8 +114,7 @@ Static resources are cached with long expiration times for instant loading:
 
 Add push notification support alongside caching:
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 self.addEventListener('push', (event) => {
     const data = event.data?.json() ?? {};
     const title = data.title ?? 'New notification';
@@ -137,14 +134,12 @@ self.addEventListener('notificationclick', (event) => {
     event.waitUntil(clients.openWindow(url));
 });
 ```
-{% endcode %}
 
 ## Combining with Periodic Sync
 
 Add periodic background sync for content updates:
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 const syncContent = async () => {
     const cache = await openCache('pages-cache');
     const response = await fetch('/api/content/latest');
@@ -155,13 +150,12 @@ const syncContent = async () => {
 
 registerPeriodicSyncTask('content-sync', syncContent);
 ```
-{% endcode %}
 
 ## Related Documentation
 
 - [Configuration](configuration.md) - Service worker configuration reference
 - [Content Security Policy](content-security-policy.md) - CSP and nonce support
-- [Workbox](workbox/) - All Workbox features
+- [Workbox](workbox/README.md) - All Workbox features
 - [Push Notifications](push-notifications.md) - Web Push setup
 - [Periodic Sync](periodic-sync.md) - Background periodic sync
 - [Custom Cache Strategy](workbox/custom-cache-strategy.md) - Programmatic cache strategies

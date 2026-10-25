@@ -24,16 +24,15 @@ The Contact Picker API is currently only available on Android devices with Chrom
 * iOS Safari: Not supported
 * Firefox: Not supported
 
-{% hint style="warning" %}
-Always provide fallback behavior for browsers and platforms that don't support the Contact Picker API. The component will dispatch an `unavailable` event when the API is not available.
-{% endhint %}
+!!! warning
+
+    Always provide fallback behavior for browsers and platforms that don't support the Contact Picker API. The component will dispatch an `unavailable` event when the API is not available.
 
 ## Usage
 
 ### Basic Contact Selection
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
     <h2>Select a Contact</h2>
 
@@ -72,12 +71,10 @@ Always provide fallback behavior for browsers and platforms that don't support t
     });
 </script>
 ```
-{% endcode %}
 
 ### Multiple Contact Selection
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
     <h2>Invite Friends</h2>
 
@@ -182,12 +179,10 @@ Always provide fallback behavior for browsers and platforms that don't support t
     }
 </style>
 ```
-{% endcode %}
 
 ### Form Integration
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
     <form id="contact-form">
         <h2>Add Emergency Contact</h2>
@@ -307,12 +302,10 @@ Always provide fallback behavior for browsers and platforms that don't support t
     }
 </style>
 ```
-{% endcode %}
 
 ### Email Composer
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
     <div class="email-composer">
         <h2>Compose Email</h2>
@@ -509,12 +502,10 @@ Always provide fallback behavior for browsers and platforms that don't support t
     }
 </style>
 ```
-{% endcode %}
 
 ### Event Attendees Selector
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
     <div class="event-planner">
         <h2>Create Event</h2>
@@ -816,12 +807,10 @@ Always provide fallback behavior for browsers and platforms that don't support t
     }
 </style>
 ```
-{% endcode %}
 
 ### Contact Import for CRM
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
     <div class="crm-import">
         <h2>Import Contacts to CRM</h2>
@@ -1081,7 +1070,6 @@ Always provide fallback behavior for browsers and platforms that don't support t
     }
 </style>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -1137,9 +1125,9 @@ Each contact object may include:
 * `address` (string[]|null): Array of physical addresses
 * `icon` (Blob|null): Contact's photo/avatar as a Blob (if available and supported)
 
-{% hint style="info" %}
-All contact properties are optional and may be null or empty arrays depending on what information is available in the device's contact book.
-{% endhint %}
+!!! info
+
+    All contact properties are optional and may be null or empty arrays depending on what information is available in the device's contact book.
 
 Example:
 ```javascript
@@ -1289,8 +1277,7 @@ function deduplicateContacts(contacts) {
 
 ## Complete Example: Contact Management App
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/contact-picker') }}>
     <div class="contact-manager">
         <header class="app-header">
@@ -1653,7 +1640,6 @@ function deduplicateContacts(contacts) {
     }
 </style>
 ```
-{% endcode %}
 
 ## Troubleshooting
 
@@ -1730,6 +1716,6 @@ if (contact.icon) {
 | Safari (Desktop) | ✗ Not supported |
 | Firefox | ✗ Not supported |
 
-{% hint style="danger" %}
-Due to extremely limited platform support, the Contact Picker API should be treated as a progressive enhancement. Always provide alternative ways to input contact information.
-{% endhint %}
+!!! danger
+
+    Due to extremely limited platform support, the Contact Picker API should be treated as a progressive enhancement. Always provide alternative ways to input contact information.

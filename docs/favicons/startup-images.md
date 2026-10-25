@@ -23,8 +23,7 @@ iOS requires specific splash screen images for each device size and orientation.
 
 By default, when you configure favicons, startup images are automatically created:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -32,7 +31,6 @@ pwa:
             src: assets/icon.svg
             background_color: '#ffffff'
 ```
-{% endcode %}
 
 **What gets generated:**
 - iOS portrait images (all device sizes)
@@ -40,9 +38,9 @@ pwa:
 - Correct media queries in HTML
 - Dark mode variants (if configured)
 
-{% hint style="success" %}
-The bundle generates 30+ startup images automatically to cover all iOS devices and orientations!
-{% endhint %}
+!!! success
+
+    The bundle generates 30+ startup images automatically to cover all iOS devices and orientations!
 
 ## Configuration Options
 
@@ -50,8 +48,7 @@ The bundle generates 30+ startup images automatically to cover all iOS devices a
 
 If you don't want startup images (not recommended for iOS):
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -59,7 +56,6 @@ pwa:
             src: assets/icon.svg
         use_start_image: false
 ```
-{% endcode %}
 
 **Downsides:**
 - iOS shows white screen during launch
@@ -70,8 +66,7 @@ pwa:
 
 Dark mode icons automatically generate dark startup images:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -86,7 +81,6 @@ pwa:
             src: assets/icon_dark.svg
             background_color: '#000000'
 ```
-{% endcode %}
 
 **Result:**
 - Light startup images for light mode (from `default`)
@@ -182,6 +176,6 @@ All this is automatic when you include `{{ pwa() }}` in your template.
 - PNG compression applied
 - Only downloaded as needed (per device)
 
-{% hint style="info" %}
-For most PWAs, the user experience benefit of startup images far outweighs the minimal performance impact.
-{% endhint %}
+!!! info
+
+    For most PWAs, the user experience benefit of startup images far outweighs the minimal performance impact.

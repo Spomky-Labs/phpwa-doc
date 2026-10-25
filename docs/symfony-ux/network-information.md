@@ -25,16 +25,15 @@ The Network Information API is currently supported in Chromium-based browsers (C
 * `saveData`: Widely supported (Chrome, Edge, Opera, Firefox)
 * `type`: Limited support (Chrome, Edge on some devices)
 
-{% hint style="warning" %}
-Always provide fallback behavior for browsers that don't support the Network Information API. The component will emit an `unsupported` event when the API is unavailable.
-{% endhint %}
+!!! warning
+
+    Always provide fallback behavior for browsers that don't support the Network Information API. The component will emit an `unsupported` event when the API is unavailable.
 
 ## Usage
 
 ### Basic Network Detection
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
     <h2>Network Status</h2>
     <div id="network-display">Detecting network...</div>
@@ -58,12 +57,10 @@ Always provide fallback behavior for browsers that don't support the Network Inf
     });
 </script>
 ```
-{% endcode %}
 
 ### Adaptive Image Loading
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
     <h2>Photo Gallery</h2>
     <div id="gallery" class="image-grid"></div>
@@ -128,12 +125,10 @@ Always provide fallback behavior for browsers that don't support the Network Inf
     }
 </style>
 ```
-{% endcode %}
 
 ### Video Quality Adjustment
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
     <h2>Adaptive Video Player</h2>
 
@@ -216,12 +211,10 @@ Always provide fallback behavior for browsers that don't support the Network Inf
     }
 </style>
 ```
-{% endcode %}
 
 ### Conditional Preloading
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
     <h2>News Articles</h2>
 
@@ -332,12 +325,10 @@ Always provide fallback behavior for browsers that don't support the Network Inf
     }
 </style>
 ```
-{% endcode %}
 
 ### Data Saver Mode Detection
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
     <h2>Content Dashboard</h2>
 
@@ -414,12 +405,10 @@ Always provide fallback behavior for browsers that don't support the Network Inf
     }
 </style>
 ```
-{% endcode %}
 
 ### Network-Aware Feature Toggling
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
     <h2>Feature Dashboard</h2>
 
@@ -523,12 +512,10 @@ Always provide fallback behavior for browsers that don't support the Network Inf
     }
 </style>
 ```
-{% endcode %}
 
 ### Connection Type Monitoring
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
     <h2>Network Monitor</h2>
 
@@ -722,7 +709,6 @@ Always provide fallback behavior for browsers that don't support the Network Inf
     }
 </style>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -876,8 +862,7 @@ function getContentStrategy(connection) {
 
 ## Complete Example: Adaptive Media Gallery
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/network-information') }}>
     <div class="media-gallery">
         <header class="gallery-header">
@@ -1244,7 +1229,6 @@ function getContentStrategy(connection) {
     }
 </style>
 ```
-{% endcode %}
 
 ## Troubleshooting
 

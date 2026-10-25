@@ -2,7 +2,10 @@
 
 Progressive Web App screenshots enable richer installation UI. As shown below, by default only the application name and short name are visible.
 
-<figure><img src="../.gitbook/assets/Capture d&#x27;écran 2024-01-31 193350.png" alt=""><figcaption><p>GitHub installation UI</p></figcaption></figure>
+<figure markdown="span">
+  ![GitHub installation UI](../assets/images/capture-d-ecran-2024-01-31-193350.png)
+  <figcaption>GitHub installation UI</figcaption>
+</figure>
 
 However, by including screenshots in the web app manifest, the installation experience can be significantly improved. These screenshots give users a visual preview of the app, enhancing their understanding and increasing the likelihood of installation.
 
@@ -10,15 +13,15 @@ Screenshots should showcase the most important functionalities of your applicati
 
 In the example below, a selection of screenshots are visible and the user can navigate to show them all. On mobile devices, the interface is different, but shows the same information.
 
-<figure><img src="../.gitbook/assets/Capture d&#x27;écran 2024-02-01 101647.png" alt=""><figcaption></figcaption></figure>
+<figure markdown="span">
+  ![](../assets/images/capture-d-ecran-2024-02-01-101647.png)
+</figure>
 
 ## Generating Screenshots
 
 The recommended way to manage screenshots is using the `#[Screenshot]` PHP attribute on your controller methods. This approach automatically generates screenshots and integrates them into your manifest.
 
-{% content-ref url="../image-management/screenshots.md" %}
 [screenshots.md](../image-management/screenshots.md)
-{% endcontent-ref %}
 
 ## Manifest Parameters
 
@@ -69,6 +72,6 @@ Possible values:
 * `"narrow"`: For narrow screen devices, like phones.
 * `"wide"`: For wider screen devices, such as tablets or desktops.
 
-{% hint style="info" %}
-When using the `#[Screenshot]` attribute, `form_factor` is automatically calculated based on the screenshot dimensions.
-{% endhint %}
+!!! info
+
+    When using the `#[Screenshot]` attribute, `form_factor` is automatically calculated based on the screenshot dimensions.

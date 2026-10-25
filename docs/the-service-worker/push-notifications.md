@@ -16,6 +16,6 @@ self.addEventListener('push', async function (event) {
 });
 ```
 
-{% hint style="info" %}
-More examples to come
-{% endhint %}
+!!! info
+
+    More examples to come

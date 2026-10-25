@@ -19,9 +19,9 @@ Favicons are the small icons that appear in browser tabs, bookmarks, and address
 - Multiple formats needed (ICO, PNG, SVG)
 - Special icons for touch devices and pinned tabs
 
-{% hint style="info" %}
-Favicons are separate from app icons declared in the Web App Manifest, though they serve similar purposes. The bundle automatically generates both from a single source image.
-{% endhint %}
+!!! info
+
+    Favicons are separate from app icons declared in the Web App Manifest, though they serve similar purposes. The bundle automatically generates both from a single source image.
 
 ## Quick Setup
 
@@ -33,14 +33,13 @@ With this bundle, generating all necessary favicons takes just seconds. You only
 - Transparent background (highly recommended)
 - GD or Imagick PHP extension installed
 
-{% hint style="warning" %}
-SVG format is currently only supported by the Imagick processor.
-{% endhint %}
+!!! warning
+
+    SVG format is currently only supported by the Imagick processor.
 
 **Basic configuration:**
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     image_processor: 'pwa.image_processor.imagick' # or 'pwa.image_processor.gd'
   
@@ -49,7 +48,6 @@ pwa:
         default:
             src: icons/favicon.svg
 ```
-{% endcode %}
 
 **That's it!** The bundle automatically generates all required favicon sizes and formats for:
 - Desktop browsers (16x16, 32x32, 48x48)
@@ -122,8 +120,7 @@ pwa:
 
 You can customize any SVG attribute directly to control how your icon is rendered. The bundle allows you to modify fill colors, stroke properties, and any other SVG root attributes:
 
-{% code title="config/packages/pwa.yaml" overflow="wrap" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -134,7 +131,6 @@ pwa:
                 stroke: '#ffffff'
                 stroke-width: '2'
 ```
-{% endcode %}
 
 **Common SVG attributes you can modify:**
 - `fill`: Main fill color of the icon
@@ -151,8 +147,7 @@ Different platforms apply masks to icons (circular, rounded square, etc.). To en
 
 **The solution:** Scale down your icon to stay within the safe zone:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -160,23 +155,21 @@ pwa:
             src: assets/icon.svg
             image_scale: 80 # = 80% of the original size
 ```
-{% endcode %}
 
 **Recommendations:**
 - Use `image_scale: 80` (80%) for icons with text or detailed graphics
 - Use `image_scale: 100` for simple, centered logos
 - Test on different Android devices to verify appearance
 
-{% hint style="success" %}
-The bundle automatically adds transparent padding to maintain the original canvas size while scaling the icon content.
-{% endhint %}
+!!! success
+
+    The bundle automatically adds transparent padding to maintain the original canvas size while scaling the icon content.
 
 ### Background Color and Rounded Corners
 
 Create polished, platform-native looking icons by adding backgrounds and rounded corners:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -185,7 +178,6 @@ pwa:
             background_color: "#ffffff"
             border_radius: 10 # = 10% of the size. 50% is a circle.
 ```
-{% endcode %}
 
 **Parameters:**
 - `background_color`: Hex color code (e.g., `#ffffff` for white)
@@ -195,16 +187,15 @@ pwa:
   - `25`: Very rounded
   - `50`: Perfect circle
 
-{% hint style="info" %}
-The `border_radius` option only works when `background_color` is set. Without a background, corners remain transparent.
-{% endhint %}
+!!! info
+
+    The `border_radius` option only works when `background_color` is set. Without a background, corners remain transparent.
 
 ### Dark Mode Icons
 
 Support dark themes with dedicated dark mode icons. Modern devices automatically switch between light and dark icons based on system theme:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -219,16 +210,15 @@ pwa:
             src: assets/icon_dark.svg
             background_color: '#000000'
 ```
-{% endcode %}
 
 **How it works:**
 - `default`: Light theme icon (used when system is in light mode)
 - `dark`: Dark theme icon (used when system is in dark mode)
 - Browser automatically switches based on user's system theme preference
 
-{% hint style="info" %}
-When `dark` is defined, `default` becomes the light mode variant. Without `dark`, `default` is used for both themes.
-{% endhint %}
+!!! info
+
+    When `dark` is defined, `default` becomes the light mode variant. Without `dark`, `default` is used for both themes.
 
 ## Platform-Specific Features
 
@@ -236,8 +226,7 @@ When `dark` is defined, `default` becomes the light mode variant. Without `dark`
 
 Safari's pinned tabs use a special monochrome icon. Configure it with a single color:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -247,22 +236,20 @@ pwa:
         use_silhouette: true
         potrace: "/path/to/potrace" # Optional, only if in a non-conventional folder
 ```
-{% endcode %}
 
 **Silhouette mode:**
 
 Generates a single-color silhouette of your icon, perfect for Safari's minimalist pinned tab design.
 
-{% hint style="warning" %}
-Silhouette mode requires [potrace](https://en.wikipedia.org/wiki/Potrace) to be installed on your system. Install it via your package manager (e.g., `apt install potrace` on Debian/Ubuntu).
-{% endhint %}
+!!! warning
+
+    Silhouette mode requires [potrace](https://en.wikipedia.org/wiki/Potrace) to be installed on your system. Install it via your package manager (e.g., `apt install potrace` on Debian/Ubuntu).
 
 ### Windows Tiles
 
 Enable special tiles for Windows 8/10 Start Menu and taskbar:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -270,7 +257,6 @@ pwa:
             src: assets/icon.svg
         tile_color: "#f5ef06"
 ```
-{% endcode %}
 
 **What gets generated:**
 - Small tile (70x70)
@@ -278,9 +264,9 @@ pwa:
 - Wide tile (310x150)
 - Large tile (310x310)
 
-{% hint style="info" %}
-Windows tiles ignore `background_color` and `border_radius` options. The tile color is applied as a flat background by Windows itself.
-{% endhint %}
+!!! info
+
+    Windows tiles ignore `background_color` and `border_radius` options. The tile color is applied as a flat background by Windows itself.
 
 ## Legacy Browser Support
 
@@ -288,8 +274,7 @@ Windows tiles ignore `background_color` and `border_radius` options. The tile co
 
 By default, the bundle generates icons optimized for modern devices. Enable additional icon sizes for legacy browsers and older devices:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -297,7 +282,6 @@ pwa:
             src: assets/icon.svg
         low_resolution: true
 ```
-{% endcode %}
 
 **Additional sizes generated:**
 - 16x16 (very old browsers)
@@ -307,14 +291,13 @@ pwa:
 - 96x96 (Google TV)
 - 128x128 (Chrome Web Store)
 
-{% hint style="warning" %}
-Enabling `low_resolution` increases compilation time and generates more files. Only enable if you need legacy browser support.
-{% endhint %}
+!!! warning
+
+    Enabling `low_resolution` increases compilation time and generates more files. Only enable if you need legacy browser support.
 
 ## Complete Configuration Example
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     favicons:
         enabled: true
@@ -349,20 +332,19 @@ pwa:
         low_resolution: false
         potrace: 'potrace'
 ```
-{% endcode %}
 
-{% hint style="warning" %}
-**Deprecated options:** The following flat options are deprecated since 1.3.0 and will be removed in 2.0:
+!!! warning
 
-- `src` → use `default.src`
-- `src_dark` → use `dark.src`
-- `background_color` → use `default.background_color`
-- `background_color_dark` → use `dark.background_color`
-- `border_radius` → use `default.border_radius` and/or `dark.border_radius`
-- `image_scale` → use `default.image_scale` and/or `dark.image_scale`
+    **Deprecated options:** The following flat options are deprecated since 1.3.0 and will be removed in 2.0:
 
-Migrate to the `default` and `dark` structure for full control and future compatibility.
-{% endhint %}
+    - `src` → use `default.src`
+    - `src_dark` → use `dark.src`
+    - `background_color` → use `default.background_color`
+    - `background_color_dark` → use `dark.background_color`
+    - `border_radius` → use `default.border_radius` and/or `dark.border_radius`
+    - `image_scale` → use `default.image_scale` and/or `dark.image_scale`
+
+    Migrate to the `default` and `dark` structure for full control and future compatibility.
 
 ## What Gets Generated
 

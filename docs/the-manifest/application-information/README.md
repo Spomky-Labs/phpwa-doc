@@ -16,8 +16,7 @@ Here are the key properties of the manifest that are typically considered necess
 
 Minimal example of a manifest:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -28,8 +27,7 @@ pwa:
         background_color: "#ffffff"
         theme_color: "#4285f4"
 ```
-{% endcode %}
 
-{% hint style="info" %}
-As it has an impact on the Twig pages, you may need to clear the cache when the manifest is enabled.
-{% endhint %}
+!!! info
+
+    As it has an impact on the Twig pages, you may need to clear the cache when the manifest is enabled.

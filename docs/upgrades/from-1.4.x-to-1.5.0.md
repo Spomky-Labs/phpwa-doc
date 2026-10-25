@@ -12,8 +12,7 @@ The default resource cache strategy has been changed from `NetworkFirst` to `Sta
 
 **If you rely on NetworkFirst behavior**, explicitly set it in your configuration:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -21,7 +20,6 @@ pwa:
                 - match_callback: 'navigate'
                   strategy: 'NetworkFirst'
 ```
-{% endcode %}
 
 ### Broadcast Default Changed
 
@@ -35,8 +33,7 @@ The `broadcast` option for `StaleWhileRevalidate` resource caches now defaults t
 
 Three Workbox configuration options have been moved under a new `config` node. The old options still work but trigger deprecation warnings and will be removed in 2.0.0.
 
-{% code title="Before (1.4.x)" lineNumbers="true" %}
-```yaml
+```yaml title="Before (1.4.x)" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -44,10 +41,8 @@ pwa:
             version: '7.3.0'
             workbox_public_url: '/workbox'
 ```
-{% endcode %}
 
-{% code title="After (1.5.x)" lineNumbers="true" %}
-```yaml
+```yaml title="After (1.5.x)" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -56,7 +51,6 @@ pwa:
                 version: '7.3.0'
                 workbox_public_url: '/workbox'
 ```
-{% endcode %}
 
 | Old Option | New Option | Since |
 |------------|-----------|-------|
@@ -87,9 +81,9 @@ pwa:
             navigation_preload: true
 ```
 
-{% hint style="warning" %}
-Don't enable navigation preload if you precache HTML pages (via `offline_fallback` or `resource_caches` with `urls`), as the preloaded response would be ignored in favor of the cached version.
-{% endhint %}
+!!! warning
+
+    Don't enable navigation preload if you precache HTML pages (via `offline_fallback` or `resource_caches` with `urls`), as the preloaded response would be ignored in favor of the cached version.
 
 See [Navigation Preload](../the-service-worker/workbox/navigation-preload.md) for details.
 

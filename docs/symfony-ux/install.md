@@ -14,16 +14,15 @@ This component is essential for:
 
 The installation prompt API (`beforeinstallprompt` event) is supported in Chromium-based browsers (Chrome, Edge, Opera). Other browsers may use different installation mechanisms. The controller gracefully handles all scenarios.
 
-{% hint style="info" %}
-For the PWA to be installable, it must meet [PWA installation criteria](../how-to-install-remove-a-pwa.md): valid manifest, HTTPS, service worker, and appropriate icons.
-{% endhint %}
+!!! info
+
+    For the PWA to be installable, it must meet [PWA installation criteria](../how-to-install-remove-a-pwa.md): valid manifest, HTTPS, service worker, and appropriate icons.
 
 ## Usage
 
 ### Basic Install Button
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/install') }}>
     <button
         id="install-btn"
@@ -44,12 +43,10 @@ For the PWA to be installable, it must meet [PWA installation criteria](../how-t
     });
 </script>
 ```
-{% endcode %}
 
 ### Install Banner with Animation
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/install') }}>
     <div id="install-banner" class="install-banner" style="display:none;">
         <div class="banner-content">
@@ -151,12 +148,10 @@ For the PWA to be installable, it must meet [PWA installation criteria](../how-t
     }
 </style>
 ```
-{% endcode %}
 
 ### Install Card in App Settings
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/install') }}>
     <div class="settings-page">
         <h2>Settings</h2>
@@ -203,12 +198,10 @@ For the PWA to be installable, it must meet [PWA installation criteria](../how-t
     });
 </script>
 ```
-{% endcode %}
 
 ### Smart Install Prompt with User Tracking
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/install') }}>
     <button id="smart-install-btn" style="display:none;">
         Install App
@@ -264,7 +257,6 @@ For the PWA to be installable, it must meet [PWA installation criteria](../how-t
     });
 </script>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -283,9 +275,9 @@ Triggers the PWA installation prompt. This action will:
 {{ stimulus_action('@pwa/install', 'install', 'click') }}
 ```
 
-{% hint style="warning" %}
-This action only works if the browser supports installation prompts and the PWA meets all installation criteria.
-{% endhint %}
+!!! warning
+
+    This action only works if the browser supports installation prompts and the PWA meets all installation criteria.
 
 ## Targets
 

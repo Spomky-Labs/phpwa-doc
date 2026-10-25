@@ -21,14 +21,13 @@ Early Hints requires a compatible server:
 - **Apache** (with mod_http2)
 - **nginx** (version 1.25.3+)
 
-{% hint style="warning" %}
-If your server doesn't support Early Hints, the `Link` headers will still be sent with the main response. They won't provide the same performance benefit but won't cause any issues.
-{% endhint %}
+!!! warning
+
+    If your server doesn't support Early Hints, the `Link` headers will still be sent with the main response. They won't provide the same performance benefit but won't cause any issues.
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
   early_hints:
     enabled: true
@@ -36,7 +35,6 @@ pwa:
     preload_serviceworker: false  # Preload the service worker script
     preconnect_workbox_cdn: true  # Preconnect to Workbox CDN (if using CDN)
 ```
-{% endcode %}
 
 ## Options
 

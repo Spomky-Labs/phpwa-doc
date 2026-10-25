@@ -12,13 +12,11 @@ Setting the orientation helps ensure that the PWA looks good and functions well 
 
 Example:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         orientation: "landscape"
 ```
-{% endcode %}
 
 With the above manifest configuration, the application will default to `landscape` orientation when launched from a device's home screen.

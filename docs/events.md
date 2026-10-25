@@ -25,8 +25,7 @@ Dispatched **after** the manifest is compiled. Use this event to:
 
 Here's how to create an event listener for both events:
 
-{% code title="src/EventListener/ManifestListener.php" lineNumbers="true" %}
-```php
+```php title="src/EventListener/ManifestListener.php" linenums="1"
 namespace App\EventListener;
 
 use SpomkyLabs\PwaBundle\Event\PreManifestCompileEvent;
@@ -60,11 +59,10 @@ final readonly class ManifestListener
     }
 }
 ```
-{% endcode %}
 
-{% hint style="info" %}
-Event listeners are automatically registered when using the `#[AsEventListener]` attribute. No additional configuration needed!
-{% endhint %}
+!!! info
+
+    Event listeners are automatically registered when using the `#[AsEventListener]` attribute. No additional configuration needed!
 
 ## Use Cases
 
@@ -72,8 +70,7 @@ Event listeners are automatically registered when using the `#[AsEventListener]`
 
 Inject dynamic information like user preferences or runtime configuration:
 
-{% code title="src/EventListener/DynamicManifestListener.php" lineNumbers="true" %}
-```php
+```php title="src/EventListener/DynamicManifestListener.php" linenums="1"
 namespace App\EventListener;
 
 use SpomkyLabs\PwaBundle\Event\PreManifestCompileEvent;
@@ -100,14 +97,12 @@ final readonly class DynamicManifestListener
     }
 }
 ```
-{% endcode %}
 
 ### Multi-Locale Support
 
 Adapt the manifest for different locales:
 
-{% code title="src/EventListener/LocalizedManifestListener.php" lineNumbers="true" %}
-```php
+```php title="src/EventListener/LocalizedManifestListener.php" linenums="1"
 namespace App\EventListener;
 
 use SpomkyLabs\PwaBundle\Event\PreManifestCompileEvent;
@@ -141,14 +136,12 @@ final readonly class LocalizedManifestListener
     }
 }
 ```
-{% endcode %}
 
 ### Environment-Based Configuration
 
 Modify manifest based on the environment (dev/staging/prod):
 
-{% code title="src/EventListener/EnvironmentManifestListener.php" lineNumbers="true" %}
-```php
+```php title="src/EventListener/EnvironmentManifestListener.php" linenums="1"
 namespace App\EventListener;
 
 use SpomkyLabs\PwaBundle\Event\PreManifestCompileEvent;
@@ -176,14 +169,12 @@ final readonly class EnvironmentManifestListener
     }
 }
 ```
-{% endcode %}
 
 ### Logging and Validation
 
 Validate manifest data and log issues:
 
-{% code title="src/EventListener/ManifestValidationListener.php" lineNumbers="true" %}
-```php
+```php title="src/EventListener/ManifestValidationListener.php" linenums="1"
 namespace App\EventListener;
 
 use Psr\Log\LoggerInterface;
@@ -225,7 +216,6 @@ final readonly class ManifestValidationListener
     }
 }
 ```
-{% endcode %}
 
 ## Event API Reference
 

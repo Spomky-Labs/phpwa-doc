@@ -1,8 +1,8 @@
 # Asset Caching
 
-{% hint style="danger" %}
-Contains a breaking change compared to v1.0.x
-{% endhint %}
+!!! danger
+
+    Contains a breaking change compared to v1.0.x
 
 The cache is populated with all assets managed by Asset Mapper. By default, it includes all types of well recognized assets such as images, stylesheets or scripts:
 
@@ -12,8 +12,7 @@ The cache is populated with all assets managed by Asset Mapper. By default, it i
 
 This can be changed using the next configuration options:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -23,4 +22,3 @@ pwa:
                 enabled: true
                 regex: '/\.(css|jsx?)$/'
 ```
-{% endcode %}

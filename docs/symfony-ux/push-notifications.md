@@ -11,23 +11,23 @@ Web Push Notifications allow you to send timely, relevant updates to users even 
 * Handle subscription lifecycle events
 * Integrate with the Web Push Bundle for server-side notification delivery
 
-{% hint style="info" %}
-This component requires the [Web Push Bundle](https://web-push.spomky-labs.com/) to be installed and configured. The bundle handles server-side notification delivery using VAPID authentication.
-{% endhint %}
+!!! info
+
+    This component requires the [Web Push Bundle](https://web-push.spomky-labs.com/) to be installed and configured. The bundle handles server-side notification delivery using VAPID authentication.
 
 ## Browser Support
 
-<table><thead><tr><th width="200">Browser</th><th width="150">Desktop</th><th>Mobile</th></tr></thead><tbody>
-<tr><td>Chrome/Edge</td><td>✅ Full</td><td>✅ Full</td></tr>
-<tr><td>Firefox</td><td>✅ Full</td><td>✅ Full</td></tr>
-<tr><td>Safari</td><td>✅ 16.1+</td><td>✅ 16.4+</td></tr>
-<tr><td>Opera</td><td>✅ Full</td><td>✅ Full</td></tr>
-<tr><td>Samsung Internet</td><td>N/A</td><td>✅ Full</td></tr>
-</tbody></table>
+| Browser | Desktop | Mobile |
+|---|---|---|
+| Chrome/Edge | ✅ Full | ✅ Full |
+| Firefox | ✅ Full | ✅ Full |
+| Safari | ✅ 16.1+ | ✅ 16.4+ |
+| Opera | ✅ Full | ✅ Full |
+| Samsung Internet | N/A | ✅ Full |
 
-{% hint style="warning" %}
-Safari on macOS requires version 16.1+ and Safari on iOS requires version 16.4+. Web Push is not available in Safari Private Browsing mode.
-{% endhint %}
+!!! warning
+
+    Safari on macOS requires version 16.1+ and Safari on iOS requires version 16.4+. Web Push is not available in Safari Private Browsing mode.
 
 ## Prerequisites
 
@@ -41,15 +41,13 @@ composer require spomky-labs/web-push
 
 2. **Configure VAPID keys** in your `config/packages/web_push.yaml`:
 
-{% code title="config/packages/web_push.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/web_push.yaml" linenums="1"
 web_push:
     vapid:
         subject: 'mailto:your-email@example.com'
         public_key: '%env(VAPID_PUBLIC_KEY)%'
         private_key: '%env(VAPID_PRIVATE_KEY)%'
 ```
-{% endcode %}
 
 3. **Generate VAPID keys** using the Web Push Bundle command:
 
@@ -65,8 +63,7 @@ php bin/console web-push:generate:keys
 
 To implement Web Push, you should create either a Stimulus Controller to intercept events or a Twig Live Component. Below is an example of the latter. Please note that you must hook into the Service Worker to show the notifications to the user and allow action interaction
 
-{% code title="src/App/Twig/Component/WebPush.php" lineNumbers="true" %}
-```php
+```php title="src/App/Twig/Component/WebPush.php" linenums="1"
 <?php
 
 namespace App\Twig\Component;
@@ -125,10 +122,8 @@ class WebPush
 }
 
 ```
-{% endcode %}
 
-{% code title="templates/components/WebPush.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/components/WebPush.html.twig" linenums="1"
 <div {{ stimulus_controller('@pwa/web-push', { applicationServerKey: 'YOUR APPLICATION SERVER PUBLICKEY HERE'})|stimulus_controller('live') }} {{ attributes }}>
     <h2>Web Push Notifications</h2>
     <div>
@@ -154,7 +149,6 @@ class WebPush
 </div>
 
 ```
-{% endcode %}
 
 ### Service Worker Hooks
 
@@ -165,13 +159,11 @@ In your service wroker JS file (we consider it is in `assets/sw.js` in this exam
 * Simple: only a message. No payload.
 * Structured: a message, its payload and optionnaly actions
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 // Use one of the method
 registerPushTask(structuredPushNotificationSupport);
 //registerPushTask(simplePushNotificationSupport);
 ```
-{% endcode %}
 
 Let say we send the following message. This is a structured notification with buttons `'action1'` and `'action2'` .
 
@@ -194,8 +186,7 @@ use WebPush\Message;
 
 You can decide what to do when the user clicks on the button or the notification. In the example, we will use the data associated to the notification to decide where to redirect the user for `action1` , `action2` or a click on the notification itself.
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 // Button name "action1" is clicked
 registerNotificationAction('action1', async (event) => {
   const data = JSON.parse(event.notification.data);
@@ -215,23 +206,20 @@ registerNotificationAction('', async (event) => {
 });
 
 ```
-{% endcode %}
 
-{% hint style="info" %}
-The event is of type [NotificationEvent](https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent) and you can access the notification object. Read this page to know more.
-{% endhint %}
+!!! info
+
+    The event is of type [NotificationEvent](https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent) and you can access the notification object. Read this page to know more.
 
 As it can become difficult to manage several action names, there is a wildcard action `'*'` that can be declared. It is not recommended to declare any other handlers when the wildcard is set.
 
-{% code title="assets/sw.js" lineNumbers="true" %}
-```javascript
+```javascript title="assets/sw.js" linenums="1"
 registerNotificationAction('*', async (event) => {
   const data = JSON.parse(event.notification.data);
   const action = event.action || 'default';
   await clients.openWindow(data[action]);
 });
 ```
-{% endcode %}
 
 ## Best Practices
 

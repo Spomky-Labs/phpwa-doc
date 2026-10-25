@@ -4,15 +4,13 @@ The Launch Handler API allows developers to control how your PWA is launched. Fo
 
 This has one sub-field, `client_mode`, which contains a string value specifying how the app should be launched and navigated to.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         launch_handler:
             client_mode: "focus-existing"
 ```
-{% endcode %}
 
 If not specified, the default `client_mode` value is `auto`. Available values are:
 

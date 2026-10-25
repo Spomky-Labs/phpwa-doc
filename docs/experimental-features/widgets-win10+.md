@@ -1,8 +1,8 @@
 # Widgets (Win10+)
 
-{% hint style="warning" %}
-**Experimental Feature**: Windows Widgets for PWAs is currently an experimental feature primarily supported in Microsoft Edge on Windows 11+. The API and behavior may change.
-{% endhint %}
+!!! warning
+
+    **Experimental Feature**: Windows Widgets for PWAs is currently an experimental feature primarily supported in Microsoft Edge on Windows 11+. The API and behavior may change.
 
 Windows Widgets allow your PWA to provide mini-applications displayed on the Windows widgets dashboard. Users can interact with your app content without opening the full application.
 
@@ -18,8 +18,7 @@ PWA Widgets use the [Adaptive Cards](https://adaptivecards.io/) template format 
 
 Widgets are configured in the manifest section:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         widgets:
@@ -39,7 +38,6 @@ pwa:
               icons:
                   - src: 'images/widget-weather-icon.svg'
 ```
-{% endcode %}
 
 ## Configuration Reference
 
@@ -64,8 +62,7 @@ pwa:
 
 Create a controller that returns an Adaptive Cards template:
 
-{% code title="src/Controller/WidgetController.php" lineNumbers="true" %}
-```php
+```php title="src/Controller/WidgetController.php" linenums="1"
 <?php
 
 declare(strict_types=1);
@@ -113,7 +110,6 @@ final class WidgetController extends AbstractController
     }
 }
 ```
-{% endcode %}
 
 ## How the Service Worker Works
 
@@ -139,8 +135,7 @@ The bundle automatically generates service worker code that:
 
 You can configure multiple widgets:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         widgets:
@@ -163,7 +158,6 @@ pwa:
                   - src: 'images/widget-news.png'
                     label: 'News headlines'
 ```
-{% endcode %}
 
 ## Requirements and Limitations
 

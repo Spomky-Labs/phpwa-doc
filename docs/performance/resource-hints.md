@@ -11,8 +11,7 @@ Resource Hints allow browsers to perform optimizations like DNS lookups, TCP con
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
   resource_hints:
     enabled: true
@@ -33,7 +32,6 @@ pwa:
         as: image
         media: '(min-width: 768px)'
 ```
-{% endcode %}
 
 ## Usage
 
@@ -122,9 +120,9 @@ pwa:
 | `fetchpriority` | Priority hint: `high`, `low`, or `auto` | No |
 | `media` | Media query for responsive preloading | No |
 
-{% hint style="info" %}
-Fonts always require `crossorigin` attribute. If not specified, the bundle automatically adds `crossorigin="anonymous"` for font preloads.
-{% endhint %}
+!!! info
+
+    Fonts always require `crossorigin` attribute. If not specified, the bundle automatically adds `crossorigin="anonymous"` for font preloads.
 
 #### Asset Mapper Support
 
@@ -152,9 +150,9 @@ pwa:
 | `/fonts/custom.woff2` | `/fonts/custom.woff2` (unchanged) |
 | `https://cdn.example.com/font.woff2` | `https://cdn.example.com/font.woff2` (unchanged) |
 
-{% hint style="tip" %}
-Using Asset Mapper paths ensures your preload hints always point to the correct versioned assets, even after deployments.
-{% endhint %}
+!!! tip
+
+    Using Asset Mapper paths ensures your preload hints always point to the correct versioned assets, even after deployments.
 
 ## Auto-Detection
 
@@ -224,9 +222,9 @@ pwa:
 
 This ensures your resource hints benefit from HTTP 103 Early Hints when your server supports it.
 
-{% hint style="info" %}
-The `ResourceHintsListener` runs at priority 99, just after the `EarlyHintsListener` (priority 100), ensuring proper coordination between the two features.
-{% endhint %}
+!!! info
+
+    The `ResourceHintsListener` runs at priority 99, just after the `EarlyHintsListener` (priority 100), ensuring proper coordination between the two features.
 
 ## Best Practices
 
@@ -242,8 +240,7 @@ The `ResourceHintsListener` runs at priority 99, just after the `EarlyHintsListe
 
 ## Example: Complete Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
   resource_hints:
     enabled: true
@@ -270,4 +267,3 @@ pwa:
         as: image
         media: '(max-width: 1023px)'
 ```
-{% endcode %}

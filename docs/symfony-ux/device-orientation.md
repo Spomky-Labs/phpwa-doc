@@ -24,16 +24,15 @@ The Device Orientation API is primarily available on mobile devices (smartphones
 * Android Firefox: Full support
 * Desktop browsers: Limited support (requires device with sensors)
 
-{% hint style="warning" %}
-On iOS 13+, user permission is required and must be requested through a user gesture. The component handles this automatically but you need to trigger the initial action from a user interaction.
-{% endhint %}
+!!! warning
+
+    On iOS 13+, user permission is required and must be requested through a user gesture. The component handles this automatically but you need to trigger the initial action from a user interaction.
 
 ## Usage
 
 ### Basic Orientation Display
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
     throttle: 100
 }) }}>
@@ -93,12 +92,10 @@ On iOS 13+, user permission is required and must be requested through a user ges
     }
 </style>
 ```
-{% endcode %}
 
 ### Visual Device Representation
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
     throttle: 50
 }) }}>
@@ -224,12 +221,10 @@ On iOS 13+, user permission is required and must be requested through a user ges
     }
 </style>
 ```
-{% endcode %}
 
 ### Compass Application
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
     throttle: 100
 }) }}>
@@ -405,12 +400,10 @@ On iOS 13+, user permission is required and must be requested through a user ges
     }
 </style>
 ```
-{% endcode %}
 
 ### Spirit Level (Leveling Tool)
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
     throttle: 50
 }) }}>
@@ -589,12 +582,10 @@ On iOS 13+, user permission is required and must be requested through a user ges
     }
 </style>
 ```
-{% endcode %}
 
 ### Tilt-Based Game
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
     throttle: 30
 }) }}>
@@ -874,12 +865,10 @@ On iOS 13+, user permission is required and must be requested through a user ges
     }
 </style>
 ```
-{% endcode %}
 
 ### 360° Photo Viewer
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
     throttle: 50
 }) }}>
@@ -988,7 +977,6 @@ On iOS 13+, user permission is required and must be requested through a user ges
     }
 </style>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -1139,8 +1127,7 @@ if (typeof DeviceOrientationEvent.requestPermission === 'function') {
 
 ## Complete Example: AR Pointer
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
     throttle: 30
 }) }}>
@@ -1373,7 +1360,6 @@ if (typeof DeviceOrientationEvent.requestPermission === 'function') {
     }
 </style>
 ```
-{% endcode %}
 
 ## Troubleshooting
 
@@ -1439,6 +1425,6 @@ if (isLandscape) {
 | Desktop Firefox | △ Limited (requires sensors) |
 | Desktop Safari | △ Limited (requires sensors) |
 
-{% hint style="info" %}
-Device Orientation is primarily a mobile feature. Always test on real mobile devices with motion sensors for accurate results.
-{% endhint %}
+!!! info
+
+    Device Orientation is primarily a mobile feature. Always test on real mobile devices with motion sensors for accurate results.

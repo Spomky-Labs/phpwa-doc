@@ -8,8 +8,7 @@ By default, 30 fonts can be cached for 1 year. This only comprises fonts served 
 
 This can be changed using the next configuration options:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -20,14 +19,12 @@ pwa:
                 max_entries: 10
                 max_age: 30 days
 ```
-{% endcode %}
 
 ### Google Font Caching
 
 Fonts served by Google Fonts have a dedicated rule. It is enabled by default and you can disable it or customize some parameters.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -39,4 +36,3 @@ pwa:
                 max_entries: 20
                 max_age: 1 day
 ```
-{% endcode %}

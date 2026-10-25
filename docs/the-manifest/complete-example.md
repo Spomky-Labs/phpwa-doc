@@ -2,8 +2,7 @@
 
 Here's a comprehensive manifest configuration showing all available features:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -56,7 +55,6 @@ pwa:
         note_taking:
             note_taking_url: "app_note_taking"
 ```
-{% endcode %}
 
 ## Scope Extensions
 

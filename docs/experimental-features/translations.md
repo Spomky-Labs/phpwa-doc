@@ -4,8 +4,7 @@ The bundle can leverage the Symfony Translation component. The text you provide 
 
 These translations must be placed in a `pwa` domain (e.g. `pwa.en.yaml` or `pwa.fr.yaml`)
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -24,10 +23,8 @@ pwa:
                 - src: "icons/feature1-96x96.png"
                   sizes: [96]
 ```
-{% endcode %}
 
-{% code title="/translations/pwa.en.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/translations/pwa.en.yaml" linenums="1"
 app:
     name: "My App"
     short_name: "My App"
@@ -37,8 +34,7 @@ app:
             short_name: "Start chat"
             description: "Start a chat with your friends"
 ```
-{% endcode %}
 
-{% hint style="warning" %}
-This feature is in early development stage and may not work as expected. Use with caution
-{% endhint %}
+!!! warning
+
+    This feature is in early development stage and may not work as expected. Use with caution

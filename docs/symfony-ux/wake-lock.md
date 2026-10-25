@@ -15,16 +15,15 @@ This component is useful for applications such as:
 
 The Screen Wake Lock API is supported in most modern browsers including Chrome, Edge, and Safari. Always check browser compatibility and handle the case where the API is not available.
 
-{% hint style="info" %}
-Wake locks are automatically released when the page is not visible or when the user minimizes the browser.
-{% endhint %}
+!!! info
+
+    Wake locks are automatically released when the page is not visible or when the user minimizes the browser.
 
 ## Usage
 
 ### Basic Wake Lock Toggle
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/wake-lock') }}>
     <button {{ stimulus_action('@pwa/wake-lock', 'toggle', 'click') }}>
         Toggle Screen Wake Lock
@@ -41,12 +40,10 @@ Wake locks are automatically released when the page is not visible or when the u
     });
 </script>
 ```
-{% endcode %}
 
 ### Explicit Lock and Unlock
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/wake-lock') }}>
     <button {{ stimulus_action('@pwa/wake-lock', 'lock', 'click') }}>
         Keep Screen Awake
@@ -74,12 +71,10 @@ Wake locks are automatically released when the page is not visible or when the u
     });
 </script>
 ```
-{% endcode %}
 
 ### Recipe App Example
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/wake-lock') }} class="recipe-viewer">
     <div class="recipe-header">
         <h1>Chocolate Chip Cookies</h1>
@@ -109,7 +104,6 @@ Wake locks are automatically released when the page is not visible or when the u
     });
 </script>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -196,8 +190,7 @@ document.addEventListener('pwa--wake-lock:updated', (event) => {
 
 Here's a complete example for a meditation timer app:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/wake-lock') }} class="meditation-timer">
     <h2>Meditation Timer</h2>
 
@@ -263,4 +256,3 @@ Here's a complete example for a meditation timer app:
     });
 </script>
 ```
-{% endcode %}

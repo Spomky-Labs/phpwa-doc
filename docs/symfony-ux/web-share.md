@@ -14,16 +14,15 @@ This component is particularly useful for:
 
 The Web Share API is supported in most modern mobile browsers and increasingly in desktop browsers. The API requires user interaction (e.g., click) to trigger the share dialog.
 
-{% hint style="info" %}
-Always check for API support before using it, and provide a fallback for browsers that don't support the Web Share API.
-{% endhint %}
+!!! info
+
+    Always check for API support before using it, and provide a fallback for browsers that don't support the Web Share API.
 
 ## Usage
 
 ### Basic Text and URL Sharing
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/web-share') }}>
     <article>
         <h1>Amazing Article Title</h1>
@@ -49,12 +48,10 @@ Always check for API support before using it, and provide a fallback for browser
     });
 </script>
 ```
-{% endcode %}
 
 ### Sharing Current Page
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/web-share') }}>
     <button {{ stimulus_action('@pwa/web-share', 'share', 'click', {
         title: document.title,
@@ -65,12 +62,10 @@ Always check for API support before using it, and provide a fallback for browser
     </button>
 </div>
 ```
-{% endcode %}
 
 ### Sharing Files
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/web-share') }}>
     <input type="file" id="file-input" accept="image/*" multiple>
 
@@ -111,12 +106,10 @@ Always check for API support before using it, and provide a fallback for browser
     });
 </script>
 ```
-{% endcode %}
 
 ### Social Media Share with Fallback
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/web-share') }}>
     <article class="blog-post">
         <h1>{{ post.title }}</h1>
@@ -165,7 +158,6 @@ Always check for API support before using it, and provide a fallback for browser
     });
 </script>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -191,13 +183,13 @@ Triggers the native share dialog with the provided data. The action requires a `
 }) }}
 ```
 
-{% hint style="info" %}
-The `title` parameter may be ignored by some sharing targets. Not all apps will display the title you provide.
-{% endhint %}
+!!! info
 
-{% hint style="warning" %}
-When sharing files, the browser will download them before sharing. **Ensure files are small and of shareable types**. Refer to [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share#shareable_file_types) for acceptable file types.
-{% endhint %}
+    The `title` parameter may be ignored by some sharing targets. Not all apps will display the title you provide.
+
+!!! warning
+
+    When sharing files, the browser will download them before sharing. **Ensure files are small and of shareable types**. Refer to [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share#shareable_file_types) for acceptable file types.
 
 ### Shareable File Types
 
@@ -230,9 +222,9 @@ document.addEventListener('pwa--web-share:success', () => {
 });
 ```
 
-{% hint style="info" %}
-This event fires when the user selects a sharing target, not necessarily when the content is actually sent to that target.
-{% endhint %}
+!!! info
+
+    This event fires when the user selects a sharing target, not necessarily when the content is actually sent to that target.
 
 ### `pwa--web-share:error`
 
@@ -281,8 +273,7 @@ Common errors you might encounter:
 
 Here's a complete example with proper fallback handling:
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/web-share') }}>
     <article class="content">
         <h1 id="content-title">My Awesome Content</h1>
@@ -370,4 +361,3 @@ Here's a complete example with proper fallback handling:
     }
 </script>
 ```
-{% endcode %}

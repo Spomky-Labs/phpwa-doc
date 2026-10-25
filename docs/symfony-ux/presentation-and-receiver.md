@@ -19,17 +19,17 @@ The Presentation API has limited but growing support, primarily in Chromium-base
 
 **Support level:** Limited - Supported in Chrome and Edge on desktop and Android. Requires compatible hardware (Chromecast, wireless displays, or other secondary screens). Not supported in Safari or Firefox as of early 2025.
 
-{% hint style="warning" %}
-The Presentation API requires compatible hardware to function. Users need access to:
-- Chromecast devices
-- Miracast-compatible displays
-- Smart TVs with casting capabilities
-- Or physical secondary displays connected to the device
-{% endhint %}
+!!! warning
 
-{% hint style="info" %}
-Always check for presentation availability before offering this functionality to users. The Presentation controller emits an `availability-changed` event you can use to show/hide presentation controls.
-{% endhint %}
+    The Presentation API requires compatible hardware to function. Users need access to:
+    - Chromecast devices
+    - Miracast-compatible displays
+    - Smart TVs with casting capabilities
+    - Or physical secondary displays connected to the device
+
+!!! info
+
+    Always check for presentation availability before offering this functionality to users. The Presentation controller emits an `availability-changed` event you can use to show/hide presentation controls.
 
 ## Architecture
 
@@ -48,8 +48,7 @@ The presentation controller runs on the device that initiates the presentation.
 
 #### Basic Presentation Setup
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# presentation.html.twig - Controller page #}
 <div {{ stimulus_controller('@pwa/presentation', {
   urls: ['/receiver.html']
@@ -103,12 +102,10 @@ The presentation controller runs on the device that initiates the presentation.
   });
 </script>
 ```
-{% endcode %}
 
 #### Sending Messages to Receiver
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/presentation', {
   urls: ['/receiver.html']
 }) }}>
@@ -132,12 +129,10 @@ The presentation controller runs on the device that initiates the presentation.
   });
 </script>
 ```
-{% endcode %}
 
 #### Reconnecting to Existing Presentation
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/presentation', {
   urls: ['/receiver.html']
 }) }}>
@@ -162,7 +157,6 @@ The presentation controller runs on the device that initiates the presentation.
   });
 </script>
 ```
-{% endcode %}
 
 ### Receiver (Secondary Display)
 
@@ -170,8 +164,7 @@ The receiver runs on the secondary display and handles incoming messages.
 
 #### Basic Receiver Setup
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# receiver.html.twig - Receiver page #}
 <!DOCTYPE html>
 <html>
@@ -221,12 +214,10 @@ The receiver runs on the secondary display and handles incoming messages.
 </body>
 </html>
 ```
-{% endcode %}
 
 #### Two-Way Communication
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# Receiver can send messages back to controller #}
 <div {{ stimulus_controller('@pwa/receiver') }}>
   <div id="interactive-content">
@@ -260,18 +251,16 @@ The receiver runs on the secondary display and handles incoming messages.
   });
 </script>
 ```
-{% endcode %}
 
 ## Best Practices
 
 ### Check Availability First
 
-{% hint style="success" %}
-Always check for presentation display availability before showing presentation controls. This prevents showing features that won't work for the user.
-{% endhint %}
+!!! success
 
-{% code lineNumbers="true" %}
-```twig
+    Always check for presentation display availability before showing presentation controls. This prevents showing features that won't work for the user.
+
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/presentation', { urls: ['/receiver.html'] }) }}>
   <div id="presentation-section" class="hidden">
     <button id="present-btn">Present</button>
@@ -298,22 +287,20 @@ Always check for presentation display availability before showing presentation c
   });
 </script>
 ```
-{% endcode %}
 
 ### Handle Reconnection Gracefully
 
-{% hint style="info" %}
-Connection IDs are persisted in localStorage. Implement reconnection logic to allow users to resume presentations after page refreshes.
-{% endhint %}
+!!! info
+
+    Connection IDs are persisted in localStorage. Implement reconnection logic to allow users to resume presentations after page refreshes.
 
 ### Design for Large Screens
 
-{% hint style="success" %}
-The receiver typically runs on large displays (TVs, projectors). Design your receiver UI with larger fonts, higher contrast, and appropriate scaling for viewing from a distance.
-{% endhint %}
+!!! success
 
-{% code lineNumbers="true" %}
-```css
+    The receiver typically runs on large displays (TVs, projectors). Design your receiver UI with larger fonts, higher contrast, and appropriate scaling for viewing from a distance.
+
+```css linenums="1"
 /* receiver.css - Optimize for large displays */
 body {
   font-size: 48px;
@@ -333,16 +320,14 @@ h1 {
   padding: 4rem;
 }
 ```
-{% endcode %}
 
 ### Keep Controller and Receiver in Sync
 
-{% hint style="warning" %}
-Ensure your controller and receiver stay synchronized. Include state synchronization logic when connections are established or reconnected.
-{% endhint %}
+!!! warning
 
-{% code lineNumbers="true" %}
-```javascript
+    Ensure your controller and receiver stay synchronized. Include state synchronization logic when connections are established or reconnected.
+
+```javascript linenums="1"
 // Controller: Send current state when connection starts
 host.addEventListener('presentation:started', () => {
   const currentState = {
@@ -353,12 +338,10 @@ host.addEventListener('presentation:started', () => {
   host.controller.send({ params: currentState });
 });
 ```
-{% endcode %}
 
 ### Error Handling
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 // Wrap presentation.start() in try-catch
 startBtn.addEventListener('click', async () => {
   try {
@@ -375,14 +358,12 @@ startBtn.addEventListener('click', async () => {
   }
 });
 ```
-{% endcode %}
 
 ## Common Use Cases
 
 ### 1. Slide Presentation System
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# Controller #}
 <div {{ stimulus_controller('@pwa/presentation', { urls: ['/slides/receiver.html'] }) }}>
   <div class="presentation-controls">
@@ -446,12 +427,10 @@ startBtn.addEventListener('click', async () => {
   });
 </script>
 ```
-{% endcode %}
 
 ### 2. Digital Signage
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# Receiver for digital signage #}
 <div {{ stimulus_controller('@pwa/receiver') }}>
   <div id="signage-display" class="fullscreen">
@@ -518,12 +497,10 @@ startBtn.addEventListener('click', async () => {
   }
 </style>
 ```
-{% endcode %}
 
 ### 3. Multi-Display Gaming
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# Game controller on primary device #}
 <div {{ stimulus_controller('@pwa/presentation', { urls: ['/game/display.html'] }) }}>
   <canvas id="game-controller" width="400" height="600"></canvas>
@@ -590,12 +567,10 @@ startBtn.addEventListener('click', async () => {
   });
 </script>
 ```
-{% endcode %}
 
 ### 4. Collaborative Whiteboard
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 {# Shared whiteboard receiver #}
 <div {{ stimulus_controller('@pwa/receiver') }}>
   <canvas id="whiteboard" width="1920" height="1080"></canvas>
@@ -632,7 +607,6 @@ startBtn.addEventListener('click', async () => {
   });
 </script>
 ```
-{% endcode %}
 
 ## API Reference
 
@@ -647,13 +621,11 @@ startBtn.addEventListener('click', async () => {
 
 Array of URLs that can be presented on the secondary display. Typically contains a single URL pointing to your receiver page.
 
-{% code lineNumbers="true" %}
-```twig
+```twig linenums="1"
 <div {{ stimulus_controller('@pwa/presentation', {
   urls: ['/receiver.html', '/receiver-alt.html']
 }) }}>
 ```
-{% endcode %}
 
 #### Actions
 
@@ -663,11 +635,9 @@ Initiates a new presentation. Opens a browser dialog for the user to select a di
 
 **Returns:** `Promise<void>`
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 await host.controller.start();
 ```
-{% endcode %}
 
 ##### `reconnect()`
 
@@ -675,11 +645,9 @@ Attempts to reconnect to an existing presentation using the stored connection ID
 
 **Returns:** `Promise<void>`
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 await host.controller.reconnect();
 ```
-{% endcode %}
 
 ##### `send(params)`
 
@@ -688,8 +656,7 @@ Sends a message to the receiver.
 **Parameters:**
 - `params.params` (object): Data to send (will be JSON stringified)
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.controller.send({
   params: {
     action: 'update',
@@ -697,17 +664,14 @@ host.controller.send({
   }
 });
 ```
-{% endcode %}
 
 ##### `terminate()`
 
 Closes the presentation connection.
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.controller.terminate();
 ```
-{% endcode %}
 
 #### Events
 
@@ -718,13 +682,11 @@ Fired when presentation display availability changes or on initial connection.
 **Event detail:**
 - `availability.value` (boolean): Whether presentation displays are available
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('presentation:availability-changed', (e) => {
   console.log('Displays available:', e.detail.availability.value);
 });
 ```
-{% endcode %}
 
 ##### `started`
 
@@ -733,13 +695,11 @@ Fired when a presentation connection is successfully established.
 **Event detail:**
 - `id` (string): Connection ID
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('presentation:started', (e) => {
   console.log('Connection ID:', e.detail.id);
 });
 ```
-{% endcode %}
 
 ##### `terminated`
 
@@ -748,13 +708,11 @@ Fired when the presentation connection is closed.
 **Event detail:**
 - `id` (string): Connection ID that was terminated
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('presentation:terminated', (e) => {
   console.log('Connection terminated:', e.detail.id);
 });
 ```
-{% endcode %}
 
 ### Receiver
 
@@ -775,13 +733,11 @@ Fired when a message is received from the controller.
 **Event detail:**
 - `data` (object): Parsed JSON data from controller
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('receiver:message', (e) => {
   console.log('Received:', e.detail.data);
 });
 ```
-{% endcode %}
 
 ##### `close`
 
@@ -792,13 +748,11 @@ Fired when the connection is closed.
 - `reason` (string): Close reason
 - `message` (string): Close message
 
-{% code lineNumbers="true" %}
-```javascript
+```javascript linenums="1"
 host.addEventListener('receiver:close', (e) => {
   console.log('Connection closed:', e.detail.reason);
 });
 ```
-{% endcode %}
 
 ## Related Components
 

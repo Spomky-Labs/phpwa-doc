@@ -29,12 +29,10 @@ The `lang` parameter declares the default language of the text in the page. This
 
 ### Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         dir: "ltr"
         lang: "en"
 ```
-{% endcode %}

@@ -21,9 +21,9 @@ Navigation Preload is beneficial when:
 
 ## When NOT to Use Navigation Preload
 
-{% hint style="warning" %}
-**Do not enable Navigation Preload if you are precaching HTML pages.** If you're using `offline_fallback` with a page fallback or `preload_urls` to warm cache HTML pages, Navigation Preload would be redundant and may cause unnecessary network requests.
-{% endhint %}
+!!! warning
+
+    **Do not enable Navigation Preload if you are precaching HTML pages.** If you're using `offline_fallback` with a page fallback or `preload_urls` to warm cache HTML pages, Navigation Preload would be redundant and may cause unnecessary network requests.
 
 This is why Navigation Preload is **disabled by default** in this bundle.
 
@@ -31,8 +31,7 @@ This is why Navigation Preload is **disabled by default** in this bundle.
 
 To enable Navigation Preload:
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
@@ -40,7 +39,6 @@ pwa:
         workbox:
             navigation_preload: true
 ```
-{% endcode %}
 
 ## Browser Support
 

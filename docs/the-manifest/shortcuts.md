@@ -2,7 +2,9 @@
 
 PWA shortcuts can be added to any web app manifest by including the `shortcuts` property, which is an array of objects each representing a shortcut. This can enhance user engagement and make your app more accessible.
 
-<figure><img src="../.gitbook/assets/Capture d&#x27;écran 2024-02-01 114143.png" alt=""><figcaption></figcaption></figure>
+<figure markdown="span">
+  ![](../assets/images/capture-d-ecran-2024-02-01-114143.png)
+</figure>
 
 When designing shortcuts for your Progressive Web App, keep the following tips in mind:
 
@@ -12,14 +14,13 @@ When designing shortcuts for your Progressive Web App, keep the following tips i
 
 Adding shortcuts is a small but effective addition to enhance your PWA's user experience.
 
-{% hint style="info" %}
-Remember to periodically review your shortcuts to ensure they remain relevant and beneficial to your users. Shortcuts are a dynamic feature and should evolve as your application grows and changes.
-{% endhint %}
+!!! info
+
+    Remember to periodically review your shortcuts to ensure they remain relevant and beneficial to your users. Shortcuts are a dynamic feature and should evolve as your application grows and changes.
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -39,7 +40,6 @@ pwa:
                 - src: "icons/feature2-96x96.png"
                   sizes: [96]
 ```
-{% endcode %}
 
 ### `name` and `short_name` Parameters
 
@@ -59,8 +59,7 @@ The `url` parameter specifies the URL to which the user should be navigated when
 
 The URL can be a controller route name, with or without parameters, an absolute or a relative URL.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         shortcuts:
@@ -86,7 +85,6 @@ pwa:
                   path_type_reference: 3 # Network URL
 
 ```
-{% endcode %}
 
 The path\_type\_reference option expects an integer where:
 
@@ -95,9 +93,9 @@ The path\_type\_reference option expects an integer where:
 * `2`: relativepath (e.g. `../bar`)
 * `3`: network path (e.g. `//app.com/foo/bar`)
 
-{% hint style="warning" %}
-With absolut URLs, please make sure the Request Context is set. See [the router configuration](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) for more informaiton.
-{% endhint %}
+!!! warning
+
+    With absolut URLs, please make sure the Request Context is set. See [the router configuration](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) for more informaiton.
 
 ### `description` Parameter
 
@@ -109,6 +107,6 @@ Adding icons to shortcuts not only makes them visually appealing but also helps 
 
 See the definition [on the `icon` page](icons.md).
 
-{% hint style="warning" %}
-The presence of a 96x96 icon is highly recommended for shortcuts.
-{% endhint %}
+!!! warning
+
+    The presence of a 96x96 icon is highly recommended for shortcuts.

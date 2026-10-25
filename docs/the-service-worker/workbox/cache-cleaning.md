@@ -4,12 +4,10 @@ When the service worker changes and is activated, the cache is purged. This feat
 
 You can disable the cache purge, however you have to make sure the cached data is managed by other means.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         enabled: true
         workbox:
             clear_cache: false # Default to true
 ```
-{% endcode %}

@@ -6,8 +6,7 @@ The Sync Broadcast controller (`backgroundsync-queue`) monitors background sync 
 
 Enable the controller in your `assets/controllers.json`:
 
-{% code title="assets/controllers.json" lineNumbers="true" %}
-```json
+```json title="assets/controllers.json" linenums="1"
 {
     "controllers": {
         "@spomky-labs/pwa-bundle": {
@@ -18,12 +17,10 @@ Enable the controller in your `assets/controllers.json`:
     }
 }
 ```
-{% endcode %}
 
 ## Usage
 
-{% code title="templates/components/sync-status.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/components/sync-status.html.twig" linenums="1"
 <div {{ stimulus_controller('pwa/backgroundsync-queue', {
     channel: 'form-sync'
 }) }}
@@ -35,7 +32,6 @@ Enable the controller in your `assets/controllers.json`:
     <button type="button">Retry pending items</button>
 </div>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -72,8 +68,7 @@ Enable the controller in your `assets/controllers.json`:
 
 ## Example: Showing Pending Request Count
 
-{% code title="templates/components/sync-indicator.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/components/sync-indicator.html.twig" linenums="1"
 <div {{ stimulus_controller('pwa/backgroundsync-queue', {
     channel: 'form-sync'
 }) }}
@@ -92,14 +87,12 @@ function updateStatus(event) {
 }
 </script>
 ```
-{% endcode %}
 
 ## Related Configuration
 
 This controller works with the [Background Sync](../the-service-worker/workbox/background-sync.md) service worker feature. Make sure the `broadcast_channel` name in your service worker configuration matches the `channel` parameter:
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -109,4 +102,3 @@ pwa:
                   method: 'POST'
                   broadcast_channel: 'form-sync'  # Must match controller's channel param
 ```
-{% endcode %}

@@ -8,8 +8,7 @@ With protocol handlers, your PWA can provide a more integrated user experience, 
 
 ### Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
@@ -24,7 +23,6 @@ pwa:
                       foo: "bar"
               title: "Open with Feature #1"
 ```
-{% endcode %}
 
 ### Considerations When Using Protocol Handlers
 

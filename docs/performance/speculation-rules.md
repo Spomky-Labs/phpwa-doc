@@ -11,8 +11,7 @@ Speculation Rules is a browser API that allows you to hint which pages the user 
 
 ## Configuration
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
   speculation_rules:
     enabled: true
@@ -25,7 +24,6 @@ pwa:
         eagerness: conservative
         selector_matches: '.prerender-link'
 ```
-{% endcode %}
 
 ## Usage
 
@@ -77,9 +75,9 @@ pwa:
         eagerness: moderate
 ```
 
-{% hint style="warning" %}
-Prerendering consumes more resources than prefetching. Use it sparingly for pages with high navigation probability.
-{% endhint %}
+!!! warning
+
+    Prerendering consumes more resources than prefetching. Use it sparingly for pages with high navigation probability.
 
 ## Source Types
 
@@ -150,9 +148,9 @@ pwa:
         eagerness: conservative
 ```
 
-{% hint style="tip" %}
-Start with `moderate` or `conservative` eagerness and increase based on analytics data showing actual navigation patterns.
-{% endhint %}
+!!! tip
+
+    Start with `moderate` or `conservative` eagerness and increase based on analytics data showing actual navigation patterns.
 
 ## Advanced Options
 
@@ -203,9 +201,9 @@ Speculation Rules are supported in:
 
 For unsupported browsers, the script tag is simply ignored.
 
-{% hint style="info" %}
-Check [caniuse.com/speculation-rules](https://caniuse.com/speculation-rules) for current browser support.
-{% endhint %}
+!!! info
+
+    Check [caniuse.com/speculation-rules](https://caniuse.com/speculation-rules) for current browser support.
 
 ## Best Practices
 
@@ -223,8 +221,7 @@ Check [caniuse.com/speculation-rules](https://caniuse.com/speculation-rules) for
 
 ## Example: E-commerce Site
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
   speculation_rules:
     enabled: true
@@ -251,4 +248,3 @@ pwa:
         selector_matches: '.add-to-cart'
         eagerness: conservative
 ```
-{% endcode %}

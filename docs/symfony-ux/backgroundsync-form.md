@@ -6,8 +6,7 @@ The BackgroundSync Form controller handles form submission with offline support.
 
 Enable the controller in your `assets/controllers.json`:
 
-{% code title="assets/controllers.json" lineNumbers="true" %}
-```json
+```json title="assets/controllers.json" linenums="1"
 {
     "controllers": {
         "@spomky-labs/pwa-bundle": {
@@ -18,12 +17,10 @@ Enable the controller in your `assets/controllers.json`:
     }
 }
 ```
-{% endcode %}
 
 ## Usage
 
-{% code title="templates/contact/form.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/contact/form.html.twig" linenums="1"
 <form {{ stimulus_controller('pwa/backgroundsync-form', {
     redirection: path('app_contact_success'),
     headers: { 'X-Requested-With': 'XMLHttpRequest' },
@@ -38,7 +35,6 @@ Enable the controller in your `assets/controllers.json`:
     <button type="submit">Send</button>
 </form>
 ```
-{% endcode %}
 
 ## Parameters
 
@@ -88,8 +84,7 @@ The controller supports the following form encoding types:
 
 ## Example: Contact Form with Offline Support
 
-{% code title="config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -100,10 +95,8 @@ pwa:
                   max_retention_time: 2880  # 2 days
                   broadcast_channel: 'contact-sync'
 ```
-{% endcode %}
 
-{% code title="templates/contact/index.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/contact/index.html.twig" linenums="1"
 <form {{ stimulus_controller('pwa/backgroundsync-form', {
     redirection: path('app_contact_success'),
 }) }}
@@ -122,12 +115,10 @@ pwa:
     <div class="error" hidden>An error occurred. Your message will be sent when you're back online.</div>
 </form>
 ```
-{% endcode %}
 
 ## Example: JSON API Form
 
-{% code title="templates/api/form.html.twig" lineNumbers="true" %}
-```twig
+```twig title="templates/api/form.html.twig" linenums="1"
 <form {{ stimulus_controller('pwa/backgroundsync-form', {
     headers: {
         'Content-Type': 'application/json',
@@ -144,7 +135,6 @@ pwa:
     <button type="submit">Submit</button>
 </form>
 ```
-{% endcode %}
 
 ## Related Documentation
 

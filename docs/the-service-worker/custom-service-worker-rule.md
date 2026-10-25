@@ -4,9 +4,9 @@ If needed, you can define custom sections in the service worker appended by your
 
 To do so, you can create a service that implements `SpomkyLabs\PwaBundle\ServiceWorkerRule\ServiceWorkerRule`.
 
-{% hint style="info" %}
-The method process shall return valid JS as a string. This script will be executed by browsers.
-{% endhint %}
+!!! info
+
+    The method process shall return valid JS as a string. This script will be executed by browsers.
 
 ```php
 <?php

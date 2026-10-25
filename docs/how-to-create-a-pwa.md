@@ -10,8 +10,7 @@ The Manifest, typically a JSON file, encompasses crucial metadata detailing the 
 
 Below is an example:
 
-{% code title="/site.webmanifest" lineNumbers="true" %}
-```json
+```json title="/site.webmanifest" linenums="1"
 {
   "name": "My Progressive Web App",
   "short_name": "PWA",
@@ -34,14 +33,12 @@ Below is an example:
   ]
 }
 ```
-{% endcode %}
 
 This example manifest file includes essential information such as the app's name, a short name, description, start URL, display mode, and icons.
 
 The Manifest file integration is done into your HTML file using appropriate tag:
 
-{% code lineNumbers="true" %}
-```html
+```html linenums="1"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +51,6 @@ The Manifest file integration is done into your HTML file using appropriate tag:
 </html>
 
 ```
-{% endcode %}
 
 ### The Service Worker
 
@@ -62,8 +58,7 @@ The Service Worker, a background-executed JavaScript script, stands as the other
 
 Here's a simple example:
 
-{% code title="/service-worker.js" lineNumbers="true" %}
-```javascript
+```javascript title="/service-worker.js" linenums="1"
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('my-cache').then((cache) => {
@@ -86,7 +81,6 @@ self.addEventListener('fetch', (event) => {
   );
 });
 ```
-{% endcode %}
 
 This example service worker caches important files during the installation phase and then intercepts network requests, providing cached responses when available.
 

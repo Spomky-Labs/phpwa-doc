@@ -2,14 +2,12 @@
 
 The `scope` parameter in a Progressive Web App (PWA) manifest file is an important feature as it defines the set of URLs that the browser considers to be within your app. When a user navigates to a URL within the scope, they are kept within the full app experience.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     manifest:
         enabled: true
         scope: "/"
 ```
-{% endcode %}
 
 #### Defining Scope:
 

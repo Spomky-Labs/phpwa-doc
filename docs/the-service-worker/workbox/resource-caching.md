@@ -4,12 +4,13 @@ Developers can build more resilient and user-friendly web applications that perf
 
 The default strategy applied for resources is **StaleWhileRevalidate**. This means the cached version is served immediately for instant page loads, while the service worker fetches an updated version in the background. The `broadcast` option is also enabled by default, allowing your application to notify users when new content is available.
 
-{% hint style="info" %}
-**Changed in 1.5**: The default strategy was changed from `NetworkFirst` to `StaleWhileRevalidate` for better perceived performance. If you need the previous behavior, explicitly set `strategy: NetworkFirst` in your configuration.
-{% endhint %}
+!!! info
 
-<pre class="language-yaml" data-title="/config/packages/pwa.yaml" data-line-numbers><code class="lang-yaml"><strong>pwa:
-</strong>    serviceworker:
+    **Changed in 1.5**: The default strategy was changed from `NetworkFirst` to `StaleWhileRevalidate` for better perceived performance. If you need the previous behavior, explicitly set `strategy: NetworkFirst` in your configuration.
+
+```yaml title="/config/packages/pwa.yaml" linenums="1" hl_lines="1"
+pwa:
+    serviceworker:
         enabled: true
         src: "sw.js"
         workbox:
@@ -30,11 +31,11 @@ The default strategy applied for resources is **StaleWhileRevalidate**. This mea
                       - path: 'app_top_articles'
                         params:
                             display: 5
-</code></pre>
+```
 
-{% hint style="info" %}
-Please note that you can refer to any URLs, but only URLs served by your application will be cached.
-{% endhint %}
+!!! info
+
+    Please note that you can refer to any URLs, but only URLs served by your application will be cached.
 
 ### Match Callback
 
@@ -51,9 +52,9 @@ You can directly pass a regular expression as a string or using the JS `RegExp` 
 * `match_callback: '"/styles/.*\.css"'`
 * `match_callback: 'new RegExp("/styles/.*\.css")'`
 
-{% hint style="danger" %}
-Quotes are important!
-{% endhint %}
+!!! danger
+
+    Quotes are important!
 
 #### Javascript Callback
 
@@ -62,9 +63,9 @@ Workbox gives you the `url`, the `params`, the `request` and the `event` objects
 * `match_callback: '({url}) => url.pathname === "/special/url"'`
 * `match_callback: '({request}) => request.destination === "image"'`
 
-{% hint style="danger" %}
-Quotes are important!
-{% endhint %}
+!!! danger
+
+    Quotes are important!
 
 #### Prefixed Statements
 
@@ -117,9 +118,9 @@ final readonly class MyVideosMatchCallbackHandler implements MatchCallbackHandle
 }
 ```
 
-{% hint style="warning" %}
-The class shall be declared as a service.
-{% endhint %}
+!!! warning
+
+    The class shall be declared as a service.
 
 ### Cache Name Parameter
 
@@ -196,8 +197,7 @@ navigator.serviceWorker.addEventListener('message', async event => {
 
 By default, the page header used to check if the page is outdated or not are `Content-Length`, `ETag`, `Last-Modified`. These headers can be changed.
 
-{% code title="/config/packages/pwa.yaml" lineNumbers="true" %}
-```yaml
+```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
     serviceworker:
         workbox:
@@ -206,14 +206,14 @@ pwa:
                   broadcast_headers:
                       - 'X-App-Cache'
 ```
-{% endcode %}
 
 ### Cacheable Responses
 
 By default, all responses with a `0` or `200` status code and that match with the `match_callback` option will be cached. It is possible to tell Workbox to cache only resources with a dedicated header or other status codes:
 
-<pre class="language-yaml" data-title="/config/packages/pwa.yaml" data-line-numbers><code class="lang-yaml"><strong>pwa:
-</strong>    serviceworker:
+```yaml title="/config/packages/pwa.yaml" linenums="1" hl_lines="1"
+pwa:
+    serviceworker:
         enabled: true
         src: "sw.js"
         workbox:
@@ -222,4 +222,4 @@ By default, all responses with a `0` or `200` status code and that match with th
                   cacheable_response_headers:
                     'X-Is-Cacheable': 'true'
                   cacheable_response_statuses: [200]
-</code></pre>
+```
