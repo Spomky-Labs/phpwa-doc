@@ -1,39 +1,51 @@
----
-description: Turn your Symfony App into a Progressive Web App
----
+# The documentation of PWA Bundle
 
-# PHPWA Bundle
+The public documentation of [PWA Bundle](https://github.com/Spomky-Labs/pwa-bundle), progressive web apps
+for Symfony: the manifest, the service worker, favicons and images, and the Symfony UX components for the
+web APIs.
 
-<figure><picture><source srcset=".gitbook/assets/pwalogo-inverse.svg" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/pwalogo.svg" alt="PWA Logo"></picture><figcaption></figcaption></figure>
+Published with [MkDocs](https://www.mkdocs.org/) and
+[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) on GitHub Pages:
+**<https://pwa.spomky-labs.com/>**
 
-Hi 👋🏼,
+## Writing
 
-You're definitely here to learn more about Progressive Web Apps (PWA) and how to integrate them into your Symfony application. If you've landed here thanks to the wheel of fortune, no problem! Let's first explore what a PWA is.
+```bash
+make install   # the toolchain, in .venv, from requirements.txt
+make serve     # http://127.0.0.1:8000, rebuilt as you save
+make check     # the strict build continuous integration runs
+```
 
-### What is a PWA?
+`make check` is the gate: a broken internal link, an anchor that does not exist, a page absent from the
+navigation or a navigation entry without a page fails the build.
 
-Progressive Web Apps are modern web applications that provide a user experience similar to native apps, with the added advantage of being accessible directly from a web browser. Before delving into how to incorporate them into your Symfony application, let's take a closer look at what makes PWAs so compelling and powerful.
+## Where things are
 
-### PWA benefits
+| Path | What it is |
+|---|---|
+| `mkdocs.yml` | The site: theme, extensions, plugins, and the whole navigation |
+| `docs/` | The pages, one directory per section of the navigation |
+| `docs/assets/stylesheets/` | The look: `slabs-tokens.css`, copied as it is from the Slabs design kit, and `slabs.css`, which applies the guidelines to the theme |
+| `docs/assets/brand/`, `docs/assets/fonts/` | The project mark, the signature, the favicons and the share image of the design kit, and its typefaces (SIL Open Font License) |
+| `docs/overrides/` | Theme partials: the logo, the footer, the link to the repository |
+| `site-root/` | The root of the published site, copied to the root of the `gh-pages` branch: `CNAME`, and the `404.html` that sends the addresses of the former GitBook site to their version |
+| `requirements.txt` | The toolchain, pinned. Continuous integration installs exactly this |
+| `.github/workflows/check.yml` | The strict build, on every pull request |
+| `.github/workflows/pages.yml` | The publication: one version per branch, through mike |
+| `.github/workflows/default-branch.yml` | A new version branch becomes the default branch |
+| `docs/SUMMARY.md`, `.gitbook.yaml` | The GitBook space, until the domain points to GitHub Pages |
 
-Cost Efficiency and Development:
+How the documentation left GitBook, and the rules every documentation site of Slabs follows, are in
+[Spomky-Labs/docs](https://github.com/Spomky-Labs/docs/blob/main/MIGRATING.md).
 
-* PWAs are generally cheaper to build compared to native apps, saving on development expenses. No need for supporting several languages or platforms.
+## One branch per version
 
-PWAs enhance the user experience and accessibility:
+A branch of this repository is a version of the bundle: `1.4`, `1.5`, `1.6`, the three minor versions it
+maintains. A push to one of them publishes it under its own name, and the newest one also carries the
+`latest` alias, which the root of the site redirects to.
 
-* Apps-Like UI and Feel: PWAs provide an app-like user interface and feel, easily installable on users' devices.
-* Offline Capabilities: PWAs function seamlessly offline, ensuring users can access content even without an internet connection.
-* Push Notifications: PWAs support push notifications, enhancing user engagement by keeping them informed.
-* Better and Faster Performance: PWAs deliver better and faster performance, offering a smooth and responsive user experience.
-
-PWAs excel in discoverability and maintenance aspects:
-
-* SEO Friendly: PWAs are SEO-friendly, making them easily discoverable through search engines.
-* Automatic Updates: PWAs can be set up for automatic updates, ensuring users always have the latest version without manual interventions.
-
-PWAs come with technical advantages for developers:
-
-* Bypass the App Stores: PWAs can be distributed independently, bypassing the need for app store approval.
-* Device API Access: PWAs have access to device APIs, providing developers with more control and flexibility.
-* Faster Loading Times: PWAs load quickly, contributing to an efficient and responsive user experience.
+```bash
+git switch -c 1.7 1.6         # from the version it continues
+# in mkdocs.yml, point edit_uri at the new branch
+git push -u origin 1.7        # publishes it, and moves "latest" and the default branch
+```
