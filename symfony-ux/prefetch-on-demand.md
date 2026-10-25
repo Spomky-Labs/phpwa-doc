@@ -10,7 +10,7 @@ To acheive that, you can add the follwing HTML tag:
 <link rel="prefetch" href="/author-18">
 ```
 
-Another approch could be the use of the provided Stimulus Component to prefetch on demand and depending on the user navigation on the page. For example, no link tags are set and mouseover or any other user action will trigger the prefetch of the related pages.
+Another approach could be the use of the provided Stimulus Component to prefetch on demand and depending on the user navigation on the page. For example, no link tags are set and mouseover (or any other user action) will trigger the prefetch of the related pages.
 
 **Usage**
 
@@ -23,7 +23,7 @@ Another approch could be the use of the provided Stimulus Component to prefetch 
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </main>
-    <aside {{ stimulus_action('@pwa/prefetch-on-demand', 'mouseover', 'prefetch', {urls: ['/author-18', '/article-2', '/article-3']}) }}>
+    <aside {{ stimulus_action('@pwa/prefetch-on-demand', 'prefetch', 'mouseover', {urls: ['/author-18', '/article-2', '/article-3']}) }}>
         Author: <a href="/author-18">John Doe</a>
         Other articles: <a href="/article-2">How to Foo</a>
         Other articles: <a href="/article-3">How to Bar</a>
