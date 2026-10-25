@@ -16,7 +16,7 @@ Workbox solves these problems by providing:
 - Simple, declarative configuration
 - Extensive plugin ecosystem
 
-## How This Bundle Uses Workbox
+## How this bundle uses Workbox
 
 The PWA Bundle integrates Workbox deeply into Symfony, allowing you to:
 - Configure caching strategies in YAML
@@ -26,9 +26,9 @@ The PWA Bundle integrates Workbox deeply into Symfony, allowing you to:
 
 You don't need to write JavaScript - just configure your needs in `pwa.yaml`.
 
-## Core Concepts
+## Core concepts
 
-### Precaching (Warm Cache)
+### Precaching (warm cache)
 
 Precaching loads resources during service worker installation, before users request them. This creates a "warm cache" with instant access.
 
@@ -44,7 +44,7 @@ Precaching loads resources during service worker installation, before users requ
 - Static content users will definitely access
 - Core functionality pages (homepage, pricing, about)
 
-### Runtime Caching
+### Runtime caching
 
 Runtime caching handles requests as they occur, using different strategies based on content type and freshness requirements.
 
@@ -59,7 +59,7 @@ See [Resource Caching](resource-caching.md) for detailed strategy documentation.
 
 ## Configuration
 
-### Basic Configuration
+### Basic configuration
 
 Workbox is enabled by default when you enable the service worker:
 
@@ -88,14 +88,14 @@ pwa:
 
     Disabling Workbox removes all automatic caching, offline support, and related features. You'll need to implement everything manually in your service worker.
 
-### CDN vs Local Installation
+### CDN vs local installation
 
 **Type**: `boolean` (`use_cdn`)
 **Default**: `false`
 
 Workbox can be loaded from a CDN or served locally via Asset Mapper.
 
-#### Local Installation (Recommended)
+#### Local installation (recommended)
 
 **Benefits**:
 - Faster loading (same origin)
@@ -113,7 +113,7 @@ pwa:
             use_cdn: false  # Default - recommended
 ```
 
-#### CDN Installation
+#### CDN installation
 
 **When to use**:
 - Quick prototyping
@@ -133,7 +133,7 @@ pwa:
 
     When using local installation, Workbox files are automatically served by the bundle. You don't need to manually install or configure anything.
 
-### Workbox Version
+### Workbox version
 
 **Type**: `string`
 **Default**: `"7.3.0"`
@@ -175,7 +175,7 @@ pwa:
             idb_public_url: "/assets/idb"
 ```
 
-### Cache Manifest
+### Cache manifest
 
 **Type**: `boolean`
 **Default**: `true`
@@ -196,7 +196,7 @@ When enabled, all assets managed by Symfony's Asset Mapper are automatically add
 - Fonts
 - Other static assets
 
-### Clear Cache
+### Clear cache
 
 **Type**: `boolean`
 **Default**: `true`
@@ -212,7 +212,7 @@ pwa:
 
 When enabled, outdated caches are deleted when a new service worker activates, preventing storage bloat.
 
-## Complete Workbox Configuration
+## Complete Workbox configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -239,7 +239,7 @@ pwa:
             # ... more features
 ```
 
-## Available Features
+## Available features
 
 The Workbox integration provides several specialized caching features:
 
@@ -252,7 +252,7 @@ The Workbox integration provides several specialized caching features:
 - **[Cache Management](cache-names-and-purge.md)**: Cache naming and cleanup
 - **[Custom Strategies](custom-cache-strategy.md)**: Build your own caching logic
 
-## Next Steps
+## Next steps
 
 1. **Learn the basics**: Read about [caching strategies](resource-caching.md#strategy-parameter)
 2. **Configure assets**: Set up [asset caching](asset-caching.md) for your static files

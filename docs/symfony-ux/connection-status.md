@@ -1,4 +1,4 @@
-# Connection Status
+# Connection status
 
 The Connection Status component monitors and reacts to changes in the user's internet connection status. This component provides a simple yet powerful way to adapt your application's behavior when the user's device goes offline or comes back online, ensuring a seamless user experience regardless of network conditions.
 
@@ -13,7 +13,7 @@ This component is particularly useful for:
 * Implementing offline-first application strategies
 * Enhancing Progressive Web App capabilities
 
-## Browser Support
+## Browser support
 
 The Connection Status API is based on the `navigator.onLine` property and online/offline events, which are supported by all modern browsers on desktop and mobile platforms.
 
@@ -25,7 +25,7 @@ The Connection Status API is based on the `navigator.onLine` property and online
 
 ## Usage
 
-### Basic Connection Status Display
+### Basic connection status display
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status', {
@@ -43,7 +43,7 @@ The Connection Status API is based on the `navigator.onLine` property and online
 </div>
 ```
 
-### Styled Connection Notification
+### Styled connection notification
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status', {
@@ -90,7 +90,7 @@ The Connection Status API is based on the `navigator.onLine` property and online
 </style>
 ```
 
-### Conditional Feature Display
+### Conditional feature display
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status') }}>
@@ -172,7 +172,7 @@ The Connection Status API is based on the `navigator.onLine` property and online
 </style>
 ```
 
-### Form Behavior Based on Connection
+### Form behavior based on connection
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status') }}>
@@ -246,7 +246,7 @@ The Connection Status API is based on the `navigator.onLine` property and online
 </script>
 ```
 
-### Action Queue for Offline Operations
+### Action queue for offline operations
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status') }}>
@@ -392,7 +392,7 @@ The Connection Status API is based on the `navigator.onLine` property and online
 </style>
 ```
 
-### Real-Time Sync Indicator
+### Real-time sync indicator
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status') }}>
@@ -557,7 +557,7 @@ The Connection Status API is based on the `navigator.onLine` property and online
 </style>
 ```
 
-### Multiple Status Indicators
+### Multiple status indicators
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status', {
@@ -723,7 +723,7 @@ document.addEventListener('pwa--connection-status:status-changed', (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Provide clear feedback**: Always inform users about their connection status
 2. **Graceful degradation**: Disable online-only features when offline
@@ -736,9 +736,9 @@ document.addEventListener('pwa--connection-status:status-changed', (event) => {
 9. **Handle edge cases**: Consider slow connections, intermittent connectivity
 10. **Inform, don't alarm**: Frame offline messages positively when possible
 
-## Connection-Aware CSS Patterns
+## Connection-aware CSS patterns
 
-### Using Tailwind CSS
+### Using tailwind CSS
 
 If you're using Tailwind CSS, you can create custom variants for connection status:
 
@@ -766,7 +766,7 @@ Then use these variants in your HTML:
 </div>
 ```
 
-### Using Standard CSS
+### Using standard CSS
 
 ```css
 /* Base styles */
@@ -809,7 +809,7 @@ Then use these variants in your HTML:
 }
 ```
 
-## Complete Example: Offline-First Todo App
+## Complete example: Offline-first todo app
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/connection-status', {
@@ -1163,7 +1163,7 @@ async function checkRealConnectivity() {
 - Verify Tailwind variants are configured if using Tailwind CSS
 - Use browser inspector to confirm the attribute is being set
 
-## Browser Compatibility
+## Browser compatibility
 
 | Browser | Support |
 |---------|---------|

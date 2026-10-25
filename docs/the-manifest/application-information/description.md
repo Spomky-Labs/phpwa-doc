@@ -20,9 +20,9 @@ pwa:
         description: "Track your fitness goals, log workouts, and monitor progress with detailed analytics and personalized recommendations."
 ```
 
-## Best Practices
+## Best practices
 
-### Write Clear and Concise Descriptions
+### Write clear and concise descriptions
 
 **Good examples**:
 ```yaml
@@ -38,7 +38,7 @@ description: "The best, most amazing, revolutionary application you've ever used
 description: "This is an application that helps users to manage their daily tasks and organize their work efficiently while providing advanced features for productivity enhancement and team collaboration capabilities."  # Too long
 ```
 
-### Length Guidelines
+### Length guidelines
 
 - **Minimum**: 20-30 characters (meaningful description)
 - **Recommended**: 80-200 characters (sweet spot for most contexts)
@@ -49,7 +49,7 @@ description: "This is an application that helps users to manage their daily task
 - Very long descriptions get truncated in UI
 - 80-200 characters displays well across all platforms
 
-### Focus on Value
+### Focus on value
 
 Describe **what** the app does and **why** users should care:
 
@@ -61,7 +61,7 @@ description: "Find and book local services instantly, with secure payments and v
 description: "A platform for services."
 ```
 
-### Use Action-Oriented Language
+### Use action-oriented language
 
 Start with verbs that describe user actions:
 
@@ -71,7 +71,7 @@ description: "Browse recipes, save favorites, and generate shopping lists automa
 description: "Monitor your home security, control devices, and receive instant alerts."
 ```
 
-### Avoid Technical Jargon
+### Avoid technical jargon
 
 Use language your target audience understands:
 
@@ -83,9 +83,9 @@ description: "Share photos with friends and family in private groups with easy o
 description: "Leverage our distributed cloud-based photo storage infrastructure with advanced metadata indexing."
 ```
 
-## Practical Examples
+## Practical examples
 
-### E-commerce Application
+### E-commerce application
 
 ```yaml
 pwa:
@@ -93,7 +93,7 @@ pwa:
         description: "Shop for handcrafted items from independent artisans with fast shipping and buyer protection."
 ```
 
-### Productivity Tool
+### Productivity tool
 
 ```yaml
 pwa:
@@ -101,7 +101,7 @@ pwa:
         description: "Organize projects, assign tasks, track deadlines, and collaborate with your team in real-time."
 ```
 
-### Health & Fitness
+### Health & fitness
 
 ```yaml
 pwa:
@@ -109,7 +109,7 @@ pwa:
         description: "Log meals, count calories, track nutrients, and reach your health goals with personalized meal plans."
 ```
 
-### News/Content
+### News/content
 
 ```yaml
 pwa:
@@ -117,7 +117,7 @@ pwa:
         description: "Stay informed with breaking news, in-depth articles, and personalized content from trusted sources."
 ```
 
-### Social Platform
+### Social platform
 
 ```yaml
 pwa:
@@ -125,7 +125,7 @@ pwa:
         description: "Connect with people who share your interests, join communities, and discover engaging content daily."
 ```
 
-## Multilingual Descriptions
+## Multilingual descriptions
 
 For applications supporting multiple languages, use translatable objects:
 
@@ -143,9 +143,9 @@ pwa:
 
 See [Direction and Language](direction-and-language.md) for more details on translations.
 
-## Where Descriptions Appear
+## Where descriptions appear
 
-### Installation Dialog
+### Installation dialog
 
 When users add your PWA to their home screen:
 
@@ -157,7 +157,7 @@ Add "My App" to Home Screen?
 [Cancel] [Add]
 ```
 
-### App Info Screen
+### App info screen
 
 After installation, in the app details view:
 
@@ -169,13 +169,13 @@ Version: 1.0
 Size: 2.5 MB
 ```
 
-### Search Results
+### Search results
 
 When users search for PWAs in browsers or app stores.
 
-## Testing Your Description
+## Testing your description
 
-### 1. Check Length
+### 1. Check length
 
 Count characters including spaces:
 
@@ -184,30 +184,30 @@ const description = "Track expenses, create budgets, and achieve goals.";
 console.log(description.length); // Should be 80-200
 ```
 
-### 2. Read Aloud
+### 2. Read aloud
 
 Your description should sound natural when spoken:
 - Use a screen reader
 - Read it to someone unfamiliar with your app
 - Ask if they understand what the app does
 
-### 3. Test on Different Devices
+### 3. Test on different devices
 
 View your PWA's install prompt on:
 - Mobile devices (small screens truncate text)
 - Tablets (medium-length descriptions)
 - Desktops (full description visible)
 
-### 4. Validate Accessibility
+### 4. Validate accessibility
 
 Ensure your description is meaningful for screen reader users:
 - Avoid starting with "This app..." (redundant)
 - Don't use special characters unnecessarily
 - Be specific about functionality
 
-## Common Mistakes
+## Common mistakes
 
-### 1. Missing Description
+### 1. Missing description
 
 ```yaml
 pwa:
@@ -217,7 +217,7 @@ pwa:
 
 **Impact**: Users may not understand what your app does
 
-### 2. Using Company Name Only
+### 2. Using company name only
 
 ```yaml
 description: "Acme Corporation"  # ✗ Doesn't describe functionality
@@ -228,7 +228,7 @@ description: "Acme Corporation"  # ✗ Doesn't describe functionality
 description: "Acme Corporation's task management platform for remote teams."  # ✓ Descriptive
 ```
 
-### 3. Duplicating the App Name
+### 3. Duplicating the app name
 
 ```yaml
 name: "TaskMaster Pro"
@@ -241,7 +241,7 @@ name: "TaskMaster Pro"
 description: "Organize tasks, set priorities, and collaborate with your team."  # ✓ Adds value
 ```
 
-### 4. Marketing Speak
+### 4. Marketing speak
 
 ```yaml
 description: "Revolutionary, game-changing, next-generation productivity suite!"  # ✗ Hyperbole
@@ -252,7 +252,7 @@ description: "Revolutionary, game-changing, next-generation productivity suite!"
 description: "Manage tasks, track time, and collaborate with team members."  # ✓ Factual
 ```
 
-## SEO Considerations
+## SEO considerations
 
 While the manifest description isn't directly used for web search ranking, it can impact:
 
@@ -260,7 +260,7 @@ While the manifest description isn't directly used for web search ranking, it ca
 - **User intent matching**: Helps users find relevant apps
 - **Click-through rates**: Compelling descriptions increase installations
 
-## Related Properties
+## Related properties
 
 - [Name and Short Name](README.md#name-and-short-name) - How your app is titled
 - [Direction and Language](direction-and-language.md) - Localization

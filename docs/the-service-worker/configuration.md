@@ -4,7 +4,7 @@ The Service Worker is a JavaScript file that acts as a proxy between your web ap
 
 The PWA Bundle automatically generates and serves your service worker based on your configuration. You simply need to provide a source file (which can be empty to start) and configure the desired features.
 
-## Basic Configuration
+## Basic configuration
 
 The simplest configuration requires only specifying the source file:
 
@@ -22,7 +22,7 @@ This shorthand configuration:
 
     The `sw.js` file can start empty. The bundle will automatically populate it with functionality based on your configuration (Workbox, caching strategies, etc.).
 
-### Expanded Configuration
+### Expanded configuration
 
 The shorthand above is equivalent to:
 
@@ -42,7 +42,7 @@ pwa:
     php bin/console cache:clear
     ```
 
-## Configuration Options
+## Configuration options
 
 ### Enabled
 
@@ -119,7 +119,7 @@ pwa:
 - Use `/` for a global service worker
 - The scope must be at or above the service worker's location
 
-### Use Cache
+### Use cache
 
 **Type**: `boolean`
 **Default**: `true`
@@ -144,7 +144,7 @@ pwa:
 - Ensures latest version is always fetched
 - May increase server load
 
-### Skip Waiting
+### Skip waiting
 
 **Type**: `boolean`
 **Default**: `false`
@@ -180,7 +180,7 @@ pwa:
 - Applications designed to handle version differences
 - Single-page apps that can gracefully reload
 
-## Complete Configuration Example
+## Complete configuration example
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -198,7 +198,7 @@ pwa:
             # ... workbox options
 ```
 
-## Service Worker Initialization
+## Service worker initialization
 
 The service worker is automatically registered when you include the PWA Twig function in your template:
 
@@ -220,7 +220,7 @@ The registration script:
 - Handles update checks automatically
 - Respects your configuration (scope, use_cache, skip_waiting)
 
-### Manual Service Worker Updates
+### Manual service worker updates
 
 For advanced control over service worker updates, use the [Service Worker Stimulus Controller](../symfony-ux/service-worker.md):
 
@@ -232,7 +232,7 @@ For advanced control over service worker updates, use the [Service Worker Stimul
 </div>
 ```
 
-## Next Steps
+## Next steps
 
 - **Configure Workbox**: See [Workbox documentation](workbox/README.md) for caching strategies
 - **Custom Rules**: Create [custom service worker rules](custom-service-worker-rule.md) for advanced functionality

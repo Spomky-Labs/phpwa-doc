@@ -1,4 +1,4 @@
-# Localisation & Translations
+# Localisation & translations
 
 The bundle leverages the Symfony Translation component to provide full internationalization (i18n) support for your Progressive Web App. This allows you to create multilingual PWAs that automatically adapt to the user's language preferences.
 
@@ -16,7 +16,7 @@ The PWA Bundle automatically translates manifest content based on the user's loc
 
 **Translation domain**: All PWA translations use the `pwa` domain by default.
 
-## How Translation Works
+## How translation works
 
 When you configure your PWA manifest:
 
@@ -48,7 +48,7 @@ app:
     description: "La meilleure application de productivité"
 ```
 
-## Translatable Properties
+## Translatable properties
 
 The following properties are automatically translated by the bundle:
 
@@ -68,9 +68,9 @@ The following properties are automatically translated by the bundle:
 
     **Breaking Change**: The `start_url` property cannot be translated since version 1.3.0. See the [migration guide](../upgrades/from-1.2.x-to-1.3.0.md#start-url) for details.
 
-## Basic Configuration
+## Basic configuration
 
-### Step 1: Enable Locales in Symfony
+### Step 1: Enable locales in Symfony
 
 First, configure the locales your app supports:
 
@@ -85,7 +85,7 @@ framework:
 
 See the [Symfony Translation documentation](https://symfony.com/doc/current/translation.html) for more information about configuring locales.
 
-### Step 2: Configure Locale Placeholder
+### Step 2: Configure locale placeholder
 
 Add the `{locale}` placeholder to your manifest public URL:
 
@@ -103,7 +103,7 @@ pwa:
 
     **Important**: When using the `{locale}` placeholder, do **not** manually set the `lang` parameter. The bundle automatically sets it based on the current locale.
 
-### Step 3: Use the pwa() Twig Function
+### Step 3: Use the pwa() Twig function
 
 The `pwa()` Twig function automatically serves the correct localized manifest:
 
@@ -123,7 +123,7 @@ The `pwa()` Twig function automatically serves the correct localized manifest:
 
     **Automatic Detection**: Since version 1.3.0, you don't need to pass the locale to `pwa()`. It's automatically detected from `app.request.locale`.
 
-### Step 4: Create Translation Files
+### Step 4: Create translation files
 
 Create translation files for each locale in the `pwa` domain:
 
@@ -148,11 +148,11 @@ app:
     description: "Professionelles Aufgabenmanagement für Teams"
 ```
 
-## Translation File Formats
+## Translation file formats
 
 The PWA Bundle supports all Symfony translation formats.
 
-### YAML Format (Recommended)
+### YAML format (recommended)
 
 YAML is human-readable and easy to edit:
 
@@ -175,7 +175,7 @@ screenshots:
     dashboard: "Analytics dashboard"
 ```
 
-### XLIFF Format
+### XLIFF format
 
 XLIFF is ideal for professional translation workflows:
 
@@ -204,7 +204,7 @@ XLIFF is ideal for professional translation workflows:
 </xliff>
 ```
 
-### PHP Format
+### PHP format
 
 PHP format allows for dynamic translations:
 
@@ -226,7 +226,7 @@ return [
 ];
 ```
 
-### JSON Format
+### JSON format
 
 JSON is compatible with JavaScript tooling:
 
@@ -240,9 +240,9 @@ JSON is compatible with JavaScript tooling:
 }
 ```
 
-## Complete Use Cases
+## Complete use cases
 
-### Use Case 1: Multilingual E-Commerce App
+### Use case 1: Multilingual e-commerce app
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -345,7 +345,7 @@ shop:
             description: "Bestellungen verfolgen"
 ```
 
-### Use Case 2: Global News App with RTL Support
+### Use case 2: Global news app with RTL support
 
 ```yaml title="/config/packages/translation.yaml" linenums="1"
 framework:
@@ -407,7 +407,7 @@ news:
 
     **RTL Support**: The bundle automatically sets the `dir` property based on the locale. For RTL languages like Arabic (`ar`) and Hebrew (`he`), the direction is set to `"rtl"` automatically.
 
-### Use Case 3: SaaS Platform with Region-Specific Content
+### Use case 3: SaaS platform with region-specific content
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -427,7 +427,7 @@ pwa:
 
 Note: The `{locale}` placeholder in screenshot paths allows for locale-specific screenshots.
 
-## Generated Manifest Files
+## Generated manifest files
 
 When you configure translations with the `{locale}` placeholder, the bundle generates separate manifest files for each enabled locale.
 
@@ -476,9 +476,9 @@ public/
 }
 ```
 
-## Translation Workflow
+## Translation workflow
 
-### 1. Extract Translation Keys
+### 1. Extract translation keys
 
 Use Symfony's translation extraction command to find untranslated keys:
 
@@ -495,7 +495,7 @@ php bin/console translation:extract --force fr --domain=pwa
 php bin/console translation:extract --force de --domain=pwa
 ```
 
-### 2. Translate Content
+### 2. Translate content
 
 **Option A: Manual Translation**
 - Edit YAML/XLIFF files directly
@@ -511,7 +511,7 @@ php bin/console translation:extract --force de --domain=pwa
 - Import/export via API
 - Collaborative translation workflow
 
-### 3. Validate Translations
+### 3. Validate translations
 
 Check for missing translations:
 
@@ -523,7 +523,7 @@ php bin/console translation:extract --dump-messages en --domain=pwa
 php bin/console debug:translation --domain=pwa
 ```
 
-### 4. Clear Cache
+### 4. Clear cache
 
 After updating translations, clear the cache:
 
@@ -535,9 +535,9 @@ php bin/console cache:clear
 php bin/console cache:warmup
 ```
 
-## Testing Translations
+## Testing translations
 
-### 1. Test Manifest Generation
+### 1. Test manifest generation
 
 Verify that manifests are generated for each locale:
 
@@ -551,7 +551,7 @@ ls -la public/*.webmanifest
 # site.de.webmanifest
 ```
 
-### 2. Validate Manifest Content
+### 2. Validate manifest content
 
 Check that translations are applied correctly:
 
@@ -566,7 +566,7 @@ cat public/site.fr.webmanifest | jq '.name, .description'
 diff <(jq -S . public/site.en.webmanifest) <(jq -S . public/site.fr.webmanifest)
 ```
 
-### 3. Test in Browser
+### 3. Test in browser
 
 **Manual Testing**:
 ```bash
@@ -620,7 +620,7 @@ async function testManifestTranslations() {
 testManifestTranslations();
 ```
 
-### 4. Lighthouse Audit
+### 4. Lighthouse audit
 
 Run Lighthouse with different locales:
 
@@ -632,9 +632,9 @@ LANG=en npx lighthouse https://your-app.com --view
 LANG=fr npx lighthouse https://your-app.com --view
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Use Meaningful Translation Keys
+### 1. Use meaningful translation keys
 
 ```yaml
 # ✅ Good - Clear, hierarchical keys
@@ -652,7 +652,7 @@ shortcut1: "Dashboard"
 desc1: "View your dashboard"
 ```
 
-### 2. Keep Brand Names Consistent
+### 2. Keep brand names consistent
 
 ```yaml
 # ✅ Good - Preserve brand name across locales
@@ -667,7 +667,7 @@ app:
     description: "Gestion professionnelle des tâches"  # Translated description
 ```
 
-### 3. Provide Fallbacks
+### 3. Provide fallbacks
 
 ```yaml title="/config/packages/translation.yaml" linenums="1"
 framework:
@@ -675,7 +675,7 @@ framework:
         fallbacks: ['en']  # Fallback to English if translation missing
 ```
 
-### 4. Use Translation Parameters for Dynamic Content
+### 4. Use translation parameters for dynamic content
 
 While the PWA manifest doesn't support dynamic parameters, you can use them in your translation files:
 
@@ -689,7 +689,7 @@ messages:
     welcome: "Welcome, {username}!"  # Parameters work in regular translations
 ```
 
-### 5. Keep Translations Synchronized
+### 5. Keep translations synchronized
 
 Use a consistent structure across all locales:
 
@@ -716,7 +716,7 @@ app:
     description: "..."
 ```
 
-### 6. Test All Locales
+### 6. Test all locales
 
 Before deploying, verify all locale-specific manifests:
 
@@ -731,9 +731,9 @@ for locale in en fr de es; do
 done
 ```
 
-## Common Issues
+## Common issues
 
-### 1. Translations Not Applied
+### 1. Translations not applied
 
 **Problem**: Manifest shows translation keys instead of translated text
 
@@ -753,7 +753,7 @@ php bin/console cache:clear
 php bin/console debug:config framework enabled_locales
 ```
 
-### 2. Wrong Locale Manifest Served
+### 2. Wrong locale manifest served
 
 **Problem**: English manifest served when French is expected
 
@@ -775,7 +775,7 @@ pwa:
 # Check your LocaleSubscriber or locale configuration
 ```
 
-### 3. Missing Translations for Specific Locale
+### 3. Missing translations for specific locale
 
 **Problem**: Some keys not translated in certain locales
 
@@ -792,7 +792,7 @@ php bin/console translation:extract --force fr --domain=pwa
 diff translations/pwa.en.yaml translations/pwa.fr.yaml
 ```
 
-### 4. Special Characters Not Displaying
+### 4. Special characters not displaying
 
 **Problem**: Accented characters or non-Latin scripts display incorrectly
 
@@ -813,7 +813,7 @@ file -i translations/pwa.fr.yaml
 # Expected: charset=utf-8
 ```
 
-### 5. RTL Languages Not Working
+### 5. RTL languages not working
 
 **Problem**: Arabic/Hebrew text displays left-to-right
 
@@ -830,9 +830,9 @@ pwa:
 
 The bundle automatically sets `dir: "rtl"` for RTL locales (ar, he, fa, ur).
 
-## Migration Guide
+## Migration guide
 
-### Migrating from Non-Translated Setup
+### Migrating from non-translated setup
 
 **Before (Hard-coded text)**:
 
@@ -872,7 +872,7 @@ app:
     description: "Une excellente application"
 ```
 
-### Migration Steps
+### Migration steps
 
 1. **Add `{locale}` placeholder** to `public_url`
 2. **Remove manual `lang` setting** (if present)
@@ -893,7 +893,7 @@ php bin/console cache:warmup
 ls -la public/*.webmanifest
 ```
 
-## Troubleshooting Checklist
+## Troubleshooting checklist
 
 Before deploying multilingual PWA:
 
@@ -910,7 +910,7 @@ Before deploying multilingual PWA:
 - [ ] Tested installation flow in each language
 - [ ] Lighthouse audit passes for all locales
 
-## Related Documentation
+## Related documentation
 
 - [Direction and Language](application-information/direction-and-language.md) - Language and RTL configuration
 - [Screenshots](screenshots.md) - Translating screenshot labels

@@ -13,7 +13,7 @@ This component is particularly useful for:
 * Weather and local information services
 * Social check-ins and location sharing
 
-## Browser Support
+## Browser support
 
 The Geolocation API is widely supported across all modern browsers on both desktop and mobile devices. However, for security and privacy reasons, browsers require:
 
@@ -27,7 +27,7 @@ The Geolocation API is widely supported across all modern browsers on both deskt
 
 ## Usage
 
-### Basic Location Request
+### Basic location request
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
@@ -58,7 +58,7 @@ The Geolocation API is widely supported across all modern browsers on both deskt
 </script>
 ```
 
-### Continuous Location Tracking
+### Continuous location tracking
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
@@ -102,7 +102,7 @@ The Geolocation API is widely supported across all modern browsers on both deskt
 </script>
 ```
 
-### Distance Calculator
+### Distance calculator
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
@@ -160,7 +160,7 @@ The Geolocation API is widely supported across all modern browsers on both deskt
 </script>
 ```
 
-### Location-Based Content
+### Location-based content
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
@@ -283,7 +283,7 @@ The Geolocation API is widely supported across all modern browsers on both deskt
 </script>
 ```
 
-### Fitness Tracker with Route Recording
+### Fitness tracker with route recording
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
@@ -467,7 +467,7 @@ The Geolocation API is widely supported across all modern browsers on both deskt
 </style>
 ```
 
-### Store Locator
+### Store locator
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>
@@ -707,7 +707,7 @@ document.addEventListener('pwa--geolocation:watch:cleared', () => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Request permission contextually**: Ask for location access when the user interacts with a location-based feature
 2. **Explain why you need it**: Clearly communicate why your app needs location access
@@ -720,9 +720,9 @@ document.addEventListener('pwa--geolocation:watch:cleared', () => {
 9. **Set reasonable timeouts**: Don't let requests hang indefinitely
 10. **Test offline behavior**: Ensure your app handles lack of GPS signal gracefully
 
-## Coordinate Calculations
+## Coordinate calculations
 
-### Distance Between Two Points (Haversine Formula)
+### Distance between two points (haversine formula)
 
 ```javascript
 function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -743,7 +743,7 @@ function toRadians(degrees) {
 }
 ```
 
-### Check if Point is Within Radius
+### Check if point is within radius
 
 ```javascript
 function isWithinRadius(centerLat, centerLon, pointLat, pointLon, radiusKm) {
@@ -752,7 +752,7 @@ function isWithinRadius(centerLat, centerLon, pointLat, pointLon, radiusKm) {
 }
 ```
 
-### Convert Coordinates to Compass Direction
+### Convert coordinates to compass direction
 
 ```javascript
 function getCompassDirection(heading) {
@@ -762,7 +762,7 @@ function getCompassDirection(heading) {
 }
 ```
 
-## Error Handling
+## Error handling
 
 ```javascript
 function handleLocationError(error) {
@@ -794,7 +794,7 @@ function handleLocationError(error) {
 }
 ```
 
-## Complete Example: Real-Time Delivery Tracker
+## Complete example: Real-time delivery tracker
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/geolocation') }}>

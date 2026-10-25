@@ -1,8 +1,8 @@
-# Font Caching
+# Font caching
 
 Font caching ensures custom fonts load quickly and remain available offline. The bundle provides two separate caching mechanisms: one for self-hosted fonts and another optimized for Google Fonts.
 
-## Why Cache Fonts?
+## Why cache fonts?
 
 Fonts significantly impact page rendering and user experience:
 - **Prevent FOIT**: Font files in cache eliminate "Flash of Invisible Text"
@@ -11,9 +11,9 @@ Fonts significantly impact page rendering and user experience:
 - **Reduced bandwidth**: Fonts downloaded once and reused
 - **Better typography**: Consistent font rendering across sessions
 
-## Self-Hosted Font Caching
+## Self-hosted font caching
 
-### Default Configuration
+### Default configuration
 
 The bundle automatically caches self-hosted fonts with these settings:
 - **Max entries**: 30 fonts
@@ -30,9 +30,9 @@ The bundle automatically caches self-hosted fonts with these settings:
 
     Font caching only applies to fonts served by your application, not external CDNs (except Google Fonts, which has dedicated handling).
 
-### Configuration Options
+### Configuration options
 
-#### Enabling/Disabling
+#### Enabling/disabling
 
 ```yaml
 pwa:
@@ -42,7 +42,7 @@ pwa:
                 enabled: true  # Default: true
 ```
 
-#### Max Entries
+#### Max entries
 
 **Type**: `integer`
 **Default**: `30`
@@ -62,7 +62,7 @@ pwa:
 - **Medium projects**: 20-30 fonts (multiple weights/styles)
 - **Large projects**: 50+ fonts (many families or international support)
 
-#### Max Age
+#### Max age
 
 **Type**: `integer` (seconds) or `string` (human-readable)
 **Default**: `31536000` (365 days)
@@ -84,7 +84,7 @@ pwa:
 - **Purchased fonts**: 6-12 months
 - **Frequently updated fonts**: 1-3 months
 
-#### Custom Regex
+#### Custom regex
 
 **Type**: `string`
 **Default**: `/\.(ttf|eot|otf|woff|woff2?)$/`
@@ -104,7 +104,7 @@ pwa:
 - Match specific paths (`/\/fonts\/.*\.woff2$/`)
 - Include/exclude specific font directories
 
-#### Cache Name
+#### Cache name
 
 **Type**: `string`
 **Default**: `null` (auto-generated)
@@ -119,7 +119,7 @@ pwa:
                 cache_name: 'app-fonts'
 ```
 
-### Complete Self-Hosted Example
+### Complete self-hosted example
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -135,7 +135,7 @@ pwa:
                 regex: '/\.(woff2?|ttf)$/'
 ```
 
-## Google Fonts Caching
+## Google fonts caching
 
 Google Fonts requires special handling because fonts are loaded from two sources:
 1. **CSS file** from fonts.googleapis.com
@@ -143,7 +143,7 @@ Google Fonts requires special handling because fonts are loaded from two sources
 
 The bundle handles both automatically.
 
-### Default Google Fonts Configuration
+### Default Google fonts configuration
 
 - **Enabled**: Yes (by default)
 - **Cache prefix**: `google-fonts`
@@ -151,7 +151,7 @@ The bundle handles both automatically.
 - **Max age**: 86400 seconds (1 day) for CSS, 31536000 seconds (1 year) for font files
 - **Strategy**: StaleWhileRevalidate for CSS, CacheFirst for fonts
 
-### Configuration Options
+### Configuration options
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -170,7 +170,7 @@ pwa:
 
     **Typo in original docs**: The cache_prefix was "goolge-fonts" but should be "google-fonts"
 
-### Google Fonts Options Explained
+### Google fonts options explained
 
 #### cache_prefix
 
@@ -220,7 +220,7 @@ pwa:
                 max_age: 7 days  # Cache CSS for a week
 ```
 
-### Disabling Google Fonts Caching
+### Disabling Google fonts caching
 
 If you don't use Google Fonts:
 
@@ -232,7 +232,7 @@ pwa:
                 enabled: false
 ```
 
-## Complete Font Caching Example
+## Complete font caching example
 
 Configuration for an app using both self-hosted and Google Fonts:
 
@@ -258,9 +258,9 @@ pwa:
                 max_age: 3 days
 ```
 
-## Use Cases
+## Use cases
 
-### Modern Web Font Stack
+### Modern web font stack
 
 Using only WOFF2 for modern browsers:
 
@@ -275,7 +275,7 @@ pwa:
                 max_age: 1 year
 ```
 
-### International Application
+### International application
 
 Supporting many font families and weights:
 
@@ -291,7 +291,7 @@ pwa:
                 max_entries: 50
 ```
 
-### Google Fonts Only
+### Google fonts only
 
 No self-hosted fonts:
 
@@ -306,16 +306,16 @@ pwa:
                 max_entries: 30
 ```
 
-## How It Works
+## How it works
 
-### Self-Hosted Fonts Flow
+### Self-hosted fonts flow
 
 1. **First request**: Font file downloaded and cached
 2. **Subsequent requests**: Served instantly from cache (CacheFirst)
 3. **Cache full**: Oldest fonts removed when `max_entries` reached
 4. **Expiration**: After `max_age`, fonts refreshed on next request
 
-### Google Fonts Flow
+### Google fonts flow
 
 1. **CSS request**: StaleWhileRevalidate (serve cache, update in background)
 2. **Font file request**: CacheFirst (cache permanently)
@@ -324,20 +324,20 @@ pwa:
 
 ## Debugging
 
-### Inspect Self-Hosted Fonts Cache
+### Inspect self-hosted fonts cache
 
 1. Open DevTools (F12)
 2. **Application** tab → **Cache Storage**
 3. Find cache (default or custom `cache_name`)
 4. View cached font files
 
-### Inspect Google Fonts Caches
+### Inspect Google fonts caches
 
 Look for two caches:
 - `{cache_prefix}-stylesheets`: CSS files
 - `{cache_prefix}-webfonts`: Font files (.woff2, etc.)
 
-## Best Practices
+## Best practices
 
 1. **Prefer WOFF2**: Modern, compressed format for smaller files
 2. **Limit font weights**: Cache only the weights you actually use
@@ -347,7 +347,7 @@ Look for two caches:
 6. **Subset fonts**: Use font subsetting to reduce file sizes
 7. **Consider font-display**: Use `font-display: swap` in CSS for better UX
 
-## Font Loading Strategy
+## Font loading strategy
 
 Combine PWA caching with CSS font-display for optimal performance:
 

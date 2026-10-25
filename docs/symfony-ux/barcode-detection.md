@@ -1,4 +1,4 @@
-# Barcode Detection
+# Barcode detection
 
 The Barcode Detection component provides an interface to the Web Barcode Detection API, enabling your Progressive Web App to scan and decode various types of barcodes directly from images or video streams. This component supports multiple barcode formats including QR codes, EAN, UPC, and many others.
 
@@ -9,7 +9,7 @@ This component is particularly useful for applications that need to:
 * Process shipping labels and tracking codes
 * Enable contactless check-ins or ticket validation
 
-## Browser Support
+## Browser support
 
 The Barcode Detection API is currently supported in Chromium-based browsers (Chrome, Edge, Opera). Support in other browsers may be limited. The component gracefully handles unsupported browsers by dispatching an `unsupported` event.
 
@@ -19,7 +19,7 @@ The Barcode Detection API is currently supported in Chromium-based browsers (Chr
 
 ## Usage
 
-### Basic Barcode Detection from an Image
+### Basic barcode detection from an image
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/barcode-detection') }}>
@@ -46,7 +46,7 @@ The Barcode Detection API is currently supported in Chromium-based browsers (Chr
 </script>
 ```
 
-### Detection with Specific Formats
+### Detection with specific formats
 
 You can limit detection to specific barcode formats for better performance:
 
@@ -70,7 +70,7 @@ You can limit detection to specific barcode formats for better performance:
 </script>
 ```
 
-### Detection from Video Stream
+### Detection from video stream
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/barcode-detection') }}>
@@ -100,7 +100,7 @@ You can limit detection to specific barcode formats for better performance:
 
 ## Parameters
 
-### `formats` Value
+### `formats` value
 
 Specifies which barcode formats to detect. If not specified or empty, all supported formats will be detected.
 
@@ -178,7 +178,7 @@ Dispatched when an error occurs during barcode detection (e.g., invalid target).
 
 **Payload**: `{error}` - Error message or object
 
-## Best Practices
+## Best practices
 
 1. **Check browser support**: Always listen for the `unsupported` event and provide a fallback option (e.g., manual entry or file upload)
 2. **Limit formats when possible**: Specifying exact formats improves detection speed and accuracy
@@ -187,9 +187,9 @@ Dispatched when an error occurs during barcode detection (e.g., invalid target).
 5. **Camera optimization**: When using video streams, use the `environment` facing mode for rear camera access on mobile devices
 6. **Performance consideration**: Avoid calling `detect` too frequently on video streams; consider throttling or using requestAnimationFrame
 
-## Common Use Cases
+## Common use cases
 
-### Product Scanner
+### Product scanner
 
 ```twig
 <div {{ stimulus_controller('@pwa/barcode-detection', {formats: ['ean_13', 'upc_a']}) }}>
@@ -210,7 +210,7 @@ Dispatched when an error occurs during barcode detection (e.g., invalid target).
 </script>
 ```
 
-### QR Code URL Handler
+### QR code URL handler
 
 ```javascript
 document.addEventListener('pwa--barcode-detection:detected', (event) => {

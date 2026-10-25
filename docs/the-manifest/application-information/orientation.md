@@ -23,9 +23,9 @@ pwa:
 
     If not specified, the orientation defaults to `any`, allowing the device to rotate freely.
 
-## Available Orientations
+## Available orientations
 
-### any (Default)
+### any (default)
 
 Allows the application to rotate freely based on device orientation.
 
@@ -123,9 +123,9 @@ orientation: "landscape-primary"
 - Car navigation apps
 - DJ/Music production apps
 
-## Use Cases by Application Type
+## Use cases by application type
 
-### Social Media App
+### Social media app
 
 ```yaml
 pwa:
@@ -136,7 +136,7 @@ pwa:
 
 **Rationale**: Content feeds are designed for vertical scrolling, and users typically hold phones in portrait mode.
 
-### Video Streaming App
+### Video streaming app
 
 ```yaml
 pwa:
@@ -147,7 +147,7 @@ pwa:
 
 **Rationale**: Browse in portrait, watch videos in landscape. Flexibility is key.
 
-### Gaming App
+### Gaming app
 
 ```yaml
 pwa:
@@ -158,7 +158,7 @@ pwa:
 
 **Rationale**: Game controls are designed for landscape, and consistency is crucial.
 
-### E-book Reader
+### E-book reader
 
 ```yaml
 pwa:
@@ -169,7 +169,7 @@ pwa:
 
 **Rationale**: Reading text is more comfortable in portrait mode, mimicking physical books.
 
-### Dashboard App
+### Dashboard app
 
 ```yaml
 pwa:
@@ -180,7 +180,7 @@ pwa:
 
 **Rationale**: Charts and data visualizations benefit from wider screens.
 
-### Fitness Tracker
+### Fitness tracker
 
 ```yaml
 pwa:
@@ -191,9 +191,9 @@ pwa:
 
 **Rationale**: Users often interact while exercising, requiring one-handed portrait mode.
 
-## Complete Examples
+## Complete examples
 
-### Portrait-Only Application
+### Portrait-only application
 
 ```yaml
 pwa:
@@ -206,7 +206,7 @@ pwa:
         description: "Stay connected with friends and family through instant messaging."
 ```
 
-### Landscape-Only Application
+### Landscape-only application
 
 ```yaml
 pwa:
@@ -219,7 +219,7 @@ pwa:
         description: "Create and edit videos with professional tools."
 ```
 
-### Flexible Orientation Application
+### Flexible orientation application
 
 ```yaml
 pwa:
@@ -232,7 +232,7 @@ pwa:
         description: "Organize your tasks and boost productivity."
 ```
 
-## Platform Behavior
+## Platform behavior
 
 ### iOS (iPhone/iPad)
 
@@ -248,16 +248,16 @@ pwa:
 - Different behavior in tablet vs phone mode
 - Chrome and other browsers may handle differently
 
-### Desktop/Laptop
+### Desktop/laptop
 
 - Orientation setting is typically ignored
 - Windows treated as landscape by default
 - Application runs in window mode
 - Resizing window doesn't trigger orientation changes
 
-## Best Practices
+## Best practices
 
-### 1. Choose Based on Content
+### 1. Choose based on content
 
 Match orientation to your primary use case:
 
@@ -272,7 +272,7 @@ orientation: "any"
 orientation: "landscape-primary"
 ```
 
-### 2. Consider User Context
+### 2. Consider user context
 
 Think about how users will hold their device:
 
@@ -280,7 +280,7 @@ Think about how users will hold their device:
 - **Two-handed comfortable viewing**: `landscape`
 - **Variable situations**: `any`
 
-### 3. Test on Real Devices
+### 3. Test on real devices
 
 Different devices handle orientation differently:
 
@@ -293,7 +293,7 @@ Different devices handle orientation differently:
 - Desktop browser
 ```
 
-### 4. Provide Responsive Design Regardless
+### 4. Provide responsive design regardless
 
 Even with orientation lock, design responsively:
 
@@ -308,7 +308,7 @@ Even with orientation lock, design responsively:
 }
 ```
 
-### 5. Don't Lock Unnecessarily
+### 5. Don't lock unnecessarily
 
 Only lock orientation when truly needed:
 
@@ -320,7 +320,7 @@ orientation: "portrait"  # For a general-purpose app
 orientation: "any"  # For a general-purpose app
 ```
 
-## Advanced: Handling Orientation Changes
+## Advanced: Handling orientation changes
 
 Even with a locked orientation in the manifest, handle rotation in your JavaScript:
 
@@ -350,9 +350,9 @@ isPortrait.addEventListener('change', (e) => {
 });
 ```
 
-## Accessibility Considerations
+## Accessibility considerations
 
-### 1. Don't Restrict User Choice
+### 1. Don't restrict user choice
 
 Some users have accessibility needs requiring specific orientations:
 
@@ -362,7 +362,7 @@ Some users have accessibility needs requiring specific orientations:
 
 **Recommendation**: Use `any` unless orientation lock is essential.
 
-### 2. Provide Clear Feedback
+### 2. Provide clear feedback
 
 If your app requires a specific orientation, inform users:
 
@@ -373,7 +373,7 @@ if (requiredOrientation === 'landscape' && isPortrait()) {
 }
 ```
 
-### 3. Test with Screen Readers
+### 3. Test with screen readers
 
 Ensure orientation changes don't disrupt screen reader navigation:
 
@@ -389,9 +389,9 @@ window.addEventListener('orientationchange', () => {
 </script>
 ```
 
-## Common Mistakes
+## Common mistakes
 
-### 1. Locking When Not Needed
+### 1. Locking when not needed
 
 ```yaml
 # ✗ Poor - unnecessary restriction
@@ -403,7 +403,7 @@ pwa:
 
 **Impact**: Frustrates users who want to use landscape mode.
 
-### 2. Wrong Orientation for Content
+### 2. Wrong orientation for content
 
 ```yaml
 # ✗ Poor - video app locked to portrait
@@ -415,7 +415,7 @@ pwa:
 
 **Impact**: Poor user experience for primary use case.
 
-### 3. Not Testing Both Orientations
+### 3. Not testing both orientations
 
 Even with a locked orientation, test your layout in both:
 
@@ -423,7 +423,7 @@ Even with a locked orientation, test your layout in both:
 - Tablets behave differently
 - Desktop windows can be any size
 
-### 4. Ignoring CSS Media Queries
+### 4. Ignoring CSS media queries
 
 Manifest orientation doesn't replace responsive CSS:
 
@@ -438,9 +438,9 @@ Manifest orientation doesn't replace responsive CSS:
 }
 ```
 
-## Debugging Orientation
+## Debugging orientation
 
-### 1. Check Manifest in DevTools
+### 1. Check manifest in DevTools
 
 ```bash
 # Chrome DevTools
@@ -450,7 +450,7 @@ Manifest orientation doesn't replace responsive CSS:
 4. Check "orientation" value
 ```
 
-### 2. Test Orientation Lock
+### 2. Test orientation lock
 
 ```javascript
 // Check current orientation
@@ -464,7 +464,7 @@ console.log('Angle:', screen.orientation.angle);
 // - landscape-secondary (-90° or 90°)
 ```
 
-### 3. Simulate on Desktop
+### 3. Simulate on desktop
 
 Chrome DevTools device emulation:
 
@@ -475,7 +475,7 @@ Chrome DevTools device emulation:
 4. Click rotation icon to toggle orientation
 ```
 
-## Related Properties
+## Related properties
 
 - [Display Mode](../display.md) - How the app window is presented
 - [Theme Color](colors-and-theme.md) - Visual appearance

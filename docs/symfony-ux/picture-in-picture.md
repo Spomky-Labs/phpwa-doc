@@ -1,4 +1,4 @@
-# Picture In Picture
+# Picture in picture
 
 The Picture-in-Picture (PiP) component provides an interface to both classic video Picture-in-Picture and Document Picture-in-Picture APIs. It enables your Progressive Web App to display content in a floating window that stays on top of other windows, allowing users to multitask while keeping your content visible.
 
@@ -11,7 +11,7 @@ This component is particularly useful for:
 * Dashboard monitoring and live data
 * Multi-window workflows
 
-## Browser Support
+## Browser support
 
 **Classic Picture-in-Picture (Video)**:
 * Supported in Chrome, Edge, Safari, and Firefox
@@ -28,7 +28,7 @@ This component is particularly useful for:
 
 ## Usage
 
-### Basic Video Picture-in-Picture
+### Basic video Picture-in-Picture
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
@@ -57,7 +57,7 @@ This component is particularly useful for:
 </script>
 ```
 
-### Video Player with PiP Controls
+### Video player with PiP controls
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
@@ -110,7 +110,7 @@ This component is particularly useful for:
 </script>
 ```
 
-### Document PiP (Any Content)
+### Document PiP (any content)
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
@@ -159,7 +159,7 @@ This component is particularly useful for:
 </script>
 ```
 
-### Video Conference with PiP
+### Video conference with PiP
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
@@ -204,7 +204,7 @@ This component is particularly useful for:
 </script>
 ```
 
-### Live Stream Monitor
+### Live stream monitor
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
@@ -243,7 +243,7 @@ This component is particularly useful for:
 </script>
 ```
 
-### Music Player with Lyrics
+### Music player with lyrics
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>
@@ -419,7 +419,7 @@ document.addEventListener('pwa--picture-in-picture:error', (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Provide clear controls**: Make it obvious how to enter and exit PiP mode
 2. **Preserve state**: Ensure playback state is maintained when entering/exiting PiP
@@ -429,7 +429,7 @@ document.addEventListener('pwa--picture-in-picture:error', (event) => {
 6. **Test on devices**: Behavior varies across browsers and platforms
 7. **Provide fallbacks**: Not all browsers support Document PiP
 
-## Classic vs Document PiP
+## Classic vs document PiP
 
 | Feature | Classic PiP | Document PiP |
 |---------|-------------|--------------|
@@ -439,7 +439,7 @@ document.addEventListener('pwa--picture-in-picture:error', (event) => {
 | Styling | Limited | Full CSS control |
 | Interactivity | Video controls only | Full DOM interaction |
 
-## Browser-Specific Behavior
+## Browser-specific behavior
 
 ### Chrome/Edge
 
@@ -459,7 +459,7 @@ document.addEventListener('pwa--picture-in-picture:error', (event) => {
 * No Document PiP support yet
 * Provides built-in PiP button for videos
 
-## Styling PiP Content
+## Styling PiP content
 
 When using Document PiP, you can style the floating content:
 
@@ -479,7 +479,7 @@ When using Document PiP, you can style the floating content:
 }
 ```
 
-## Complete Example: Multi-Feature Video Player
+## Complete example: Multi-feature video player
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/picture-in-picture') }}>

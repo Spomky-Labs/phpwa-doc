@@ -1,4 +1,4 @@
-# EDGE Side Panel
+# EDGE side panel
 
 !!! warning
 
@@ -15,7 +15,7 @@ Progressive Web Apps can opt-in to be pinned to the sidebar in Microsoft Edge. T
 - Perfect for utilities and reference apps
 - Parallel browsing experience
 
-## Use Cases
+## Use cases
 
 The Edge sidebar is ideal for applications that users want to access while browsing other content:
 
@@ -29,7 +29,7 @@ The Edge sidebar is ideal for applications that users want to access while brows
 
 ## Configuration
 
-### Basic Configuration
+### Basic configuration
 
 Enable sidebar support without specifying width:
 
@@ -42,7 +42,7 @@ pwa:
 
 With this configuration, your PWA can be added to the Edge sidebar with default width.
 
-### Specify Preferred Width
+### Specify preferred width
 
 Set a preferred width for your sidebar panel:
 
@@ -59,7 +59,7 @@ pwa:
 - **Recommended**: 350-500px for most apps
 - **Maximum**: No hard limit, but Edge may constrain to reasonable values
 
-### Display Mode Considerations
+### Display mode considerations
 
 For sidebar-only apps, use `browser` display mode:
 
@@ -74,7 +74,7 @@ pwa:
 
 Setting `display: "browser"` tells Edge that your app is designed for the sidebar and shouldn't be offered as a standalone installable app.
 
-### Complete Example
+### Complete example
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -93,9 +93,9 @@ pwa:
               sizes: [512]
 ```
 
-## Width Recommendations by Application Type
+## Width recommendations by application type
 
-### Calculator / Utilities
+### Calculator / utilities
 
 **Recommended**: 300-350px
 
@@ -106,7 +106,7 @@ edge_side_panel:
 
 **Reasoning**: Calculators don't need much horizontal space. Narrower width leaves more room for browser content.
 
-### Note-Taking App
+### Note-taking app
 
 **Recommended**: 400-500px
 
@@ -117,7 +117,7 @@ edge_side_panel:
 
 **Reasoning**: Enough width for comfortable typing and reading notes.
 
-### Chat / Messaging
+### Chat / messaging
 
 **Recommended**: 350-400px
 
@@ -128,7 +128,7 @@ edge_side_panel:
 
 **Reasoning**: Standard chat interface width, similar to messaging apps.
 
-### Documentation Viewer
+### Documentation viewer
 
 **Recommended**: 500-600px
 
@@ -139,7 +139,7 @@ edge_side_panel:
 
 **Reasoning**: Documentation benefits from wider layout for code examples and text.
 
-### Music Player
+### Music player
 
 **Recommended**: 300-350px
 
@@ -150,7 +150,7 @@ edge_side_panel:
 
 **Reasoning**: Compact control interface, doesn't need much space.
 
-### Translation Tool
+### Translation tool
 
 **Recommended**: 400-450px
 
@@ -161,7 +161,7 @@ edge_side_panel:
 
 **Reasoning**: Needs space for source and translated text.
 
-## Browser Support
+## Browser support
 
 | Browser | Support |
 |---------|---------|
@@ -174,11 +174,11 @@ edge_side_panel:
 
     **Graceful Degradation**: Other browsers will simply ignore the `edge_side_panel` property. Your app will work normally in those browsers.
 
-## Responsive Design
+## Responsive design
 
 Design your app to work both in the sidebar and as a standalone page:
 
-### CSS Media Queries
+### CSS media queries
 
 ```css title="public/css/responsive.css" linenums="1"
 /* Default layout */
@@ -232,7 +232,7 @@ Design your app to work both in the sidebar and as a standalone page:
 }
 ```
 
-### JavaScript Detection
+### JavaScript detection
 
 Detect narrow viewport and adjust functionality:
 
@@ -271,9 +271,9 @@ adaptToViewport();
 window.addEventListener('resize', adaptToViewport);
 ```
 
-## User Experience Best Practices
+## User experience best practices
 
-### 1. Design for Narrow Viewports
+### 1. Design for narrow viewports
 
 ```css
 /* Prioritize vertical scrolling over horizontal */
@@ -289,7 +289,7 @@ window.addEventListener('resize', adaptToViewport);
 }
 ```
 
-### 2. Minimize Horizontal Elements
+### 2. Minimize horizontal elements
 
 ```html
 <!-- ✗ Avoid wide horizontal layouts -->
@@ -309,7 +309,7 @@ window.addEventListener('resize', adaptToViewport);
 </nav>
 ```
 
-### 3. Use Collapsible Sections
+### 3. Use collapsible sections
 
 ```html
 <details class="section">
@@ -327,7 +327,7 @@ window.addEventListener('resize', adaptToViewport);
 </details>
 ```
 
-### 4. Optimize Text Readability
+### 4. Optimize text readability
 
 ```css
 /* Ensure readable text in narrow space */
@@ -350,7 +350,7 @@ body {
 }
 ```
 
-### 5. Provide Clear Actions
+### 5. Provide clear actions
 
 ```html
 <!-- Clear, tappable actions -->
@@ -366,7 +366,7 @@ body {
 
 ## Testing in Edge
 
-### 1. Enable Sidebar Testing
+### 1. Enable sidebar testing
 
 ```bash
 1. Open Microsoft Edge
@@ -376,7 +376,7 @@ body {
 5. Restart Edge
 ```
 
-### 2. Install PWA to Sidebar
+### 2. Install PWA to sidebar
 
 ```bash
 1. Navigate to your PWA
@@ -386,7 +386,7 @@ body {
 5. Your app appears in the sidebar
 ```
 
-### 3. Test Width Adjustment
+### 3. Test width adjustment
 
 ```bash
 1. Open your app in sidebar
@@ -397,7 +397,7 @@ body {
 6. Test at maximum sidebar width
 ```
 
-### 4. Test Functionality
+### 4. Test functionality
 
 ```bash
 # Checklist
@@ -411,9 +411,9 @@ body {
 - ✓ App remembers state when reopened
 ```
 
-## Complete Examples
+## Complete examples
 
-### Example 1: Calculator App
+### Example 1: Calculator app
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -433,7 +433,7 @@ pwa:
               sizes: [512]
 ```
 
-### Example 2: Notes App
+### Example 2: Notes app
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -450,7 +450,7 @@ pwa:
               sizes: [192]
 ```
 
-### Example 3: Music Player
+### Example 3: Music player
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -467,7 +467,7 @@ pwa:
               sizes: [192]
 ```
 
-### Example 4: Translation Tool
+### Example 4: Translation tool
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -484,9 +484,9 @@ pwa:
               sizes: [192]
 ```
 
-## Common Issues
+## Common issues
 
-### App Not Appearing in Sidebar
+### App not appearing in sidebar
 
 **Problem**: PWA doesn't show up in Edge sidebar app list
 
@@ -497,7 +497,7 @@ pwa:
 - Restart Edge browser
 - Check Edge version supports sidebar PWAs
 
-### Width Not Respected
+### Width not respected
 
 **Problem**: Sidebar width doesn't match `preferred_width`
 
@@ -509,7 +509,7 @@ pwa:
 
 **Solution**: Design app to work across range of widths (200-600px)
 
-### Content Overflows
+### Content overflows
 
 **Problem**: Content extends beyond sidebar viewport
 
@@ -536,7 +536,7 @@ img {
 }
 ```
 
-### App Opens in New Window
+### App opens in new window
 
 **Problem**: Clicking links opens new windows instead of navigating in sidebar
 
@@ -558,7 +558,7 @@ function navigate(url) {
 
 ## Debugging
 
-### Check Manifest in DevTools
+### Check manifest in DevTools
 
 ```bash
 1. Open your PWA in Edge
@@ -569,7 +569,7 @@ function navigate(url) {
 6. Verify preferred_width value
 ```
 
-### Console Logging
+### Console logging
 
 ```javascript
 // Log viewport information
@@ -583,7 +583,7 @@ window.addEventListener('resize', () => {
 });
 ```
 
-### Test Across Widths
+### Test across widths
 
 ```javascript
 // Simulate different widths (in DevTools)
@@ -596,7 +596,7 @@ widths.forEach(width => {
 });
 ```
 
-## Best Practices Summary
+## Best practices summary
 
 1. **Set appropriate width**: 300-500px for most apps
 2. **Use `display: "browser"`**: For sidebar-only apps
@@ -609,7 +609,7 @@ widths.forEach(width => {
 9. **Implement collapsible sections**: Maximize vertical space
 10. **Remember state**: Persist user data across sessions
 
-## Related Documentation
+## Related documentation
 
 - [Display Mode](../../the-manifest/application-information/display-mode.md) - App display modes
 - [Orientation](../../the-manifest/application-information/orientation.md) - Screen orientation

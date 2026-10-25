@@ -1,4 +1,4 @@
-# Complete Example
+# Complete example
 
 This page provides a comprehensive example of a PWA manifest configuration showcasing most of the available features in the Spomky-Labs PWA Bundle.
 
@@ -154,12 +154,12 @@ pwa:
 
 ```
 
-## Key Sections Explained
+## Key sections explained
 
-### Identity & Display
+### Identity & display
 The manifest starts with basic identity information (`name`, `short_name`, `description`) and display preferences that control how your PWA appears when installed.
 
-### Theme Colors
+### Theme colors
 Both light and dark theme colors are specified to ensure the app looks great in both color schemes.
 
 ### Icons
@@ -174,7 +174,7 @@ Screenshots are organized by form factor (narrow for mobile, wide for desktop) a
 ### Shortcuts
 App shortcuts provide quick access to key features directly from the OS launcher.
 
-### Advanced Features
+### Advanced features
 - **Share Target**: Allows your PWA to receive content from other apps
 - **File Handlers**: Registers your PWA as a handler for specific file types
 - **Protocol Handlers**: Enables your PWA to handle custom URL protocols

@@ -1,4 +1,4 @@
-# Prefetch on Demand
+# Prefetch on demand
 
 The Prefetch on Demand component enables intelligent, user-driven page prefetching to dramatically improve navigation performance in your Progressive Web App. Instead of relying solely on static `<link rel="prefetch">` tags, this component allows you to dynamically prefetch pages based on user interactions like hovering over links, scrolling into view, or any custom trigger. Pages are cached by the service worker via Workbox, making subsequent navigation instantaneous.
 
@@ -13,7 +13,7 @@ This component is particularly useful for:
 * Preparing next chapters in e-learning platforms
 * Optimizing user experience in catalog browsing and e-commerce
 
-## Browser Support
+## Browser support
 
 The Prefetch on Demand component relies on service workers and the Cache API, which are widely supported across modern browsers.
 
@@ -27,9 +27,9 @@ The Prefetch on Demand component relies on service workers and the Cache API, wh
 
     Unlike native `<link rel="prefetch">`, which may be ignored by browsers under certain conditions (like when on cellular data), service worker-based prefetching gives you more control over caching behavior.
 
-## Traditional Prefetching vs. On-Demand
+## Traditional prefetching vs. on-demand
 
-### Static Prefetching
+### Static prefetching
 
 Traditional HTML-based prefetching uses link tags:
 
@@ -45,7 +45,7 @@ Traditional HTML-based prefetching uses link tags:
 - Browser may ignore hints based on connection type or battery
 - Cannot respond to user behavior
 
-### Dynamic On-Demand Prefetching
+### Dynamic on-demand prefetching
 
 The Prefetch on Demand component offers more flexibility:
 
@@ -56,7 +56,7 @@ The Prefetch on Demand component offers more flexibility:
 
 ## Usage
 
-### Basic Hover-Based Prefetching
+### Basic hover-based prefetching
 
 ```twig linenums="1"
 <section {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
@@ -74,7 +74,7 @@ The Prefetch on Demand component offers more flexibility:
 
 When users hover over the aside section, the specified URLs are prefetched and cached.
 
-### Individual Link Prefetching
+### Individual link prefetching
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
@@ -100,7 +100,7 @@ When users hover over the aside section, the specified URLs are prefetched and c
 </div>
 ```
 
-### Intersection Observer - Prefetch on Scroll
+### Intersection observer - prefetch on scroll
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
@@ -128,7 +128,7 @@ When users hover over the aside section, the specified URLs are prefetched and c
 </script>
 ```
 
-### Programmatic Prefetching
+### Programmatic prefetching
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
@@ -169,7 +169,7 @@ When users hover over the aside section, the specified URLs are prefetched and c
 </script>
 ```
 
-### Menu Navigation Prefetching
+### Menu navigation prefetching
 
 ```twig linenums="1"
 <nav {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
@@ -196,9 +196,9 @@ When users hover over the aside section, the specified URLs are prefetched and c
 </nav>
 ```
 
-## Best Practices
+## Best practices
 
-### Be Selective with Prefetching
+### Be selective with prefetching
 
 !!! warning
 
@@ -224,7 +224,7 @@ When users hover over the aside section, the specified URLs are prefetched and c
 </div>
 ```
 
-### Use Hover Intent, Not Immediate Hover
+### Use hover intent, not immediate hover
 
 !!! success
 
@@ -245,7 +245,7 @@ element.addEventListener('mouseleave', () => {
 });
 ```
 
-### Prioritize High-Value Pages
+### Prioritize high-value pages
 
 !!! info
 
@@ -255,7 +255,7 @@ element.addEventListener('mouseleave', () => {
     - Content directly related to current page
     - Pages that require authentication or API calls
 
-### Monitor Cache Size
+### Monitor cache size
 
 !!! warning
 
@@ -264,7 +264,7 @@ element.addEventListener('mouseleave', () => {
     - Limit the number of cached entries
     - Clear old prefetched pages periodically
 
-### Respect User Preferences
+### Respect user preferences
 
 ```javascript linenums="1"
 // Check for data saver mode before prefetching
@@ -277,9 +277,9 @@ if (connection && connection.saveData) {
 }
 ```
 
-## Common Use Cases
+## Common use cases
 
-### 1. Multi-Step Form/Checkout Flow
+### 1. Multi-step form/checkout flow
 
 ```twig linenums="1"
 {# Step 1: Cart #}
@@ -297,7 +297,7 @@ if (connection && connection.saveData) {
 </div>
 ```
 
-### 2. Blog Article Navigation
+### 2. Blog article navigation
 
 ```twig linenums="1"
 <article {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
@@ -330,7 +330,7 @@ if (connection && connection.saveData) {
 </article>
 ```
 
-### 3. E-Commerce Product Listing
+### 3. E-commerce product listing
 
 ```twig linenums="1"
 <div class="product-grid" {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
@@ -348,7 +348,7 @@ if (connection && connection.saveData) {
 </div>
 ```
 
-### 4. Documentation Navigation
+### 4. Documentation navigation
 
 ```twig linenums="1"
 <div class="docs-layout" {{ stimulus_controller('@pwa/prefetch-on-demand') }}>
@@ -401,7 +401,7 @@ if (connection && connection.saveData) {
 </div>
 ```
 
-### 5. Infinite Scroll Feed
+### 5. Infinite scroll feed
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/prefetch-on-demand') }} id="feed-container">
@@ -459,7 +459,7 @@ if (connection && connection.saveData) {
 </script>
 ```
 
-## API Reference
+## API reference
 
 ### Values
 
@@ -529,7 +529,7 @@ host.addEventListener('prefetch-on-demand:error', (e) => {
 });
 ```
 
-## How It Works
+## How it works
 
 1. **User Interaction**: User triggers an event (hover, scroll, click)
 2. **Controller Action**: The `prefetch` action is called with an array of URLs
@@ -563,7 +563,7 @@ pwa:
                             maxAgeSeconds: 86400  # 1 day
 ```
 
-## Related Components
+## Related components
 
 - [Service Worker](service-worker.md) - Required for prefetching to work
 - [Background Fetch](background-fetch.md) - For downloading large files in background

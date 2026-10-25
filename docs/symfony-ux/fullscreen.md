@@ -11,7 +11,7 @@ This component is particularly useful for:
 * Data visualization and dashboard applications
 * Reading apps and e-books
 
-## Browser Support
+## Browser support
 
 The Fullscreen API is widely supported in modern browsers. However, browser vendors may have different implementations and require user interaction to activate fullscreen mode.
 
@@ -21,7 +21,7 @@ The Fullscreen API is widely supported in modern browsers. However, browser vend
 
 ## Usage
 
-### Fullscreen for Entire Page
+### Fullscreen for entire page
 
 ```twig linenums="1"
 <section {{ stimulus_controller('@pwa/fullscreen') }}>
@@ -47,7 +47,7 @@ The Fullscreen API is widely supported in modern browsers. However, browser vend
 </script>
 ```
 
-### Fullscreen for Specific Element
+### Fullscreen for specific element
 
 ```twig linenums="1"
 <section {{ stimulus_controller('@pwa/fullscreen') }}>
@@ -70,7 +70,7 @@ The Fullscreen API is widely supported in modern browsers. However, browser vend
 </section>
 ```
 
-### Video Player with Fullscreen
+### Video player with fullscreen
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/fullscreen') }}>
@@ -105,7 +105,7 @@ The Fullscreen API is widely supported in modern browsers. However, browser vend
 </script>
 ```
 
-### Image Gallery with Fullscreen
+### Image gallery with fullscreen
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/fullscreen') }}>
@@ -142,7 +142,7 @@ The Fullscreen API is widely supported in modern browsers. However, browser vend
 </script>
 ```
 
-### Presentation Mode with Navigation
+### Presentation mode with navigation
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/fullscreen') }}>
@@ -309,7 +309,7 @@ document.addEventListener('pwa--fullscreen:error', (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **User-initiated only**: Always trigger fullscreen from user interactions (clicks, touches)
 2. **Provide exit option**: Always offer a visible way to exit fullscreen
@@ -319,9 +319,9 @@ document.addEventListener('pwa--fullscreen:error', (event) => {
 6. **Communicate state**: Clearly indicate when fullscreen mode is active
 7. **Preserve content**: Ensure fullscreen elements are properly restored when exiting
 
-## Common Use Cases
+## Common use cases
 
-### Media Player Controls
+### Media player controls
 
 ```javascript
 document.addEventListener('pwa--fullscreen:change', (event) => {
@@ -342,7 +342,7 @@ document.addEventListener('pwa--fullscreen:change', (event) => {
 });
 ```
 
-### Dashboard Fullscreen
+### Dashboard fullscreen
 
 ```javascript
 function toggleDashboardFullscreen() {
@@ -366,7 +366,7 @@ function toggleDashboardFullscreen() {
 }
 ```
 
-### Photo Viewer with Gestures
+### Photo viewer with gestures
 
 ```javascript
 let touchStartX = 0;
@@ -400,7 +400,7 @@ function handleSwipe() {
 }
 ```
 
-## Browser-Specific Considerations
+## Browser-specific considerations
 
 ### Safari (iOS)
 
@@ -419,7 +419,7 @@ function handleSwipe() {
 * Good support with vendor prefixes in older versions
 * Modern versions support standard Fullscreen API
 
-## CSS for Fullscreen Mode
+## CSS for fullscreen mode
 
 You can style elements differently when in fullscreen using CSS:
 
@@ -466,7 +466,7 @@ You can style elements differently when in fullscreen using CSS:
 3. **Viewport units**: Use `100vw` and `100vh` for full coverage
 4. **Aspect ratio**: Maintain proper aspect ratios in fullscreen
 
-## Complete Example: Video Player
+## Complete example: Video player
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/fullscreen') }}>

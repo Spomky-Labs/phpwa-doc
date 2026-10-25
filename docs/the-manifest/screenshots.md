@@ -41,9 +41,9 @@ Screenshots are an essential part of your PWA's installation experience. They he
 | Safari (iOS) | ⚠️ Limited | Not displayed in install flow |
 | Firefox | ⚠️ Limited | Partial support |
 
-## Basic Configuration
+## Basic configuration
 
-### Simple Configuration
+### Simple configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -56,7 +56,7 @@ pwa:
             - "images/screenshot-feature3.png"
 ```
 
-### Complete Configuration
+### Complete configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -90,9 +90,9 @@ pwa:
               platform: "android"
 ```
 
-## Configuration Parameters
+## Configuration parameters
 
-### `src` Parameter
+### `src` parameter
 
 The `src` parameter specifies the path to your screenshot image.
 
@@ -114,7 +114,7 @@ screenshots:
 - Use consistent dimensions per form factor
 - Prefer WebP format for smaller file sizes
 
-### `width` and `height` Parameters
+### `width` and `height` parameters
 
 Specify screenshot dimensions in pixels. If omitted, dimensions are detected automatically.
 
@@ -131,7 +131,7 @@ screenshots:
 - Helps browsers choose appropriate screenshot for device
 - Required for some platform app stores
 
-### `format` Parameter
+### `format` parameter
 
 The `format` parameter specifies the image format. The bundle can **automatically convert** images to the specified format.
 
@@ -168,7 +168,7 @@ screenshots:
 | Maximum compatibility | PNG | Universally supported |
 | Smallest file size | WebP | Best compression ratio |
 
-### `label` Parameter
+### `label` parameter
 
 The label parameter provides a brief description or caption for the screenshot. This helps users understand what the feature or screen is about.
 
@@ -211,7 +211,7 @@ app:
         settings: "Paramètres et préférences utilisateur"
 ```
 
-### `platform` Parameter
+### `platform` parameter
 
 The `platform` parameter specifies which operating system or distribution platform the screenshot is intended for. This helps display appropriate screenshots for users on different devices.
 
@@ -254,7 +254,7 @@ screenshots:
 
     If `platform` is not specified, the screenshot is considered universal and may be shown on any platform.
 
-### `form_factor` Parameter
+### `form_factor` parameter
 
 The `form_factor` parameter defines the intended device form factor for your screenshots. This helps browsers display appropriate screenshots based on the user's device.
 
@@ -290,7 +290,7 @@ screenshots:
 | `"wide"` | 1920x1080 (landscape) | 16:9 | Desktops, laptops |
 | `"wide"` | 1280x720 (HD) | 16:9 | Tablets (landscape) |
 
-### `reference` Parameter
+### `reference` parameter
 
 The `reference` parameter allows you to specify a URL reference for the screenshot. This is for documentation purposes only and is **not used by the bundle** in the generated manifest.
 
@@ -307,9 +307,9 @@ screenshots:
 - Internal documentation links
 - Version tracking
 
-## Screenshot Creation
+## Screenshot creation
 
-### Recommended Dimensions
+### Recommended dimensions
 
 **Mobile (Narrow)**:
 
@@ -330,7 +330,7 @@ screenshots:
 | iPad Pro | 2048×1536 | 4:3 |
 | Surface Pro | 2736×1824 | 3:2 |
 
-### Screenshot Creation Methods
+### Screenshot creation methods
 
 **1. Browser DevTools (Recommended)**
 
@@ -411,9 +411,9 @@ captureScreenshots();
 - **macOS**: Cmd + Shift + 4 (select area) or Cmd + Shift + 5 (advanced)
 - **Linux**: PrtScn or Shift + PrtScn
 
-## Complete Use Cases
+## Complete use cases
 
-### Use Case 1: E-Commerce App
+### Use case 1: E-commerce app
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -472,7 +472,7 @@ pwa:
               platform: "android"
 ```
 
-### Use Case 2: Productivity App with Platform-Specific Screens
+### Use case 2: Productivity app with platform-specific screens
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -525,7 +525,7 @@ pwa:
               form_factor: "wide"
 ```
 
-### Use Case 3: Multi-Language App
+### Use case 3: Multi-language app
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -567,9 +567,9 @@ news:
         mobile: "Restez informé en déplacement"
 ```
 
-## Screenshot Optimization
+## Screenshot optimization
 
-### File Size Optimization
+### File size optimization
 
 **1. Use WebP Format**
 
@@ -621,7 +621,7 @@ fs.readdirSync(screenshotsDir).forEach(file => {
 });
 ```
 
-### File Size Guidelines
+### File size guidelines
 
 | Screenshot Type | Target Size | Maximum Size |
 |----------------|-------------|--------------|
@@ -629,7 +629,7 @@ fs.readdirSync(screenshotsDir).forEach(file => {
 | Desktop (wide) | < 300 KB | < 800 KB |
 | Total (all screenshots) | < 2 MB | < 5 MB |
 
-### Image Quality Best Practices
+### Image quality best practices
 
 1. **Use high-resolution source**
    - Capture at actual device resolution (not scaled up)
@@ -650,9 +650,9 @@ fs.readdirSync(screenshotsDir).forEach(file => {
    - Include realistic but anonymized data
    - Highlight key functionality
 
-## Platform-Specific Requirements
+## Platform-specific requirements
 
-### Android / Google Play
+### Android / Google play
 
 **Requirements**:
 - Minimum: 2 screenshots
@@ -678,7 +678,7 @@ screenshots:
       label: "Features view"
 ```
 
-### iOS / App Store
+### iOS / app store
 
 **Requirements**:
 - Screenshots for each supported device size
@@ -704,7 +704,7 @@ screenshots:
       form_factor: "narrow"
 ```
 
-### Windows / Microsoft Store
+### Windows / Microsoft store
 
 **Requirements**:
 - Minimum: 1 screenshot
@@ -722,9 +722,9 @@ screenshots:
       label: "Dashboard on Windows"
 ```
 
-## Testing Screenshots
+## Testing screenshots
 
-### 1. Validate in Manifest
+### 1. Validate in manifest
 
 Check that screenshots are correctly included in the generated manifest:
 
@@ -760,7 +760,7 @@ Expected output:
    - Labels appear properly
 ```
 
-### 3. Test Installation Flow
+### 3. Test installation flow
 
 **Desktop**:
 ```bash
@@ -779,7 +779,7 @@ Expected output:
 5. Verify labels are visible
 ```
 
-### 4. Lighthouse PWA Audit
+### 4. Lighthouse PWA audit
 
 ```bash
 # Run Lighthouse audit
@@ -789,9 +789,9 @@ npx lighthouse https://your-app.com --view --preset=desktop
 # Look for "Provides screenshots" check
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Quantity and Sequence
+### 1. Quantity and sequence
 
 **Recommended number**:
 - Minimum: 3 screenshots
@@ -823,7 +823,7 @@ screenshots:
       label: "Track your productivity"
 ```
 
-### 2. Content Quality
+### 2. Content quality
 
 ```yaml
 # ✅ Good - Shows real feature with clear UI
@@ -845,7 +845,7 @@ screenshots:
 - [ ] Check for spelling errors in UI
 - [ ] Verify consistent theme (all light or all dark)
 
-### 3. Form Factor Strategy
+### 3. Form factor strategy
 
 Provide screenshots for both narrow and wide form factors:
 
@@ -868,7 +868,7 @@ screenshots:
       form_factor: "wide"
 ```
 
-### 4. Performance Optimization
+### 4. Performance optimization
 
 **Minimize file sizes**:
 
@@ -913,9 +913,9 @@ screenshots:
       label: "app.screenshots.features"
 ```
 
-## Common Issues
+## Common issues
 
-### 1. Screenshots Not Appearing in Install Dialog
+### 1. Screenshots not appearing in install dialog
 
 **Problem**: Screenshots configured but not showing during installation
 
@@ -939,7 +939,7 @@ screenshots:
 4. Reload app and reinstall
 ```
 
-### 2. Screenshots Appear Blurry or Pixelated
+### 2. Screenshots appear blurry or pixelated
 
 **Problem**: Low quality or incorrect dimensions
 
@@ -959,7 +959,7 @@ screenshots:
       height: 1080
 ```
 
-### 3. Wrong Screenshots Shown for Device
+### 3. Wrong screenshots shown for device
 
 **Problem**: Desktop screenshots shown on mobile or vice versa
 
@@ -975,7 +975,7 @@ screenshots:
       form_factor: "wide"    # For desktops
 ```
 
-### 4. Screenshots Not Converting to WebP
+### 4. Screenshots not converting to WebP
 
 **Problem**: `format: "webp"` specified but images not converting
 
@@ -993,7 +993,7 @@ ls -la assets/images/screenshots/
 php bin/console debug:container pwa
 ```
 
-### 5. File Size Too Large
+### 5. File size too large
 
 **Problem**: Screenshots causing slow manifest loading
 
@@ -1009,7 +1009,7 @@ screenshots:
 # Instead of 4K (3840x2160), use Full HD (1920x1080)
 ```
 
-## Troubleshooting Checklist
+## Troubleshooting checklist
 
 Before submitting your PWA:
 
@@ -1026,7 +1026,7 @@ Before submitting your PWA:
 - [ ] Lighthouse PWA audit passes
 - [ ] Screenshots appear in install dialog
 
-## Related Documentation
+## Related documentation
 
 - [Icons](icons.md) - Icon configuration for your PWA
 - [Application Information](application-information/README.md) - App metadata configuration

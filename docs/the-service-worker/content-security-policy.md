@@ -1,8 +1,8 @@
-# Content Security Policy
+# Content security policy
 
 Content Security Policy (CSP) is a security standard that helps prevent cross-site scripting (XSS), clickjacking, and other code injection attacks. When using CSP with PWAs, proper configuration is essential to allow service worker registration while maintaining security.
 
-## Why CSP Matters for PWAs
+## Why CSP matters for PWAs
 
 CSP headers control which resources can be loaded and executed. Service workers require JavaScript execution, which CSP may block if not configured correctly.
 
@@ -13,9 +13,9 @@ CSP headers control which resources can be loaded and executed. Service workers 
 - Background sync failures
 - Cache API access denied
 
-## Basic CSP Configuration
+## Basic CSP configuration
 
-### Using Nonce (Recommended)
+### Using nonce (recommended)
 
 The PWA Bundle supports CSP nonces for service worker registration:
 
@@ -35,7 +35,7 @@ The PWA Bundle supports CSP nonces for service worker registration:
 
     **Nelmio Security Bundle**: If using [Nelmio Security Bundle](https://symfony.com/bundles/NelmioSecurityBundle/current/index.html#content-security-policy), nonces are automatically generated and applied. No manual configuration needed.
 
-### Manual Nonce Generation
+### Manual nonce generation
 
 If not using Nelmio, generate nonces manually:
 
@@ -71,9 +71,9 @@ class CspExtension extends AbstractExtension
 
 Then add the nonce to your CSP header in a middleware or response listener.
 
-## CSP Headers for PWAs
+## CSP headers for PWAs
 
-### Minimal CSP Configuration
+### Minimal CSP configuration
 
 Allows service workers with nonce-based script execution:
 
@@ -85,7 +85,7 @@ Content-Security-Policy:
   manifest-src 'self';
 ```
 
-### Complete PWA CSP Configuration
+### Complete PWA CSP configuration
 
 Comprehensive CSP for a full-featured PWA:
 
@@ -134,9 +134,9 @@ pwa:
             use_cdn: false  # Use local Workbox files
 ```
 
-## Symfony Configuration
+## Symfony configuration
 
-### Using Nelmio Security Bundle
+### Using nelmio security bundle
 
 ```yaml title="config/packages/nelmio_security.yaml" linenums="1"
 nelmio_security:
@@ -185,7 +185,7 @@ nelmio_security:
             - 'blob:'
 ```
 
-### Custom Event Subscriber
+### Custom event subscriber
 
 For custom CSP header management:
 
@@ -237,9 +237,9 @@ class CspSubscriber implements EventSubscriberInterface
 }
 ```
 
-## Common CSP Issues
+## Common CSP issues
 
-### 1. Service Worker Registration Fails
+### 1. Service worker registration fails
 
 **Error**: `Refused to execute inline script because it violates CSP directive`
 
@@ -249,7 +249,7 @@ class CspSubscriber implements EventSubscriberInterface
 {{ pwa(swAttributes={nonce: csp_nonce()}) }}
 ```
 
-### 2. Workbox Not Loading
+### 2. Workbox not loading
 
 **Error**: `Refused to load script from 'https://storage.googleapis.com/workbox-cdn/...'`
 
@@ -269,7 +269,7 @@ pwa:
             use_cdn: false
 ```
 
-### 3. fetch() Fails in Service Worker
+### 3. fetch() fails in service worker
 
 **Error**: `Refused to connect to 'https://api.example.com'`
 
@@ -283,7 +283,7 @@ nelmio_security:
             - 'https://api.example.com'
 ```
 
-### 4. Images Not Caching
+### 4. Images not caching
 
 **Error**: `Refused to load image from 'blob:...'`
 
@@ -298,7 +298,7 @@ nelmio_security:
             - 'data:'
 ```
 
-### 5. Background Sync Fails
+### 5. Background Sync fails
 
 **Error**: `Refused to create a worker from 'blob:...'`
 
@@ -312,9 +312,9 @@ nelmio_security:
             - 'blob:'
 ```
 
-## Testing CSP Configuration
+## Testing CSP configuration
 
-### 1. Check CSP Headers
+### 1. Check CSP headers
 
 ```bash
 # Using curl
@@ -333,12 +333,12 @@ Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-...'
 4. Check Network tab for blocked requests
 ```
 
-### 3. CSP Evaluator
+### 3. CSP evaluator
 
 Use Google's CSP Evaluator to validate your policy:
 - https://csp-evaluator.withgoogle.com/
 
-### 4. Report-Only Mode
+### 4. Report-only mode
 
 Test CSP without blocking (reports violations only):
 
@@ -349,9 +349,9 @@ nelmio_security:
         report-uri: '/csp-report'
 ```
 
-## CSP Reporting
+## CSP reporting
 
-### Enable CSP Reports
+### Enable CSP reports
 
 Collect CSP violation reports to identify issues:
 
@@ -361,7 +361,7 @@ nelmio_security:
         report-uri: '/csp-violation-report'
 ```
 
-### Create Report Endpoint
+### Create report endpoint
 
 ```php title="src/Controller/CspController.php" linenums="1"
 <?php
@@ -392,9 +392,9 @@ class CspController extends AbstractController
 }
 ```
 
-## Production vs Development
+## Production vs development
 
-### Development Configuration
+### Development configuration
 
 More permissive for easier debugging:
 
@@ -411,7 +411,7 @@ nelmio_security:
             - 'unsafe-eval'    # Allow for dev tools
 ```
 
-### Production Configuration
+### Production configuration
 
 Strict policy for maximum security:
 
@@ -427,9 +427,9 @@ nelmio_security:
             - 'nonce'  # Only nonce-based scripts
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Use Nonces, Not unsafe-inline
+### 1. Use nonces, not unsafe-inline
 
 ```yaml
 # ✗ Avoid
@@ -443,7 +443,7 @@ script-src:
     - 'nonce'
 ```
 
-### 2. Use Local Resources
+### 2. Use local resources
 
 Avoid relying on external CDNs when possible:
 
@@ -454,7 +454,7 @@ pwa:
             use_cdn: false  # Use local Workbox
 ```
 
-### 3. Minimize 'unsafe-*' Directives
+### 3. Minimize 'unsafe-*' directives
 
 Only use when absolutely necessary:
 
@@ -470,7 +470,7 @@ style-src:
     - 'unsafe-inline'
 ```
 
-### 4. Start Strict, Relax if Needed
+### 4. Start strict, relax if needed
 
 Begin with restrictive policy and relax gradually:
 
@@ -482,7 +482,7 @@ default-src: ['self']
 connect-src: ['self', 'https://api.example.com']
 ```
 
-### 5. Monitor Violations
+### 5. Monitor violations
 
 Use report-uri to catch violations in production:
 
@@ -491,7 +491,7 @@ content_security_policy:
     report-uri: '/csp-report'
 ```
 
-## Platform-Specific Considerations
+## Platform-specific considerations
 
 ### iOS/Safari
 
@@ -507,7 +507,7 @@ Chrome supports full CSP spec. Take advantage of:
 - `'unsafe-hashes'` for specific inline scripts
 - Full nonce support
 
-### Progressive Enhancement
+### Progressive enhancement
 
 Provide fallbacks for browsers without service worker support:
 
@@ -521,7 +521,7 @@ if ('serviceWorker' in navigator) {
 }
 ```
 
-## Troubleshooting Checklist
+## Troubleshooting checklist
 
 When CSP blocks your PWA:
 
@@ -536,7 +536,7 @@ When CSP blocks your PWA:
 - [ ] Check Workbox uses local files (use_cdn: false)
 - [ ] Verify all external resources are whitelisted
 
-## Related Documentation
+## Related documentation
 
 - [Service Worker Configuration](configuration.md) - Service worker setup
 - [Workbox](workbox/README.md) - Workbox configuration options

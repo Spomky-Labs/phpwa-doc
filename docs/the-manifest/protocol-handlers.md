@@ -20,7 +20,7 @@ Protocol handlers allow your PWA to:
 - Recipe apps handling `web+recipe:` links
 - Game launchers handling `web+game:` links
 
-## Browser Support
+## Browser support
 
 | Browser | Support | Notes |
 |---------|---------|-------|
@@ -36,7 +36,7 @@ Protocol handlers allow your PWA to:
 
 ## Configuration
 
-### Basic Configuration
+### Basic configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -52,7 +52,7 @@ pwa:
                       foo: "bar"
 ```
 
-### Complete Example
+### Complete example
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -78,11 +78,11 @@ pwa:
               url: "/player?track=%s"
 ```
 
-## Protocol Parameter
+## Protocol parameter
 
 The `protocol` parameter specifies the protocol scheme your PWA can handle. It must follow these rules:
 
-### Standard Protocols
+### Standard protocols
 
 Standard web protocols can be registered without any prefix:
 
@@ -113,7 +113,7 @@ protocol_handlers:
 
 **Usage**: `<a href="sms:+1234567890">Text Us</a>`
 
-### Custom Protocols
+### Custom protocols
 
 Custom protocols **must** start with the `web+` prefix:
 
@@ -138,11 +138,11 @@ protocol_handlers:
 
     **Custom Protocol Rules**: Custom protocols MUST use the `web+` prefix to be valid. Protocols without this prefix are reserved for standard web protocols.
 
-## URL Parameter
+## URL parameter
 
 The `url` parameter defines where to redirect when the protocol is triggered. The URL can include a placeholder `%s` that will be replaced with the protocol's argument.
 
-### Simple String Format
+### Simple string format
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 protocol_handlers:
@@ -154,7 +154,7 @@ protocol_handlers:
 - User clicks: `mailto:user@example.com`
 - PWA opens: `/mail/compose?to=user@example.com`
 
-### Advanced Object Format
+### Advanced object format
 
 Just like with [shortcuts](shortcuts.md#url-parameter) and [start_url](application-information/start-url.md), you can use the full URL object configuration:
 
@@ -180,7 +180,7 @@ public function viewRecipe(string $recipe_id): Response
 }
 ```
 
-### Path Type Reference
+### Path type reference
 
 The `path_type_reference` option controls URL generation:
 
@@ -200,7 +200,7 @@ protocol_handlers:
           path_type_reference: 0  # Generates full URL with domain
 ```
 
-## Placeholder Parameter
+## Placeholder parameter
 
 When you need more control over the placeholder format, you can use the `placeholder` parameter. The bundle will automatically format it as `placeholder=%s`:
 
@@ -221,9 +221,9 @@ protocol_handlers:
 
 This allows you to create more semantic URL patterns for your protocol handlers.
 
-## Use Cases
+## Use cases
 
-### 1. Email Client
+### 1. Email client
 
 Handle `mailto:` links to compose emails in your PWA:
 
@@ -260,7 +260,7 @@ class EmailController extends AbstractController
 }
 ```
 
-### 2. Phone Dialer
+### 2. Phone dialer
 
 Handle `tel:` links for a calling app:
 
@@ -289,7 +289,7 @@ public function call(Request $request): Response
 }
 ```
 
-### 3. Recipe App
+### 3. Recipe app
 
 Handle custom `web+recipe:` protocol:
 
@@ -328,7 +328,7 @@ public function view(string $id, RecipeRepository $repository): Response
 </a>
 ```
 
-### 4. Music Player
+### 4. Music player
 
 Handle `web+music:` protocol for streaming:
 
@@ -358,7 +358,7 @@ public function player(Request $request): Response
 }
 ```
 
-### 5. Multi-Protocol App
+### 5. Multi-protocol app
 
 Support multiple protocols in one PWA:
 
@@ -385,13 +385,13 @@ pwa:
               url: "/video/join?room=%s"
 ```
 
-## Registration Process
+## Registration process
 
-### 1. User Installs PWA
+### 1. User installs PWA
 
 When a user installs your PWA, the browser detects protocol handlers in the manifest.
 
-### 2. Permission Request
+### 2. Permission request
 
 The browser prompts the user to allow the PWA to handle specified protocols.
 
@@ -401,7 +401,7 @@ Allow "My Email App" to open mailto links?
 [Allow] [Block]
 ```
 
-### 3. Default Handler
+### 3. Default handler
 
 If the user allows, your PWA becomes an available handler for those protocols.
 
@@ -412,7 +412,7 @@ If the user allows, your PWA becomes an available handler for those protocols.
 
 ## Testing
 
-### 1. Test Protocol Links
+### 1. Test protocol links
 
 Create test HTML page with protocol links:
 
@@ -442,7 +442,7 @@ Create test HTML page with protocol links:
 </html>
 ```
 
-### 2. Check Manifest in DevTools
+### 2. Check manifest in DevTools
 
 ```bash
 1. Open DevTools (F12)
@@ -452,7 +452,7 @@ Create test HTML page with protocol links:
 5. Verify URLs are correct
 ```
 
-### 3. Test Registration Flow
+### 3. Test registration flow
 
 ```bash
 1. Install PWA (if not installed)
@@ -463,7 +463,7 @@ Create test HTML page with protocol links:
 6. Check query parameters are populated
 ```
 
-### 4. JavaScript Testing
+### 4. JavaScript testing
 
 ```javascript title="public/test-protocol.js"
 // Check if protocol handler is registered
@@ -488,9 +488,9 @@ testProtocol('mailto', 'user@example.com');
 testProtocol('web+recipe', '123');
 ```
 
-## User Management
+## User management
 
-### Checking Permissions
+### Checking permissions
 
 Users can manage protocol handlers in browser settings:
 
@@ -504,7 +504,7 @@ chrome://settings/handlers
 edge://settings/content/defaultProtocolHandlers
 ```
 
-### Revoking Permission
+### Revoking permission
 
 Users can remove your PWA as a protocol handler:
 1. Open browser settings
@@ -512,9 +512,9 @@ Users can remove your PWA as a protocol handler:
 3. Find your PWA
 4. Click "Remove" or "Block"
 
-## Best Practices
+## Best practices
 
-### 1. Request Only Needed Protocols
+### 1. Request only needed protocols
 
 ```yaml
 # ✓ Good - only essential protocols
@@ -532,7 +532,7 @@ protocol_handlers:
     # ... (requesting too many)
 ```
 
-### 2. Provide Clear Value
+### 2. Provide clear value
 
 Explain why users should allow protocol handling:
 
@@ -544,7 +544,7 @@ Explain why users should allow protocol handling:
 </div>
 ```
 
-### 3. Handle Missing Parameters
+### 3. Handle missing parameters
 
 ```php
 #[Route('/compose', name: 'app_compose')]
@@ -574,7 +574,7 @@ public function compose(Request $request): Response
 }
 ```
 
-### 4. Sanitize Protocol Input
+### 4. Sanitize protocol input
 
 ```php
 #[Route('/call', name: 'app_call')]
@@ -596,7 +596,7 @@ public function call(Request $request): Response
 }
 ```
 
-### 5. Provide Fallback
+### 5. Provide fallback
 
 Always ensure your app works even if protocol handlers aren't available:
 
@@ -611,7 +611,7 @@ if ('launchQueue' in window) {
 }
 ```
 
-### 6. Test Across Browsers
+### 6. Test across browsers
 
 ```bash
 # Test matrix
@@ -622,9 +622,9 @@ if ('launchQueue' in window) {
 - ✗ Firefox - Not supported (provide fallback)
 ```
 
-## Security Considerations
+## Security considerations
 
-### 1. HTTPS Required
+### 1. HTTPS required
 
 Protocol handlers only work over HTTPS:
 
@@ -636,7 +636,7 @@ https://your-app.com
 http://your-app.com
 ```
 
-### 2. Validate Input
+### 2. Validate input
 
 Always validate and sanitize protocol arguments:
 
@@ -659,7 +659,7 @@ public function handleProtocol(Request $request): Response
 }
 ```
 
-### 3. Prevent Open Redirects
+### 3. Prevent open redirects
 
 ```php
 public function handleUrl(Request $request): Response
@@ -683,7 +683,7 @@ private function isInternalUrl(string $url): bool
 }
 ```
 
-### 4. Respect User Choice
+### 4. Respect user choice
 
 Always provide an easy way for users to opt-out:
 
@@ -697,9 +697,9 @@ Always provide an easy way for users to opt-out:
 </div>
 ```
 
-## Common Issues
+## Common issues
 
-### Protocol Handler Not Appearing
+### Protocol handler not appearing
 
 **Problem**: PWA doesn't appear as protocol handler option
 
@@ -710,7 +710,7 @@ Always provide an easy way for users to opt-out:
 - Clear browser cache and reinstall PWA
 - Check DevTools → Application → Manifest
 
-### Permission Not Requested
+### Permission not requested
 
 **Problem**: Browser doesn't prompt for protocol handler permission
 
@@ -720,7 +720,7 @@ Always provide an easy way for users to opt-out:
 - Check if permission was previously denied
 - Reset permissions in browser settings
 
-### Wrong URL Generated
+### Wrong URL generated
 
 **Problem**: Protocol handler opens wrong URL
 
@@ -730,7 +730,7 @@ Always provide an easy way for users to opt-out:
 - Ensure Symfony route exists
 - Check route parameters match configuration
 
-### Protocol Not Working
+### Protocol not working
 
 **Problem**: Clicking protocol link doesn't open PWA
 
@@ -742,7 +742,7 @@ Always provide an easy way for users to opt-out:
 
 ## Troubleshooting
 
-### Debug Protocol Handling
+### Debug protocol handling
 
 ```javascript
 // Monitor protocol launches
@@ -758,7 +758,7 @@ if ('launchQueue' in window) {
 }
 ```
 
-### Check Protocol Registration
+### Check protocol registration
 
 ```bash
 1. Open chrome://settings/handlers
@@ -767,14 +767,14 @@ if ('launchQueue' in window) {
 4. Check "Allow" is selected
 ```
 
-### Test Without Installation
+### Test without installation
 
 Protocol handlers only work for installed PWAs. To test:
 1. Install PWA first
 2. Then click protocol links
 3. Or test from external page/app
 
-## Related Documentation
+## Related documentation
 
 - [Shortcuts](shortcuts.md) - App shortcuts configuration
 - [Start URL](application-information/start-url.md) - URL configuration

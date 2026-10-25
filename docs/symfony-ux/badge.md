@@ -14,7 +14,7 @@ This component is particularly useful for:
 * Alerting users to new content availability
 * Displaying shopping cart item counts
 
-## Browser Support
+## Browser support
 
 The Badging API is supported in Chromium-based browsers (Chrome, Edge, Opera) on desktop and Android. The badge appears on the PWA's icon when it's installed on the device.
 
@@ -24,7 +24,7 @@ The Badging API is supported in Chromium-based browsers (Chrome, Edge, Opera) on
 
 ## Usage
 
-### Basic Badge Counter
+### Basic badge counter
 
 ```twig linenums="1"
 <body {{ stimulus_controller('@pwa/badge') }}>
@@ -49,7 +49,7 @@ The Badging API is supported in Chromium-based browsers (Chrome, Edge, Opera) on
 </script>
 ```
 
-### Dynamic Badge Update on Page Load
+### Dynamic badge update on page load
 
 ```twig linenums="1"
 <body
@@ -61,7 +61,7 @@ The Badging API is supported in Chromium-based browsers (Chrome, Edge, Opera) on
 </body>
 ```
 
-### Real-time Badge Updates
+### Real-time badge updates
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/badge') }}>
@@ -110,7 +110,7 @@ The Badging API is supported in Chromium-based browsers (Chrome, Edge, Opera) on
 </script>
 ```
 
-### Badge with WebSocket Updates
+### Badge with WebSocket updates
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/badge') }}>
@@ -162,7 +162,7 @@ The Badging API is supported in Chromium-based browsers (Chrome, Edge, Opera) on
 </script>
 ```
 
-### E-commerce Shopping Cart Badge
+### E-commerce shopping cart badge
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/badge') }}>
@@ -298,7 +298,7 @@ document.addEventListener('pwa--badge:updated', (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Keep counts accurate**: Ensure badge numbers reflect actual unread/pending items
 2. **Clear when appropriate**: Remove badges when counts reach zero
@@ -308,7 +308,7 @@ document.addEventListener('pwa--badge:updated', (event) => {
 6. **Provide context**: Combine app icon badges with in-app indicators
 7. **Don't overuse**: Reserve badges for truly important notifications
 
-## Badge vs Push Notifications
+## Badge vs push notifications
 
 While badges and push notifications both alert users, they serve different purposes:
 
@@ -322,7 +322,7 @@ While badges and push notifications both alert users, they serve different purpo
 
 Use both together for the best user experience: push notifications for new content, badges for ongoing counts.
 
-## Integration with Service Worker
+## Integration with service worker
 
 Badges can be updated from the service worker, enabling background updates:
 
@@ -344,7 +344,7 @@ self.addEventListener('push', (event) => {
 });
 ```
 
-## Complete Example: Messaging App
+## Complete example: Messaging app
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/badge') }}>
@@ -482,7 +482,7 @@ self.addEventListener('push', (event) => {
 2. **Persistent storage**: Store count in localStorage for consistency
 3. **Validate updates**: Ensure all increment/decrement operations are correct
 
-## Platform-Specific Behavior
+## Platform-specific behavior
 
 * **Chrome/Edge (Desktop)**: Badge appears as a circle with number
 * **Chrome/Edge (Android)**: Badge shown as notification dot or number

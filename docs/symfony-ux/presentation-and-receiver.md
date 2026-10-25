@@ -1,4 +1,4 @@
-# Presentation and Receiver
+# Presentation and receiver
 
 The Presentation and Receiver components enable you to display web content on secondary screens (external displays, TVs, projectors, or wireless displays) using the Presentation API. The **Presentation** controller manages the connection from the primary device, while the **Receiver** controller handles incoming connections on the secondary display. Together, they enable multi-screen experiences for presentations, digital signage, gaming, and collaborative applications.
 
@@ -13,7 +13,7 @@ This component pair is particularly useful for:
 * Creating kiosk applications with separate control and display screens
 * Building remote display and monitoring dashboards
 
-## Browser Support
+## Browser support
 
 The Presentation API has limited but growing support, primarily in Chromium-based browsers.
 
@@ -42,11 +42,11 @@ Communication flows bidirectionally between controller and receiver through mess
 
 ## Usage
 
-### Presentation Controller (Primary Device)
+### Presentation controller (primary device)
 
 The presentation controller runs on the device that initiates the presentation.
 
-#### Basic Presentation Setup
+#### Basic presentation setup
 
 ```twig linenums="1"
 {# presentation.html.twig - Controller page #}
@@ -103,7 +103,7 @@ The presentation controller runs on the device that initiates the presentation.
 </script>
 ```
 
-#### Sending Messages to Receiver
+#### Sending messages to receiver
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/presentation', {
@@ -130,7 +130,7 @@ The presentation controller runs on the device that initiates the presentation.
 </script>
 ```
 
-#### Reconnecting to Existing Presentation
+#### Reconnecting to existing presentation
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/presentation', {
@@ -158,11 +158,11 @@ The presentation controller runs on the device that initiates the presentation.
 </script>
 ```
 
-### Receiver (Secondary Display)
+### Receiver (secondary display)
 
 The receiver runs on the secondary display and handles incoming messages.
 
-#### Basic Receiver Setup
+#### Basic receiver setup
 
 ```twig linenums="1"
 {# receiver.html.twig - Receiver page #}
@@ -215,7 +215,7 @@ The receiver runs on the secondary display and handles incoming messages.
 </html>
 ```
 
-#### Two-Way Communication
+#### Two-way communication
 
 ```twig linenums="1"
 {# Receiver can send messages back to controller #}
@@ -252,9 +252,9 @@ The receiver runs on the secondary display and handles incoming messages.
 </script>
 ```
 
-## Best Practices
+## Best practices
 
-### Check Availability First
+### Check availability first
 
 !!! success
 
@@ -288,13 +288,13 @@ The receiver runs on the secondary display and handles incoming messages.
 </script>
 ```
 
-### Handle Reconnection Gracefully
+### Handle reconnection gracefully
 
 !!! info
 
     Connection IDs are persisted in localStorage. Implement reconnection logic to allow users to resume presentations after page refreshes.
 
-### Design for Large Screens
+### Design for large screens
 
 !!! success
 
@@ -321,7 +321,7 @@ h1 {
 }
 ```
 
-### Keep Controller and Receiver in Sync
+### Keep controller and receiver in sync
 
 !!! warning
 
@@ -339,7 +339,7 @@ host.addEventListener('presentation:started', () => {
 });
 ```
 
-### Error Handling
+### Error handling
 
 ```javascript linenums="1"
 // Wrap presentation.start() in try-catch
@@ -359,9 +359,9 @@ startBtn.addEventListener('click', async () => {
 });
 ```
 
-## Common Use Cases
+## Common use cases
 
-### 1. Slide Presentation System
+### 1. Slide presentation system
 
 ```twig linenums="1"
 {# Controller #}
@@ -428,7 +428,7 @@ startBtn.addEventListener('click', async () => {
 </script>
 ```
 
-### 2. Digital Signage
+### 2. Digital signage
 
 ```twig linenums="1"
 {# Receiver for digital signage #}
@@ -498,7 +498,7 @@ startBtn.addEventListener('click', async () => {
 </style>
 ```
 
-### 3. Multi-Display Gaming
+### 3. Multi-display gaming
 
 ```twig linenums="1"
 {# Game controller on primary device #}
@@ -568,7 +568,7 @@ startBtn.addEventListener('click', async () => {
 </script>
 ```
 
-### 4. Collaborative Whiteboard
+### 4. Collaborative whiteboard
 
 ```twig linenums="1"
 {# Shared whiteboard receiver #}
@@ -608,9 +608,9 @@ startBtn.addEventListener('click', async () => {
 </script>
 ```
 
-## API Reference
+## API reference
 
-### Presentation Controller
+### Presentation controller
 
 #### Values
 
@@ -754,7 +754,7 @@ host.addEventListener('receiver:close', (e) => {
 });
 ```
 
-## Related Components
+## Related components
 
 - [Service Worker](service-worker.md) - May be used for offline receiver pages
 - [Fullscreen](fullscreen.md) - Often used together for immersive presentation experiences

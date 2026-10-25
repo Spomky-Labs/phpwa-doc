@@ -11,7 +11,7 @@ This component is particularly useful for:
 * Accessibility features for users with visual impairments
 * Timers and alarm applications
 
-## Browser Support
+## Browser support
 
 The Vibration API is supported on most Android devices in Chrome, Firefox, and Edge. iOS devices (iPhone, iPad) do not support the Vibration API due to platform restrictions.
 
@@ -21,7 +21,7 @@ The Vibration API is supported on most Android devices in Chrome, Firefox, and E
 
 ## Usage
 
-### Basic Vibration
+### Basic vibration
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
@@ -41,7 +41,7 @@ The Vibration API is supported on most Android devices in Chrome, Firefox, and E
 </script>
 ```
 
-### Vibration Patterns
+### Vibration patterns
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
@@ -71,7 +71,7 @@ The Vibration API is supported on most Android devices in Chrome, Firefox, and E
 </div>
 ```
 
-### Persistent Vibration with Interval
+### Persistent vibration with interval
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
@@ -102,7 +102,7 @@ The Vibration API is supported on most Android devices in Chrome, Firefox, and E
 </script>
 ```
 
-### Form Validation Feedback
+### Form validation feedback
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
@@ -148,7 +148,7 @@ The Vibration API is supported on most Android devices in Chrome, Firefox, and E
 </script>
 ```
 
-### Gaming Controls
+### Gaming controls
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
@@ -200,7 +200,7 @@ The Vibration API is supported on most Android devices in Chrome, Firefox, and E
 </script>
 ```
 
-### Timer/Alarm Application
+### Timer/alarm application
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
@@ -258,7 +258,7 @@ The Vibration API is supported on most Android devices in Chrome, Firefox, and E
 </script>
 ```
 
-### Accessibility Features
+### Accessibility features
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>
@@ -382,7 +382,7 @@ document.addEventListener('pwa--vibration:stopped', () => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Be conservative**: Use vibration sparingly to avoid annoying users
 2. **Keep it short**: Most vibration patterns should be under 500ms total
@@ -392,7 +392,7 @@ document.addEventListener('pwa--vibration:stopped', () => {
 6. **User preferences**: Consider providing an option to disable vibrations
 7. **Context-appropriate**: Use different patterns for different types of feedback
 
-## Common Vibration Patterns
+## Common vibration patterns
 
 Here are some commonly used vibration patterns:
 
@@ -431,7 +431,7 @@ const sos = [
 ];
 ```
 
-## Device Considerations
+## Device considerations
 
 ### Android
 
@@ -451,7 +451,7 @@ const sos = [
 * Some gaming devices with haptic feedback may work
 * Not reliable for desktop PWAs
 
-## Battery Impact
+## Battery impact
 
 Vibration uses power from both the motor and the processor. Consider these guidelines:
 
@@ -460,7 +460,7 @@ Vibration uses power from both the motor and the processor. Consider these guide
 * **Long vibrations (> 500ms)**: Significant impact
 * **Repeating vibrations**: High impact, avoid if possible
 
-## Testing Vibration
+## Testing vibration
 
 ```javascript
 // Check if Vibration API is supported
@@ -475,7 +475,7 @@ if ('vibrate' in navigator) {
 }
 ```
 
-## Complete Example: Interactive Notification System
+## Complete example: Interactive notification system
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/vibration') }}>

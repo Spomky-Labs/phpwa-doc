@@ -34,9 +34,9 @@ Shortcuts enhance user engagement by making your PWA's most important features i
 - Not available on iOS/Safari
 - Shortcuts don't work if app not installed
 
-## Basic Configuration
+## Basic configuration
 
-### Simple Configuration
+### Simple configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -56,7 +56,7 @@ pwa:
                   sizes: [96]
 ```
 
-### Complete Configuration
+### Complete configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -92,9 +92,9 @@ pwa:
                   sizes: [96]
 ```
 
-## Configuration Parameters
+## Configuration parameters
 
-### `name` Parameter (Required)
+### `name` parameter (required)
 
 The `name` parameter defines the full name of the shortcut displayed to the user. It should be descriptive enough to communicate the action clearly.
 
@@ -133,7 +133,7 @@ app:
         new_task: "Créer une nouvelle tâche"
 ```
 
-### `short_name` Parameter (Optional)
+### `short_name` parameter (optional)
 
 The `short_name` is a concise version of `name`, used when space is limited on smaller screens or in condensed UI.
 
@@ -154,7 +154,7 @@ shortcuts:
 - Use abbreviations if clear (e.g., "Msgs" for "Messages")
 - Still should be understandable on its own
 
-### `description` Parameter (Optional)
+### `description` parameter (optional)
 
 The `description` provides additional context about what the shortcut does. This may be shown in some UI contexts or used for accessibility.
 
@@ -175,11 +175,11 @@ shortcuts:
 - Don't just repeat the name
 - Include keywords for accessibility
 
-### `url` Parameter (Required)
+### `url` parameter (required)
 
 The `url` parameter specifies where the user navigates when activating the shortcut. It supports multiple formats.
 
-#### Simple String (Relative Path)
+#### Simple string (relative path)
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
@@ -190,7 +190,7 @@ shortcuts:
       url: "/user/settings"  # Nested path
 ```
 
-#### Symfony Route Name
+#### Symfony route name
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
@@ -201,7 +201,7 @@ shortcuts:
       url: "app_user_profile"  # Route name
 ```
 
-#### Route with Parameters
+#### Route with parameters
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 shortcuts:
@@ -230,7 +230,7 @@ shortcuts:
       url: "https://docs.example.com/guide"
 ```
 
-#### Path Type Reference
+#### Path type reference
 
 The `path_type_reference` option controls URL generation format:
 
@@ -271,7 +271,7 @@ shortcuts:
 
     **Router Context Required**: For absolute URLs (type 0 or 3), ensure the Request Context is properly configured. See the [Symfony router configuration](https://symfony.com/doc/current/routing.html#generating-urls-in-commands) for details.
 
-### `icons` Parameter (Optional, Recommended)
+### `icons` parameter (optional, recommended)
 
 Icons make shortcuts visually identifiable and more user-friendly. Each shortcut can have one or more icons in different sizes.
 
@@ -317,9 +317,9 @@ See the [Icons documentation](icons.md) for complete icon configuration options.
 
     **96×96 Icon Highly Recommended**: A 96×96 pixel icon is the standard size for shortcuts on most platforms. Always provide this size at minimum.
 
-## Complete Use Cases
+## Complete use cases
 
-### Use Case 1: Task Management App
+### Use case 1: Task management app
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -371,7 +371,7 @@ pwa:
                     sizes: [96]
 ```
 
-### Use Case 2: E-Commerce App with Translated Shortcuts
+### Use case 2: E-commerce app with translated shortcuts
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -456,7 +456,7 @@ shop:
             description: "Voir les offres spéciales"
 ```
 
-### Use Case 3: News/Media App
+### Use case 3: News/media app
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -499,7 +499,7 @@ pwa:
                     sizes: [96]
 ```
 
-### Use Case 4: Social/Communication App
+### Use case 4: Social/communication app
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -539,7 +539,7 @@ pwa:
                     sizes: [96]
 ```
 
-## Platform-Specific Behavior
+## Platform-specific behavior
 
 ### Android (Chrome)
 
@@ -595,9 +595,9 @@ pwa:
 - Behavior varies by DE (GNOME, KDE, etc.)
 - Icon display depends on theme
 
-## Icon Design Guidelines
+## Icon design guidelines
 
-### Recommended Sizes
+### Recommended sizes
 
 ```yaml
 shortcuts:
@@ -612,7 +612,7 @@ shortcuts:
             sizes: [256]     # Optional, for very high-DPI
 ```
 
-### Design Principles
+### Design principles
 
 1. **Simple and Clear**
    - Use simple, recognizable symbols
@@ -634,7 +634,7 @@ shortcuts:
    - Don't rely solely on color
    - Test at small sizes
 
-### Creating Shortcut Icons
+### Creating shortcut icons
 
 **Using Design Tools**:
 ```bash
@@ -663,9 +663,9 @@ convert icon.png -resize 96x96 icon-96.png
 convert icon.png -resize 192x192 icon-192.png
 ```
 
-## Testing Shortcuts
+## Testing shortcuts
 
-### 1. Verify Manifest
+### 1. Verify manifest
 
 Check that shortcuts are correctly included in the manifest:
 
@@ -740,7 +740,7 @@ Expected output:
 4. Test each shortcut activation
 ```
 
-### 6. Test Translations
+### 6. Test translations
 
 For multilingual apps:
 
@@ -752,7 +752,7 @@ For multilingual apps:
 4. Verify translated names appear
 ```
 
-## Best Practices
+## Best practices
 
 ### 1. Quantity
 
@@ -803,7 +803,7 @@ shortcuts:
       url: "/settings"
 ```
 
-### 3. Naming Consistency
+### 3. Naming consistency
 
 ```yaml
 # ✅ Good - Consistent verb patterns
@@ -819,7 +819,7 @@ shortcuts:
     - name: "Searching"       # Gerund
 ```
 
-### 4. URL Scope
+### 4. URL scope
 
 Ensure shortcut URLs are within your app's scope:
 
@@ -838,7 +838,7 @@ shortcuts:
       url: "https://help.external.com"  # Opens externally
 ```
 
-### 5. Analytics Integration
+### 5. Analytics integration
 
 Track shortcut usage in your application:
 
@@ -869,7 +869,7 @@ class TaskController extends AbstractController
 }
 ```
 
-### 6. Icon Consistency
+### 6. Icon consistency
 
 Use consistent visual style across all shortcut icons:
 
@@ -893,9 +893,9 @@ shortcuts:
           - src: "icons/settings-3d.png"     # 3D style
 ```
 
-## Common Issues
+## Common issues
 
-### 1. Shortcuts Not Appearing
+### 1. Shortcuts not appearing
 
 **Problem**: Shortcuts menu doesn't show when right-clicking/long-pressing app icon
 
@@ -922,7 +922,7 @@ shortcuts:
 5. Test shortcuts again
 ```
 
-### 2. Icons Not Displaying
+### 2. Icons not displaying
 
 **Problem**: Shortcut names appear but icons don't show
 
@@ -944,7 +944,7 @@ shortcuts:
 # PNG, JPEG, WebP (avoid SVG on some platforms)
 ```
 
-### 3. Wrong URL Opens
+### 3. Wrong URL opens
 
 **Problem**: Clicking shortcut opens wrong page or shows 404
 
@@ -965,7 +965,7 @@ php bin/console debug:router app_dashboard
 # Visit the URL in browser to ensure it works
 ```
 
-### 4. Translations Not Working
+### 4. Translations not working
 
 **Problem**: Shortcut names show translation keys instead of translated text
 
@@ -985,7 +985,7 @@ php bin/console cache:clear
 php bin/console debug:config framework enabled_locales
 ```
 
-### 5. Too Many Shortcuts
+### 5. Too many shortcuts
 
 **Problem**: Only first few shortcuts appear
 
@@ -1003,7 +1003,7 @@ shortcuts:
     - name: "Fourth Priority"  # May not show on all platforms
 ```
 
-## Troubleshooting Checklist
+## Troubleshooting checklist
 
 Before deploying with shortcuts:
 
@@ -1020,7 +1020,7 @@ Before deploying with shortcuts:
 - [ ] Translations work (if applicable)
 - [ ] Limited to 3-5 most important actions
 
-## Related Documentation
+## Related documentation
 
 - [Icons](icons.md) - Icon configuration for shortcuts
 - [Translations](translations.md) - Localizing shortcut names

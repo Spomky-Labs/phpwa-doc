@@ -1,4 +1,4 @@
-# Device Orientation
+# Device orientation
 
 The Device Orientation component provides access to the Device Orientation API, allowing your application to detect and respond to changes in the physical orientation of a mobile device or tablet. This enables creating immersive experiences that react to how users hold and move their devices.
 
@@ -14,7 +14,7 @@ This component is particularly useful for:
 * Educational simulations requiring device movement
 * Gesture-based interfaces
 
-## Browser Support
+## Browser support
 
 The Device Orientation API is primarily available on mobile devices (smartphones and tablets) with motion sensors. Desktop browsers typically don't support this API as most computers lack the necessary sensors.
 
@@ -30,7 +30,7 @@ The Device Orientation API is primarily available on mobile devices (smartphones
 
 ## Usage
 
-### Basic Orientation Display
+### Basic orientation display
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
@@ -93,7 +93,7 @@ The Device Orientation API is primarily available on mobile devices (smartphones
 </style>
 ```
 
-### Visual Device Representation
+### Visual device representation
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
@@ -222,7 +222,7 @@ The Device Orientation API is primarily available on mobile devices (smartphones
 </style>
 ```
 
-### Compass Application
+### Compass application
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
@@ -401,7 +401,7 @@ The Device Orientation API is primarily available on mobile devices (smartphones
 </style>
 ```
 
-### Spirit Level (Leveling Tool)
+### Spirit level (leveling tool)
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
@@ -583,7 +583,7 @@ The Device Orientation API is primarily available on mobile devices (smartphones
 </style>
 ```
 
-### Tilt-Based Game
+### Tilt-based game
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
@@ -866,7 +866,7 @@ The Device Orientation API is primarily available on mobile devices (smartphones
 </style>
 ```
 
-### 360° Photo Viewer
+### 360° photo viewer
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
@@ -1048,7 +1048,7 @@ document.addEventListener('pwa--device-orientation:updated', (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Request permission on iOS**: On iOS 13+, trigger permission request from a user gesture
 2. **Use appropriate throttle**: Balance between smoothness and performance
@@ -1061,9 +1061,9 @@ document.addEventListener('pwa--device-orientation:updated', (event) => {
 9. **Graceful degradation**: Provide alternative controls for devices without sensors
 10. **Inform users**: Explain that orientation features require device movement
 
-## Understanding Orientation Axes
+## Understanding orientation axes
 
-### Coordinate System
+### Coordinate system
 
 ```
 Device in portrait mode (upright):
@@ -1075,7 +1075,7 @@ Device in portrait mode (upright):
 ↕ Tilt forward/back       ↔ Tilt left/right
 ```
 
-### Practical Examples
+### Practical examples
 
 ```javascript
 // Detect device lying flat on table
@@ -1101,7 +1101,7 @@ function getTiltMagnitude(beta, gamma) {
 }
 ```
 
-## iOS Permission Handling
+## iOS permission handling
 
 On iOS 13+, you must request permission before accessing device orientation:
 
@@ -1125,7 +1125,7 @@ if (typeof DeviceOrientationEvent.requestPermission === 'function') {
 }
 ```
 
-## Complete Example: AR Pointer
+## Complete example: AR pointer
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/device-orientation', {
@@ -1414,7 +1414,7 @@ if (isLandscape) {
 }
 ```
 
-## Browser Compatibility
+## Browser compatibility
 
 | Platform | Support |
 |----------|---------|

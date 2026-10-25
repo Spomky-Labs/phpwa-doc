@@ -1,4 +1,4 @@
-# Custom Cache Strategy
+# Custom cache strategy
 
 Custom cache strategies allow you to programmatically define Workbox caching rules beyond the standard configuration options. This provides maximum flexibility for complex caching scenarios.
 
@@ -6,7 +6,7 @@ Custom cache strategies allow you to programmatically define Workbox caching rul
 
 While the PWA Bundle provides convenient configuration options for common caching patterns (asset caching, image caching, etc.), some applications require custom caching logic that goes beyond standard configuration. The bundle supports programmatic cache strategy creation through the `WorkboxCacheStrategy` class.
 
-## When to Use Custom Cache Strategies
+## When to use custom cache strategies
 
 Use custom cache strategies when you need to:
 
@@ -16,7 +16,7 @@ Use custom cache strategies when you need to:
 4. **Advanced caching logic** - Multi-tenant applications, authenticated APIs, conditional caching
 5. **Runtime flexibility** - Strategies that change based on application state
 
-## Quick Example
+## Quick example
 
 ```php title="src/ServiceWorker/CacheStrategy/ApiCacheStrategy.php" linenums="1"
 <?php
@@ -54,7 +54,7 @@ This creates a cache strategy that:
 - Limits the cache to 50 entries
 - Expires cached responses after 1 hour
 
-## Complete Documentation
+## Complete documentation
 
 For comprehensive documentation on creating custom cache strategies, including:
 
@@ -67,7 +67,7 @@ For comprehensive documentation on creating custom cache strategies, including:
 
 See the complete **[Custom Cache Strategies](../custom-cache-strategies.md)** documentation.
 
-## Standard Workbox Configuration
+## Standard Workbox configuration
 
 For most applications, the standard Workbox configuration options are sufficient:
 
@@ -77,7 +77,7 @@ For most applications, the standard Workbox configuration options are sufficient
 - **[Background Sync](backgoundsync.md)** - Retry failed requests in the background
 - **[Offline Fallback](offline-fallbacks.md)** - Provide fallback pages when offline
 
-## Related Documentation
+## Related documentation
 
 - **[Custom Cache Strategies](../custom-cache-strategies.md)** - Complete programmatic cache strategy guide
 - **[Workbox Configuration](README.md)** - Overview of all Workbox options

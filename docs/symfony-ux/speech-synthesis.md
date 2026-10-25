@@ -11,7 +11,7 @@ This component is particularly useful for:
 * Voice-enabled interfaces and assistive technologies
 * Multi-language support with native voice selection
 
-## Browser Support
+## Browser support
 
 The Speech Synthesis API is widely supported across modern browsers:
 
@@ -26,7 +26,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 
 ## Usage
 
-### Basic Text-to-Speech
+### Basic text-to-speech
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
@@ -53,7 +53,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </script>
 ```
 
-### Speaking HTML Elements
+### Speaking HTML elements
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
@@ -83,7 +83,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </div>
 ```
 
-### Voice Selection with Custom Parameters
+### Voice selection with custom parameters
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
@@ -133,7 +133,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </div>
 ```
 
-### Multi-Language Content
+### Multi-language content
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
@@ -173,7 +173,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </div>
 ```
 
-### Playback Controls
+### Playback controls
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
@@ -228,7 +228,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </script>
 ```
 
-### Custom Internationalization
+### Custom internationalization
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
@@ -254,7 +254,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </div>
 ```
 
-### Per-Item Custom Parameters
+### Per-item custom parameters
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
@@ -307,7 +307,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </div>
 ```
 
-### Immediate vs Queue Mode
+### Immediate vs queue mode
 
 ```twig linenums="1"
 <!-- Queue mode (default): Utterances are queued and played sequentially -->
@@ -351,9 +351,9 @@ The Speech Synthesis API is widely supported across modern browsers:
 </div>
 ```
 
-## Common Use Cases
+## Common use cases
 
-### 1. Accessible News Reader
+### 1. Accessible news reader
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
@@ -385,7 +385,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </div>
 ```
 
-### 2. Language Learning App
+### 2. Language learning app
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
@@ -420,7 +420,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </script>
 ```
 
-### 3. Form Validation Feedback
+### 3. Form validation feedback
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
@@ -455,7 +455,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </script>
 ```
 
-### 4. Navigation Assistant
+### 4. Navigation assistant
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
@@ -488,7 +488,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </script>
 ```
 
-### 5. Interactive Tutorial System
+### 5. Interactive tutorial system
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis', {
@@ -521,7 +521,7 @@ The Speech Synthesis API is widely supported across modern browsers:
 </div>
 ```
 
-## API Reference
+## API reference
 
 ### Values
 
@@ -664,7 +664,7 @@ The controller accepts the following configuration values:
 <button {{ stimulus_action('@pwa/speech-synthesis', 'cancel', 'click') }}>Cancel</button>
 ```
 
-### Item Data Attributes
+### Item data attributes
 
 When using `item` targets, you can customize speech parameters per element:
 
@@ -841,9 +841,9 @@ console.log('Supported locales:', controller.locales);
 console.log('Is speaking:', controller.isSpeaking);
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Always Check Browser Support
+### 1. Always check browser support
 
 ```javascript linenums="1"
 document.addEventListener('pwa:speech-synthesis:unsupported', () => {
@@ -858,7 +858,7 @@ document.addEventListener('pwa:speech-synthesis:ready', () => {
 });
 ```
 
-### 2. Provide Visual Feedback
+### 2. Provide visual feedback
 
 Always show the current state of speech synthesis:
 
@@ -891,7 +891,7 @@ Always show the current state of speech synthesis:
 </script>
 ```
 
-### 3. Handle Long Content Appropriately
+### 3. Handle long content appropriately
 
 For long articles, break content into manageable chunks:
 
@@ -917,7 +917,7 @@ For long articles, break content into manageable chunks:
 </div>
 ```
 
-### 4. Use Appropriate Speech Rates
+### 4. Use appropriate speech rates
 
 Match speech rate to content type:
 
@@ -926,7 +926,7 @@ Match speech rate to content type:
 - **1.1-1.5**: Quick scanning, familiar content, user preference
 - **1.6-2.0**: Rapid reading for advanced users
 
-### 5. Respect User Preferences
+### 5. Respect user preferences
 
 ```javascript linenums="1"
 // Save user preferences
@@ -947,7 +947,7 @@ if (savedRate || savedVoice) {
 }
 ```
 
-### 6. Optimize for Multi-Language Apps
+### 6. Optimize for multi-language apps
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
@@ -960,7 +960,7 @@ if (savedRate || savedVoice) {
 </div>
 ```
 
-### 7. Use Boundary Events for Highlighting
+### 7. Use boundary events for highlighting
 
 ```javascript linenums="1"
 let currentText = '';
@@ -984,7 +984,7 @@ document.addEventListener('pwa:speech-synthesis:boundary', (event) => {
 });
 ```
 
-### 8. Provide Keyboard Controls
+### 8. Provide keyboard controls
 
 Make speech controls accessible via keyboard:
 
@@ -1006,7 +1006,7 @@ Make speech controls accessible via keyboard:
 
 ## Troubleshooting
 
-### No Voices Available
+### No voices available
 
 **Problem:** Voice list is empty or voices don't load
 
@@ -1024,7 +1024,7 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
 });
 ```
 
-### Speech Not Working on iOS
+### Speech not working on iOS
 
 **Problem:** Speech synthesis doesn't work or requires user interaction on iOS Safari
 
@@ -1033,7 +1033,7 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
 2. Don't auto-play speech on page load
 3. Test on actual iOS devices, not just simulators
 
-### Voice Selection Not Working
+### Voice selection not working
 
 **Problem:** Selected voice is not being used
 
@@ -1051,7 +1051,7 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
 });
 ```
 
-### Speech Cuts Off or Stops
+### Speech cuts off or stops
 
 **Problem:** Speech stops unexpectedly or gets interrupted
 
@@ -1061,7 +1061,7 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
 3. Verify no JavaScript errors in console
 4. Some browsers limit queue size - break long content into smaller chunks
 
-### Rate/Pitch/Volume Not Applied
+### Rate/pitch/volume not applied
 
 **Problem:** Speech parameters don't seem to work
 
@@ -1070,7 +1070,7 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
 2. Valid ranges: rate (0.1-10), pitch (0-2), volume (0-1)
 3. Not all voices support all parameters - try different voices
 
-### Language/Accent Mismatch
+### Language/accent mismatch
 
 **Problem:** Wrong accent or language is used
 
@@ -1087,7 +1087,7 @@ document.addEventListener('pwa:speech-synthesis:voicesloaded', (event) => {
 }) }}>
 ```
 
-### Memory Issues with Long Content
+### Memory issues with long content
 
 **Problem:** Browser becomes slow or unresponsive with very long content
 
@@ -1104,9 +1104,9 @@ window.addEventListener('beforeunload', () => {
 });
 ```
 
-## Accessibility Considerations
+## Accessibility considerations
 
-### 1. ARIA Attributes
+### 1. ARIA attributes
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/speech-synthesis') }}>
@@ -1118,7 +1118,7 @@ window.addEventListener('beforeunload', () => {
 </div>
 ```
 
-### 2. Screen Reader Compatibility
+### 2. Screen reader compatibility
 
 The component works alongside screen readers. Provide options to disable speech synthesis if user prefers their own assistive technology:
 
@@ -1140,7 +1140,7 @@ The component works alongside screen readers. Provide options to disable speech 
 </script>
 ```
 
-### 3. Visual Indicators
+### 3. Visual indicators
 
 Always provide visual feedback that complements audio:
 

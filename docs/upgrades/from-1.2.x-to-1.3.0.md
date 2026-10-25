@@ -1,6 +1,6 @@
 # From 1.2.x to 1.3.0
 
-## Backward Compatibility Breaks
+## Backward compatibility breaks
 
 Minor updates should not include backward compatibility breaks, except in specific circumstances.
 

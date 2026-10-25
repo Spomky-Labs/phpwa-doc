@@ -1,8 +1,8 @@
-# Complete Example
+# Complete example
 
 This page provides comprehensive examples of Service Worker configurations, from basic to advanced scenarios. Use these as starting points for your own PWA implementation.
 
-## Quick Start: Minimal Configuration
+## Quick start: Minimal configuration
 
 The simplest configuration that enables basic offline functionality:
 
@@ -24,7 +24,7 @@ This gives you:
 
     The `sw.js` file in your `/assets/` folder can be empty. The bundle generates all the necessary code automatically.
 
-## Intermediate: Custom Cache Settings
+## Intermediate: Custom cache settings
 
 Enhanced configuration with customized caching behavior:
 
@@ -80,7 +80,7 @@ pwa:
                 font: false  # No font fallback
 ```
 
-## Advanced: Full-Featured PWA
+## Advanced: Full-featured PWA
 
 Complete configuration showcasing all major features:
 
@@ -208,7 +208,7 @@ pwa:
     - Automatic updates with skip_waiting
     - Multiple caching strategies for different use cases
 
-## E-commerce Application Example
+## E-commerce application example
 
 Optimized for online stores with product images and dynamic content:
 
@@ -275,7 +275,7 @@ pwa:
                 image: '/images/product-placeholder.svg'
 ```
 
-## Content/Blog Application Example
+## Content/blog application example
 
 Optimized for content-heavy sites with articles and media:
 
@@ -349,7 +349,7 @@ pwa:
                 image: '/images/article-placeholder.svg'
 ```
 
-## SaaS/Dashboard Application Example
+## SaaS/dashboard application example
 
 Optimized for real-time data and user interactions:
 
@@ -418,11 +418,11 @@ pwa:
                 page: '/offline-dashboard'
 ```
 
-## Testing Your Configuration
+## Testing your configuration
 
 After implementing your service worker configuration, test it thoroughly:
 
-### 1. Development Testing
+### 1. Development testing
 
 ```bash
 # Clear cache before testing
@@ -435,7 +435,7 @@ php bin/console asset-map:compile
 symfony serve
 ```
 
-### 2. Chrome DevTools Inspection
+### 2. Chrome DevTools inspection
 
 1. Open DevTools (F12)
 2. Go to **Application** tab
@@ -444,7 +444,7 @@ symfony serve
    - **Cache Storage**: Verify all configured caches exist
    - **Network**: Set to Offline and test navigation
 
-### 3. Lighthouse Audit
+### 3. Lighthouse audit
 
 Run a PWA audit to verify your configuration:
 
@@ -456,9 +456,9 @@ Run a PWA audit to verify your configuration:
    - Offline support working
    - Caching configured properly
 
-## Common Configuration Patterns
+## Common configuration patterns
 
-### Pattern 1: Aggressive Caching (Maximum Offline Support)
+### Pattern 1: Aggressive caching (maximum offline support)
 
 ```yaml
 workbox:
@@ -477,7 +477,7 @@ workbox:
 
 **Use when**: Offline-first is critical, content updates infrequently
 
-### Pattern 2: Fresh Content (Minimum Caching)
+### Pattern 2: Fresh content (minimum caching)
 
 ```yaml
 workbox:
@@ -494,7 +494,7 @@ workbox:
 
 **Use when**: Real-time data is essential, caching is backup only
 
-### Pattern 3: Balanced (Recommended Default)
+### Pattern 3: Balanced (recommended default)
 
 ```yaml
 workbox:
@@ -513,7 +513,7 @@ workbox:
 
 **Use when**: Good offline UX + reasonably fresh content
 
-## Next Steps
+## Next steps
 
 After configuring your service worker:
 
@@ -523,7 +523,7 @@ After configuring your service worker:
 4. **Implement background sync handlers**: Use [Symfony UX components](../symfony-ux/)
 5. **Configure push notifications**: Set up notification handling
 
-## Related Documentation
+## Related documentation
 
 - [Configuration Reference](configuration.md) - All configuration options explained
 - [Workbox Documentation](workbox/README.md) - Detailed Workbox feature guides

@@ -2,9 +2,9 @@
 
 Deploying a PWA requires compiling assets to ensure optimal performance in production. This guide covers both deployment methods: with and without Symfony's Asset Mapper.
 
-## Understanding PWA Asset Compilation
+## Understanding PWA asset compilation
 
-### Development vs Production
+### Development vs production
 
 **Development (`APP_ENV=dev`):**
 - Assets generated on-the-fly
@@ -18,7 +18,7 @@ Deploying a PWA requires compiling assets to ensure optimal performance in produ
 - Debugging disabled
 - Minified and optimized for performance
 
-### What Gets Compiled
+### What gets compiled
 
 The compilation process generates:
 
@@ -49,7 +49,7 @@ The compilation process generates:
 
 If you're using Symfony's Asset Mapper (recommended), PWA assets are compiled together with your application assets.
 
-### Step 1: Configure Asset Compilation
+### Step 1: Configure asset compilation
 
 Ensure asset compilation is enabled (this is the default):
 
@@ -58,7 +58,7 @@ pwa:
     asset_compiler: true  # Default in 1.x
 ```
 
-### Step 2: Compile Assets
+### Step 2: Compile assets
 
 Run the standard Asset Mapper compilation command before deployment:
 
@@ -92,7 +92,7 @@ git push production main
 
 If you're not using Asset Mapper or prefer standalone PWA asset compilation, use the dedicated `pwa:compile` command.
 
-### Step 1: Disable Asset Mapper Integration
+### Step 1: Disable Asset Mapper integration
 
 Configure the bundle to handle compilation independently:
 
@@ -105,7 +105,7 @@ pwa:
 
     In version 1.x, `asset_compiler` defaults to `true`. In version 2.x, it will default to `false`, requiring explicit Asset Mapper integration.
 
-### Step 2: Compile PWA Assets
+### Step 2: Compile PWA assets
 
 Run the PWA-specific compilation command:
 
@@ -119,11 +119,11 @@ This compiles all PWA resources exactly as Asset Mapper would, but independently
 
 Deploy your application with the compiled PWA assets.
 
-## Context-Aware Deployment
+## Context-aware deployment
 
 If your application URLs depend on the deployment environment (e.g., different domains for staging and production), you need context-aware compilation.
 
-### The Problem
+### The problem
 
 The manifest and service worker include absolute URLs. If you compile assets locally, they might reference `http://localhost` instead of your production domain `https://example.com`.
 
@@ -135,7 +135,7 @@ The manifest and service worker include absolute URLs. If you compile assets loc
 }
 ```
 
-### Solution 1: Compile in Production Environment
+### Solution 1: Compile in production environment
 
 The best approach is to compile assets in the production environment where the correct context is available:
 
@@ -144,7 +144,7 @@ The best approach is to compile assets in the production environment where the c
 APP_ENV=prod APP_DEFAULT_URI=https://example.com php bin/console pwa:compile
 ```
 
-### Solution 2: Two-Step Compilation
+### Solution 2: Two-step compilation
 
 If you must compile assets before deployment (e.g., in CI/CD), use a two-step process:
 
@@ -170,7 +170,7 @@ The `--context-only` flag:
 
     This two-step approach balances build time (icons generated once) with URL correctness (manifest uses production URLs).
 
-### Setting Application Context
+### Setting application context
 
 Ensure your production environment has the correct context configured:
 
@@ -188,7 +188,7 @@ Or set via environment variable:
 APP_DEFAULT_URI=https://example.com
 ```
 
-## Deployment Checklist
+## Deployment checklist
 
 Before deploying your PWA to production:
 
@@ -202,7 +202,7 @@ Before deploying your PWA to production:
 - [ ] Browser compatibility tested
 - [ ] Installation tested on target devices
 
-## Continuous Integration Example
+## Continuous integration example
 
 Here's an example GitLab CI/CD configuration:
 
@@ -229,11 +229,11 @@ deploy:production:
     - main
 ```
 
-## Verifying Deployment
+## Verifying deployment
 
 After deployment, verify your PWA is working correctly:
 
-### Check Manifest
+### Check manifest
 
 ```bash
 curl https://example.com/manifest.json
@@ -244,7 +244,7 @@ Verify:
 - Icons paths are correct
 - No localhost references
 
-### Check Service Worker
+### Check service worker
 
 ```bash
 curl https://example.com/sw.js
@@ -255,7 +255,7 @@ Verify:
 - No debugging code (in production)
 - Minified and optimized
 
-### Browser Testing
+### Browser testing
 
 1. Open DevTools → Application tab
 2. Check **Manifest** section - no errors
@@ -263,9 +263,9 @@ Verify:
 4. Test **Install** prompt appears
 5. Test **Offline** functionality
 
-## Troubleshooting Deployment
+## Troubleshooting deployment
 
-### Assets Not Found (404)
+### Assets not found (404)
 
 **Problem:** PWA assets return 404 errors
 
@@ -275,7 +275,7 @@ Verify:
 3. Verify web server serves static files from `public/`
 4. Clear application cache: `php bin/console cache:clear`
 
-### Wrong URLs in Manifest
+### Wrong URLs in manifest
 
 **Problem:** Manifest contains localhost or incorrect URLs
 
@@ -284,7 +284,7 @@ Verify:
 2. Use `--context-only` flag during production deployment
 3. Compile assets in production environment
 
-### Service Worker Not Updating
+### Service worker not updating
 
 **Problem:** Old service worker version remains active
 
@@ -294,7 +294,7 @@ Verify:
 3. Implement `skipWaiting: true` for immediate updates
 4. Clear browser service worker cache
 
-### Icons Not Displaying
+### Icons not displaying
 
 **Problem:** App icons don't appear or are broken
 
@@ -304,7 +304,7 @@ Verify:
 3. Ensure icons are accessible (not blocked by firewall)
 4. Regenerate icons: `php bin/console pwa:compile`
 
-## Performance Optimization
+## Performance optimization
 
 For optimal PWA performance in production:
 

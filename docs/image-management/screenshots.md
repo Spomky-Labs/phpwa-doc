@@ -1,4 +1,4 @@
-# Screenshot Management
+# Screenshot management
 
 !!! warning
 
@@ -8,11 +8,11 @@
 
 Screenshots enhance your PWA's installation experience by showing users what your app looks like before they install it. They appear in app stores, installation prompts, and PWA directories.
 
-## Screenshot Configuration
+## Screenshot configuration
 
 Screenshots are defined in your manifest configuration. See the complete [Screenshots documentation](../the-manifest/screenshots.md) for detailed configuration options.
 
-### Basic Configuration
+### Basic configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -26,9 +26,9 @@ pwa:
               form_factor: "narrow"
 ```
 
-## Creating Screenshots
+## Creating screenshots
 
-### Manual Screenshots
+### Manual screenshots
 
 **1. Browser DevTools (Recommended)**
 ```bash
@@ -50,7 +50,7 @@ pwa:
 - FireShot
 - Full Page Screen Capture
 
-### Automated Screenshots
+### Automated screenshots
 
 **Puppeteer (Node.js)**
 ```javascript
@@ -104,9 +104,9 @@ async function captureScreenshots() {
 }
 ```
 
-## Screenshot Requirements
+## Screenshot requirements
 
-### Recommended Sizes
+### Recommended sizes
 
 **Mobile (Narrow)**
 ```yaml
@@ -130,7 +130,7 @@ screenshots:
       form_factor: "wide"
 ```
 
-### Platform-Specific
+### Platform-specific
 
 ```yaml
 screenshots:
@@ -153,9 +153,9 @@ screenshots:
       form_factor: "wide"
 ```
 
-## Screenshot Guidelines
+## Screenshot guidelines
 
-### Content Best Practices
+### Content best practices
 
 1. **Show Key Features**: Highlight main functionality
 2. **Use Real Data**: Show actual app content, not placeholders
@@ -163,7 +163,7 @@ screenshots:
 4. **Consistent Branding**: Match your app's design
 5. **Clear Text**: Ensure text is readable
 
-### Number of Screenshots
+### Number of screenshots
 
 - **Minimum**: 1-2 screenshots
 - **Recommended**: 3-5 screenshots
@@ -174,7 +174,7 @@ screenshots:
 - Too many: Overwhelming, slow loading
 - Sweet spot: 3-5 showing main features
 
-### Screenshot Sequence
+### Screenshot sequence
 
 Order screenshots logically:
 
@@ -187,9 +187,9 @@ screenshots:
     - "screenshots/05-settings.png"    # Configuration/settings
 ```
 
-## Design Guidelines
+## Design guidelines
 
-### Visual Quality
+### Visual quality
 
 - **Resolution**: High-DPI (2x or 3x)
 - **Format**: PNG (preferred) or JPEG
@@ -210,9 +210,9 @@ screenshots:
 - **Same state**: Logged in, data loaded, no errors
 - **Same branding**: Colors, fonts match throughout
 
-## File Organization
+## File organization
 
-### Recommended Structure
+### Recommended structure
 
 ```
 assets/
@@ -231,7 +231,7 @@ assets/
         └── 02-main.png
 ```
 
-### Configuration Example
+### Configuration example
 
 ```yaml
 pwa:
@@ -268,9 +268,9 @@ pwa:
               label: "Advanced analytics view"
 ```
 
-## Optimizing Screenshots
+## Optimizing screenshots
 
-### Image Optimization
+### Image optimization
 
 **1. Use Image Compression Tools**
 ```bash
@@ -303,15 +303,15 @@ screenshots:
       sizes: [1280, 720]
 ```
 
-### File Size Guidelines
+### File size guidelines
 
 - **Target**: < 500 KB per screenshot
 - **Maximum**: < 1 MB per screenshot
 - **Total**: All screenshots < 5 MB combined
 
-## Platform-Specific Requirements
+## Platform-specific requirements
 
-### Android / Google Play
+### Android / Google play
 
 **Requirements**:
 - Minimum: 2 screenshots
@@ -327,7 +327,7 @@ screenshots:
       form_factor: "narrow"
 ```
 
-### iOS / App Store
+### iOS / app store
 
 **Requirements**:
 - Screenshots for each device size
@@ -343,7 +343,7 @@ screenshots:
       form_factor: "narrow"
 ```
 
-### Windows / Microsoft Store
+### Windows / Microsoft store
 
 **Requirements**:
 - Minimum: 1 screenshot
@@ -358,9 +358,9 @@ screenshots:
       form_factor: "wide"
 ```
 
-## Testing Screenshots
+## Testing screenshots
 
-### 1. Validate in Manifest
+### 1. Validate in manifest
 
 ```javascript
 // Check screenshots in manifest
@@ -390,21 +390,21 @@ fetch('/manifest.json')
 5. Check dimensions and labels
 ```
 
-### 3. Test Install Flow
+### 3. Test install flow
 
 - **Desktop**: Install PWA, check screenshots in install dialog
 - **Mobile**: Add to home screen, check screenshots
 - **App Stores**: Submit to test store, verify display
 
-### 4. Preview Tools
+### 4. Preview tools
 
 - **Chrome**: chrome://apps (after installation)
 - **PWA Builder**: https://www.pwabuilder.com/
 - **Web.dev**: Use PWA analyzer tools
 
-## Common Issues
+## Common issues
 
-### Screenshots Not Showing
+### Screenshots not showing
 
 **Problem**: Screenshots don't appear in install prompt
 
@@ -415,7 +415,7 @@ fetch('/manifest.json')
 - Clear browser cache
 - Check manifest is valid JSON
 
-### Screenshots Too Large
+### Screenshots too large
 
 **Problem**: Installation slow due to large screenshots
 
@@ -425,7 +425,7 @@ fetch('/manifest.json')
 - Use WebP format
 - Lazy load screenshots if possible
 
-### Wrong Aspect Ratio
+### Wrong aspect ratio
 
 **Problem**: Screenshots appear stretched or cropped
 
@@ -435,7 +435,7 @@ fetch('/manifest.json')
 - Test on actual devices
 - Create platform-specific screenshots
 
-### Poor Quality
+### Poor quality
 
 **Problem**: Screenshots look blurry or pixelated
 
@@ -445,9 +445,9 @@ fetch('/manifest.json')
 - Use lossless compression
 - Don't upscale small images
 
-## Advanced Features
+## Advanced features
 
-### Adding Labels
+### Adding labels
 
 Provide context with descriptive labels:
 
@@ -464,7 +464,7 @@ screenshots:
       form_factor: "wide"
 ```
 
-### Multiple Platforms
+### Multiple platforms
 
 Serve different screenshots per platform:
 
@@ -486,16 +486,16 @@ screenshots:
       form_factor: "wide"
 ```
 
-## Migration from Deprecated Command
+## Migration from deprecated command
 
-### Old Approach (Deprecated)
+### Old approach (deprecated)
 
 ```bash
 # This no longer works
 php bin/console pwa:create:screenshot
 ```
 
-### New Approach
+### New approach
 
 1. **Capture screenshots** using browser DevTools or automation
 2. **Optimize images** using compression tools
@@ -515,7 +515,7 @@ pwa:
 php bin/console asset-map:compile
 ```
 
-## Best Practices Checklist
+## Best practices checklist
 
 Before publishing:
 
@@ -530,7 +530,7 @@ Before publishing:
 - [ ] Checked all images load
 - [ ] Validated manifest JSON
 
-## Related Documentation
+## Related documentation
 
 - [Screenshots (Manifest)](../the-manifest/screenshots.md) - Complete configuration
 - [Icons](icons.md) - Icon management

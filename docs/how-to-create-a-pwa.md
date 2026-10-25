@@ -1,4 +1,4 @@
-# How To Create A PWA?
+# How to create a PWA?
 
 Creating a Progressive Web App is a **progressive** process - you can start with basic features and enhance your application incrementally. Two core components make a web application "progressive": the **Web App Manifest** and the **Service Worker**.
 
@@ -7,7 +7,7 @@ These components work independently, meaning you can implement one without the o
 - **Service Worker only**: Your app works offline but may not be installable
 - **Both together**: Full PWA experience with installation and offline capabilities
 
-## The Two Pillars of PWAs
+## The two pillars of PWAs
 
 ### 1. The Web App Manifest
 
@@ -84,7 +84,7 @@ Add this link tag to your HTML `<head>` section:
 
     With this bundle, the manifest is automatically generated and injected - you don't need to create or link it manually!
 
-### 2. The Service Worker
+### 2. The service worker
 
 A service worker is a JavaScript file that runs in the background, separate from your web page. It acts as a programmable proxy between your app and the network.
 
@@ -171,7 +171,7 @@ Add this script to your HTML to activate the service worker:
 
     This bundle automatically generates and registers the service worker for you, with advanced caching strategies powered by Google Workbox!
 
-## How This Bundle Simplifies PWA Development
+## How this bundle simplifies PWA development
 
 Instead of manually creating manifest files and service workers, this bundle:
 
@@ -185,7 +185,7 @@ Instead of manually creating manifest files and service workers, this bundle:
 
 **The bundle handles:** Everything else - manifest generation, service worker creation, asset optimization, and deployment.
 
-## Getting Started
+## Getting started
 
 Ready to create your PWA?
 

@@ -1,8 +1,8 @@
-# Image Caching
+# Image caching
 
 Image caching optimizes the delivery of images in your PWA by storing them locally in the browser. This feature uses the **CacheFirst** strategy, meaning images are served from the cache if available, with the network as a fallback.
 
-## Why Cache Images?
+## Why cache images?
 
 Images are often the largest assets on web pages. Caching them provides:
 - **Faster page loads**: Images load instantly from cache
@@ -10,7 +10,7 @@ Images are often the largest assets on web pages. Caching them provides:
 - **Offline access**: Images remain available without network connection
 - **Better user experience**: No loading spinners or broken images
 
-## Default Configuration
+## Default configuration
 
 By default, the bundle caches images with these settings:
 - **Max entries**: 60 images
@@ -23,7 +23,7 @@ By default, the bundle caches images with these settings:
 /\.(ico|png|jpe?g|gif|svg|webp|bmp)$/
 ```
 
-## Asset Cache vs Image Cache
+## Asset cache vs image cache
 
 !!! info
 
@@ -33,9 +33,9 @@ By default, the bundle caches images with these settings:
 
     Both caches work together - Asset Mapper images are precached, while other images are cached on first request.
 
-## Configuration Options
+## Configuration options
 
-### Enabling/Disabling
+### Enabling/disabling
 
 ```yaml
 pwa:
@@ -45,7 +45,7 @@ pwa:
                 enabled: true  # Default: true
 ```
 
-### Custom Regex Pattern
+### Custom regex pattern
 
 Customize which image URLs are cached by modifying the regex pattern:
 
@@ -63,7 +63,7 @@ pwa:
 - Match specific URL patterns (e.g., `/\/images\/.*\.(png|jpg)$/`)
 - Exclude certain paths
 
-### Max Entries
+### Max entries
 
 **Type**: `integer`
 **Default**: `60`
@@ -86,7 +86,7 @@ pwa:
 
 Consider your users' storage and typical image count.
 
-### Max Age
+### Max age
 
 **Type**: `integer` (seconds) or `string` (human-readable)
 **Default**: `31536000` (365 days)
@@ -118,7 +118,7 @@ pwa:
 - **User avatars**: 1-7 days
 - **Frequently changing content**: 1 day or less
 
-### Cache Name
+### Cache name
 
 **Type**: `string`
 **Default**: `null` (auto-generated)
@@ -138,7 +138,7 @@ pwa:
 - Separate caches for different image types
 - Better cache management
 
-## Complete Example
+## Complete example
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -154,9 +154,9 @@ pwa:
                 regex: '/\.(png|jpe?g|svg|webp)$/'
 ```
 
-## Use Cases
+## Use cases
 
-### E-commerce Site
+### E-commerce site
 
 Cache product images with moderate retention:
 
@@ -171,7 +171,7 @@ pwa:
                 max_age: 30 days
 ```
 
-### Image Gallery App
+### Image gallery app
 
 Prioritize capacity with shorter retention:
 
@@ -186,7 +186,7 @@ pwa:
                 max_age: 7 days
 ```
 
-### Blog with Static Images
+### Blog with static images
 
 Long retention for rarely changing images:
 
@@ -200,7 +200,7 @@ pwa:
                 max_age: 1 year
 ```
 
-## How It Works
+## How it works
 
 1. **First request**: Image is fetched from network and stored in cache
 2. **Subsequent requests**: Image is served instantly from cache (CacheFirst strategy)
@@ -218,7 +218,7 @@ To inspect the image cache in Chrome DevTools:
 4. Look for your cache (default or custom `cache_name`)
 5. View cached images and their metadata
 
-## Best Practices
+## Best practices
 
 1. **Balance capacity and storage**: Don't cache excessive images on mobile devices
 2. **Use appropriate max_age**: Match your content update frequency

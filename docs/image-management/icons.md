@@ -1,4 +1,4 @@
-# Icon Management
+# Icon management
 
 !!! warning
 
@@ -8,11 +8,11 @@
 
 PWA icons are configured in your manifest file and served through AssetMapper or absolute paths. The bundle no longer provides icon generation commands - instead, use dedicated tools or services.
 
-## Icon Configuration
+## Icon configuration
 
 Icons are defined in your manifest configuration. See the complete [Icons documentation](../the-manifest/icons.md) for detailed configuration options.
 
-### Basic Configuration
+### Basic configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -27,9 +27,9 @@ pwa:
               purpose: "maskable"
 ```
 
-## Recommended Icon Generation Tools
+## Recommended icon generation tools
 
-### Online Tools
+### Online tools
 
 **1. PWA Asset Generator**
 - https://www.pwabuilder.com/imageGenerator
@@ -55,7 +55,7 @@ pwa:
 - Generates from text, image, or emoji
 - Free to use
 
-### Command-Line Tools
+### Command-line tools
 
 **1. PWA Asset Generator (CLI)**
 ```bash
@@ -87,9 +87,9 @@ for size in 48 72 96 144 192 256 512; do
 done
 ```
 
-## Icon Requirements
+## Icon requirements
 
-### Required Sizes
+### Required sizes
 
 At minimum, provide these sizes:
 
@@ -101,7 +101,7 @@ icons:
       sizes: [512]              # Android Chrome, install prompt
 ```
 
-### Recommended Sizes
+### Recommended sizes
 
 For comprehensive support:
 
@@ -123,7 +123,7 @@ icons:
       sizes: [512]              # High-res displays
 ```
 
-### Maskable Icons
+### Maskable icons
 
 Always include maskable icons for better Android integration:
 
@@ -137,23 +137,23 @@ icons:
       purpose: "maskable"
 ```
 
-## Icon Design Guidelines
+## Icon design guidelines
 
-### Standard Icons
+### Standard icons
 
 - **Format**: PNG (preferred) or JPEG
 - **Background**: Solid color or transparent
 - **Content**: Icon centered, using ~80% of canvas
 - **Design**: Simple, recognizable at small sizes
 
-### Maskable Icons
+### Maskable icons
 
 - **Safe zone**: Keep important content in center 80%
 - **Background**: Must fill entire canvas (no transparency)
 - **Bleeding**: Design can extend to edges
 - **Testing**: Use https://maskable.app/ to verify
 
-### Design Tips
+### Design tips
 
 1. **Simplicity**: Icons should be recognizable at 48x48
 2. **Contrast**: Ensure good contrast with background
@@ -161,9 +161,9 @@ icons:
 4. **Scalability**: Design should work at all sizes
 5. **Testing**: Test on actual devices
 
-## File Organization
+## File organization
 
-### Recommended Structure
+### Recommended structure
 
 ```
 assets/
@@ -180,7 +180,7 @@ assets/
     └── icon.svg (optional, for 'any' size)
 ```
 
-### Configuration Example
+### Configuration example
 
 ```yaml
 pwa:
@@ -215,7 +215,7 @@ pwa:
               sizes: 0  # 'any' size
 ```
 
-## Using Symfony UX Icons
+## Using Symfony UX icons
 
 If you have `symfony/ux-icons` installed, you can use icon libraries:
 
@@ -231,16 +231,16 @@ pwa:
 
 See [Symfony UX Icons](https://ux.symfony.com/icons) for available icons.
 
-## Migration from Deprecated Command
+## Migration from deprecated command
 
-### Old Approach (Deprecated)
+### Old approach (deprecated)
 
 ```bash
 # This no longer works
 php bin/console pwa:create:icons
 ```
 
-### New Approach
+### New approach
 
 1. **Generate icons** using online tools or CLI tools
 2. **Place icons** in your `assets/icons/` directory
@@ -261,9 +261,9 @@ pwa:
 php bin/console asset-map:compile
 ```
 
-## Testing Icons
+## Testing icons
 
-### 1. Lighthouse PWA Audit
+### 1. Lighthouse PWA audit
 
 ```bash
 # Run Lighthouse
@@ -281,19 +281,19 @@ Check the PWA section for icon requirements.
 4. Verify all sizes are present
 ```
 
-### 3. Install on Device
+### 3. Install on device
 
 - **Android**: Install PWA, check app drawer icon
 - **iOS**: Add to home screen, check icon appearance
 - **Desktop**: Install, check taskbar/dock icon
 
-### 4. Maskable Icon Tester
+### 4. Maskable icon tester
 
 Visit https://maskable.app/editor and upload your maskable icons to verify the safe zone.
 
-## Common Issues
+## Common issues
 
-### Icons Not Appearing
+### Icons not appearing
 
 **Problem**: Icons don't show after installation
 
@@ -304,7 +304,7 @@ Visit https://maskable.app/editor and upload your maskable icons to verify the s
 - Ensure AssetMapper compiled assets
 - Check file permissions
 
-### Wrong Icon Size
+### Wrong icon size
 
 **Problem**: Icon appears pixelated or blurry
 
@@ -313,7 +313,7 @@ Visit https://maskable.app/editor and upload your maskable icons to verify the s
 - Include appropriate size for each platform
 - Use vector SVG for scalability
 
-### Maskable Icons Not Adapting
+### Maskable icons not adapting
 
 **Problem**: Maskable icons get cropped incorrectly
 
@@ -323,7 +323,7 @@ Visit https://maskable.app/editor and upload your maskable icons to verify the s
 - Provide solid background (no transparency)
 - Check purpose is set to "maskable"
 
-## Platform-Specific Icons
+## Platform-specific icons
 
 ### Android
 
@@ -370,11 +370,11 @@ icons:
       sizes: [256]
 ```
 
-## Advanced Icon Features
+## Advanced icon features
 
 For advanced icon configuration including rounded corners, image scaling, and background colors, see the complete [Icons documentation](../the-manifest/icons.md).
 
-## Related Documentation
+## Related documentation
 
 - [Icons (Manifest)](../the-manifest/icons.md) - Complete icon configuration
 - [Screenshots](screenshots.md) - App screenshot management

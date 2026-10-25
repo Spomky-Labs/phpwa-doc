@@ -1,4 +1,4 @@
-# Web Push Notifications
+# Web Push notifications
 
 The Web Push Notifications component integrates with the [Web Push Bundle](https://web-push.spomky-labs.com/) to enable push notifications in your Progressive Web App. This Stimulus controller manages push notification subscriptions and handles user permission requests.
 
@@ -15,7 +15,7 @@ Web Push Notifications allow you to send timely, relevant updates to users even 
 
     This component requires the [Web Push Bundle](https://web-push.spomky-labs.com/) to be installed and configured. The bundle handles server-side notification delivery using VAPID authentication.
 
-## Browser Support
+## Browser support
 
 | Browser | Desktop | Mobile |
 |---|---|---|
@@ -59,7 +59,7 @@ php bin/console web-push:generate:keys
 
 ## Usage
 
-### Basic Setup with Twig Live Component
+### Basic setup with Twig live component
 
 To implement Web Push, you should create either a Stimulus Controller to intercept events or a Twig Live Component. Below is an example of the latter. Please note that you must hook into the Service Worker to show the notifications to the user and allow action interaction
 
@@ -150,7 +150,7 @@ class WebPush
 
 ```
 
-### Service Worker Hooks
+### Service worker hooks
 
 The service worker shall be enable when using web push notifications. Please make sure [the configuration](broken-reference) is set accordingly.
 
@@ -221,9 +221,9 @@ registerNotificationAction('*', async (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
-### Permission Request Timing
+### Permission request timing
 
 Don't request notification permission immediately when the user visits your site. Instead:
 
@@ -245,7 +245,7 @@ public function subscribeToUpdates(): Response
 }
 ```
 
-### Handle Permission States
+### Handle permission states
 
 Always handle all three permission states:
 
@@ -261,7 +261,7 @@ Always handle all three permission states:
 {% endif %}
 ```
 
-### Store Subscriptions Securely
+### Store subscriptions securely
 
 Store subscription data securely and associate it with authenticated users:
 
@@ -285,7 +285,7 @@ public function onSubscription(
 }
 ```
 
-### Notification Delivery
+### Notification delivery
 
 When sending notifications from the server, use the Web Push service:
 
@@ -325,9 +325,9 @@ class NotificationService
 }
 ```
 
-## Common Use Cases
+## Common use cases
 
-### 1. News and Content Updates
+### 1. News and content updates
 
 Notify users when new content is published:
 
@@ -363,7 +363,7 @@ class ArticlePublisher
 }
 ```
 
-### 2. Real-time Messaging
+### 2. Real-time messaging
 
 Send instant message notifications:
 
@@ -398,7 +398,7 @@ class ChatNotifier
 }
 ```
 
-### 3. E-commerce Order Updates
+### 3. E-commerce order updates
 
 Keep customers informed about their orders:
 
@@ -440,7 +440,7 @@ class OrderStatusNotifier
 }
 ```
 
-### 4. Reminder System
+### 4. Reminder system
 
 Send time-based reminders to users:
 
@@ -479,7 +479,7 @@ class ReminderService
 }
 ```
 
-## API Reference
+## API reference
 
 ### Values
 
@@ -603,12 +603,12 @@ element.addEventListener('pwa--web-push:error', (event) => {
 });
 ```
 
-## Related Components
+## Related components
 
 * [Service Worker](../the-service-worker/) - Required for Web Push functionality
 * [Web Push Bundle Documentation](https://web-push.spomky-labs.com/) - Server-side notification delivery
 
-## Additional Resources
+## Additional resources
 
 * [Web Push API on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
 * [Notifications API on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API)

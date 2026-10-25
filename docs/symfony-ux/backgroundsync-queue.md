@@ -1,4 +1,4 @@
-# BackgroundSync Queue
+# BackgroundSync queue
 
 The BackgroundSync Queue component provides real-time monitoring and manual control of background synchronization queues in your Progressive Web App. When network requests fail (due to being offline or network errors), they are automatically queued by the service worker and retried when connectivity is restored. This component displays the number of pending requests and allows users to manually trigger queue replay.
 
@@ -13,7 +13,7 @@ This component is particularly useful for:
 * Giving users control over when to retry failed operations
 * Building dashboards that display sync status across multiple queues
 
-## Browser Support
+## Browser support
 
 The BackgroundSync Queue component relies on the Broadcast Channel API for communication with the service worker, which is widely supported in modern browsers.
 
@@ -30,7 +30,7 @@ The BackgroundSync Queue component relies on the Broadcast Channel API for commu
 
     Background Sync automatically retries failed requests when the device regains connectivity. This component simply provides visibility and manual control over that process.
 
-## How It Works
+## How it works
 
 1. **Service Worker Queue**: When requests fail, Workbox queues them in a background sync queue
 2. **Broadcast Channel**: The service worker broadcasts queue status updates via a named channel
@@ -61,7 +61,7 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
 
 ## Usage
 
-### Basic Queue Status Display
+### Basic queue status display
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'form-queue-status'}) }}>
@@ -95,7 +95,7 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
 </script>
 ```
 
-### Visual Queue Status Indicator
+### Visual queue status indicator
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'form-queue-status'}) }}>
@@ -163,7 +163,7 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
 </style>
 ```
 
-### Multiple Queue Monitoring
+### Multiple queue monitoring
 
 ```twig linenums="1"
 <div class="queue-dashboard">
@@ -251,7 +251,7 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
 </style>
 ```
 
-### Automatic Polling for Status Updates
+### Automatic polling for status updates
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'form-queue-status'}) }}
@@ -291,7 +291,7 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
 </script>
 ```
 
-### Integration with Form Submission
+### Integration with form submission
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/backgroundsync-queue', {channel: 'form-queue-status'}) }}>
@@ -344,9 +344,9 @@ The `broadcast_channel` name must match the `channel` parameter in your componen
 </script>
 ```
 
-## Best Practices
+## Best practices
 
-### Always Configure Broadcast Channel
+### Always configure broadcast channel
 
 !!! warning
 
@@ -369,7 +369,7 @@ pwa:
 }) }}>
 ```
 
-### Handle Edge Cases
+### Handle Edge cases
 
 !!! info
 
@@ -387,7 +387,7 @@ host.addEventListener('backgroundsync-queue:status', (e) => {
 });
 ```
 
-### Provide User Feedback
+### Provide user feedback
 
 !!! success
 
@@ -413,15 +413,15 @@ replayBtn.addEventListener('click', () => {
 });
 ```
 
-### Monitor Multiple Queues Separately
+### Monitor multiple queues separately
 
 !!! info
 
     If your application has multiple background sync queues (forms, API calls, uploads), use separate component instances with different channel names for each queue.
 
-## Common Use Cases
+## Common use cases
 
-### 1. Offline Form Submission Tracker
+### 1. Offline form submission tracker
 
 Track pending form submissions and show users what's waiting to sync:
 
@@ -467,7 +467,7 @@ Track pending form submissions and show users what's waiting to sync:
 </script>
 ```
 
-### 2. E-Commerce Offline Checkout
+### 2. E-commerce offline checkout
 
 Show customers their pending orders waiting to process:
 
@@ -506,7 +506,7 @@ Show customers their pending orders waiting to process:
 </script>
 ```
 
-### 3. Todo/Task Management Offline Sync
+### 3. Todo/task management offline sync
 
 Display pending task changes waiting to sync with the server:
 
@@ -542,7 +542,7 @@ Display pending task changes waiting to sync with the server:
 </script>
 ```
 
-## API Reference
+## API reference
 
 ### Values
 
@@ -604,7 +604,7 @@ host.addEventListener('backgroundsync-queue:error', (e) => {
 });
 ```
 
-## How Queue Updates Work
+## How queue updates work
 
 The component automatically:
 
@@ -620,7 +620,7 @@ The service worker broadcasts status updates:
 - When a `status-request` is received
 - When a `replay-request` is processed
 
-## Related Components
+## Related components
 
 - [BackgroundSync Form](backgroundsync-form.md) - Automatically queue form submissions when offline
 - [Service Worker](service-worker.md) - Service worker configuration and setup

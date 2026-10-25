@@ -1,6 +1,6 @@
-# How To Install/Remove A PWA?
+# How to install/remove a PWA?
 
-## Understanding PWA Installation
+## Understanding PWA installation
 
 PWA installation is different from traditional app installation:
 
@@ -22,7 +22,7 @@ Think of it as a **smart bookmark** that:
 - Integrates with your operating system
 - Receives updates automatically
 
-## Installation Requirements
+## Installation requirements
 
 For your PWA to be installable, the manifest must include:
 
@@ -39,7 +39,7 @@ See the [Application Information page](the-manifest/application-information/READ
 
 ## Installing a PWA
 
-### Chrome (Desktop & Android)
+### Chrome (desktop & Android)
 
 When you visit a PWA-enabled website, Chrome displays an install icon in the address bar (right side).
 
@@ -60,7 +60,7 @@ The PWA will appear:
   <figcaption>GitHub installation from Chrome</figcaption>
 </figure>
 
-### Microsoft Edge (Desktop & Android)
+### Microsoft Edge (desktop & Android)
 
 Edge provides the same installation experience as Chrome.
 
@@ -74,7 +74,7 @@ Edge provides the same installation experience as Chrome.
   <figcaption>GitHub installation from Microsoft Edge</figcaption>
 </figure>
 
-### Firefox (Desktop)
+### Firefox (desktop)
 
 Firefox supports PWA installation with a slightly different approach.
 
@@ -105,7 +105,7 @@ The PWA icon will appear on your home screen like a native app.
 
 ## Uninstalling a PWA
 
-### Chrome (Desktop)
+### Chrome (desktop)
 
 **Option 1: From the app window**
 1. Open the installed PWA
@@ -130,7 +130,7 @@ The PWA icon will appear on your home screen like a native app.
 2. Tap "Uninstall" or drag to "Uninstall" area
 3. Confirm removal
 
-### Microsoft Edge (Desktop)
+### Microsoft Edge (desktop)
 
 **Method 1: Quick uninstall**
 1. Open the installed PWA
@@ -155,7 +155,7 @@ The app settings also let you clear cached data without uninstalling:
   <figcaption>Edge app settings panel</figcaption>
 </figure>
 
-### Firefox (Desktop)
+### Firefox (desktop)
 
 1. Open the installed PWA
 2. Click the Firefox menu (☰) in the top right
@@ -174,7 +174,7 @@ Alternatively:
 - Find and select the PWA
 - Tap "Delete App"
 
-### Android (All Browsers)
+### Android (all browsers)
 
 1. Long-press the PWA icon in your app drawer or home screen
 2. Drag to "Uninstall" or tap "App info" → "Uninstall"

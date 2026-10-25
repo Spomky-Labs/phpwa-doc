@@ -23,9 +23,9 @@ pwa:
 
     If not specified, the scope defaults to the directory containing the manifest file.
 
-## How Scope Works
+## How scope works
 
-### URLs Within Scope
+### URLs within scope
 
 URLs within the scope remain in your PWA window:
 
@@ -58,9 +58,9 @@ scope: "/app/"
 start_url: "/login"  # Error!
 ```
 
-## Common Scope Patterns
+## Common scope patterns
 
-### Pattern 1: Root Scope (Most Common)
+### Pattern 1: Root scope (most common)
 
 Control the entire domain:
 
@@ -78,7 +78,7 @@ pwa:
 
 **Examples**: Gmail, Twitter PWA, most SPAs
 
-### Pattern 2: Application Subfolder
+### Pattern 2: Application subfolder
 
 Limit PWA to a specific section:
 
@@ -99,7 +99,7 @@ pwa:
 - `/` - Marketing website
 - `/blog/` - Blog (opens in browser)
 
-### Pattern 3: Versioned Scope
+### Pattern 3: Versioned scope
 
 Include version in scope:
 
@@ -115,7 +115,7 @@ pwa:
 - Gradual migration strategies
 - A/B testing different versions
 
-### Pattern 4: Language-Specific Scope
+### Pattern 4: Language-specific scope
 
 Separate scopes per language:
 
@@ -138,9 +138,9 @@ pwa:
 - Localized app experiences
 - Regional variations
 
-## Practical Examples
+## Practical examples
 
-### Example 1: E-commerce Site
+### Example 1: E-commerce site
 
 Marketing site + shop PWA:
 
@@ -158,7 +158,7 @@ pwa:
 - `/` - Opens in browser (marketing)
 - `/about` - Opens in browser (corporate)
 
-### Example 2: SaaS Dashboard
+### Example 2: SaaS dashboard
 
 App separate from landing pages:
 
@@ -175,7 +175,7 @@ pwa:
 - `/pricing` - Browser (public page)
 - `/docs` - Browser (documentation)
 
-### Example 3: Multi-tenant Application
+### Example 3: Multi-tenant application
 
 Each tenant has own scope:
 
@@ -192,7 +192,7 @@ pwa:
 - `/tenant/other-corp/*` - Opens in browser
 - `/admin/*` - Opens in browser
 
-### Example 4: Full-Site PWA
+### Example 4: Full-site PWA
 
 Everything is the PWA:
 
@@ -208,9 +208,9 @@ pwa:
 - All URLs on your domain stay in PWA ✓
 - External links open in browser
 
-## Advanced Configurations
+## Advanced configurations
 
-### Multiple Manifests for Different Scopes
+### Multiple manifests for different scopes
 
 Serve different manifests for different sections:
 
@@ -238,7 +238,7 @@ pwa:
 # Could have separate config for admin
 ```
 
-### Dynamic Scope Based on User
+### Dynamic scope based on user
 
 ```yaml
 # Authenticated users
@@ -248,7 +248,7 @@ scope: "/dashboard/"
 scope: "/public/"
 ```
 
-## Scope and Service Workers
+## Scope and service workers
 
 The scope in your manifest should align with your service worker scope:
 
@@ -267,9 +267,9 @@ pwa:
 
     If manifest scope and service worker scope don't align, you may experience unexpected behavior with offline functionality.
 
-## Testing Your Scope
+## Testing your scope
 
-### 1. Check Manifest in DevTools
+### 1. Check manifest in DevTools
 
 ```bash
 # Chrome DevTools
@@ -279,14 +279,14 @@ pwa:
 4. Verify "start_url" is within scope
 ```
 
-### 2. Test Navigation Behavior
+### 2. Test navigation behavior
 
 Click links to verify:
 - Internal links stay in PWA window
 - External links open in browser
 - Cross-scope links open in browser
 
-### 3. Test with Different URLs
+### 3. Test with different URLs
 
 ```javascript
 // Test if URL is in scope
@@ -300,9 +300,9 @@ if (currentUrl.startsWith(manifestScope)) {
 }
 ```
 
-## Common Mistakes
+## Common mistakes
 
-### 1. start_url Outside Scope
+### 1. start_url outside scope
 
 ```yaml
 # ✗ Error - will fail validation
@@ -321,7 +321,7 @@ pwa:
         start_url: "/app/"
 ```
 
-### 2. Too Restrictive Scope
+### 2. Too restrictive scope
 
 ```yaml
 # ✗ Too narrow - breaks navigation
@@ -340,7 +340,7 @@ pwa:
         scope: "/app/"
 ```
 
-### 3. Forgetting Trailing Slash
+### 3. Forgetting trailing slash
 
 ```yaml
 # These are different!
@@ -358,7 +358,7 @@ scope: "/app/"
 scope: "/"
 ```
 
-### 4. Mismatched Service Worker Scope
+### 4. Mismatched service worker scope
 
 ```yaml
 # ✗ Misaligned scopes
@@ -383,7 +383,7 @@ pwa:
         scope: "/app/"
 ```
 
-## Scope Validation Errors
+## Scope validation errors
 
 ### Error: start_url not within scope
 
@@ -419,7 +419,7 @@ scope: "/app/"
 scope: "/"
 ```
 
-## Platform-Specific Behavior
+## Platform-specific behavior
 
 ### iOS/Safari
 
@@ -433,15 +433,15 @@ scope: "/"
 - Out-of-scope links open in Chrome Custom Tabs
 - Clear visual indication when leaving PWA
 
-### Desktop Browsers
+### Desktop browsers
 
 - Opens new tab for out-of-scope URLs
 - May show browser UI for external navigation
 - Varies by browser implementation
 
-## Best Practices
+## Best practices
 
-### 1. Start Broad, Refine Later
+### 1. Start broad, refine later
 
 ```yaml
 # Start with broad scope
@@ -451,7 +451,7 @@ scope: "/"
 scope: "/app/"
 ```
 
-### 2. Align with Site Architecture
+### 2. Align with site architecture
 
 Match your URL structure:
 
@@ -463,7 +463,7 @@ scope: "/app/"
 scope: "/"
 ```
 
-### 3. Consider Future Growth
+### 3. Consider future growth
 
 Leave room for expansion:
 
@@ -475,7 +475,7 @@ scope: "/app/"
 scope: "/app/v1/"
 ```
 
-### 4. Document Your Scope Decision
+### 4. Document your scope decision
 
 ```yaml
 pwa:
@@ -487,7 +487,7 @@ pwa:
         scope: "/app/"
 ```
 
-### 5. Test Across Platforms
+### 5. Test across platforms
 
 Verify scope behavior on:
 - iOS Safari
@@ -496,9 +496,9 @@ Verify scope behavior on:
 - Desktop Edge
 - Other target browsers
 
-## Debugging Scope Issues
+## Debugging scope issues
 
-### Check Current Scope
+### Check current scope
 
 ```javascript
 // In your PWA
@@ -516,7 +516,7 @@ fetch('/manifest.json')
     });
 ```
 
-### Monitor Navigation Events
+### Monitor navigation events
 
 ```javascript
 // Detect when leaving scope
@@ -532,7 +532,7 @@ window.addEventListener('beforeunload', (e) => {
 });
 ```
 
-### Validate scope Configuration
+### Validate scope configuration
 
 ```javascript
 // Helper to validate scope/start_url relationship
@@ -551,7 +551,7 @@ function validateManifest(manifest) {
 }
 ```
 
-## Related Properties
+## Related properties
 
 - [Start URL](start-url.md) - Where your PWA starts (must be within scope)
 - [ID](id.md) - Unique identifier for your PWA

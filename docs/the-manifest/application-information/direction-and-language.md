@@ -1,4 +1,4 @@
-# Direction and Language
+# Direction and language
 
 The `dir` and `lang` properties define the text direction and primary language of your PWA, ensuring proper display, accessibility, and localization for international audiences.
 
@@ -29,13 +29,13 @@ pwa:
     <html dir="ltr" lang="en">
     ```
 
-## The `dir` Parameter
+## The `dir` parameter
 
 The `dir` property specifies how text flows in your application.
 
-### Available Values
+### Available values
 
-#### ltr (Left-to-Right)
+#### ltr (left-to-right)
 
 Default for most languages. Text flows from left to right.
 
@@ -54,7 +54,7 @@ dir: "ltr"
 → Hello World
 ```
 
-#### rtl (Right-to-Left)
+#### rtl (right-to-left)
 
 Text flows from right to left.
 
@@ -73,7 +73,7 @@ dir: "rtl"
 مرحبا بالعالم ←
 ```
 
-#### auto (Automatic)
+#### auto (automatic)
 
 Determines direction based on content. Rarely used in manifests.
 
@@ -90,11 +90,11 @@ dir: "auto"
 
     Using `auto` in manifests is uncommon. Most apps should explicitly set `ltr` or `rtl`.
 
-## The `lang` Parameter
+## The `lang` parameter
 
 The `lang` property declares the primary language using ISO 639-1 language codes.
 
-### Language Code Format
+### Language code format
 
 ```yaml
 lang: "en"              # Language only
@@ -103,9 +103,9 @@ lang: "en-GB"           # Language + Specific region
 lang: "zh-Hans"         # Language + Script
 ```
 
-### Common Language Codes
+### Common language codes
 
-#### European Languages
+#### European languages
 
 ```yaml
 lang: "en"     # English
@@ -131,7 +131,7 @@ lang: "da"     # Danish
 lang: "fi"     # Finnish
 ```
 
-#### Asian Languages
+#### Asian languages
 
 ```yaml
 lang: "zh"        # Chinese
@@ -150,7 +150,7 @@ lang: "ms"        # Malay
 lang: "tl"        # Tagalog
 ```
 
-#### Right-to-Left Languages
+#### Right-to-left languages
 
 ```yaml
 lang: "ar"     # Arabic
@@ -161,7 +161,7 @@ lang: "fa"     # Persian/Farsi
 lang: "ur"     # Urdu
 ```
 
-#### Other Languages
+#### Other languages
 
 ```yaml
 lang: "tr"     # Turkish
@@ -173,9 +173,9 @@ lang: "ro"     # Romanian
 lang: "uk"     # Ukrainian
 ```
 
-## Practical Examples
+## Practical examples
 
-### English (United States)
+### English (united states)
 
 ```yaml
 pwa:
@@ -186,7 +186,7 @@ pwa:
         lang: "en-US"
 ```
 
-### Arabic Application
+### Arabic application
 
 ```yaml
 pwa:
@@ -197,7 +197,7 @@ pwa:
         lang: "ar"
 ```
 
-### French (France)
+### French (france)
 
 ```yaml
 pwa:
@@ -208,7 +208,7 @@ pwa:
         lang: "fr-FR"
 ```
 
-### Chinese (Simplified)
+### Chinese (simplified)
 
 ```yaml
 pwa:
@@ -219,7 +219,7 @@ pwa:
         lang: "zh-Hans"
 ```
 
-### Hebrew Application
+### Hebrew application
 
 ```yaml
 pwa:
@@ -230,7 +230,7 @@ pwa:
         lang: "he"
 ```
 
-### Spanish (Mexico)
+### Spanish (mexico)
 
 ```yaml
 pwa:
@@ -241,9 +241,9 @@ pwa:
         lang: "es-MX"
 ```
 
-## Multi-Language Support
+## Multi-language support
 
-### Translatable Manifest Properties
+### Translatable manifest properties
 
 The PWA Bundle supports translatable manifest properties:
 
@@ -273,7 +273,7 @@ pwa:
         lang: "en"  # Default, but serves correct locale
 ```
 
-### Serving Different Manifests
+### Serving different manifests
 
 You can serve different manifests based on user locale:
 
@@ -297,9 +297,9 @@ public function manifest(Request $request): Response
 }
 ```
 
-## HTML Integration
+## HTML integration
 
-### Matching HTML and Manifest
+### Matching HTML and manifest
 
 Your HTML should match manifest settings:
 
@@ -319,7 +319,7 @@ Your HTML should match manifest settings:
 </html>
 ```
 
-### Symfony Twig Integration
+### Symfony Twig integration
 
 ```twig
 {# templates/base.html.twig #}
@@ -335,9 +335,9 @@ Your HTML should match manifest settings:
 </html>
 ```
 
-## CSS Considerations
+## CSS considerations
 
-### RTL-Specific Styles
+### RTL-specific styles
 
 When supporting RTL, adjust your CSS:
 
@@ -365,7 +365,7 @@ When supporting RTL, adjust your CSS:
 }
 ```
 
-### Logical CSS Properties
+### Logical CSS properties
 
 Prefer logical properties for better RTL support:
 
@@ -381,9 +381,9 @@ padding-right: 20px;
 border-left: 1px solid;
 ```
 
-## Accessibility Impact
+## Accessibility impact
 
-### Screen Readers
+### Screen readers
 
 Correct `lang` attribute helps screen readers:
 - Use proper pronunciation
@@ -398,16 +398,16 @@ lang: "en"
 lang: "fr"
 ```
 
-### Text-to-Speech
+### Text-to-speech
 
 Browsers use `lang` to determine:
 - Voice selection
 - Pronunciation rules
 - Speech synthesis parameters
 
-## SEO Considerations
+## SEO considerations
 
-### Language Targeting
+### Language targeting
 
 Search engines use `lang` for:
 - Geo-targeting search results
@@ -422,7 +422,7 @@ lang: "en"
 lang: "fr-FR"
 ```
 
-### `hreflang` Relationship
+### `hreflang` relationship
 
 Coordinate with HTML `hreflang` tags:
 
@@ -432,7 +432,7 @@ Coordinate with HTML `hreflang` tags:
 <link rel="alternate" hreflang="es" href="https://example.com/es" />
 ```
 
-## Platform Behavior
+## Platform behavior
 
 ### iOS/Safari
 
@@ -446,15 +446,15 @@ Coordinate with HTML `hreflang` tags:
 - Automatic UI mirroring for RTL
 - System language integration
 
-### Desktop Browsers
+### Desktop browsers
 
 - Full `dir` and `lang` support
 - CSS `:dir()` pseudo-class support
 - Proper text rendering
 
-## Common Mistakes
+## Common mistakes
 
-### 1. Mismatched Direction and Language
+### 1. Mismatched direction and language
 
 ```yaml
 # ✗ Wrong - Arabic is RTL, not LTR
@@ -469,7 +469,7 @@ dir: "rtl"
 lang: "ar"
 ```
 
-### 2. Missing Language Region
+### 2. Missing language region
 
 ```yaml
 # ✗ Ambiguous for Chinese
@@ -483,7 +483,7 @@ lang: "zh-Hans"  # Simplified Chinese
 lang: "zh-Hant"  # Traditional Chinese
 ```
 
-### 3. Invalid Language Codes
+### 3. Invalid language codes
 
 ```yaml
 # ✗ Wrong codes
@@ -499,7 +499,7 @@ lang: "en"
 lang: "en-US"
 ```
 
-### 4. HTML/Manifest Mismatch
+### 4. HTML/manifest mismatch
 
 ```html
 <!-- HTML says LTR English -->
@@ -542,7 +542,7 @@ lang: "ar"
 4. Verify they match HTML tag
 ```
 
-### 2. Test with Screen Readers
+### 2. Test with screen readers
 
 - NVDA (Windows)
 - JAWS (Windows)
@@ -551,14 +551,14 @@ lang: "ar"
 
 Verify correct language voice is used.
 
-### 3. Visual Testing
+### 3. Visual testing
 
 For RTL languages:
 - UI should mirror (buttons, menus on opposite side)
 - Text should flow right-to-left
 - Scrollbars should appear on left
 
-### 4. Test Language Detection
+### 4. Test language detection
 
 ```javascript
 // Check manifest language
@@ -574,19 +574,19 @@ fetch('/manifest.json')
     });
 ```
 
-## Language Code Reference
+## Language code reference
 
-### ISO 639-1 Standard
+### ISO 639-1 standard
 
 Language codes follow ISO 639-1 (two letters):
 - https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
-### Region Codes
+### Region codes
 
 Region codes follow ISO 3166-1 alpha-2:
 - https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 
-### Complete Format
+### Complete format
 
 ```
 lang: "{language}-{Script}-{Region}"
@@ -597,7 +597,7 @@ Examples:
 - pt-BR (Portuguese, Brazil)
 ```
 
-## Related Properties
+## Related properties
 
 - [Translations](../translations.md) - Multi-language manifest support
 - [Description](description.md) - Translatable descriptions

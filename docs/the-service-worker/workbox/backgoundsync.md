@@ -21,7 +21,7 @@ pwa:
                   max_retention_time: 120 # 2 hours in minutes
 ```
 
-### Configuration Parameters
+### Configuration parameters
 
 #### queue_name
 
@@ -119,7 +119,7 @@ broadcast_channel: 'form-sync-status'
 
 See the [Sync Broadcast Stimulus Component](../../symfony-ux/sync-broadcast.md) for implementation details on receiving these updates in your frontend.
 
-#### Additional Parameters
+#### Additional parameters
 
 **error_on_4xx**: `boolean` (default: `false`)
 - Treat 4xx status codes as errors requiring retry

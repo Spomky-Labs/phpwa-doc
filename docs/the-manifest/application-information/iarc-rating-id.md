@@ -1,4 +1,4 @@
-# IARC Rating ID
+# IARC rating ID
 
 The `iarc_rating_id` property allows you to specify an International Age Rating Coalition (IARC) certificate for your PWA, which provides globally recognized age and content ratings for digital applications.
 
@@ -35,9 +35,9 @@ pwa:
 
     The `iarc_rating_id` is optional. Only include it if you have obtained an official IARC certificate for your application.
 
-## When You Need an IARC Rating
+## When you need an IARC rating
 
-### Required For
+### Required for
 
 - **Games**: All games distributed through major platforms
 - **Social platforms**: Apps with user-generated content
@@ -45,16 +45,16 @@ pwa:
 - **App stores**: Some stores require ratings for listing
 - **Regional compliance**: Certain countries mandate ratings
 
-### Not Required For
+### Not required for
 
 - **Internal business apps**: Enterprise or private applications
 - **Productivity tools**: Office, note-taking, basic utilities
 - **Information websites**: News, documentation, basic content
 - **Simple utilities**: Calculators, weather apps, timers
 
-## How to Obtain an IARC Rating
+## How to obtain an IARC rating
 
-### Step 1: Determine Eligibility
+### Step 1: Determine eligibility
 
 IARC ratings are available through participating storefronts:
 - Google Play Store
@@ -63,7 +63,7 @@ IARC ratings are available through participating storefronts:
 - Nintendo eShop
 - Other participating platforms
 
-### Step 2: Complete the Questionnaire
+### Step 2: Complete the questionnaire
 
 Access the IARC questionnaire through your app store's developer console:
 
@@ -73,7 +73,7 @@ Access the IARC questionnaire through your app store's developer console:
 4. **Review** the generated ratings
 5. **Accept** and receive your certificate ID
 
-### Step 3: Use the Certificate ID
+### Step 3: Use the certificate ID
 
 After completing the questionnaire, you'll receive a unique certificate ID:
 
@@ -81,7 +81,7 @@ After completing the questionnaire, you'll receive a unique certificate ID:
 iarc_rating_id: "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7"
 ```
 
-## IARC Questionnaire Categories
+## IARC questionnaire categories
 
 The questionnaire evaluates your app across several categories:
 
@@ -92,7 +92,7 @@ The questionnaire evaluates your app across several categories:
 - Weapons
 - Injury depictions
 
-### 2. Sexual Content
+### 2. Sexual content
 
 - Nudity
 - Sexual references
@@ -106,30 +106,30 @@ The questionnaire evaluates your app across several categories:
 - Insults
 - Slang
 
-### 4. Controlled Substances
+### 4. Controlled substances
 
 - Alcohol references
 - Drug use
 - Tobacco references
 
-### 5. User Interaction
+### 5. User interaction
 
 - User-to-user communication
 - Sharing location
 - Unrestricted internet access
 - User-generated content
 
-### 6. In-App Purchases
+### 6. In-app purchases
 
 - Digital goods purchases
 - Real money transactions
 - Subscription features
 
-## Rating Age Groups
+## Rating age groups
 
 Based on your responses, you'll receive ratings for different systems:
 
-### ESRB (North America)
+### ESRB (north america)
 
 - **E** (Everyone) - Content suitable for all ages
 - **E10+** (Everyone 10+) - Suitable for ages 10 and up
@@ -137,7 +137,7 @@ Based on your responses, you'll receive ratings for different systems:
 - **M** (Mature) - Content for ages 17 and up
 - **AO** (Adults Only) - Content for ages 18 and up
 
-### PEGI (Europe)
+### PEGI (europe)
 
 - **PEGI 3** - Suitable for all ages
 - **PEGI 7** - Suitable for 7 and older
@@ -145,13 +145,13 @@ Based on your responses, you'll receive ratings for different systems:
 - **PEGI 16** - Suitable for 16 and older
 - **PEGI 18** - Suitable for adults only
 
-### Other Regional Ratings
+### Other regional ratings
 
 IARC automatically generates equivalent ratings for all participating systems.
 
-## Practical Examples
+## Practical examples
 
-### Social Media App
+### Social media app
 
 ```yaml
 pwa:
@@ -168,7 +168,7 @@ pwa:
 - Location sharing: Optional
 - Mature content: Moderated
 
-### Gaming App
+### Gaming app
 
 ```yaml
 pwa:
@@ -185,7 +185,7 @@ pwa:
 - Language: None
 - In-app purchases: Yes (cosmetics)
 
-### Productivity App (No Rating Needed)
+### Productivity app (no rating needed)
 
 ```yaml
 pwa:
@@ -195,7 +195,7 @@ pwa:
         # No iarc_rating_id - not required for productivity tools
 ```
 
-### News App
+### News app
 
 ```yaml
 pwa:
@@ -206,9 +206,9 @@ pwa:
         # Likely rated: Teen/PEGI 12+ (news content)
 ```
 
-## Certificate Management
+## Certificate management
 
-### Certificate ID Format
+### Certificate ID format
 
 IARC certificate IDs are UUID format:
 
@@ -219,7 +219,7 @@ e84b072d-71b3-4d3e-86ae-31a8ce4e53b7
    chars    hex  hex  hex
 ```
 
-### Updating Your Rating
+### Updating your rating
 
 If your app's content changes significantly:
 
@@ -236,44 +236,44 @@ iarc_rating_id: "old-certificate-id"
 iarc_rating_id: "new-certificate-id"
 ```
 
-### Certificate Expiration
+### Certificate expiration
 
 IARC certificates generally don't expire, but you must:
 - Update if content changes significantly
 - Re-certify if app is republished after removal
 - Comply with platform-specific renewal policies
 
-## Platform Support
+## Platform support
 
-### Google Play Store
+### Google play store
 
 - Full IARC integration
 - Automatic rating display
 - Required for games
 - Certificate obtained through Play Console
 
-### Microsoft Store
+### Microsoft store
 
 - Supports IARC ratings
 - Displays regional equivalents
 - Certificate via Partner Center
 - Required for certain categories
 
-### Apple App Store
+### Apple app store
 
 - Uses separate rating system (not IARC)
 - IARC not directly applicable
 - Use App Store Connect ratings
 
-### Web App Stores
+### Web app stores
 
 - Some support IARC in PWA manifests
 - Display may vary by platform
 - Check specific store requirements
 
-## Common Mistakes
+## Common mistakes
 
-### 1. Using Placeholder or Fake IDs
+### 1. Using placeholder or fake IDs
 
 ```yaml
 # ✗ Wrong - invalid ID
@@ -286,7 +286,7 @@ iarc_rating_id: "pending"
 
 **Fix**: Only use valid IARC certificate IDs obtained through official process
 
-### 2. Including Rating When Not Needed
+### 2. Including rating when not needed
 
 ```yaml
 # ✗ Unnecessary for simple productivity app
@@ -298,7 +298,7 @@ pwa:
 
 **Fix**: Omit `iarc_rating_id` if not required
 
-### 3. Not Updating After Content Changes
+### 3. Not updating after content changes
 
 ```yaml
 # ✗ Outdated rating after adding chat feature
@@ -311,23 +311,23 @@ iarc_rating_id: "old-id"  # Rated Everyone, but now has user communication
 - In-app purchases
 - Mature content
 
-### 4. Confusing IARC with App Store Ratings
+### 4. Confusing IARC with app store ratings
 
 IARC is separate from:
 - App Store star ratings (user reviews)
 - Google Play store ratings
 - Platform-specific content ratings
 
-## Testing Your Rating
+## Testing your rating
 
-### 1. Validate Certificate ID
+### 1. Validate certificate ID
 
 Check that your certificate is active:
 - Log into the platform where you obtained it
 - Verify certificate status
 - Ensure app details match
 
-### 2. Check Manifest
+### 2. Check manifest
 
 ```javascript
 // Verify IARC ID in manifest
@@ -350,9 +350,9 @@ fetch('/manifest.json')
 3. Check "iarc_rating_id" field
 ```
 
-## Legal and Compliance
+## Legal and compliance
 
-### Regional Requirements
+### Regional requirements
 
 Some regions require age ratings:
 - **Germany**: USK ratings mandatory for games
@@ -360,14 +360,14 @@ Some regions require age ratings:
 - **Australia**: ACB ratings for certain content
 - **South Korea**: GRB ratings for games
 
-### Penalties for Non-Compliance
+### Penalties for non-compliance
 
 - App removal from stores
 - Fines in certain jurisdictions
 - Loss of distribution rights
 - Legal liability for inappropriate content access
 
-### Recommended Practice
+### Recommended practice
 
 Even if not required:
 - Consider obtaining rating for transparency
@@ -402,7 +402,7 @@ A: Yes, contact the IARC support team or the platform where you obtained the rat
 - **Microsoft Store IARC**: Available in Partner Center
 - **IARC FAQs**: https://www.globalratings.com/faqs.aspx
 
-## Related Properties
+## Related properties
 
 - [Description](description.md) - Describe your app's content
 - [Categories](categories.md) - App classification

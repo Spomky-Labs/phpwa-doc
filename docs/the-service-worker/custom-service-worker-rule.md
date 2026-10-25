@@ -1,4 +1,4 @@
-# Custom Service Worker Rule
+# Custom service worker rule
 
 If needed, you can define custom sections in the service worker appended by your own services and depending on your application configuration or requirements.
 
@@ -8,7 +8,7 @@ To do so, you can create a service that implements `SpomkyLabs\PwaBundle\Service
 
     The method `process` shall return valid JavaScript as a string. This script will be executed by browsers.
 
-## Basic Example
+## Basic example
 
 ```php
 <?php
@@ -40,7 +40,7 @@ JS;
 
     When using Symfony's service autoconfiguration, your rule will be automatically registered. If autoconfiguration is disabled, tag your service with `spomky_labs_pwa.service_worker_rule`.
 
-## Manual Service Registration
+## Manual service registration
 
 If you need to manually register your service:
 
@@ -50,7 +50,7 @@ services:
         tags: ['spomky_labs_pwa.service_worker_rule']
 ```
 
-## Advanced Example with Configuration
+## Advanced example with configuration
 
 You can access the service worker configuration to conditionally generate JavaScript:
 
@@ -96,7 +96,7 @@ JS;
 }
 ```
 
-## Rule Execution Order
+## Rule execution order
 
 Service worker rules are executed in a specific order based on their priority. The bundle's built-in rules have predefined priorities:
 
@@ -110,7 +110,7 @@ Service worker rules are executed in a specific order based on their priority. T
 
 To control when your rule executes, you can implement additional logic or structure your JavaScript to work regardless of execution order.
 
-## Best Practices
+## Best practices
 
 1. **Return empty string for disabled features**: If your rule depends on configuration, return an empty string when it shouldn't be active
 2. **Use heredoc for multi-line JavaScript**: Makes the code more readable
@@ -118,7 +118,7 @@ To control when your rule executes, you can implement additional logic or struct
 4. **Access configuration through the ServiceWorker DTO**: Don't rely on external configuration sources
 5. **Test thoroughly**: Service workers run in a different context and can be hard to debug
 
-## Example: Custom Cache Invalidation
+## Example: Custom cache invalidation
 
 ```php
 <?php

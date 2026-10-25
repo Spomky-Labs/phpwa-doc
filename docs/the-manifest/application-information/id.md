@@ -13,7 +13,7 @@ pwa:
         id: "/?homescreen=1"
 ```
 
-## Why Use an ID?
+## Why use an ID?
 
 The `id` parameter provides several benefits:
 
@@ -21,7 +21,7 @@ The `id` parameter provides several benefits:
 2. **User Data Preservation**: Ensures that user preferences, permissions, and cached data are maintained even if URLs change.
 3. **Consistent Updates**: Helps the browser recognize that a new manifest belongs to the same application.
 
-## When to Set an ID
+## When to set an ID
 
 You should explicitly set an `id` when:
 
@@ -30,7 +30,7 @@ You should explicitly set an `id` when:
 * You want explicit control over your app's identity
 * You support multiple entry points but want them treated as the same app
 
-## ID Format
+## ID format
 
 The `id` should be a string that:
 
@@ -47,7 +47,7 @@ Common patterns include:
 
     Once you've set an `id` and users have installed your PWA, changing it will cause browsers to treat it as a completely different application. This means users would need to reinstall the app, and all saved data would be lost.
 
-## Example with Routing
+## Example with routing
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:

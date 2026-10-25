@@ -1,4 +1,4 @@
-# Related Applications
+# Related applications
 
 ## Overview
 
@@ -12,7 +12,7 @@ The `related_applications` property allows you to specify native applications av
 
 ## Configuration
 
-### Basic Related Applications
+### Basic related applications
 
 List related native apps without preferring them:
 
@@ -28,7 +28,7 @@ pwa:
 
 **Result**: Browser shows PWA install prompt. Native apps listed as alternatives.
 
-### Prefer Native Applications
+### Prefer native applications
 
 Suggest native apps over PWA installation:
 
@@ -46,7 +46,7 @@ pwa:
 
 **Result**: Browser suggests installing native app first, PWA as fallback.
 
-### Multiple Platforms
+### Multiple platforms
 
 List apps for all major platforms:
 
@@ -101,9 +101,9 @@ Controls whether browsers should suggest native apps over the PWA.
 
 Identifier for the app platform.
 
-## Supported Platforms
+## Supported platforms
 
-### play (Google Play Store)
+### play (Google play store)
 
 **For**: Android devices
 
@@ -124,7 +124,7 @@ related_applications:
 3. Check "Package name" field
 4. Or find in `build.gradle`: `applicationId "com.example.app"`
 
-### itunes (Apple App Store)
+### itunes (Apple app store)
 
 **For**: iOS, iPadOS devices
 
@@ -145,7 +145,7 @@ related_applications:
 3. Check "Apple ID" field
 4. Or find in App Store URL after `/id`
 
-### windows (Microsoft Store)
+### windows (Microsoft store)
 
 **For**: Windows 10/11 devices
 
@@ -166,7 +166,7 @@ related_applications:
 3. Check "Store ID" field
 4. Or find in Microsoft Store URL
 
-### chrome_web_store (Chrome Web Store)
+### chrome_web_store (Chrome web store)
 
 **For**: Chrome Extensions/Apps
 
@@ -187,7 +187,7 @@ related_applications:
 3. Check "Item ID" field
 4. Or find in extension URL
 
-### chromeos_play (Chrome OS Play Store)
+### chromeos_play (Chrome OS play store)
 
 **For**: Chrome OS devices with Play Store support
 
@@ -200,7 +200,7 @@ related_applications:
 
 **Format**: Same as Google Play Store
 
-### webapp (Web Apps)
+### webapp (web apps)
 
 **For**: Generic web applications
 
@@ -212,7 +212,7 @@ related_applications:
 
 **URL Format**: Any URL to your web app
 
-### f-droid (F-Droid)
+### f-droid (f-droid)
 
 **For**: Android open-source app repository
 
@@ -225,7 +225,7 @@ related_applications:
 
 **URL Format**: `https://f-droid.org/packages/{package_name}`
 
-### amazon (Amazon Appstore)
+### amazon (amazon appstore)
 
 **For**: Amazon Fire devices, Android
 
@@ -240,9 +240,9 @@ related_applications:
 
 **ID Format**: ASIN (Amazon Standard Identification Number)
 
-## Complete Examples
+## Complete examples
 
-### Example 1: Social Media App
+### Example 1: Social media app
 
 PWA primary, native apps as enhancements:
 
@@ -288,7 +288,7 @@ pwa:
               id: "9NBLGGH4GAME"
 ```
 
-### Example 3: Productivity Tool
+### Example 3: Productivity tool
 
 Available on all platforms:
 
@@ -319,7 +319,7 @@ pwa:
               id: "com.taskmaster.pro"
 ```
 
-### Example 4: PWA-Only with Web App Link
+### Example 4: PWA-only with web app link
 
 No native apps, just PWA:
 
@@ -333,7 +333,7 @@ pwa:
               url: "https://webapp.example.com"
 ```
 
-## Browser Support
+## Browser support
 
 | Browser | Support | Behavior |
 |---------|---------|----------|
@@ -347,7 +347,7 @@ pwa:
 
     **Graceful Degradation**: Browsers that don't support this feature simply ignore it and show standard PWA install prompts.
 
-## User Experience Flow
+## User experience flow
 
 ### When prefer_related_applications = false
 
@@ -375,7 +375,7 @@ No: Falls back to "Add to Home Screen" (PWA)
 
 ## Testing
 
-### 1. Check Manifest
+### 1. Check manifest
 
 ```javascript title="JavaScript Console" linenums="1"
 fetch('/manifest.json')
@@ -404,7 +404,7 @@ fetch('/manifest.json')
    - Native app may be mentioned as alternative
 ```
 
-### 3. Verify Store Links
+### 3. Verify store links
 
 ```bash
 # Test each URL
@@ -415,7 +415,7 @@ fetch('/manifest.json')
 - ✓ All IDs match actual apps
 ```
 
-### 4. DevTools Inspection
+### 4. DevTools inspection
 
 ```bash
 1. Open DevTools (F12)
@@ -428,9 +428,9 @@ fetch('/manifest.json')
    - IDs match
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Keep URLs Updated
+### 1. Keep URLs updated
 
 ```yaml
 # ✓ Good - URLs point to active apps
@@ -444,7 +444,7 @@ related_applications:
       url: "https://play.google.com/store/apps/details?id=com.old.removed.app"
 ```
 
-### 2. Include App IDs
+### 2. Include app IDs
 
 ```yaml
 # ✓ Good - includes ID for better matching
@@ -457,7 +457,7 @@ related_applications:
   url: "https://play.google.com/store/apps/details?id=com.example.app"
 ```
 
-### 3. List Active Platforms Only
+### 3. List active platforms only
 
 ```yaml
 # ✓ Good - only lists platforms where app exists
@@ -473,7 +473,7 @@ related_applications:
       url: "..."  # But iOS app doesn't exist!
 ```
 
-### 4. Use prefer_related_applications Sparingly
+### 4. Use prefer_related_applications sparingly
 
 ```yaml
 # Default (recommended for most PWAs)
@@ -483,11 +483,11 @@ prefer_related_applications: false
 prefer_related_applications: true
 ```
 
-### 5. Provide Fallback
+### 5. Provide fallback
 
 Always ensure your PWA works standalone, even when preferring native apps.
 
-## Decision Tree
+## Decision tree
 
 **Should you prefer native applications?**
 
@@ -505,9 +505,9 @@ Is installation friction a concern?
 └─ Yes → prefer_related_applications: false (PWA easier to install)
 ```
 
-## Common Mistakes
+## Common mistakes
 
-### 1. Wrong ID Format
+### 1. Wrong ID format
 
 **Problem**:
 ```yaml
@@ -521,7 +521,7 @@ Is installation friction a concern?
   id: "com.example.app"  # Correct: package name
 ```
 
-### 2. Missing Platform
+### 2. Missing platform
 
 **Problem**:
 ```yaml
@@ -536,7 +536,7 @@ related_applications:
       url: "https://play.google.com/..."
 ```
 
-### 3. Prefer Without Related Apps
+### 3. Prefer without related apps
 
 **Problem**:
 ```yaml
@@ -560,7 +560,7 @@ related_applications:
 
 ## Troubleshooting
 
-### Native App Banner Not Showing
+### Native app banner not showing
 
 **Problem**: Expected native app banner doesn't appear
 
@@ -572,7 +572,7 @@ related_applications:
 - ✓ App is published (not draft)
 - ✓ PWA manifest is valid
 
-### Wrong App Suggested
+### Wrong app suggested
 
 **Problem**: Browser suggests wrong native app
 
@@ -582,7 +582,7 @@ related_applications:
 - Ensure URL points to correct store listing
 - Clear browser cache and try again
 
-### PWA Install Blocked
+### PWA install blocked
 
 **Problem**: Users can't install PWA when prefer=true
 
@@ -591,7 +591,7 @@ related_applications:
 - Or ensure native app is available
 - Provide manual "Install PWA" link in your app
 
-## Related Documentation
+## Related documentation
 
 - [PWA Manifest](../../the-manifest/complete-example.md) - Complete manifest configuration
 - [Installation](../../how-to-install-remove-a-pwa.md) - PWA installation guide

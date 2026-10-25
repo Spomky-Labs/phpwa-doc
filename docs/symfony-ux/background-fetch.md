@@ -13,7 +13,7 @@ This component is particularly useful for:
 * Implementing reliable download managers within web applications
 * Handling file downloads that may take longer than the page lifetime
 
-## Browser Support
+## Browser support
 
 The Background Fetch API is a relatively new feature with limited but growing support.
 
@@ -29,7 +29,7 @@ The Background Fetch API is a relatively new feature with limited but growing su
 
 ## Usage
 
-### Basic File Download
+### Basic file download
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
@@ -94,7 +94,7 @@ The Background Fetch API is a relatively new feature with limited but growing su
 </style>
 ```
 
-### Multiple File Downloads
+### Multiple file downloads
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
@@ -152,7 +152,7 @@ The Background Fetch API is a relatively new feature with limited but growing su
 </script>
 ```
 
-### Download Management with Cancel
+### Download management with cancel
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
@@ -220,7 +220,7 @@ The Background Fetch API is a relatively new feature with limited but growing su
 </script>
 ```
 
-### Retrieving Downloaded Files
+### Retrieving downloaded files
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
@@ -279,9 +279,9 @@ The Background Fetch API is a relatively new feature with limited but growing su
 </script>
 ```
 
-## Best Practices
+## Best practices
 
-### Always Provide downloadTotal
+### Always provide downloadTotal
 
 !!! success
 
@@ -304,7 +304,7 @@ The Background Fetch API is a relatively new feature with limited but growing su
 }) }}>Download</button>
 ```
 
-### Use Unique IDs
+### Use unique IDs
 
 !!! warning
 
@@ -318,7 +318,7 @@ const downloadId = `download-${Date.now()}-${Math.random().toString(36).substr(2
 const downloadId = `video-${videoId}`;
 ```
 
-### Handle Browser Support Gracefully
+### Handle browser support gracefully
 
 !!! info
 
@@ -347,7 +347,7 @@ const downloadId = `video-${videoId}`;
 </script>
 ```
 
-### Manage Storage Space
+### Manage storage space
 
 !!! warning
 
@@ -370,13 +370,13 @@ host.addEventListener('background-fetch:completed', async (e) => {
 });
 ```
 
-### Provide User Feedback
+### Provide user feedback
 
 !!! success
 
     The Background Fetch API shows system-level notifications, but always provide in-app UI feedback as well for a better user experience.
 
-### Icons for Better UX
+### Icons for better UX
 
 ```twig linenums="1"
 {# Provide icons for better visual feedback in system notifications #}
@@ -392,9 +392,9 @@ host.addEventListener('background-fetch:completed', async (e) => {
 }) }}>Download Episode</button>
 ```
 
-## Common Use Cases
+## Common use cases
 
-### 1. Podcast/Music Download Manager
+### 1. Podcast/music download manager
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
@@ -441,7 +441,7 @@ host.addEventListener('background-fetch:completed', async (e) => {
 </script>
 ```
 
-### 2. Video Course Offline Access
+### 2. Video course offline access
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
@@ -505,7 +505,7 @@ host.addEventListener('background-fetch:completed', async (e) => {
 </script>
 ```
 
-### 3. Document Library Sync
+### 3. Document library sync
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
@@ -551,7 +551,7 @@ host.addEventListener('background-fetch:completed', async (e) => {
 </script>
 ```
 
-### 4. Media Gallery Offline Mode
+### 4. Media gallery offline mode
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/background-fetch') }}>
@@ -596,7 +596,7 @@ host.addEventListener('background-fetch:completed', async (e) => {
 </script>
 ```
 
-## API Reference
+## API reference
 
 ### Values
 
@@ -861,7 +861,7 @@ host.addEventListener('background-fetch:cancel-refused', (e) => {
 });
 ```
 
-## Related Components
+## Related components
 
 - [Service Worker](service-worker.md) - Required for Background Fetch to function
 - [BackgroundSync Queue](backgroundsync-queue.md) - Queue requests for later execution

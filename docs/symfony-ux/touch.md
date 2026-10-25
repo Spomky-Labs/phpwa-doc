@@ -14,7 +14,7 @@ This component is particularly useful for:
 * Canvas-based interactive applications
 * Mobile-first interactive dashboards
 
-## Browser Support
+## Browser support
 
 The Touch API is widely supported on all modern mobile browsers and touch-enabled devices. Desktop browsers typically support touch events when used with touch-capable hardware (touchscreen monitors, trackpads with multi-touch support).
 
@@ -30,7 +30,7 @@ The Touch API is widely supported on all modern mobile browsers and touch-enable
 
 ## Usage
 
-### Basic Touch Drawing
+### Basic touch drawing
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
@@ -111,7 +111,7 @@ The Touch API is widely supported on all modern mobile browsers and touch-enable
 </style>
 ```
 
-### Swipe Gesture Detection
+### Swipe gesture detection
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
@@ -193,7 +193,7 @@ The Touch API is widely supported on all modern mobile browsers and touch-enable
 </style>
 ```
 
-### Pinch-to-Zoom
+### Pinch-to-zoom
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
@@ -292,7 +292,7 @@ The Touch API is widely supported on all modern mobile browsers and touch-enable
 </style>
 ```
 
-### Multi-Touch Drawing with Different Colors
+### Multi-touch drawing with different colors
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
@@ -378,7 +378,7 @@ The Touch API is widely supported on all modern mobile browsers and touch-enable
 </style>
 ```
 
-### Rotation Gesture
+### Rotation gesture
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
@@ -485,7 +485,7 @@ The Touch API is widely supported on all modern mobile browsers and touch-enable
 </style>
 ```
 
-### Touch-Based Signature Pad
+### Touch-based signature pad
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
@@ -638,7 +638,7 @@ The Touch API is widely supported on all modern mobile browsers and touch-enable
 </style>
 ```
 
-### Touch-Based Game (Bubble Pop)
+### Touch-based game (bubble pop)
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>
@@ -989,7 +989,7 @@ document.addEventListener('pwa--touch:updated', (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Prevent default scrolling**: Use `touch-action: none` CSS on touch-interactive elements
 2. **Handle cancellation**: Always handle `cancelled` events to clean up state
@@ -1002,9 +1002,9 @@ document.addEventListener('pwa--touch:updated', (event) => {
 9. **Handle orientation changes**: Account for device rotation
 10. **Be mindful of gestures**: Some gestures may conflict with system gestures
 
-## Gesture Detection Patterns
+## Gesture detection patterns
 
-### Tap Detection
+### Tap detection
 
 ```javascript
 let tapStartTime = 0;
@@ -1032,7 +1032,7 @@ document.addEventListener('pwa--touch:ended', (event) => {
 });
 ```
 
-### Long Press Detection
+### Long press detection
 
 ```javascript
 let longPressTimer = null;
@@ -1056,7 +1056,7 @@ document.addEventListener('pwa--touch:ended', () => {
 });
 ```
 
-### Double Tap Detection
+### Double tap detection
 
 ```javascript
 let lastTapTime = 0;
@@ -1074,7 +1074,7 @@ document.addEventListener('pwa--touch:ended', (event) => {
 });
 ```
 
-### Velocity Calculation
+### Velocity calculation
 
 ```javascript
 let lastTime = 0;
@@ -1102,7 +1102,7 @@ document.addEventListener('pwa--touch:moved', (event) => {
 });
 ```
 
-## Complete Example: Advanced Drawing App
+## Complete example: Advanced drawing app
 
 ```twig linenums="1"
 <div {{ stimulus_controller('@pwa/touch') }}>

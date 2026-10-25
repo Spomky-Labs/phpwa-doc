@@ -1,4 +1,4 @@
-# Share Target
+# Share target
 
 The Web Share Target API allows your PWA to receive content shared from other applications, making it appear alongside native apps in the system's share menu. Users can share text, links, and files directly to your PWA.
 
@@ -10,7 +10,7 @@ Share Target enables:
 - **File handling**: Accept images, documents, and other files
 - **Seamless UX**: Process shared content within your PWA
 
-## How It Works
+## How it works
 
 1. **User shares content**: From another app, user clicks "Share"
 2. **Your PWA appears**: Listed in the share menu
@@ -18,7 +18,7 @@ Share Target enables:
 4. **PWA opens**: Your app receives the shared content
 5. **Content processed**: Handle the shared data in your application
 
-## Browser Support
+## Browser support
 
 !!! info
 
@@ -29,9 +29,9 @@ Share Target enables:
 - Safari: Limited support
 - Firefox: Not supported yet
 
-## Basic Configuration
+## Basic configuration
 
-### Sharing Text and URLs
+### Sharing text and URLs
 
 Simple configuration to receive text and links:
 
@@ -49,7 +49,7 @@ pwa:
 
 **How it works**: When content is shared, your PWA opens at `/share?title=...&text=...&url=...`
 
-### Sharing Files
+### Sharing files
 
 Accept image files via POST:
 
@@ -66,7 +66,7 @@ pwa:
                       accept: ["image/*"]
 ```
 
-### Complete Configuration
+### Complete configuration
 
 Handle text, URLs, and multiple file types:
 
@@ -89,7 +89,7 @@ pwa:
                           - "audio/*"
 ```
 
-## Configuration Parameters
+## Configuration parameters
 
 ### `action`
 
@@ -161,7 +161,7 @@ enctype: "application/x-www-form-urlencoded"
 
 Defines parameter names for shared content.
 
-#### Text Parameters
+#### Text parameters
 
 ```yaml
 params:
@@ -170,7 +170,7 @@ params:
     url: "url"          # Query param name for shared URL
 ```
 
-#### File Parameters
+#### File parameters
 
 ```yaml
 params:
@@ -183,9 +183,9 @@ params:
               - "image/webp"
 ```
 
-## Symfony Implementation
+## Symfony implementation
 
-### Controller for Text/URL Sharing (GET)
+### Controller for text/URL sharing (GET)
 
 ```php title="src/Controller/ShareController.php" linenums="1"
 <?php
@@ -218,7 +218,7 @@ class ShareController extends AbstractController
 }
 ```
 
-### Controller for File Sharing (POST)
+### Controller for file sharing (POST)
 
 ```php title="src/Controller/ShareController.php" linenums="1"
 <?php
@@ -271,7 +271,7 @@ class ShareController extends AbstractController
 }
 ```
 
-### Complete Handler (Text + Files)
+### Complete handler (text + files)
 
 ```php title="src/Controller/ShareController.php" linenums="1"
 <?php
@@ -339,9 +339,9 @@ class ShareController extends AbstractController
 }
 ```
 
-## Common Use Cases
+## Common use cases
 
-### 1. Social Media: Share Posts
+### 1. Social media: Share posts
 
 Accept text and images for new posts:
 
@@ -361,7 +361,7 @@ pwa:
                       accept: ["image/*"]
 ```
 
-### 2. Bookmarking App
+### 2. Bookmarking app
 
 Save shared URLs:
 
@@ -395,7 +395,7 @@ public function saveBookmark(Request $request, EntityManagerInterface $em): Resp
 }
 ```
 
-### 3. Note-Taking App
+### 3. Note-taking app
 
 Capture shared text and links:
 
@@ -411,7 +411,7 @@ pwa:
                 url: "source"
 ```
 
-### 4. Photo Gallery
+### 4. Photo gallery
 
 Accept multiple images:
 
@@ -432,7 +432,7 @@ pwa:
                           - "image/heic"
 ```
 
-### 5. Music Player
+### 5. Music player
 
 Share audio files:
 
@@ -453,9 +453,9 @@ pwa:
                           - "audio/wav"
 ```
 
-## Frontend Handling
+## Frontend handling
 
-### Pre-fill Form with Shared Data
+### Pre-fill form with shared data
 
 ```twig title="templates/share/index.html.twig" linenums="1"
 {% extends 'base.html.twig' %}
@@ -500,7 +500,7 @@ pwa:
 {% endblock %}
 ```
 
-### Handle Shared Files with JavaScript
+### Handle shared files with JavaScript
 
 ```twig title="templates/share/upload.html.twig" linenums="1"
 <form id="shareForm" method="post" enctype="multipart/form-data">
@@ -544,9 +544,9 @@ function showFilePreview() {
 </script>
 ```
 
-## File Type Handling
+## File type handling
 
-### Accept Specific Image Formats
+### Accept specific image formats
 
 ```yaml
 params:
@@ -558,7 +558,7 @@ params:
               - "image/webp"
 ```
 
-### Accept Documents
+### Accept documents
 
 ```yaml
 params:
@@ -572,7 +572,7 @@ params:
               - "text/plain"
 ```
 
-### Accept Videos
+### Accept videos
 
 ```yaml
 params:
@@ -584,7 +584,7 @@ params:
               - "video/ogg"
 ```
 
-### Multiple File Types
+### Multiple file types
 
 ```yaml
 params:
@@ -600,9 +600,9 @@ params:
               - ".docx"
 ```
 
-## Testing Share Target
+## Testing share target
 
-### Manual Testing on Android
+### Manual testing on Android
 
 1. **Install your PWA** on Android device
 2. **Open another app** (e.g., Chrome, Gallery)
@@ -623,7 +623,7 @@ Share Target can be tested using Chrome DevTools on desktop:
 5. Use "Test" button to simulate sharing
 ```
 
-### Programmatic Testing
+### Programmatic testing
 
 Test your share endpoint directly:
 
@@ -636,9 +636,9 @@ curl -X POST http://localhost:8000/share-image \
   -F "image=@test-image.jpg"
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Use HTTP 303 See Other for POST
+### 1. Use HTTP 303 see other for POST
 
 Prevent double submissions:
 
@@ -650,7 +650,7 @@ return $this->redirectToRoute('app_success', [], Response::HTTP_SEE_OTHER);
 return $this->redirectToRoute('app_success');
 ```
 
-### 2. Validate Shared Content
+### 2. Validate shared content
 
 Always validate received data:
 
@@ -682,7 +682,7 @@ public function shareContent(Request $request): Response
 }
 ```
 
-### 3. Handle Missing Parameters
+### 3. Handle missing parameters
 
 Content might be incomplete:
 
@@ -705,7 +705,7 @@ public function share(Request $request): Response
 }
 ```
 
-### 4. Provide User Feedback
+### 4. Provide user feedback
 
 Show success/error messages:
 
@@ -729,7 +729,7 @@ public function shareImage(Request $request): Response
 }
 ```
 
-### 5. Authenticate Users
+### 5. Authenticate users
 
 Require authentication for sharing:
 
@@ -765,7 +765,7 @@ public function shareContent(Request $request): Response
 
 ## Debugging
 
-### Check Manifest
+### Check manifest
 
 Verify share_target in manifest:
 
@@ -776,7 +776,7 @@ Verify share_target in manifest:
 4. Verify action, method, and params
 ```
 
-### Log Received Data
+### Log received data
 
 Debug what your app receives:
 
@@ -794,7 +794,7 @@ public function share(Request $request): Response
 }
 ```
 
-### Test Endpoint Directly
+### Test endpoint directly
 
 Test without share sheet:
 
@@ -808,23 +808,23 @@ Test without share sheet:
 
 ## Limitations
 
-### Browser Support
+### Browser support
 
 - **Android**: Full support in Chrome, Edge, Samsung Internet
 - **iOS/Safari**: Not supported yet
 - **Desktop**: Limited (must install PWA first)
 - **Firefox**: Not supported
 
-### Platform Restrictions
+### Platform restrictions
 
 - Requires PWA to be installed
 - Only works on supported platforms
 - File size limits apply
 - Some MIME types may not work on all devices
 
-## Security Considerations
+## Security considerations
 
-### Validate File Types
+### Validate file types
 
 ```php
 public function shareImage(Request $request): Response
@@ -847,7 +847,7 @@ public function shareImage(Request $request): Response
 }
 ```
 
-### Limit File Size
+### Limit file size
 
 ```php
 public function shareImage(Request $request): Response
@@ -863,7 +863,7 @@ public function shareImage(Request $request): Response
 }
 ```
 
-### Sanitize Input
+### Sanitize input
 
 ```php
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -884,7 +884,7 @@ public function share(Request $request, SluggerInterface $slugger): Response
 }
 ```
 
-## Related Documentation
+## Related documentation
 
 - [Shortcuts](shortcuts.md) - App shortcuts configuration
 - [File Handlers](file-handlers.md) - Handle file types

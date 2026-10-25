@@ -1,4 +1,4 @@
-# Periodic Sync
+# Periodic sync
 
 The Periodic Sync component enables your Progressive Web App to synchronize data in the background at regular intervals, even when the app is closed. This feature leverages the Periodic Background Sync API to keep content fresh without requiring constant user interaction.
 
@@ -16,7 +16,7 @@ Periodic Background Sync allows your PWA to:
 
     Periodic Sync requires an active service worker and is subject to browser-controlled intervals. The browser decides when to actually trigger syncs based on site engagement and device conditions.
 
-## Browser Support
+## Browser support
 
 | Browser | Desktop | Mobile |
 |---|---|---|
@@ -40,7 +40,7 @@ Before using Periodic Sync, ensure that:
 
 ## Usage
 
-### Basic Periodic Sync Registration
+### Basic periodic sync registration
 
 First, import the helpers in your JavaScript:
 
@@ -57,7 +57,7 @@ onPeriodicSync('content-sync', (data) => {
 });
 ```
 
-### News Feed Synchronization
+### News feed synchronization
 
 ```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync, onPeriodicSync } from '@symfony/ux-pwa/helpers';
@@ -115,7 +115,7 @@ registerPeriodicSyncTask('news-feed-sync', async (event) => {
 });
 ```
 
-### Weather Data Synchronization
+### Weather data synchronization
 
 ```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync, onPeriodicSync } from '@symfony/ux-pwa/helpers';
@@ -168,7 +168,7 @@ registerPeriodicSyncTask('weather-sync', async (event) => {
 });
 ```
 
-### Social Media Timeline Sync
+### Social media timeline sync
 
 ```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync, onPeriodicSync } from '@symfony/ux-pwa/helpers';
@@ -226,7 +226,7 @@ registerPeriodicSyncTask('timeline-sync', async (event) => {
 });
 ```
 
-### Podcast Episode Download
+### Podcast episode download
 
 ```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync, onPeriodicSync } from '@symfony/ux-pwa/helpers';
@@ -296,9 +296,9 @@ registerPeriodicSyncTask('podcast-sync', async (event) => {
 });
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Request Minimal Sync Intervals
+### 1. Request minimal sync intervals
 
 The `minInterval` parameter is a suggestion, not a guarantee. The browser may sync less frequently based on:
 
@@ -315,7 +315,7 @@ await registerPeriodicSync('daily-sync', 24 * 60 * 60 * 1000);
 await registerPeriodicSync('frequent-sync', 60 * 1000); // Every minute
 ```
 
-### 2. Check Permission Status
+### 2. Check permission status
 
 Always check if the periodic-background-sync permission is granted:
 
@@ -346,7 +346,7 @@ if (hasPermission) {
 }
 ```
 
-### 3. Handle Sync Failures Gracefully
+### 3. Handle sync failures gracefully
 
 Background syncs can fail for various reasons:
 
@@ -395,7 +395,7 @@ registerPeriodicSyncTask('content-sync', async (event) => {
 });
 ```
 
-### 4. Respect User Data Preferences
+### 4. Respect user data preferences
 
 Only sync essential data automatically. For large downloads, ask for user permission:
 
@@ -424,7 +424,7 @@ registerPeriodicSyncTask('media-sync', async (event) => {
 });
 ```
 
-### 5. Provide User Control
+### 5. Provide user control
 
 Let users manage sync settings:
 
@@ -476,9 +476,9 @@ document.getElementById('sync-interval').addEventListener('change', async (e) =>
 </script>
 ```
 
-## Common Use Cases
+## Common use cases
 
-### 1. News and Content Aggregation
+### 1. News and content aggregation
 
 Keep news feeds fresh with periodic updates:
 
@@ -503,7 +503,7 @@ class NewsController extends AbstractController
 }
 ```
 
-### 2. Inventory and Pricing Updates
+### 2. Inventory and pricing updates
 
 For e-commerce apps, keep product information current:
 
@@ -552,7 +552,7 @@ registerPeriodicSyncTask('inventory-sync', async (event) => {
 });
 ```
 
-### 3. Calendar and Event Synchronization
+### 3. Calendar and event synchronization
 
 Keep calendar events synchronized:
 
@@ -598,9 +598,9 @@ registerPeriodicSyncTask('calendar-sync', async (event) => {
 });
 ```
 
-## API Reference
+## API reference
 
-### Client-Side Helpers
+### Client-side helpers
 
 #### `registerPeriodicSync(tag, minInterval, options)`
 
@@ -666,7 +666,7 @@ onPeriodicSync('content-sync', (data) => {
 }
 ```
 
-### Service Worker Functions
+### Service worker functions
 
 #### `registerPeriodicSyncTask(tag, callback, priority)`
 
@@ -738,7 +738,7 @@ The payload will be merged with default properties:
 }
 ```
 
-## Unregistering Periodic Sync
+## Unregistering periodic sync
 
 To stop a periodic sync:
 
@@ -760,7 +760,7 @@ async function unregisterPeriodicSync(tag) {
 await unregisterPeriodicSync('content-sync');
 ```
 
-## Checking Registered Syncs
+## Checking registered syncs
 
 List all registered periodic syncs:
 
@@ -785,13 +785,13 @@ const syncs = await listPeriodicSyncs();
 // Output: ['content-sync', 'weather-sync', 'calendar-sync']
 ```
 
-## Related Components
+## Related components
 
 * [BackgroundSync Form](backgroundsync-form.md) - One-time background synchronization for form submissions
 * [BackgroundSync Queue](backgroundsync-queue.md) - Monitor background sync queue status
 * [Service Worker](service-worker.md) - Manage service worker lifecycle
 
-## Additional Resources
+## Additional resources
 
 * [Periodic Background Sync API on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Periodic_Background_Synchronization_API)
 * [Periodic Background Sync on web.dev](https://web.dev/periodic-background-sync/)

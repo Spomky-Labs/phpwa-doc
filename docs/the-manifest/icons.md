@@ -18,7 +18,7 @@ pwa:
               sizes: 0
 ```
 
-### `src` Parameter
+### `src` parameter
 
 The `src` parameter is the path to the resource file. It can be:
 
@@ -38,7 +38,7 @@ pwa:
               sizes: [48]
 ```
 
-### `sizes` Parameter
+### `sizes` parameter
 
 The sizes parameter indicates the suitable sizes for the icon. The expected value is a positive integer or a list of positive integers.
 
@@ -56,7 +56,7 @@ pwa:
               sizes: 0
 ```
 
-### `format` Parameter
+### `format` parameter
 
 When the `format` parameter is set, the bundle will try to save the image in the specified format. If the component `symfony/mime` is present, the bundle will guess the correct type.
 
@@ -66,7 +66,7 @@ In general, browsers can read `svg`, `png` and `jpg` types. Modern browsers may 
 
     Conversion to SVG is not possible.
 
-### `purpose` Parameter
+### `purpose` parameter
 
 The `purpose` parameter defines how the icon should be used by the operating system. Common values include:
 
@@ -81,7 +81,7 @@ The `maskable` purpose indicates the icon has a security margin and borders can 
   <figcaption>Maskable image safe area</figcaption>
 </figure>
 
-### `border_radius` Parameter
+### `border_radius` parameter
 
 The `border_radius` parameter allows you to add rounded corners to your icon. This is particularly useful for creating modern-looking icons that match current design trends.
 
@@ -106,7 +106,7 @@ pwa:
 
     The border radius is applied proportionally to all icon sizes generated from the same source.
 
-### `image_scale` Parameter
+### `image_scale` parameter
 
 The `image_scale` parameter controls how much padding or scaling is applied to your icon. This is useful when you need to adjust the visual weight of your icon or add breathing room around it.
 
@@ -129,7 +129,7 @@ This is particularly useful when:
 * You want consistent spacing across different icon sizes
 * You need to adapt an existing icon to maskable requirements
 
-### `background_color` Parameter
+### `background_color` parameter
 
 When using `image_scale` or `border_radius`, you can specify a `background_color` to fill the space around or behind the icon:
 
@@ -144,7 +144,7 @@ pwa:
               background_color: "#ffffff"
 ```
 
-### SVG Attributes
+### SVG attributes
 
 You can customize any SVG attribute to control how your icon is rendered. The bundle allows you to modify fill colors, stroke properties, and other SVG root attributes:
 

@@ -1,4 +1,4 @@
-# Display Override
+# Display override
 
 !!! warning
 
@@ -8,7 +8,7 @@
 
 The `display_override` property allows you to specify a preferred display mode with multiple fallbacks for cases where certain display modes are not supported by the platform or browser. This provides graceful degradation and ensures your PWA displays optimally across different environments.
 
-## How It Works
+## How it works
 
 The browser evaluates display modes in the `display_override` array **from left to right**. The first supported mode is used. If no mode in the array is supported, the browser falls back to the `display` property.
 
@@ -21,7 +21,7 @@ The browser evaluates display modes in the `display_override` array **from left 
 
 ## Configuration
 
-### Basic Configuration
+### Basic configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -33,7 +33,7 @@ pwa:
 
 **Fallback chain**: `fullscreen` → `minimal-ui` → `standalone` → `browser`
 
-### Complete Example
+### Complete example
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -53,7 +53,7 @@ pwa:
 3. If not available, try `minimal-ui`
 4. If not available, use `standalone` (from display property)
 
-## Display Modes
+## Display modes
 
 ### fullscreen
 
@@ -203,7 +203,7 @@ if ('windowControlsOverlay' in navigator) {
 }
 ```
 
-## Browser Support
+## Browser support
 
 | Display Mode | Chrome | Edge | Safari | Firefox | Samsung Internet |
 |--------------|--------|------|--------|---------|------------------|
@@ -219,9 +219,9 @@ if ('windowControlsOverlay' in navigator) {
 
     **Support Detection**: Always include a well-supported fallback in your `display` property.
 
-## Use Cases by Application Type
+## Use cases by application type
 
-### 1. Media/Gaming App
+### 1. Media/gaming app
 
 Prioritize immersive fullscreen experience:
 
@@ -236,7 +236,7 @@ pwa:
 
 **Reasoning**: Games benefit from fullscreen. Falls back to standalone on iOS.
 
-### 2. Productivity App (Desktop-focused)
+### 2. Productivity app (desktop-focused)
 
 Maximize workspace on desktop:
 
@@ -251,7 +251,7 @@ pwa:
 
 **Reasoning**: Desktop users get maximum screen space. Mobile users get standalone.
 
-### 3. Content Reader
+### 3. Content reader
 
 Minimal UI for focused reading:
 
@@ -266,7 +266,7 @@ pwa:
 
 **Reasoning**: Tries for minimal UI, falls back to well-supported standalone.
 
-### 4. E-Commerce App
+### 4. E-commerce app
 
 Standard app-like experience:
 
@@ -279,7 +279,7 @@ pwa:
 
 **Reasoning**: Standalone is widely supported and provides app-like experience without experimental features.
 
-### 5. Progressive Enhancement
+### 5. Progressive enhancement
 
 Start with browser, offer better experiences:
 
@@ -294,7 +294,7 @@ pwa:
 
 **Reasoning**: Works everywhere, enhances to standalone where supported.
 
-### 6. Multi-Platform App
+### 6. Multi-platform app
 
 Different experiences for desktop and mobile:
 
@@ -311,7 +311,7 @@ pwa:
 
 **Reasoning**: Desktop gets window controls overlay, mobile might get fullscreen, everyone gets at least standalone.
 
-## Testing Display Modes
+## Testing display modes
 
 ### 1. Chrome DevTools
 
@@ -322,7 +322,7 @@ pwa:
 4. See which mode is active
 ```
 
-### 2. Install and Check
+### 2. Install and check
 
 ```bash
 # Desktop
@@ -338,7 +338,7 @@ pwa:
 4. Verify fullscreen if configured
 ```
 
-### 3. JavaScript Detection
+### 3. JavaScript detection
 
 ```javascript
 // Check current display mode
@@ -365,7 +365,7 @@ window.matchMedia('(display-mode: standalone)').addEventListener('change', (e) =
 });
 ```
 
-### 4. Test Across Platforms
+### 4. Test across platforms
 
 ```bash
 # Test matrix
@@ -376,7 +376,7 @@ window.matchMedia('(display-mode: standalone)').addEventListener('change', (e) =
 - ✓ Samsung Internet (Android)
 ```
 
-## Window Controls Overlay (Advanced)
+## Window Controls Overlay (advanced)
 
 For desktop apps using `window-controls-overlay`, you can customize the title bar area.
 
@@ -406,7 +406,7 @@ if ('windowControlsOverlay' in navigator) {
 }
 ```
 
-### Custom Title Bar with WCO
+### Custom title bar with WCO
 
 ```css title="public/css/window-controls.css" linenums="1"
 /* Custom title bar styling */
@@ -463,9 +463,9 @@ body {
 </html>
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Always Provide Fallbacks
+### 1. Always provide fallbacks
 
 ```yaml
 # ✗ Avoid - no fallback
@@ -476,7 +476,7 @@ display_override: ["fullscreen"]
 display: "standalone"
 ```
 
-### 2. Order from Most to Least Specific
+### 2. Order from most to least specific
 
 ```yaml
 # ✓ Good - specific to general
@@ -487,7 +487,7 @@ display_override:
 display: "standalone"            # Widely supported
 ```
 
-### 3. Consider Platform Differences
+### 3. Consider platform differences
 
 ```yaml
 # ✓ Good - works well across platforms
@@ -496,7 +496,7 @@ display_override:
 display: "standalone"            # Mobile & desktop fallback
 ```
 
-### 4. Test on Real Devices
+### 4. Test on real devices
 
 Don't rely solely on DevTools:
 - Install on actual Android device
@@ -504,7 +504,7 @@ Don't rely solely on DevTools:
 - Install on Windows/macOS/Linux desktop
 - Test in different browsers
 
-### 5. Provide CSS Fallbacks
+### 5. Provide CSS fallbacks
 
 ```css
 /* Adjust layout based on display mode */
@@ -528,9 +528,9 @@ Don't rely solely on DevTools:
 }
 ```
 
-## Common Mistakes
+## Common mistakes
 
-### 1. No Fallback Display
+### 1. No fallback display
 
 **Problem**:
 ```yaml
@@ -544,7 +544,7 @@ display_override: ["fullscreen"]
 display: "standalone"  # Always include fallback
 ```
 
-### 2. Wrong Order
+### 2. Wrong order
 
 **Problem**:
 ```yaml
@@ -560,7 +560,7 @@ display_override:
     - "standalone"               # General last
 ```
 
-### 3. Assuming Support
+### 3. Assuming support
 
 **Problem**:
 ```javascript
@@ -579,13 +579,13 @@ if ('windowControlsOverlay' in navigator) {
 }
 ```
 
-### 4. Not Testing iOS
+### 4. Not testing iOS
 
 **Problem**: Assuming fullscreen works like on Android
 
 **Solution**: Always test on iOS Safari - fullscreen is not supported, falls back to standalone
 
-### 5. Ignoring Browser Tab Mode
+### 5. Ignoring browser tab mode
 
 **Problem**: Only designing for standalone mode
 
@@ -593,7 +593,7 @@ if ('windowControlsOverlay' in navigator) {
 
 ## Troubleshooting
 
-### Display Mode Not Applied
+### Display mode not applied
 
 **Problem**: App doesn't use expected display mode
 
@@ -605,7 +605,7 @@ if ('windowControlsOverlay' in navigator) {
 - ✓ Try uninstalling and reinstalling PWA
 - ✓ Clear browser cache
 
-### Window Controls Overlay Not Working
+### Window Controls Overlay not working
 
 **Problem**: Desktop app doesn't show window controls overlay
 
@@ -616,7 +616,7 @@ if ('windowControlsOverlay' in navigator) {
 - Check DevTools console for errors
 - Verify CSS uses correct environment variables
 
-### Fullscreen Mode Issues on Mobile
+### Fullscreen mode issues on mobile
 
 **Problem**: App doesn't go fullscreen on mobile
 
@@ -626,7 +626,7 @@ if ('windowControlsOverlay' in navigator) {
 - Ensure app is launched from home screen
 - Some browsers require user gesture for fullscreen
 
-## Platform-Specific Behavior
+## Platform-specific behavior
 
 ### Android
 
@@ -655,7 +655,7 @@ if ('windowControlsOverlay' in navigator) {
 - **standalone**: Some support
 - Other modes: Limited or no support
 
-## Related Documentation
+## Related documentation
 
 - [Display Mode](../../the-manifest/application-information/display-mode.md) - Standard display property
 - [Orientation](../../the-manifest/application-information/orientation.md) - Screen orientation control

@@ -28,9 +28,9 @@ pwa:
     - Start with the primary category
     - Categories are hints - platforms may use their own classification
 
-## Standard Categories
+## Standard categories
 
-### Business & Productivity
+### Business & productivity
 
 **business**
 - CRM systems
@@ -56,7 +56,7 @@ pwa:
 - DevOps dashboards
 - Documentation browsers
 
-### Media & Entertainment
+### Media & entertainment
 
 **music**
 - Streaming services
@@ -87,7 +87,7 @@ pwa:
 - Fun utilities
 - Novelty apps
 
-### Social & Communication
+### Social & communication
 
 **social** / **social networking**
 - Social media platforms
@@ -105,7 +105,7 @@ pwa:
 - Business connections
 - Conference apps
 
-### Lifestyle & Health
+### Lifestyle & health
 
 **health** / **health & fitness**
 - Fitness trackers
@@ -137,7 +137,7 @@ pwa:
 - Telemedicine
 - Medical reference
 
-### Content & Learning
+### Content & learning
 
 **books** / **books & reference**
 - E-book readers
@@ -206,7 +206,7 @@ pwa:
 - Converters
 - System tools
 
-### Creative & Design
+### Creative & design
 
 **design**
 - Design tools
@@ -223,7 +223,7 @@ pwa:
 - Audio/video editing
 - Content production
 
-### Specialized Audiences
+### Specialized audiences
 
 **kids**
 - Child-appropriate content
@@ -297,9 +297,9 @@ pwa:
 - Security tools
 - Privacy apps
 
-## Choosing the Right Categories
+## Choosing the right categories
 
-### Single Primary Category
+### Single primary category
 
 For highly focused apps:
 
@@ -309,7 +309,7 @@ categories: ['music']    # Music streaming service
 categories: ['games']    # Gaming platform
 ```
 
-### Multiple Related Categories
+### Multiple related categories
 
 For apps spanning related areas:
 
@@ -327,7 +327,7 @@ categories: ['food', 'lifestyle']
 categories: ['photo & video', 'social']
 ```
 
-### Avoid Over-Categorization
+### Avoid over-categorization
 
 ```yaml
 # ✗ Too many - dilutes focus
@@ -337,9 +337,9 @@ categories: ['productivity', 'business', 'utilities', 'lifestyle', 'social']
 categories: ['productivity', 'business']
 ```
 
-## Practical Examples
+## Practical examples
 
-### E-commerce App
+### E-commerce app
 
 ```yaml
 pwa:
@@ -349,7 +349,7 @@ pwa:
         categories: ['shopping']
 ```
 
-### Fitness Tracker
+### Fitness tracker
 
 ```yaml
 pwa:
@@ -359,7 +359,7 @@ pwa:
         categories: ['health & fitness', 'sports']
 ```
 
-### Task Manager
+### Task manager
 
 ```yaml
 pwa:
@@ -369,7 +369,7 @@ pwa:
         categories: ['productivity', 'business']
 ```
 
-### News Reader
+### News reader
 
 ```yaml
 pwa:
@@ -379,7 +379,7 @@ pwa:
         categories: ['news']
 ```
 
-### Recipe App
+### Recipe app
 
 ```yaml
 pwa:
@@ -389,7 +389,7 @@ pwa:
         categories: ['food', 'lifestyle']
 ```
 
-### Social Network
+### Social network
 
 ```yaml
 pwa:
@@ -399,7 +399,7 @@ pwa:
         categories: ['social networking', 'social']
 ```
 
-### Music Streaming
+### Music streaming
 
 ```yaml
 pwa:
@@ -409,7 +409,7 @@ pwa:
         categories: ['music', 'entertainment']
 ```
 
-### Weather App
+### Weather app
 
 ```yaml
 pwa:
@@ -419,7 +419,7 @@ pwa:
         categories: ['weather', 'utilities']
 ```
 
-### Developer Tools
+### Developer tools
 
 ```yaml
 pwa:
@@ -429,7 +429,7 @@ pwa:
         categories: ['developer tools', 'productivity']
 ```
 
-### Educational Platform
+### Educational platform
 
 ```yaml
 pwa:
@@ -439,29 +439,29 @@ pwa:
         categories: ['education', 'books & reference']
 ```
 
-## Platform-Specific Behavior
+## Platform-specific behavior
 
-### Google Play Store
+### Google play store
 
 - Uses categories as hints
 - May map to Play Store categories
 - Helps with search and discovery
 - Not guaranteed to match exactly
 
-### Microsoft Store
+### Microsoft store
 
 - Supports PWA categories
 - Maps to Windows Store categories
 - Influences app placement
 - Used in search algorithms
 
-### App Stores in Browsers
+### App stores in browsers
 
 - Chrome Web Store considers categories
 - Edge Add-ons uses categories
 - Other browser stores may vary
 
-### General Web
+### General web
 
 - May be ignored by some platforms
 - Still useful for:
@@ -470,9 +470,9 @@ pwa:
   - Search engine optimization
   - Documentation/metadata
 
-## Best Practices
+## Best practices
 
-### 1. Be Specific
+### 1. Be specific
 
 ```yaml
 # ✗ Too generic
@@ -482,14 +482,14 @@ categories: ['utilities', 'productivity']
 categories: ['task management', 'productivity']
 ```
 
-### 2. Primary Category First
+### 2. Primary category first
 
 ```yaml
 # ✓ Most important category first
 categories: ['health & fitness', 'lifestyle']
 ```
 
-### 3. Limit to 2-3 Categories
+### 3. Limit to 2-3 categories
 
 ```yaml
 # ✓ Focused
@@ -499,7 +499,7 @@ categories: ['finance', 'business']
 categories: ['finance', 'business', 'productivity', 'utilities', 'social']
 ```
 
-### 4. Use Standard Categories
+### 4. Use standard categories
 
 ```yaml
 # ✓ Standard category
@@ -509,7 +509,7 @@ categories: ['productivity']
 categories: ['task-management-tools']
 ```
 
-### 5. Match Your App's Purpose
+### 5. Match your app's purpose
 
 Ensure categories align with your app's actual functionality:
 
@@ -521,9 +521,9 @@ categories: ['photo & video', 'graphics']  # ✓ Accurate
 categories: ['games']  # ✗ Misleading
 ```
 
-## Common Mistakes
+## Common mistakes
 
-### 1. Using Too Many Categories
+### 1. Using too many categories
 
 ```yaml
 # ✗ Excessive
@@ -542,7 +542,7 @@ pwa:
         categories: ['productivity', 'business']
 ```
 
-### 2. Mixing Specific and General
+### 2. Mixing specific and general
 
 ```yaml
 # ✗ Inconsistent specificity
@@ -555,7 +555,7 @@ categories: ['health & fitness', 'apps', 'mobile']
 categories: ['health & fitness', 'lifestyle']
 ```
 
-### 3. Using Non-Standard Names
+### 3. Using non-standard names
 
 ```yaml
 # ✗ Custom categories not recognized
@@ -568,7 +568,7 @@ categories: ['super-productivity-tools', 'amazing-apps']
 categories: ['productivity', 'business']
 ```
 
-### 4. Wrong Capitalization
+### 4. Wrong capitalization
 
 ```yaml
 # ✗ Mixed case (inconsistent)
@@ -581,7 +581,7 @@ categories: ['Productivity', 'BUSINESS', 'health & Fitness']
 categories: ['productivity', 'business', 'health & fitness']
 ```
 
-### 5. Mismatched Categories
+### 5. Mismatched categories
 
 ```yaml
 # ✗ Categories don't match app purpose
@@ -602,9 +602,9 @@ pwa:
         categories: ['music', 'entertainment']
 ```
 
-## Testing Categories
+## Testing categories
 
-### 1. Validate in Manifest
+### 1. Validate in manifest
 
 ```javascript
 // Check categories in your manifest
@@ -631,14 +631,14 @@ fetch('/manifest.json')
 4. Verify categories are lowercase
 ```
 
-### 3. Test Discovery
+### 3. Test discovery
 
 - Search for your app in stores by category
 - Verify it appears in expected sections
 - Check if similar apps are in same categories
 - Test on multiple platforms (Play Store, Microsoft Store)
 
-## Category Selection Checklist
+## Category selection checklist
 
 Before finalizing categories:
 
@@ -652,7 +652,7 @@ Before finalizing categories:
 - [ ] Similar to competitor categorization
 - [ ] Makes sense to target users
 
-## SEO and Discovery Impact
+## SEO and discovery impact
 
 Categories affect:
 
@@ -662,7 +662,7 @@ Categories affect:
 4. **Filtering**: Enables category-based filtering
 5. **Rankings**: May influence category-specific rankings
 
-## Related Properties
+## Related properties
 
 - [Description](description.md) - Describes app functionality
 - [IARC Rating](iarc-rating-id.md) - Age and content rating

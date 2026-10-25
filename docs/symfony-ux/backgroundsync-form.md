@@ -1,4 +1,4 @@
-# BackgroundSync Form
+# BackgroundSync form
 
 The BackgroundSync Form component transforms regular HTML forms into offline-capable forms that automatically queue submissions when the user is offline. When a form is submitted without internet connectivity, the request is queued by the service worker and automatically retried when the connection is restored. This ensures that user data is never lost due to connectivity issues.
 
@@ -13,7 +13,7 @@ This component is particularly useful for:
 * Building event registration forms that work anywhere
 * Creating time-tracking and expense reporting applications
 
-## Browser Support
+## Browser support
 
 The BackgroundSync Form component relies on the Background Sync API and service workers, which are widely supported in modern browsers.
 
@@ -30,7 +30,7 @@ The BackgroundSync Form component relies on the Background Sync API and service 
 
     When online, forms submit normally with no performance penalty. The background sync mechanism only activates when the network is unavailable.
 
-## How It Works
+## How it works
 
 1. **User Submits Form**: User fills out and submits the form
 2. **Network Check**: Component attempts to submit via fetch API
@@ -83,7 +83,7 @@ Key configuration options:
 
 ## Usage
 
-### Basic Form with Background Sync
+### Basic form with Background Sync
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
@@ -126,7 +126,7 @@ Key configuration options:
 </script>
 ```
 
-### Form with Custom Redirect
+### Form with custom redirect
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
@@ -146,7 +146,7 @@ Key configuration options:
 
 After successful submission (or queueing if offline), the user is redirected to `/thank-you`.
 
-### Form with Custom Headers
+### Form with custom headers
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
@@ -166,7 +166,7 @@ After successful submission (or queueing if offline), the user is redirected to 
 </form>
 ```
 
-### Form with Custom Fetch Parameters
+### Form with custom fetch parameters
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
@@ -188,7 +188,7 @@ After successful submission (or queueing if offline), the user is redirected to 
 </form>
 ```
 
-### JSON Form Submission
+### JSON form submission
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
@@ -215,7 +215,7 @@ After successful submission (or queueing if offline), the user is redirected to 
 </script>
 ```
 
-### File Upload Form
+### File upload form
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
@@ -259,7 +259,7 @@ After successful submission (or queueing if offline), the user is redirected to 
 </script>
 ```
 
-### Form with Loading State
+### Form with loading state
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
@@ -304,7 +304,7 @@ After successful submission (or queueing if offline), the user is redirected to 
 </script>
 ```
 
-### Form with Validation Feedback
+### Form with validation feedback
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
@@ -364,9 +364,9 @@ After successful submission (or queueing if offline), the user is redirected to 
 </script>
 ```
 
-## Best Practices
+## Best practices
 
-### Always Configure Matching Routes
+### Always configure matching routes
 
 !!! warning
 
@@ -383,7 +383,7 @@ pwa:
                   match_callback: 'startsWith: /contact/'  # Matches /contact/*
 ```
 
-### Handle All Submission States
+### Handle all submission states
 
 !!! success
 
@@ -410,7 +410,7 @@ form.addEventListener('backgroundsync-form:error', () => {
 });
 ```
 
-### Validate Before Sending
+### Validate before sending
 
 !!! info
 
@@ -435,7 +435,7 @@ form.addEventListener('backgroundsync-form:error', () => {
 </form>
 ```
 
-### Choose Appropriate Encoding
+### Choose appropriate encoding
 
 !!! info
 
@@ -461,7 +461,7 @@ form.addEventListener('backgroundsync-form:error', () => {
 </form>
 ```
 
-### Set Appropriate Retention Times
+### Set appropriate retention times
 
 !!! warning
 
@@ -470,9 +470,9 @@ form.addEventListener('backgroundsync-form:error', () => {
     - Regular forms (contacts, feedback): 3-5 days
     - Non-critical updates: 1-2 days
 
-## Common Use Cases
+## Common use cases
 
-### 1. Offline Contact Form
+### 1. Offline contact form
 
 ```twig linenums="1"
 <div class="contact-section">
@@ -555,7 +555,7 @@ form.addEventListener('backgroundsync-form:error', () => {
 </script>
 ```
 
-### 2. E-Commerce Order Form
+### 2. E-commerce order form
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form', {
@@ -618,7 +618,7 @@ form.addEventListener('backgroundsync-form:error', () => {
 </script>
 ```
 
-### 3. Survey/Feedback Form
+### 3. Survey/feedback form
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
@@ -677,7 +677,7 @@ form.addEventListener('backgroundsync-form:error', () => {
 </script>
 ```
 
-### 4. Field Service Report
+### 4. Field service report
 
 ```twig linenums="1"
 <form {{ stimulus_controller('@pwa/backgroundsync-form') }}
@@ -750,7 +750,7 @@ form.addEventListener('backgroundsync-form:error', () => {
 </script>
 ```
 
-## API Reference
+## API reference
 
 ### Values
 
@@ -921,7 +921,7 @@ form.addEventListener('backgroundsync-form:auth-missing-key', (e) => {
 });
 ```
 
-## Related Components
+## Related components
 
 - [BackgroundSync Queue](backgroundsync-queue.md) - Monitor and manage background sync queues
 - [Service Worker](service-worker.md) - Service worker configuration and setup

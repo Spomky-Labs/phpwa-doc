@@ -1,4 +1,4 @@
-# Launch Handler
+# Launch handler
 
 !!! warning
 
@@ -16,7 +16,7 @@ The Launch Handler API allows you to control how your PWA is launched and naviga
 
 ## Configuration
 
-### Basic Configuration
+### Basic configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -26,7 +26,7 @@ pwa:
             client_mode: "focus-existing"
 ```
 
-### Multiple Client Modes (Fallback)
+### Multiple client modes (fallback)
 
 Specify multiple modes with fallback behavior:
 
@@ -42,7 +42,7 @@ pwa:
 
 The browser will try the first mode, falling back to the next if unsupported.
 
-### Complete Example
+### Complete example
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -54,7 +54,7 @@ pwa:
             client_mode: "focus-existing"
 ```
 
-## Client Modes
+## Client modes
 
 ### focus-existing
 
@@ -180,7 +180,7 @@ launch_handler:
     client_mode: "auto"
 ```
 
-## Browser Support
+## Browser support
 
 | Browser | Version | Support |
 |---------|---------|---------|
@@ -198,7 +198,7 @@ launch_handler:
 
 The LaunchQueue API allows you to handle launches programmatically in your JavaScript code.
 
-### Basic Usage
+### Basic usage
 
 ```javascript title="public/app.js" linenums="1"
 // Set up launch handler
@@ -227,7 +227,7 @@ function handleLaunch(launchParams) {
 }
 ```
 
-### Complete Example: Task Manager
+### Complete example: Task manager
 
 ```javascript title="public/task-manager.js" linenums="1"
 class TaskManager {
@@ -293,7 +293,7 @@ class TaskManager {
 new TaskManager();
 ```
 
-### Handling File Launches
+### Handling file launches
 
 When combined with File Handling API:
 
@@ -321,9 +321,9 @@ async function openFile(file) {
 }
 ```
 
-## Use Cases
+## Use cases
 
-### 1. Email Client
+### 1. Email client
 
 Focus existing window and open specific email:
 
@@ -356,7 +356,7 @@ function openEmail(emailId) {
 }
 ```
 
-### 2. Multi-Document Editor
+### 2. Multi-document editor
 
 Allow multiple document windows:
 
@@ -368,7 +368,7 @@ pwa:
             client_mode: "navigate-new"
 ```
 
-### 3. Single-Instance Media Player
+### 3. Single-instance media player
 
 Reuse window and queue new media:
 
@@ -405,7 +405,7 @@ function playNext() {
 }
 ```
 
-### 4. Note-Taking App
+### 4. Note-taking app
 
 Focus window and create note from shared text:
 
@@ -453,7 +453,7 @@ function createNote(title, content) {
 }
 ```
 
-### 5. Platform-Optimized Behavior
+### 5. Platform-optimized behavior
 
 Let browser decide best behavior:
 
@@ -467,7 +467,7 @@ pwa:
 
 ## Testing
 
-### 1. Feature Detection
+### 1. Feature detection
 
 Check if LaunchQueue API is available:
 
@@ -487,7 +487,7 @@ if ('launchQueue' in window && window.launchQueue) {
 }
 ```
 
-### 2. Test Launch Scenarios
+### 2. Test launch scenarios
 
 ```javascript
 // Create test function
@@ -507,7 +507,7 @@ function testLaunch() {
 }
 ```
 
-### 3. DevTools Testing
+### 3. DevTools testing
 
 ```bash
 1. Open DevTools (F12)
@@ -517,7 +517,7 @@ function testLaunch() {
 5. Test by opening app from different sources
 ```
 
-### 4. Real-World Testing
+### 4. Real-world testing
 
 ```bash
 # Desktop
@@ -535,9 +535,9 @@ function testLaunch() {
 5. Try launching from notifications or other apps
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Always Set Launch Consumer
+### 1. Always set launch consumer
 
 ```javascript
 // ✓ Good - set consumer early
@@ -553,7 +553,7 @@ setTimeout(() => {
 }, 1000);
 ```
 
-### 2. Handle All Launch Scenarios
+### 2. Handle all launch scenarios
 
 ```javascript
 // ✓ Good - handles different cases
@@ -570,7 +570,7 @@ window.launchQueue.setConsumer((launchParams) => {
 });
 ```
 
-### 3. Provide Fallback for Unsupported Browsers
+### 3. Provide fallback for unsupported browsers
 
 ```javascript
 // ✓ Good - works with and without API
@@ -584,7 +584,7 @@ function setupApp() {
 }
 ```
 
-### 4. Log Launch Events
+### 4. Log launch events
 
 ```javascript
 // ✓ Good - helps with debugging
@@ -599,7 +599,7 @@ window.launchQueue.setConsumer((launchParams) => {
 });
 ```
 
-### 5. Combine with Other APIs
+### 5. Combine with other APIs
 
 ```javascript
 // ✓ Good - works with File Handling API
@@ -617,9 +617,9 @@ window.launchQueue.setConsumer(async (launchParams) => {
 });
 ```
 
-## Common Mistakes
+## Common mistakes
 
-### 1. Not Setting Consumer Early
+### 1. Not setting consumer early
 
 **Problem**:
 ```javascript
@@ -637,7 +637,7 @@ if ('launchQueue' in window) {
 }
 ```
 
-### 2. Assuming API Availability
+### 2. Assuming API availability
 
 **Problem**:
 ```javascript
@@ -653,7 +653,7 @@ if ('launchQueue' in window) {
 }
 ```
 
-### 3. Not Handling targetURL Properly
+### 3. Not handling targetURL properly
 
 **Problem**:
 ```javascript
@@ -670,7 +670,7 @@ if (url.pathname.startsWith('/task/')) {
 }
 ```
 
-### 4. Ignoring Files Parameter
+### 4. Ignoring files parameter
 
 **Problem**:
 ```javascript
@@ -694,7 +694,7 @@ window.launchQueue.setConsumer((launchParams) => {
 
 ## Troubleshooting
 
-### Launch Handler Not Working
+### Launch handler not working
 
 **Problem**: LaunchQueue consumer not receiving events
 
@@ -706,7 +706,7 @@ window.launchQueue.setConsumer((launchParams) => {
 - ✓ Check DevTools console for errors
 - ✓ Verify manifest is valid JSON
 
-### Multiple Windows Opening
+### Multiple Windows opening
 
 **Problem**: New window opens instead of reusing existing
 
@@ -716,7 +716,7 @@ window.launchQueue.setConsumer((launchParams) => {
 - Ensure manifest is correctly loaded
 - Test on supported browser
 
-### targetURL Not Correct
+### targetURL not correct
 
 **Problem**: LaunchQueue receives wrong URL
 
@@ -726,7 +726,7 @@ window.launchQueue.setConsumer((launchParams) => {
 - Inspect `launchParams.targetURL` value
 - Ensure proper URL encoding
 
-## Related Documentation
+## Related documentation
 
 - [File Handlers](../../the-manifest/file-handlers.md) - Handle file opens
 - [Share Target](../../the-manifest/share-target.md) - Receive shared content

@@ -1,4 +1,4 @@
-# Asset Caching
+# Asset caching
 
 !!! danger
 
@@ -6,7 +6,7 @@
 
 Asset caching provides automatic precaching and efficient serving of your application's static assets managed by Symfony's AssetMapper component. This ensures your CSS, JavaScript, images, and other static files are available offline and load instantly from the cache.
 
-## How It Works
+## How it works
 
 The asset cache feature automatically:
 
@@ -16,7 +16,7 @@ The asset cache feature automatically:
 4. **Serves from cache**: Uses CacheFirst strategy for optimal performance
 5. **Manages expiration**: Automatically removes old cached assets based on your configuration
 
-## Default Configuration
+## Default configuration
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -38,7 +38,7 @@ By default, the cache includes all common asset types:
 - **Icons**: `.ico`
 - **Images**: `.png`, `.jpg`, `.jpeg`, `.gif`, `.svg`, `.webp`, `.bmp`
 
-## Configuration Options
+## Configuration options
 
 ### enabled
 
@@ -128,7 +128,7 @@ asset_cache:
 
 The asset cache works seamlessly with Symfony's AssetMapper:
 
-### What Gets Cached
+### What gets cached
 
 All assets registered through AssetMapper that match the regex pattern:
 
@@ -143,7 +143,7 @@ class MyController
 }
 ```
 
-### Asset Versioning
+### Asset versioning
 
 AssetMapper automatically versions assets (e.g., `app.a1b2c3.css`). When you update an asset:
 
@@ -152,7 +152,7 @@ AssetMapper automatically versions assets (e.g., `app.a1b2c3.css`). When you upd
 3. New version is precached on next service worker update
 4. Old version is removed from cache
 
-### Public Path Resolution
+### Public path resolution
 
 The cache automatically uses the correct public path configured in AssetMapper:
 
@@ -165,7 +165,7 @@ framework:
 
 The service worker will cache all assets under `/build/` that match the regex.
 
-## Caching Strategy
+## Caching strategy
 
 Asset caching uses the **CacheFirst** strategy:
 
@@ -191,9 +191,9 @@ workbox.routing.registerRoute(
 - Maximum performance: no network delay
 - Works offline immediately
 
-## Complete Examples
+## Complete examples
 
-### Minimal Configuration
+### Minimal configuration
 
 Use defaults for most applications:
 
@@ -205,7 +205,7 @@ pwa:
                 enabled: true  # Everything else uses defaults
 ```
 
-### CSS and JavaScript Only
+### CSS and JavaScript only
 
 Cache only stylesheets and scripts:
 
@@ -221,7 +221,7 @@ pwa:
                 max_entries: 30
 ```
 
-### Large Application
+### Large application
 
 Handle many assets with extended expiration:
 
@@ -237,7 +237,7 @@ pwa:
                 max_entries: 200  # Allow many cached files
 ```
 
-### Separate Image Cache
+### Separate image cache
 
 Cache assets but handle images separately:
 
@@ -256,11 +256,11 @@ pwa:
                 enabled: true  # Handle images separately with different settings
 ```
 
-## Precaching Behavior
+## Precaching behavior
 
 All matching assets are **precached** during service worker installation:
 
-### Installation Process
+### Installation process
 
 1. Service worker installs
 2. Asset cache scans AssetMapper for all assets
@@ -269,7 +269,7 @@ All matching assets are **precached** during service worker installation:
 5. Stores in cache
 6. Service worker activates
 
-### Impact on Install Time
+### Impact on install time
 
 Precaching all assets can increase service worker installation time. For large applications:
 
@@ -284,16 +284,16 @@ asset_cache:
     regex: '/\.(css|js)$/'  # Faster install, images loaded on-demand
 ```
 
-## Debugging Asset Cache
+## Debugging asset cache
 
-### View Cached Assets
+### View cached assets
 
 1. Open DevTools (F12)
 2. Go to **Application** → **Cache Storage**
 3. Look for "asset-cache" (or your custom cache name)
 4. Inspect cached files and their versions
 
-### Check What Will Be Cached
+### Check what will be cached
 
 To see which assets match your regex before deploying:
 
@@ -305,7 +305,7 @@ php bin/console debug:asset-mapper
 php bin/console debug:asset-mapper | grep -E "\.(css|js)$"
 ```
 
-### Common Issues
+### Common issues
 
 **Assets not caching?**
 - Verify regex pattern matches asset paths
@@ -321,7 +321,7 @@ php bin/console debug:asset-mapper | grep -E "\.(css|js)$"
 - Check max_age configuration
 - Verify automatic cache clearing is enabled (`clear_cache: true`)
 
-## Asset Cache vs Image Cache
+## Asset cache vs image cache
 
 Both cache assets, but serve different purposes:
 
@@ -342,7 +342,7 @@ image_cache:
     enabled: true  # Images - cached on demand
 ```
 
-## Best Practices
+## Best practices
 
 1. **Start with defaults**: Only customize if you have specific needs
 2. **Monitor cache size**: Check DevTools during development
@@ -369,7 +369,7 @@ image_cache:
 - max_age too long
 - **Solution**: Reduce both values
 
-## Related Documentation
+## Related documentation
 
 - [Image Caching](image-caching.md) - Dedicated image caching
 - [Font Caching](font-caching.md) - Font-specific caching

@@ -13,7 +13,7 @@ Welcome! 👋
 
 This bundle enables you to transform your Symfony application into a Progressive Web App (PWA) with minimal configuration. Whether you're new to PWAs or looking to enhance your existing Symfony app, you're in the right place.
 
-## What is a Progressive Web App?
+## What is a progressive web app?
 
 A Progressive Web App combines the best of web and mobile applications. It's a web application that behaves like a native mobile app while remaining accessible through a standard web browser.
 
@@ -24,9 +24,9 @@ Think of PWAs as websites that can:
 - Access device features (camera, geolocation, etc.)
 - Load instantly, even on slow networks
 
-## Why Choose PWAs?
+## Why choose PWAs?
 
-### Development Benefits
+### Development benefits
 
 **Single Codebase**
 - Write once, deploy everywhere (iOS, Android, desktop, web)
@@ -39,7 +39,7 @@ Think of PWAs as websites that can:
 - Update your app anytime without waiting for reviews
 - Complete control over your release schedule
 
-### User Experience Benefits
+### User experience benefits
 
 **App-Like Experience**
 - Install from browser with one click
@@ -59,7 +59,7 @@ Think of PWAs as websites that can:
 - Badge notifications for unread content
 - Background synchronization when connectivity returns
 
-### Business Benefits
+### Business benefits
 
 **Better Discoverability**
 - Fully indexed by search engines (SEO)
@@ -73,41 +73,41 @@ Think of PWAs as websites that can:
 - Reduced server load with caching
 - Lower bandwidth consumption for users
 
-## What Does This Bundle Do?
+## What does this bundle do?
 
 This Symfony bundle handles all the technical complexity of creating a PWA for you:
 
-### Automatic Manifest Generation
+### Automatic manifest generation
 - Creates and serves the Web App Manifest (JSON file)
 - Manages app metadata (name, icons, theme colors, etc.)
 - Handles multi-language support
 - Configures installation behavior
 
-### Service Worker Management
+### Service worker management
 - Generates and compiles the service worker script
 - Integrates Google Workbox for advanced caching strategies
 - Manages offline fallbacks and resource caching
 - Handles background synchronization
 
-### Asset Optimization
+### Asset optimization
 - Generates favicons and app icons automatically
 - Creates startup images for iOS
 - Optimizes screenshots for app stores
 - Manages cache versioning and updates
 
-### Symfony UX Integration
+### Symfony UX integration
 - Provides ready-to-use Stimulus controllers for PWA features
 - Easy integration with Symfony Live Components
 - Access to device APIs (geolocation, camera, notifications, etc.)
 - Pre-built components for common PWA patterns
 
-### Developer Tools
+### Developer tools
 - Debug toolbar integration for manifest inspection
 - Service worker debugging support
 - Event system for customization
 - PSR-3 logging for troubleshooting
 
-## Quick Start
+## Quick start
 
 Get your PWA up and running in minutes:
 
@@ -124,7 +124,7 @@ composer require spomky-labs/pwa-bundle
 
 That's it! Your Symfony application is now a Progressive Web App.
 
-## Real-World Use Cases
+## Real-world use cases
 
 PWAs built with Symfony are perfect for:
 
@@ -158,7 +158,7 @@ PWAs built with Symfony are perfect for:
 - Time tracking
 - Document editors
 
-## Next Steps
+## Next steps
 
 Ready to transform your Symfony app into a PWA?
 

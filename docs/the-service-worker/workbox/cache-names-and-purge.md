@@ -1,10 +1,10 @@
-# Cache Management
+# Cache management
 
 Proper cache management ensures your PWA doesn't consume excessive storage and old data doesn't persist after updates. The bundle provides automatic cache cleaning and allows custom cache naming for better organization.
 
-## Automatic Cache Cleaning
+## Automatic cache cleaning
 
-### Default Behavior
+### Default behavior
 
 When enabled (default), the service worker automatically purges old caches during activation. This happens when:
 - A new service worker version is installed
@@ -25,7 +25,7 @@ pwa:
             clear_cache: true  # Default - recommended
 ```
 
-### How It Works
+### How it works
 
 1. **Service worker updates**: New version detected
 2. **Installation**: New service worker installs in background
@@ -33,7 +33,7 @@ pwa:
 4. **Cache cleanup**: Old cache versions deleted automatically
 5. **Fresh start**: Only current caches remain
 
-### Disabling Cache Cleaning
+### Disabling cache cleaning
 
 You can disable automatic cleaning if you want manual control:
 
@@ -53,7 +53,7 @@ pwa:
     - Application errors
     - Poor performance
 
-### When to Disable
+### When to disable
 
 Only disable automatic cleaning when:
 - Implementing custom cache versioning
@@ -63,11 +63,11 @@ Only disable automatic cleaning when:
 
 Most applications should keep `clear_cache: true`.
 
-## Custom Cache Names
+## Custom cache names
 
 Every cache type in Workbox can have a custom name for better organization and debugging.
 
-### Default Cache Names
+### Default cache names
 
 When not specified, the bundle generates cache names automatically:
 
@@ -81,16 +81,16 @@ When not specified, the bundle generates cache names automatically:
 | Google Fonts Files | `google-fonts-webfonts` |
 | Offline Fallbacks | `offline-fallback` |
 
-### Why Use Custom Names?
+### Why use custom names?
 
 - **Easier debugging**: Quickly identify caches in DevTools
 - **Multiple caches**: Separate similar content (e.g., user photos vs product images)
 - **Team coordination**: Standardized naming across projects
 - **Monitoring**: Track cache usage by type
 
-### Setting Custom Names
+### Setting custom names
 
-#### Image Cache
+#### Image cache
 
 ```yaml
 pwa:
@@ -100,7 +100,7 @@ pwa:
                 cache_name: 'product-images'
 ```
 
-#### Font Cache
+#### Font cache
 
 ```yaml
 pwa:
@@ -110,7 +110,7 @@ pwa:
                 cache_name: 'brand-fonts'
 ```
 
-#### Resource Caches
+#### Resource caches
 
 ```yaml
 pwa:
@@ -126,7 +126,7 @@ pwa:
                   strategy: 'NetworkFirst'
 ```
 
-#### Offline Fallbacks
+#### Offline fallbacks
 
 ```yaml
 pwa:
@@ -137,7 +137,7 @@ pwa:
                 page: 'app_offline'
 ```
 
-#### Google Fonts
+#### Google fonts
 
 ```yaml
 pwa:
@@ -148,7 +148,7 @@ pwa:
                 # Creates: gfonts-stylesheets and gfonts-webfonts
 ```
 
-## Complete Example
+## Complete example
 
 Organized cache structure with custom names:
 
@@ -192,7 +192,7 @@ pwa:
                 image: 'images/offline.svg'
 ```
 
-## Cache Inspection
+## Cache inspection
 
 ### Using DevTools
 
@@ -207,7 +207,7 @@ You'll see your custom cache names, making it easy to:
 - Debug caching issues
 - Delete specific caches for testing
 
-### Cache Contents
+### Cache contents
 
 Click a cache name to see:
 - **Request URL**: What's cached
@@ -215,7 +215,7 @@ Click a cache name to see:
 - **Headers**: Cache metadata
 - **Preview**: Content preview
 
-### Manual Cache Management
+### Manual cache management
 
 For testing or debugging, you can manually clear caches:
 
@@ -235,7 +235,7 @@ caches.keys().then(keys => {
 });
 ```
 
-## Best Practices
+## Best practices
 
 1. **Use descriptive names**: `product-images` > `cache-1`
 2. **Group by purpose**: Separate user content from app assets
@@ -244,7 +244,7 @@ caches.keys().then(keys => {
 5. **Version caches**: Include version in name for migration (e.g., `images-v2`)
 6. **Document structure**: Maintain a list of cache names and purposes
 
-## Cache Size Limits
+## Cache size limits
 
 Browsers impose storage limits that vary by:
 - Device type (mobile vs desktop)
@@ -261,7 +261,7 @@ When limits are reached:
 - New cache operations may fail
 - Application may not work offline
 
-## Storage Quota API
+## Storage quota API
 
 Check available storage in your application:
 
@@ -307,7 +307,7 @@ if ('storage' in navigator && 'estimate' in navigator.storage) {
 
     **Recommended Setup**: Use automatic cache cleaning (`clear_cache: true`) with descriptive custom cache names. This provides the best balance of automatic management and debuggability.
 
-## Migration Strategy
+## Migration strategy
 
 When changing cache structures:
 

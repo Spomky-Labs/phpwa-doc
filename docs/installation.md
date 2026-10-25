@@ -1,8 +1,8 @@
-# Bundle Installation
+# Bundle installation
 
 Transform your Symfony application into a Progressive Web App in just a few minutes.
 
-## Step 1: Install the Bundle
+## Step 1: Install the bundle
 
 Install the bundle via Composer:
 
@@ -14,7 +14,7 @@ composer require spomky-labs/pwa-bundle
 
     This bundle does not have a Symfony Flex recipe, so you'll need to create the configuration file manually in the next step.
 
-## Step 2: Create Configuration File
+## Step 2: Create configuration file
 
 Create a configuration file to customize your PWA settings:
 
@@ -31,7 +31,7 @@ pwa:
 
 You can start with minimal configuration (`pwa: ~`) and add settings as you build your PWA.
 
-## Step 3: Integrate in Your Templates
+## Step 3: Integrate in your templates
 
 Add the PWA function to the `<head>` section of your base template:
 
@@ -60,7 +60,7 @@ Add the PWA function to the `<head>` section of your base template:
     - Theme color meta tags
     - Favicon links
 
-## Step 4: Clear Cache
+## Step 4: Clear cache
 
 Clear your Symfony cache to activate the bundle:
 
@@ -68,7 +68,7 @@ Clear your Symfony cache to activate the bundle:
 php bin/console cache:clear
 ```
 
-## Step 5: Verify Installation
+## Step 5: Verify installation
 
 Visit your application in a browser and check:
 
@@ -80,7 +80,7 @@ Visit your application in a browser and check:
 
     In development mode, the service worker may show debugging information. This is normal and will be removed in production.
 
-## What's Next?
+## What's next?
 
 Your Symfony application is now a basic PWA! Enhance it further:
 

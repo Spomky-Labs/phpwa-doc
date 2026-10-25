@@ -1,8 +1,8 @@
-# Custom Cache Strategies
+# Custom cache strategies
 
 The bundle provides a comprehensive set of cache strategies through configuration. However, for advanced use cases requiring specific behaviors not covered by the YAML configuration, you can create custom cache strategies programmatically.
 
-## When to Use Custom Strategies
+## When to use custom strategies
 
 Use custom cache strategies when you need:
 
@@ -14,7 +14,7 @@ Use custom cache strategies when you need:
 
 For most use cases, the [YAML configuration](configuration.md) and [resource caching](workbox/resource-caching.md) are sufficient.
 
-## Quick Start: Using WorkboxCacheStrategy
+## Quick start: Using WorkboxCacheStrategy
 
 The easiest way to create custom cache strategies is using the `WorkboxCacheStrategy` helper class:
 
@@ -61,7 +61,7 @@ final readonly class MyCustomCacheStrategies implements HasCacheStrategiesInterf
 
     With service autoconfiguration enabled (default in Symfony), the tag `spomky_labs_pwa.cache_strategy` is added automatically. Otherwise, you need to tag your service manually.
 
-## Complete Example: Multiple Strategies
+## Complete example: Multiple strategies
 
 A comprehensive example showing various cache strategies with different configurations:
 
@@ -258,7 +258,7 @@ Set additional Workbox options:
 ])
 ```
 
-## Available Workbox Plugins
+## Available Workbox plugins
 
 ### ExpirationPlugin
 
@@ -340,41 +340,41 @@ BackgroundSyncPlugin::create(
 )
 ```
 
-## Match Callback Patterns
+## Match callback patterns
 
 The `matchCallback` parameter supports several formats:
 
-### 1. Path Prefix
+### 1. Path prefix
 
 ```php
 matchCallback: 'startsWith: /api/'
 ```
 
-### 2. Regular Expression
+### 2. Regular expression
 
 ```php
 matchCallback: 'regex: /\\/product\\/[0-9]+/'
 ```
 
-### 3. Origin Match
+### 3. Origin match
 
 ```php
 matchCallback: 'origin: https://api.example.com'
 ```
 
-### 4. Custom JavaScript Callback
+### 4. Custom JavaScript callback
 
 ```php
 matchCallback: '({url, request}) => url.pathname.endsWith(".json") && request.method === "GET"'
 ```
 
-### 5. Special Keywords
+### 5. Special keywords
 
 ```php
 matchCallback: 'navigate'  // Navigation requests (page loads)
 ```
 
-## Advanced Example: Conditional Strategy
+## Advanced example: Conditional strategy
 
 Create strategies that adapt based on conditions:
 
@@ -444,9 +444,9 @@ final readonly class ConditionalCacheStrategy implements HasCacheStrategiesInter
 }
 ```
 
-## Real-World Use Cases
+## Real-world use cases
 
-### Use Case 1: Multi-tenant Application
+### Use case 1: Multi-tenant application
 
 Different caching for each tenant:
 
@@ -472,7 +472,7 @@ public function getCacheStrategies(): array
 }
 ```
 
-### Use Case 2: Authenticated API with Token Refresh
+### Use case 2: Authenticated API with token refresh
 
 Cache API calls but refresh when needed:
 
@@ -509,7 +509,7 @@ JS,
 }
 ```
 
-### Use Case 3: Versioned API Endpoints
+### Use case 3: Versioned API endpoints
 
 Different strategies for stable vs unstable API versions:
 
@@ -551,7 +551,7 @@ public function getCacheStrategies(): array
 }
 ```
 
-## Implementing Custom Strategy Interface
+## Implementing custom strategy interface
 
 For complete control, implement `CacheStrategyInterface` directly:
 
@@ -613,7 +613,7 @@ JS;
 
     When implementing the full interface, you're responsible for all JavaScript generation. This approach is powerful but requires careful testing.
 
-## Service Registration
+## Service registration
 
 If service autoconfiguration is disabled, register your service manually:
 
@@ -624,9 +624,9 @@ services:
             - { name: 'spomky_labs_pwa.cache_strategy' }
 ```
 
-## Debugging Custom Strategies
+## Debugging custom strategies
 
-### 1. Check Generated Service Worker
+### 1. Check generated service worker
 
 View the compiled service worker at `/sw.js` (or your configured dest) to see the generated JavaScript:
 
@@ -634,7 +634,7 @@ View the compiled service worker at `/sw.js` (or your configured dest) to see th
 curl https://your-app.com/sw.js
 ```
 
-### 2. Enable Debug Mode
+### 2. Enable debug mode
 
 Set `kernel.debug: true` to get commented JavaScript output:
 
@@ -664,7 +664,7 @@ When debug is enabled, the generated code includes comments:
 4. Check **Application** → **Cache Storage** to see your custom caches
 5. Use **Network** tab with "Offline" to test cache behavior
 
-## Best Practices
+## Best practices
 
 1. **Start with YAML configuration**: Only use custom strategies when necessary
 2. **Use descriptive names**: Make cache names clear (e.g., `api-user-data` not `cache1`)
@@ -674,7 +674,7 @@ When debug is enabled, the generated code includes comments:
 6. **Use typed callbacks**: TypeScript-style types help prevent errors in matchCallback
 7. **Document complex logic**: Add comments explaining why custom strategies exist
 
-## Related Documentation
+## Related documentation
 
 - [Configuration Reference](configuration.md) - Standard YAML configuration
 - [Resource Caching](workbox/resource-caching.md) - Configure caching via YAML

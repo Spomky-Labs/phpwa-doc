@@ -1,4 +1,4 @@
-# Periodic Sync
+# Periodic sync
 
 The Periodic Background Sync API allows your PWA to fetch fresh content periodically in the background, even when the app is closed. This ensures users always have up-to-date data when they open your app.
 
@@ -14,14 +14,14 @@ Periodic sync enables:
 
     **Important**: Unlike other PWA Bundle features, Periodic Sync requires writing JavaScript code in both the service worker and your application.
 
-## How It Works
+## How it works
 
 1. **Client registration**: App requests periodic sync with a tag and interval
 2. **Browser scheduling**: Browser decides when to actually run sync (based on engagement, battery, etc.)
 3. **Service worker execution**: Service worker performs background task
 4. **Client notification**: Service worker notifies clients of updates
 
-## Browser Support
+## Browser support
 
 !!! warning
 
@@ -36,9 +36,9 @@ if ('periodicSync' in ServiceWorkerRegistration.prototype) {
 }
 ```
 
-## Service Worker Implementation
+## Service worker implementation
 
-### Basic Task Registration
+### Basic task registration
 
 Create periodic tasks in your service worker:
 
@@ -58,7 +58,7 @@ registerPeriodicSyncTask('ping', ping);
 
     **Helper Functions**: The bundle provides `openCache`, `notifyPeriodicSyncClients`, and `registerPeriodicSyncTask` helpers in your service worker.
 
-### Multiple Tasks Under Same Tag
+### Multiple tasks under same tag
 
 Register multiple related tasks:
 
@@ -92,7 +92,7 @@ registerPeriodicSyncTask('news-sync', updateNews);
 registerPeriodicSyncTask('news-sync', cleanOldNews);
 ```
 
-### Complete Example: Blog Post Sync
+### Complete example: Blog post sync
 
 ```javascript title="assets/sw.js" linenums="1"
 const syncBlogPosts = async () => {
@@ -137,9 +137,9 @@ const syncBlogPosts = async () => {
 registerPeriodicSyncTask('blog-sync', syncBlogPosts);
 ```
 
-## Client-Side Registration
+## Client-side registration
 
-### Basic Registration
+### Basic registration
 
 Request periodic sync from your application:
 
@@ -150,7 +150,7 @@ import { registerPeriodicSync } from '@spomky-labs/pwa/helpers';
 await registerPeriodicSync('ping', 6 * 60 * 60 * 1000);
 ```
 
-### With Error Handling
+### With error handling
 
 ```javascript title="assets/app.js" linenums="1"
 import { registerPeriodicSync } from '@spomky-labs/pwa/helpers';
@@ -174,7 +174,7 @@ async function setupPeriodicSync() {
 setupPeriodicSync();
 ```
 
-### Listening for Sync Updates
+### Listening for sync updates
 
 Receive notifications when sync completes:
 
@@ -216,9 +216,9 @@ function showNotification(message) {
 }
 ```
 
-## Common Use Cases
+## Common use cases
 
-### 1. News/Content Updates
+### 1. News/content updates
 
 Keep articles fresh in the background:
 
@@ -243,7 +243,7 @@ registerPeriodicSyncTask('news-sync', syncNews);
 await registerPeriodicSync('news-sync', 4 * 60 * 60 * 1000);
 ```
 
-### 2. Social Media Feed
+### 2. Social media feed
 
 Update social feed periodically:
 
@@ -266,7 +266,7 @@ const syncFeed = async () => {
 registerPeriodicSyncTask('feed-sync', syncFeed);
 ```
 
-### 3. Weather Data
+### 3. Weather data
 
 Keep weather information up-to-date:
 
@@ -292,7 +292,7 @@ const syncWeather = async () => {
 registerPeriodicSyncTask('weather-sync', syncWeather);
 ```
 
-### 4. Cache Cleanup
+### 4. Cache cleanup
 
 Periodically clean old cached data:
 
@@ -325,7 +325,7 @@ const cleanupCache = async () => {
 registerPeriodicSyncTask('cleanup', cleanupCache);
 ```
 
-### 5. User Data Prefetch
+### 5. User data prefetch
 
 Preload user-specific data:
 
@@ -356,13 +356,13 @@ const prefetchUserData = async () => {
 registerPeriodicSyncTask('user-sync', prefetchUserData);
 ```
 
-## Browser Execution Control
+## Browser execution control
 
 !!! warning
 
     **Important**: The browser controls when periodic sync actually runs. The interval you specify is a **minimum**, not a guarantee.
 
-### Factors Affecting Execution
+### Factors affecting execution
 
 **1. Site Engagement Score**
 - High engagement = more frequent sync
@@ -388,7 +388,7 @@ registerPeriodicSyncTask('user-sync', prefetchUserData);
 - Longer intervals more likely to be respected
 - Practical minimum: 12-24 hours
 
-### Recommended Intervals
+### Recommended intervals
 
 ```javascript
 // Too short - likely ignored
@@ -404,9 +404,9 @@ await registerPeriodicSync('tag', 12 * 60 * 60 * 1000); // 12 hours ✓
 await registerPeriodicSync('tag', 24 * 60 * 60 * 1000); // 24 hours ✓
 ```
 
-## Managing Periodic Sync
+## Managing periodic sync
 
-### Check Registered Tags
+### Check registered tags
 
 Query which tags are registered:
 
@@ -416,7 +416,7 @@ const tags = await registration.periodicSync.getTags();
 console.log('Registered periodic sync tags:', tags);
 ```
 
-### Unregister Periodic Sync
+### Unregister periodic sync
 
 Stop periodic sync for a tag:
 
@@ -426,7 +426,7 @@ await registration.periodicSync.unregister('news-sync');
 console.log('Periodic sync unregistered');
 ```
 
-### Re-register After Updates
+### Re-register after updates
 
 Update periodic sync interval:
 
@@ -445,9 +445,9 @@ async function updateSyncInterval(tag, newInterval) {
 await updateSyncInterval('news-sync', 6 * 60 * 60 * 1000);
 ```
 
-## Testing Periodic Sync
+## Testing periodic sync
 
-### Force Sync in DevTools
+### Force sync in DevTools
 
 Chrome DevTools allows manual triggering:
 
@@ -460,7 +460,7 @@ Chrome DevTools allows manual triggering:
 6. Click "Start"
 ```
 
-### Test in Code
+### Test in code
 
 Manually trigger for testing:
 
@@ -477,7 +477,7 @@ async function testPeriodicSync() {
 }
 ```
 
-### Debugging Tips
+### Debugging tips
 
 ```javascript
 // Add extensive logging
@@ -504,9 +504,9 @@ const syncNews = async () => {
 };
 ```
 
-## Error Handling
+## Error handling
 
-### Retry on Failure
+### Retry on failure
 
 The browser will retry if your sync task throws an error:
 
@@ -543,7 +543,7 @@ const syncWithRetry = async () => {
 registerPeriodicSyncTask('data-sync', syncWithRetry);
 ```
 
-### Graceful Degradation
+### Graceful degradation
 
 Handle unsupported browsers:
 
@@ -567,9 +567,9 @@ async function setupBackgroundSync() {
 }
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Use Reasonable Intervals
+### 1. Use reasonable intervals
 
 ```javascript
 // ✗ Avoid very short intervals
@@ -579,7 +579,7 @@ await registerPeriodicSync('tag', 5 * 60 * 1000); // 5 minutes
 await registerPeriodicSync('tag', 12 * 60 * 60 * 1000); // 12 hours
 ```
 
-### 2. Minimize Network Requests
+### 2. Minimize network requests
 
 ```javascript
 // ✓ Efficient - single request
@@ -596,7 +596,7 @@ const syncInefficient = async () => {
 };
 ```
 
-### 3. Check Network Conditions
+### 3. Check network conditions
 
 ```javascript
 const syncWithNetworkCheck = async () => {
@@ -617,7 +617,7 @@ const syncWithNetworkCheck = async () => {
 };
 ```
 
-### 4. Provide User Control
+### 4. Provide user control
 
 Allow users to configure sync:
 
@@ -637,7 +637,7 @@ async function updateSyncPreferences(enabled, interval) {
 }
 ```
 
-### 5. Monitor Performance
+### 5. Monitor performance
 
 Track sync performance:
 
@@ -678,20 +678,20 @@ const syncWithMetrics = async () => {
 
 ## Limitations
 
-### Browser Support
+### Browser support
 
 - **Supported**: Chrome, Edge (Chromium-based)
 - **Not Supported**: Safari, Firefox, older browsers
 - **Platform**: Android and Desktop only (not iOS)
 
-### Execution Constraints
+### Execution constraints
 
 - Browser decides actual execution time
 - May not run at all if engagement is low
 - Requires PWA installation for best results
 - Respects battery and data saver settings
 
-### Resource Limits
+### Resource limits
 
 - Limited execution time (typically < 30 seconds)
 - Must complete quickly or risk termination
@@ -711,7 +711,7 @@ console.log('Permission status:', status.state);
 // 'granted', 'denied', or 'prompt'
 ```
 
-## Related Documentation
+## Related documentation
 
 - [Background Sync](workbox/backgoundsync.md) - One-time background sync
 - [Service Worker Configuration](configuration.md) - Service worker setup

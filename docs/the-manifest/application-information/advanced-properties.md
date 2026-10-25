@@ -1,8 +1,8 @@
-# Advanced Properties
+# Advanced properties
 
 This page documents advanced manifest properties that provide fine-grained control over your PWA's behavior and integration with the operating system.
 
-## Display Override
+## Display override
 
 The `display_override` property allows you to specify a sequence of display modes that the browser will consider before falling back to the standard `display` property. This gives you more control over how your app is displayed on different platforms and browsers.
 
@@ -14,7 +14,7 @@ pwa:
         display_override: ['window-controls-overlay', 'minimal-ui']
 ```
 
-### Available Display Modes
+### Available display modes
 
 The browser will try each mode in order and use the first one it supports:
 
@@ -25,7 +25,7 @@ The browser will try each mode in order and use the first one it supports:
 * `"window-controls-overlay"` - Places window controls (minimize, maximize, close) in the title bar, giving your app more screen space
 * `"tabbed"` - Multiple app windows appear as tabs in a single window (experimental)
 
-### Example with Fallbacks
+### Example with fallbacks
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -47,7 +47,7 @@ In this example:
 
     The `display_override` is particularly useful for providing an enhanced experience on desktop browsers that support window controls overlay while maintaining compatibility with mobile browsers.
 
-## Use Credentials
+## Use credentials
 
 The `use_credentials` property controls whether the manifest is fetched with credentials (cookies, HTTP authentication). This is useful when your manifest file is protected or when you need to serve different manifests to different users.
 
@@ -73,7 +73,7 @@ When set to `false`:
 
     If your manifest file is protected by authentication and `use_credentials` is `false`, the manifest fetch will fail, preventing PWA installation.
 
-### When to Use Credentials
+### When to use credentials
 
 **Set to `true` when:**
 * Your manifest is behind authentication
@@ -85,7 +85,7 @@ When set to `false`:
 * You want to avoid potential CORS issues
 * You're serving the manifest from a CDN
 
-## Handle Links
+## Handle links
 
 The `handle_links` property specifies how the PWA should handle links when it's already open. This gives you control over whether links should open in the PWA window or in the browser.
 
@@ -96,13 +96,13 @@ pwa:
         handle_links: "preferred"
 ```
 
-### Available Values
+### Available values
 
 * `"auto"` (default) - The browser decides based on its own heuristics
 * `"preferred"` - Prefer opening links in the PWA when it's already open
 * `"not-preferred"` - Prefer opening links in the browser
 
-### Example Use Cases
+### Example use cases
 
 **E-commerce app:**
 ```yaml
@@ -132,7 +132,7 @@ Most links point to external sites, so prefer opening in the browser.
 
     The `handle_links` property works in conjunction with the `scope` property. Links outside the scope are not affected by this setting.
 
-## Complete Example
+## Complete example
 
 Here's how these advanced properties work together:
 
@@ -156,7 +156,7 @@ pwa:
         start_url: "app_homepage"
 ```
 
-## Browser Support
+## Browser support
 
 !!! warning
 
@@ -168,7 +168,7 @@ pwa:
 
     Always test your PWA on target browsers and provide sensible fallbacks through the standard `display` property.
 
-## Best Practices
+## Best practices
 
 1. **Progressive Enhancement**: Use `display_override` to provide enhanced experiences while maintaining a solid baseline
 2. **Test Thoroughly**: Test link handling behavior to ensure it matches user expectations

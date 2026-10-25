@@ -1,10 +1,10 @@
-# CDN and Versions
+# CDN and versions
 
 !!! info
 
     **Note**: This page covers advanced Workbox configuration. Most applications should use the [default configuration documented in the Workbox README](README.md#cdn-vs-local-installation).
 
-## Default Configuration
+## Default configuration
 
 The bundle ships with Workbox **7.3.0** (released October 2024) and serves all files locally from your application server. This provides:
 - Faster loading (same-origin)
@@ -21,7 +21,7 @@ pwa:
             version: "7.3.0"  # Default
 ```
 
-## Available Versions
+## Available versions
 
 The bundle includes these Workbox versions locally:
 - **7.3.0** (default, recommended)
@@ -43,14 +43,14 @@ pwa:
 
 When `use_cdn: true`, Workbox files are loaded from `https://storage.googleapis.com/workbox-cdn/releases/{version}/`.
 
-### CDN Pros
+### CDN pros
 
 - **No local storage**: Workbox files not bundled with your app
 - **Shared cache**: Users may already have Workbox cached from other sites
 - **Always latest**: Can easily switch versions
 - **Reduced deploy size**: Slightly smaller deployment
 
-### CDN Cons
+### CDN cons
 
 - **External dependency**: Requires Google's CDN to be available
 - **Network request**: Adds latency on first load
@@ -62,7 +62,7 @@ When `use_cdn: true`, Workbox files are loaded from `https://storage.googleapis.
 
     **Production Recommendation**: Use local installation (`use_cdn: false`) for production applications. The benefits of local hosting far outweigh the small bandwidth savings of a CDN.
 
-## Custom Versions
+## Custom versions
 
 You can specify any Workbox version when using the CDN:
 
@@ -74,7 +74,7 @@ pwa:
             version: "6.5.4"  # Older version
 ```
 
-### Version Selection Guidelines
+### Version selection guidelines
 
 **Use 7.3.0 (default)** when:
 - Starting a new project
@@ -95,9 +95,9 @@ pwa:
 
     **Major Version Upgrades**: Workbox 7.x includes breaking changes from 6.x. Review the [Workbox migration guide](https://developer.chrome.com/docs/workbox/migration/migrate-from-v6/) before upgrading.
 
-## Complete Configuration Examples
+## Complete configuration examples
 
-### Local Installation (Recommended)
+### Local installation (recommended)
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -112,7 +112,7 @@ pwa:
             idb_public_url: "/idb"          # Where IndexedDB lib is served
 ```
 
-### CDN Installation
+### CDN installation
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -125,7 +125,7 @@ pwa:
             version: "7.3.0"        # Version to load
 ```
 
-### Legacy Version with CDN
+### Legacy version with CDN
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -138,7 +138,7 @@ pwa:
             version: "6.5.4"        # Older version for compatibility
 ```
 
-## Custom Public URLs (Local Only)
+## Custom public URLs (local only)
 
 When using local installation, customize where Workbox files are served:
 
@@ -156,7 +156,7 @@ This is useful when:
 - Complying with specific URL structures
 - Integrating with CDN configurations
 
-## Checking Your Configuration
+## Checking your configuration
 
 To verify which Workbox version and source is being used:
 
@@ -175,7 +175,7 @@ importScripts('/workbox/workbox-sw.js');
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.3.0/workbox-sw.js');
 ```
 
-## Version Update Process
+## Version update process
 
 When updating Workbox versions:
 

@@ -1,8 +1,8 @@
-# Offline Fallbacks
+# Offline fallbacks
 
 Offline fallbacks provide graceful degradation when users lose network connectivity. Instead of showing browser error pages, your PWA can display custom fallback content for pages, images, and fonts.
 
-## Why Use Offline Fallbacks?
+## Why use offline fallbacks?
 
 When network requests fail and there's no cached content:
 - **Pages**: Show a friendly "You're offline" page instead of a browser error
@@ -11,7 +11,7 @@ When network requests fail and there's no cached content:
 
 This creates a professional offline experience that maintains your app's branding and provides clear feedback to users.
 
-## How It Works
+## How it works
 
 Workbox's offline fallback plugin:
 1. Attempts to serve the requested resource from cache or network
@@ -21,7 +21,7 @@ Workbox's offline fallback plugin:
 
 ## Configuration
 
-### Basic Setup
+### Basic setup
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -35,9 +35,9 @@ pwa:
                 font: 'fonts/fallback.woff2'
 ```
 
-### Configuration Options
+### Configuration options
 
-#### page (Page Fallback)
+#### page (page fallback)
 
 **Type**: `string` or `Url` object
 **Default**: `null`
@@ -76,7 +76,7 @@ pwa:
 
 See [URL parameter documentation](../../the-manifest/shortcuts.md#url-parameter) for all URL configuration options.
 
-#### image (Image Fallback)
+#### image (image fallback)
 
 **Type**: `string` (Asset path or URL)
 **Default**: `null`
@@ -103,7 +103,7 @@ pwa:
 
 The image file must be accessible via Asset Mapper or as a public URL.
 
-#### font (Font Fallback)
+#### font (font fallback)
 
 **Type**: `string` (Asset path or URL)
 **Default**: `null`
@@ -128,7 +128,7 @@ pwa:
                 font: '/assets/fonts/fallback.ttf'
 ```
 
-#### cache_name (Cache Name)
+#### cache_name (cache name)
 
 **Type**: `string`
 **Default**: `null` (auto-generated)
@@ -145,7 +145,7 @@ pwa:
                 image: 'images/offline.svg'
 ```
 
-## Complete Example
+## Complete example
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 pwa:
@@ -163,9 +163,9 @@ pwa:
                 font: 'fonts/system-fallback.woff2'
 ```
 
-## Creating Offline Fallback Pages
+## Creating offline fallback pages
 
-### Simple Offline Page
+### Simple offline page
 
 Create a Symfony route and template for the offline page:
 
@@ -256,7 +256,7 @@ class OfflineController extends AbstractController
 {% endblock %}
 ```
 
-### Advanced Offline Page with Cached Content List
+### Advanced offline page with cached content list
 
 Show users what content is available offline:
 
@@ -310,9 +310,9 @@ if ('caches' in window) {
 {% endblock %}
 ```
 
-## Creating Fallback Images
+## Creating fallback images
 
-### SVG Offline Placeholder
+### SVG offline placeholder
 
 Create a simple SVG offline image (`assets/images/offline.svg`):
 
@@ -326,13 +326,13 @@ Create a simple SVG offline image (`assets/images/offline.svg`):
 </svg>
 ```
 
-### PNG Placeholder
+### PNG placeholder
 
 For a more visual approach, create a branded offline placeholder image that matches your app's design.
 
-## Use Cases
+## Use cases
 
-### Blog or News Site
+### Blog or news site
 
 ```yaml
 pwa:
@@ -343,7 +343,7 @@ pwa:
                 image: 'images/article-placeholder.jpg'
 ```
 
-### E-commerce Application
+### E-commerce application
 
 ```yaml
 pwa:
@@ -354,7 +354,7 @@ pwa:
                 image: 'images/product-placeholder.svg'
 ```
 
-### Documentation Site
+### Documentation site
 
 ```yaml
 pwa:
@@ -365,7 +365,7 @@ pwa:
                 # No image fallback needed - docs don't rely on images
 ```
 
-## Testing Offline Fallbacks
+## Testing offline fallbacks
 
 ### In Chrome DevTools
 
@@ -375,7 +375,7 @@ pwa:
 4. Navigate to a page not in cache
 5. Should see your offline fallback page
 
-### Clear Cache to Test
+### Clear cache to test
 
 ```javascript
 // In DevTools Console
@@ -386,7 +386,7 @@ caches.keys().then(keys => {
 
 Then test offline navigation.
 
-## Best Practices
+## Best practices
 
 1. **Keep it simple**: Offline pages should have minimal dependencies
 2. **Inline CSS**: Don't rely on external stylesheets that might not be cached
@@ -396,7 +396,7 @@ Then test offline navigation.
 6. **Test thoroughly**: Test various offline scenarios (page navigation, image loading, etc.)
 7. **Monitor cache**: Ensure fallback resources are actually cached
 
-## Fallback Priority
+## Fallback priority
 
 When a request fails:
 

@@ -1,8 +1,8 @@
-# Startup Images
+# Startup images
 
 Startup images (also called splash screens) are displayed when launching your PWA from the home screen. They provide visual feedback during app initialization, creating a smoother, more app-like experience.
 
-## Why Startup Images Matter
+## Why startup images matter
 
 **User Experience:**
 - Smooth transition from home screen to app
@@ -20,7 +20,7 @@ Startup images (also called splash screens) are displayed when launching your PW
 - Consistent across app launches
 - Matches app theme and design
 
-## How It Works
+## How it works
 
 The startup image generation differs by platform:
 
@@ -49,7 +49,7 @@ iOS requires specific splash screen images for each device size and orientation:
 
 **Bundle solution:** Automatically generates all required sizes from your icon and background color.
 
-## Automatic Generation
+## Automatic generation
 
 By default, when you configure favicons, startup images are automatically created:
 
@@ -71,9 +71,9 @@ pwa:
 
     The bundle generates 30+ startup images automatically to cover all iOS devices and orientations!
 
-## Configuration Options
+## Configuration options
 
-### Basic Setup
+### Basic setup
 
 The default configuration works for most cases:
 
@@ -85,7 +85,7 @@ pwa:
         background_color: '#ffffff'
 ```
 
-### Disable Startup Images
+### Disable startup images
 
 If you don't want startup images (not recommended for iOS):
 
@@ -107,7 +107,7 @@ pwa:
 - Less professional appearance
 - Missing expected UX on iOS
 
-### Dark Mode Startup Images
+### Dark mode startup images
 
 Dark mode icons automatically generate dark startup images:
 
@@ -133,7 +133,7 @@ pwa:
 - Automatic switching based on system theme
 - All device sizes generated for both themes
 
-### Custom Background Colors
+### Custom background colors
 
 Choose backgrounds that match your app's theme:
 
@@ -166,7 +166,7 @@ pwa:
 - Use colors that represent your brand
 - Keep consistency between light and dark themes
 
-## Generated Files
+## Generated files
 
 The bundle creates startup images for all iOS devices:
 
@@ -192,7 +192,7 @@ The bundle creates startup images for all iOS devices:
 
 **Total:** 30+ images covering all combinations
 
-## HTML Output
+## HTML output
 
 The bundle injects all necessary HTML tags:
 
@@ -212,7 +212,7 @@ The bundle injects all necessary HTML tags:
 
 All this is automatic - you don't write any HTML!
 
-## Best Practices
+## Best practices
 
 1. **Always enable startup images**: Essential for iOS PWAs
 2. **Match theme colors**: Use same `background_color` as manifest
@@ -246,7 +246,7 @@ All this is automatic - you don't write any HTML!
 - Using SVG (preferred) or large PNG
 - `image_scale` not set too high
 
-## Performance Considerations
+## Performance considerations
 
 **File size impact:**
 - Each startup image: 10-50 KB
@@ -267,7 +267,7 @@ All this is automatic - you don't write any HTML!
 
     For most PWAs, the user experience benefit of startup images far outweighs the minimal performance impact.
 
-## Example Configurations
+## Example configurations
 
 ### Minimal (recommended)
 
@@ -280,7 +280,7 @@ pwa:
 # use_start_image defaults to true
 ```
 
-### With Dark Mode
+### With dark mode
 
 ```yaml
 pwa:
@@ -294,7 +294,7 @@ pwa:
             background_color: '#1a1a1a'
 ```
 
-### Brand Colors
+### Brand colors
 
 ```yaml
 pwa:
@@ -317,7 +317,7 @@ pwa:
         use_start_image: false  # Only if you have a good reason
 ```
 
-## Comparing to Native Apps
+## Comparing to native apps
 
 **Native iOS app:**
 - Requires manual creation of 30+ splash images

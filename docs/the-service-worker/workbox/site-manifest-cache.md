@@ -1,4 +1,4 @@
-# Site Manifest Cache
+# Site manifest cache
 
 !!! warning
 
@@ -15,7 +15,7 @@ pwa:
             cache_manifest: true  # DEPRECATED - No longer functional
 ```
 
-## Why Was It Removed?
+## Why was it removed?
 
 The manifest caching feature was removed in version 1.4 for several reasons:
 
@@ -25,7 +25,7 @@ The manifest caching feature was removed in version 1.4 for several reasons:
 4. **Console warnings**: The main purpose was to avoid console warnings, which are now handled differently
 5. **Simplification**: Removing unnecessary features makes the bundle easier to maintain
 
-## What It Used To Do
+## What it used to do
 
 When enabled, this option would:
 - Create a Workbox caching strategy for the manifest URL
@@ -37,7 +37,7 @@ When enabled, this option would:
 
 If you need to cache your manifest file, you have several options:
 
-### 1. Standard HTTP Caching (Recommended)
+### 1. Standard HTTP caching (recommended)
 
 Configure your web server to cache the manifest file using HTTP headers:
 
@@ -55,7 +55,7 @@ location /manifest.json {
 </Files>
 ```
 
-### 2. Custom Resource Cache
+### 2. Custom resource cache
 
 Add the manifest to a custom resource cache strategy:
 
@@ -70,11 +70,11 @@ pwa:
                   max_age: 1 hour
 ```
 
-### 3. Browser Default Behavior
+### 3. Browser default behavior
 
 Simply rely on browser caching - modern browsers efficiently cache small JSON files like manifests without requiring service worker intervention.
 
-## Migration Guide
+## Migration guide
 
 If your configuration includes `cache_manifest`, you can:
 
@@ -94,7 +94,7 @@ If your configuration includes `cache_manifest`, you can:
 
     **No Action Required**: Removing this option from your configuration has no impact on your PWA functionality. The manifest will continue to work exactly as before.
 
-## Related Documentation
+## Related documentation
 
 - [Resource Caching](resource-caching.md) - Custom caching strategies for any resource
 - [Cache Management](cache-names-and-purge.md) - Managing service worker caches

@@ -2,7 +2,7 @@
 
 The PWA Bundle uses Symfony's PSR-14 Event Dispatcher system to allow customization of the manifest generation process. You can listen to these events to modify the manifest before or after compilation.
 
-## Available Events
+## Available events
 
 The bundle dispatches two main events during manifest generation:
 
@@ -21,7 +21,7 @@ Dispatched **after** the manifest is compiled. Use this event to:
 - Log manifest details
 - Perform cleanup operations
 
-## Basic Event Listener
+## Basic event listener
 
 Here's how to create an event listener for both events:
 
@@ -58,9 +58,9 @@ final readonly class ManifestListener
 
     Event listeners are automatically registered when using the `#[AsEventListener]` attribute. No additional configuration needed!
 
-## Use Cases
+## Use cases
 
-### Adding Dynamic Data
+### Adding dynamic data
 
 Inject dynamic information like user preferences or runtime configuration:
 
@@ -102,7 +102,7 @@ final readonly class DynamicManifestListener
 }
 ```
 
-### Multi-Locale Support
+### Multi-locale support
 
 Adapt the manifest for different locales:
 
@@ -139,7 +139,7 @@ final readonly class LocalizedManifestListener
 }
 ```
 
-### Environment-Based Configuration
+### Environment-based configuration
 
 Modify manifest based on the environment (dev/staging/prod):
 
@@ -171,7 +171,7 @@ final readonly class EnvironmentManifestListener
 }
 ```
 
-### Logging and Validation
+### Logging and validation
 
 Validate manifest data and log issues:
 
@@ -218,7 +218,7 @@ final readonly class ManifestValidationListener
 }
 ```
 
-### Adding Analytics Tracking
+### Adding analytics tracking
 
 Include analytics parameters in URLs:
 
@@ -248,7 +248,7 @@ final readonly class AnalyticsManifestListener
 }
 ```
 
-## Event API Reference
+## Event API reference
 
 ### PreManifestCompileEvent
 
@@ -278,7 +278,7 @@ $appName = $data['name'];
 $iconCount = count($data['icons'] ?? []);
 ```
 
-## Best Practices
+## Best practices
 
 1. **Use PreCompile for modifications**: Modify the manifest object in `PreManifestCompileEvent`
 2. **Use PostCompile for validation**: Check the compiled data in `PostManifestCompileEvent`
@@ -287,7 +287,7 @@ $iconCount = count($data['icons'] ?? []);
 5. **Test thoroughly**: Ensure your modifications don't break manifest validity
 6. **Handle errors gracefully**: Don't throw exceptions that could break manifest generation
 
-## Debugging Events
+## Debugging events
 
 Enable logging to see when events are dispatched:
 

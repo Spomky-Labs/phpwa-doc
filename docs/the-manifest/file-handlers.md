@@ -1,4 +1,4 @@
-# File Handlers
+# File handlers
 
 File Handlers allow your PWA to register as a handler for specific file types at the operating system level. When properly configured, users can open files directly with your PWA by double-clicking them, using "Open with...", or dragging files onto your app icon.
 
@@ -19,7 +19,7 @@ Implementing file handling in your PWA involves two steps:
 
 This page covers the manifest configuration. For client-side implementation with complete examples, see the [File Handling Symfony UX documentation](../symfony-ux/file-handling.md).
 
-## Quick Start
+## Quick start
 
 Here's a minimal example showing both configuration and implementation:
 
@@ -74,7 +74,7 @@ pwa:
 
 By adding a file handler for the above image types, your PWA will announce to the operating system that it can handle these types of files. When users open files with these extensions, your PWA will be suggested as an application to open them with.
 
-## Action Parameter
+## Action parameter
 
 The `action` property refers to the URL within the PWA context that will handle the file interaction. Ensure that your PWA is properly set up to handle file interactions at the specified URL.
 
@@ -109,11 +109,11 @@ file_handlers:
           "image/*": [".png", ".jpg", ".jpeg"]
 ```
 
-## Accept Parameter
+## Accept parameter
 
 The `accept` parameter is an object that maps MIME types to arrays of file extensions. This tells the operating system which file types your PWA can handle.
 
-### MIME Type Patterns
+### MIME type patterns
 
 You can use specific MIME types or wildcards:
 
@@ -136,7 +136,7 @@ file_handlers:
           "text/*": [".txt", ".md", ".json"]
 ```
 
-### Common File Types
+### Common file types
 
 Here are some common MIME type configurations:
 
@@ -169,7 +169,7 @@ accept:
     "application/xml": [".xml"]
 ```
 
-## Multiple File Handlers
+## Multiple file handlers
 
 You can register multiple file handlers for different file types:
 
@@ -190,7 +190,7 @@ pwa:
                   "video/*": [".mp4", ".webm"]
 ```
 
-## Best Practices
+## Best practices
 
 1. **Be specific**: Only declare file types your app can actually handle
 2. **Provide fallbacks**: Use wildcards when appropriate, but also list specific extensions
@@ -202,11 +202,11 @@ pwa:
 
     File handlers are an advanced PWA feature with varying browser support. Always check browser compatibility and provide alternative ways to upload or open files.
 
-## Handling Files in Your Application
+## Handling files in your application
 
 Once you've configured file handlers in your manifest, you need to implement the logic to receive and process files when users open them through the operating system. The PWA Bundle provides a Symfony UX component that makes this easy.
 
-### Using the Symfony UX File Handling Controller
+### Using the Symfony UX File Handling controller
 
 The `@pwa/file-handling` Stimulus controller automatically listens for files passed through the Launch Queue API and dispatches events you can handle in your application.
 
@@ -232,7 +232,7 @@ The `@pwa/file-handling` Stimulus controller automatically listens for files pas
 </script>
 ```
 
-### Complete Workflow
+### Complete workflow
 
 1. **Configure file handlers in manifest** (this page)
 2. **Add the Stimulus controller** to your template
@@ -243,7 +243,7 @@ The `@pwa/file-handling` Stimulus controller automatically listens for files pas
 
     For complete examples and advanced usage patterns, including handling multiple files, different file types, and resource cleanup, see the [File Handling Symfony UX documentation](../symfony-ux/file-handling.md).
 
-### When Files Are Received
+### When files are received
 
 Your application will receive files when users:
 * Right-click a file and select "Open with..." your PWA
@@ -251,7 +251,7 @@ Your application will receive files when users:
 * Drag a file onto your PWA icon in the taskbar/dock
 * Select your PWA from the "Open with" menu
 
-### Example: Image Editor Configuration
+### Example: Image editor configuration
 
 **Step 1 - Configure manifest:**
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
