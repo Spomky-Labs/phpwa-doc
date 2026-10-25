@@ -17,7 +17,7 @@ This component is particularly useful for:
 
     * **Manifest configuration** (which file types to handle): See [File Handlers documentation](../the-manifest/file-handlers.md)
     * **Client-side implementation** (how to process files): You're on the right page!
-    * **Complete quick start example**: See [Quick Start in File Handlers](../the-manifest/file-handlers.md#quick-start)
+    * **Complete quick start example**: See [Quick Start in File Handlers](../the-manifest/file-handlers.md)
 
 ## How it works
 

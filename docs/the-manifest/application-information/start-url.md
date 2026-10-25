@@ -98,4 +98,4 @@ pwa:
 
 !!! info
 
-    The `start_url` is not translatable since version 1.3.0. If you need localized start URLs, use the `{locale}` placeholder in the manifest public URL configuration. See [Translations](../translations.md) for more details.
+    The `start_url` is not translatable since version 1.3.0. If you need localized start URLs, use the `{locale}` placeholder in the manifest public URL configuration. See [Translations](../../experimental-features/translations.md) for more details.

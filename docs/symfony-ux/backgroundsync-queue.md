@@ -632,4 +632,4 @@ The service worker broadcasts status updates:
 - [MDN: Background Sync API](https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API)
 - [MDN: Broadcast Channel API](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API)
 - [Workbox: Background Sync](https://developer.chrome.com/docs/workbox/modules/workbox-background-sync/)
-- [PWA Bundle Service Worker Configuration](../the-service-worker/workbox/backgoundsync.md)
+- [PWA Bundle Service Worker Configuration](../the-service-worker/workbox/background-sync.md)

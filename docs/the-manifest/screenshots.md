@@ -35,7 +35,7 @@ Ensure that the screenshots you provide are of high quality. Crisp and clear ima
 
 ### `type` parameter
 
-This parameter is similar to [the `format` parameter for the icons](icons.md#type-parameter).
+This parameter is similar to [the `format` parameter for the icons](icons.md#format-parameter).
 
 ### `label` parameter
 
