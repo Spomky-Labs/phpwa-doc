@@ -74,7 +74,7 @@ Provided Match Callback Handlers:
 | `destination:` | Matches a certain type of resource. Available values are listed on the [Request object documentation](https://developer.mozilla.org/en-US/docs/Web/API/Request/destination). | <ul><li>destination: audio</li><li>destination: style</li><li>destination: video</li></ul> |
 | `route:`       | Matches the exact Symfony route. Shall not have required parameters                                                                                                          | <ul><li>route: app_homepage</li><li>route: app_princing</li></ul>                          |
 | `pathname:`    | Matches an exact pathname                                                                                                                                                    | <ul><li>pathname: /foo/bar.docx</li><li>pathname: /report.pdf</li></ul>                    |
-| `origin:`      | Matches all requests to the origin. <mark style="color:$info;">Note that the scheme may be required.</mark>                                                                  | <ul><li>origin: https://example.com</li><li>origin: https://google.com</li></ul>           |
+| `origin:`      | Matches all requests to the origin. Note that the scheme may be required.                                                                  | <ul><li>origin: https://example.com</li><li>origin: https://google.com</li></ul>           |
 | `startsWith:`  | Matches all pathnames starting with the value                                                                                                                                | <ul><li>startsWith: /dashboard</li><li>startsWith: /admin</li></ul>                        |
 | `endsWith:`    | Matches all pathnames ending with the value                                                                                                                                  | <ul><li>endsWith: .css</li><li>endsWith: -report.pdf</li></ul>                             |
 
@@ -215,7 +215,7 @@ pwa:
 
 ### URL preload
 
-The resource caching allows URLs to be preloaded. The accepted values are URLs as defined in the [Shorcut page](../../the-manifest/shortcuts.md#url-parameter).
+The resource caching allows URLs to be preloaded. The accepted values are URLs as defined in the [Shorcut page](../../the-manifest/shortcuts.md#url-parameter-required).
 
 You can also set asset URLs like audio or videos.
 

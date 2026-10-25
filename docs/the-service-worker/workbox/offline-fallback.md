@@ -74,7 +74,7 @@ pwa:
                         utm_source: 'offline_fallback'
 ```
 
-See [URL parameter documentation](../../the-manifest/shortcuts.md#url-parameter) for all URL configuration options.
+See [URL parameter documentation](../../the-manifest/shortcuts.md#url-parameter-required) for all URL configuration options.
 
 #### image (image fallback)
 

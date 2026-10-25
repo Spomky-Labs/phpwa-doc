@@ -88,7 +88,7 @@ Your Symfony application is now a basic PWA! Enhance it further:
 - **[Set up caching](the-service-worker/workbox/README.md)** - Enable offline functionality
 - **[Add icons](image-management/icons.md)** - Create app icons for all platforms
 - **[Configure the service worker](the-service-worker/configuration.md)** - Control caching behavior
-- **[Add UX components](symfony-ux/)** - Integrate device APIs
+- **[Add UX components](symfony-ux/background-fetch.md)** - Integrate device APIs
 
 ## Troubleshooting
 

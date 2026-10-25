@@ -166,4 +166,4 @@ Ready to transform your Symfony app into a PWA?
 2. [Learn PWA concepts](how-to-create-a-pwa.md) - Understand the fundamentals
 3. [Configure the manifest](the-manifest/application-information/README.md) - Customize your app
 4. [Set up the service worker](the-service-worker/configuration.md) - Enable offline mode
-5. [Add UX components](symfony-ux/) - Enhance user experience
+5. [Add UX components](symfony-ux/background-fetch.md) - Enhance user experience

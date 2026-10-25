@@ -657,7 +657,7 @@ if ('windowControlsOverlay' in navigator) {
 
 ## Related documentation
 
-- [Display Mode](../../the-manifest/application-information/display-mode.md) - Standard display property
+- [Display Mode](../../the-manifest/application-information/advanced-properties.md#available-display-modes) - Standard display property
 - [Orientation](../../the-manifest/application-information/orientation.md) - Screen orientation control
 - [Complete Example](../../the-manifest/complete-example.md) - Full manifest example
 

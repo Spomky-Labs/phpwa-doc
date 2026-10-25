@@ -152,7 +152,7 @@ class WebPush
 
 ### Service worker hooks
 
-The service worker shall be enable when using web push notifications. Please make sure [the configuration](broken-reference) is set accordingly.
+The service worker shall be enable when using web push notifications. Please make sure [the configuration](../the-service-worker/configuration.md) is set accordingly.
 
 In your service wroker JS file (we consider it is in `assets/sw.js` in this example), you must at least enable the push notification support. There are two types of notifications:
 
@@ -605,7 +605,7 @@ element.addEventListener('pwa--web-push:error', (event) => {
 
 ## Related components
 
-* [Service Worker](../the-service-worker/) - Required for Web Push functionality
+* [Service Worker](../the-service-worker/configuration.md) - Required for Web Push functionality
 * [Web Push Bundle Documentation](https://web-push.spomky-labs.com/) - Server-side notification delivery
 
 ## Additional resources

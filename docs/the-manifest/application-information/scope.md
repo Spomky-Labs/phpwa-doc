@@ -555,7 +555,7 @@ function validateManifest(manifest) {
 
 - [Start URL](start-url.md) - Where your PWA starts (must be within scope)
 - [ID](id.md) - Unique identifier for your PWA
-- [Display Mode](../display.md) - How the app window appears
+- [Display Mode](advanced-properties.md#available-display-modes) - How the app window appears
 
 ## Summary
 

@@ -520,7 +520,7 @@ After configuring your service worker:
 1. **Test offline functionality**: Disconnect network and verify app works
 2. **Monitor cache size**: Check DevTools → Application → Storage
 3. **Add custom logic**: Create [Custom Service Worker Rules](custom-service-worker-rule.md)
-4. **Implement background sync handlers**: Use [Symfony UX components](../symfony-ux/)
+4. **Implement background sync handlers**: Use [Symfony UX components](../symfony-ux/background-fetch.md)
 5. **Configure push notifications**: Set up notification handling
 
 ## Related documentation

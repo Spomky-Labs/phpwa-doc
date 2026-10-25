@@ -78,7 +78,7 @@ By adding a file handler for the above image types, your PWA will announce to th
 
 The `action` property refers to the URL within the PWA context that will handle the file interaction. Ensure that your PWA is properly set up to handle file interactions at the specified URL.
 
-The `action` property can be a simple string or a full URL object configuration, just like [shortcuts](shortcuts.md#url-parameter) and [start_url](application-information/start-url.md):
+The `action` property can be a simple string or a full URL object configuration, just like [shortcuts](shortcuts.md#url-parameter-required) and [start_url](application-information/start-url.md):
 
 **Simple string format:**
 ```yaml title="/config/packages/pwa.yaml" linenums="1"

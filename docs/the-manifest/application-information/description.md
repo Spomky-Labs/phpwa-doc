@@ -262,7 +262,7 @@ While the manifest description isn't directly used for web search ranking, it ca
 
 ## Related properties
 
-- [Name and Short Name](README.md#name-and-short-name) - How your app is titled
+- [Name and Short Name](README.md) - How your app is titled
 - [Direction and Language](direction-and-language.md) - Localization
 - [Categories](categories.md) - App classification for discovery
 

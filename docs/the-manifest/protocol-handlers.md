@@ -156,7 +156,7 @@ protocol_handlers:
 
 ### Advanced object format
 
-Just like with [shortcuts](shortcuts.md#url-parameter) and [start_url](application-information/start-url.md), you can use the full URL object configuration:
+Just like with [shortcuts](shortcuts.md#url-parameter-required) and [start_url](application-information/start-url.md), you can use the full URL object configuration:
 
 ```yaml title="/config/packages/pwa.yaml" linenums="1"
 protocol_handlers:

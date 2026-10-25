@@ -611,7 +611,7 @@ widths.forEach(width => {
 
 ## Related documentation
 
-- [Display Mode](../../the-manifest/application-information/display-mode.md) - App display modes
+- [Display Mode](../../the-manifest/application-information/advanced-properties.md#available-display-modes) - App display modes
 - [Orientation](../../the-manifest/application-information/orientation.md) - Screen orientation
 - [Icons](../../the-manifest/icons.md) - App icons configuration
 

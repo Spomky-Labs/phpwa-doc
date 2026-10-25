@@ -117,7 +117,7 @@ Name of the Broadcast Channel API channel for communicating sync status to your 
 broadcast_channel: 'form-sync-status'
 ```
 
-See the [Sync Broadcast Stimulus Component](../../symfony-ux/sync-broadcast.md) for implementation details on receiving these updates in your frontend.
+See the Sync Broadcast Stimulus Component for implementation details on receiving these updates in your frontend.
 
 #### Additional parameters
 

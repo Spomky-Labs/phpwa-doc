@@ -75,7 +75,7 @@ For most applications, the standard Workbox configuration options are sufficient
 - **[Image Caching](image-caching.md)** - Optimize image caching with size/age limits
 - **[Font Caching](font-caching.md)** - Cache web fonts for offline use
 - **[Background Sync](backgoundsync.md)** - Retry failed requests in the background
-- **[Offline Fallback](offline-fallbacks.md)** - Provide fallback pages when offline
+- **[Offline Fallback](offline-fallback.md)** - Provide fallback pages when offline
 
 ## Related documentation
 

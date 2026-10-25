@@ -865,7 +865,7 @@ host.addEventListener('background-fetch:cancel-refused', (e) => {
 
 - [Service Worker](service-worker.md) - Required for Background Fetch to function
 - [BackgroundSync Queue](backgroundsync-queue.md) - Queue requests for later execution
-- [Sync Broadcast](sync-broadcast.md) - Broadcast messages between tabs and service worker
+- Sync Broadcast - Broadcast messages between tabs and service worker
 
 ## Resources
 

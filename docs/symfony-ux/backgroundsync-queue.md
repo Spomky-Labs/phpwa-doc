@@ -625,7 +625,7 @@ The service worker broadcasts status updates:
 - [BackgroundSync Form](backgroundsync-form.md) - Automatically queue form submissions when offline
 - [Service Worker](service-worker.md) - Service worker configuration and setup
 - [Connection Status](connection-status.md) - Monitor online/offline status
-- [Sync Broadcast](sync-broadcast.md) - Generic broadcast channel communication
+- Sync Broadcast - Generic broadcast channel communication
 
 ## Resources
 

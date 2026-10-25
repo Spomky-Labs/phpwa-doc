@@ -477,7 +477,7 @@ Chrome DevTools device emulation:
 
 ## Related properties
 
-- [Display Mode](../display.md) - How the app window is presented
+- [Display Mode](advanced-properties.md#available-display-modes) - How the app window is presented
 - [Theme Color](colors-and-theme.md) - Visual appearance
 - [Scope](scope.md) - URL scope for the app
 

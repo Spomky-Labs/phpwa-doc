@@ -192,6 +192,6 @@ Ready to create your PWA?
 1. [Install the bundle](installation.md) - Quick setup guide
 2. [Configure your manifest](the-manifest/application-information/README.md) - Customize app metadata
 3. [Set up caching](the-service-worker/workbox/README.md) - Configure offline behavior
-4. [Add PWA features](symfony-ux/) - Enhance with device APIs
+4. [Add PWA features](symfony-ux/background-fetch.md) - Enhance with device APIs
 
 Your Symfony application will be a fully functional Progressive Web App in minutes!
