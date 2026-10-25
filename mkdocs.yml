@@ -1,0 +1,266 @@
+site_name: PWA Bundle
+site_description: Progressive web apps for Symfony. The manifest, the service worker, favicons and images, offline support, and the Symfony UX components for the web APIs.
+site_url: https://pwa.spomky-labs.com/
+site_author: Spomky-Labs
+repo_url: https://github.com/Spomky-Labs/pwa-bundle
+repo_name: spomky-labs/pwa-bundle
+edit_uri: https://github.com/Spomky-Labs/phpwa-doc/edit/1.4/docs/
+
+docs_dir: docs
+site_dir: site
+
+# The GitBook table of contents. It stays while GitBook serves the domain, and the navigation below says the
+# same thing in the words of MkDocs.
+exclude_docs: |
+  SUMMARY.md
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  language: en
+  # Space Grotesk and IBM Plex Mono are served from assets/fonts, declared in slabs.css: the theme loads
+  # no font of its own.
+  font: false
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil-outline
+    annotation: material/plus-circle
+  favicon: assets/brand/favicon.svg
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Follow the system theme
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to the dark theme
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to the light theme
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - content.action.edit
+
+# The tokens of the Slabs design kit, as they are, then the rules that apply them.
+extra_css:
+  - assets/stylesheets/slabs-tokens.css
+  - assets/stylesheets/slabs.css
+
+plugins:
+  - search
+  # Every asset is served from this site. Should a page ever reference an external one, it is downloaded
+  # at build time: nothing a reader loads reaches a third party.
+  - privacy
+  - git-revision-date-localized:
+      enable_creation_date: false
+      type: date
+      fallback_to_build_date: true
+  - redirects:
+      redirect_maps: {}
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      title: On this page
+      permalink: true
+      permalink_title: Link to this section
+      toc_depth: 3
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      # A PHP block of these pages starts without "<?php", which Pygments needs before it colours anything,
+      # and which GitBook never asked for.
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+      line_spans: __span
+      # The number of a line is written at the start of the line itself, so it cannot drift from it.
+      linenums_style: pymdownx-inline
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tilde
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn
+  nav:
+    omitted_files: warn
+
+extra:
+  status:
+    draft: This page is a stub, the section it belongs to is not written yet
+    new: Added in this version
+  version:
+    provider: mike
+    alias: true
+    default: latest
+  # The footer of the Slabs guidelines (p. 31): links in Calcaire, then the legal line in Béton.
+  slabs:
+    website: https://spomky-labs.com/
+    links:
+      - name: All documentation
+        link: https://docs.spomky-labs.com/
+      - name: PWA Bundle on GitHub
+        link: https://github.com/Spomky-Labs/pwa-bundle
+      - name: Packagist
+        link: https://packagist.org/packages/spomky-labs/pwa-bundle
+      - name: Security
+        link: https://github.com/Spomky-Labs/pwa-bundle/security/policy
+      - name: Sponsor
+        link: https://github.com/sponsors/Spomky
+    legal: SPOMKY-LABS · Florent Morselli EI
+    # The legal notice, the privacy policy and the contact page are shared by every documentation site,
+    # on the central one.
+    legal_links:
+      - name: Legal notice
+        link: https://docs.spomky-labs.com/legal-notice/
+      - name: Privacy
+        link: https://docs.spomky-labs.com/privacy/
+      - name: Contact
+        link: https://docs.spomky-labs.com/contact/
+
+# The title of each page is its first heading.
+nav:
+  - README.md
+  - how-to-create-a-pwa.md
+  - how-to-install-remove-a-pwa.md
+  - installation.md
+  - development.md
+  - events.md
+  - deployment.md
+  - "Favicons":
+      - favicons/create-favicons.md
+      - favicons/startup-images.md
+  - "The manifest":
+      - "Application information":
+          - the-manifest/application-information/README.md
+          - the-manifest/application-information/scope.md
+          - the-manifest/application-information/start-url.md
+          - the-manifest/application-information/id.md
+          - the-manifest/application-information/colors-and-theme.md
+          - the-manifest/application-information/direction-and-language.md
+          - the-manifest/application-information/orientation.md
+          - the-manifest/application-information/description.md
+          - the-manifest/application-information/iarc-rating-id.md
+          - the-manifest/application-information/categories.md
+          - the-manifest/application-information/advanced-properties.md
+      - the-manifest/translations.md
+      - the-manifest/icons.md
+      - the-manifest/screenshots.md
+      - the-manifest/shortcuts.md
+      - the-manifest/protocol-handlers.md
+      - the-manifest/file-handlers.md
+      - the-manifest/share-target.md
+      - the-manifest/complete-example.md
+  - "The service worker":
+      - the-service-worker/configuration.md
+      - the-service-worker/content-security-policy.md
+      - the-service-worker/custom-service-worker-rule.md
+      - the-service-worker/custom-cache-strategies.md
+      - "Workbox":
+          - the-service-worker/workbox/README.md
+          - the-service-worker/workbox/site-manifest-cache.md
+          - the-service-worker/workbox/asset-caching.md
+          - the-service-worker/workbox/resource-caching.md
+          - the-service-worker/workbox/image-caching.md
+          - the-service-worker/workbox/font-caching.md
+          - the-service-worker/workbox/offline-fallback.md
+          - the-service-worker/workbox/backgoundsync.md
+          - the-service-worker/workbox/cdn-and-versions.md
+          - the-service-worker/workbox/cache-names-and-purge.md
+          - the-service-worker/workbox/custom-cache-strategy.md
+      - the-service-worker/periodic-sync.md
+      - the-service-worker/complete-example.md
+  - "Symfony UX":
+      - symfony-ux/background-fetch.md
+      - symfony-ux/backgroundsync-form.md
+      - symfony-ux/backgroundsync-queue.md
+      - symfony-ux/badge.md
+      - symfony-ux/barcode-detection.md
+      - symfony-ux/battery-status.md
+      - symfony-ux/capture.md
+      - symfony-ux/connection-status.md
+      - symfony-ux/contact-picker.md
+      - symfony-ux/device-motion.md
+      - symfony-ux/device-orientation.md
+      - symfony-ux/file-handling.md
+      - symfony-ux/fullscreen.md
+      - symfony-ux/geolocation.md
+      - symfony-ux/install.md
+      - symfony-ux/network-information.md
+      - symfony-ux/picture-in-picture.md
+      - symfony-ux/prefetch-on-demand.md
+      - symfony-ux/periodic-sync.md
+      - symfony-ux/presentation-and-receiver.md
+      - symfony-ux/service-worker.md
+      - symfony-ux/speech-synthesis.md
+      - symfony-ux/touch.md
+      - symfony-ux/vibration.md
+      - symfony-ux/wake-lock.md
+      - symfony-ux/push-notifications.md
+      - symfony-ux/web-share.md
+  - "Image management":
+      - image-management/icons.md
+      - image-management/screenshots.md
+  - "Experimental features":
+      - "Non-standard parameters":
+          - experimental-features/non-standard-parameters/README.md
+          - experimental-features/non-standard-parameters/launch-handler.md
+          - experimental-features/non-standard-parameters/display-override.md
+          - experimental-features/non-standard-parameters/related-applications.md
+          - experimental-features/non-standard-parameters/edge-side-panel.md
+      - experimental-features/widgets-win10+.md
+  - "Upgrades":
+      - upgrades/from-1.2.x-to-1.3.0.md
